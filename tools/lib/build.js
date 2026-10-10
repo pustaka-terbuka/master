@@ -69,7 +69,7 @@ export function enrichWithAttribution(record, recordId) {
       ind1: '4',
       ind2: '2',
       subfields: [
-        { code: 'u', value: 'https://github.com/aplikasi-perpustakaan/pustaka-terbuka' },
+        { code: 'u', value: 'https://github.com/pustaka-terbuka/master' },
         { code: 'y', value: 'PustakaTerbuka' },
         { code: 'z', value: 'Shared open catalog record provided by PustakaTerbuka' }
       ]
@@ -85,7 +85,7 @@ export function enrichWithAttribution(record, recordId) {
       ind2: ' ',
       subfields: [
         { code: 'a', value: 'PustakaTerbuka' },
-        { code: 'u', value: 'https://github.com/aplikasi-perpustakaan/pustaka-terbuka' },
+        { code: 'u', value: 'https://github.com/pustaka-terbuka/master' },
         { code: 'd', value: 'Open Shared MARC Catalog for Malaysian Libraries' },
         { code: 'r', value: recordId }
       ]
@@ -593,7 +593,7 @@ function generateUniversalViewerHtml(baseUrl) {
     const dlBtn = document.getElementById('download-marc-btn');
     if (dlBtn) {
       const shard = recordId.substring(0, 2).toLowerCase();
-      dlBtn.href = 'https://raw.githubusercontent.com/aplikasi-perpustakaan/pustaka-terbuka/main/data/bib/' + shard + '/' + recordId + '.xml';
+      dlBtn.href = 'https://raw.githubusercontent.com/pustaka-terbuka/pnm/main/data/bib/' + shard + '/' + recordId + '.xml';
       dlBtn.download = recordId + '.xml';
     }
 

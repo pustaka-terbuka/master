@@ -26,7 +26,7 @@ const SOURCE_NAME = 'Perpustakaan Negara Malaysia';
 const SOURCE_BASE_URL = 'https://opac.pnm.gov.my/';
 const TERMS_URL = 'https://www.pnm.gov.my/';
 const BASE_API_URL = 'https://ap.iiivega.com/api/search-result/search/format-groups';
-const USER_AGENT = 'PustakaTerbuka Harvester (+https://github.com/aplikasi-perpustakaan/pustaka-terbuka)';
+const USER_AGENT = 'PustakaTerbuka Harvester (+https://github.com/pustaka-terbuka/master)';
 const HARVESTER_NAME = 'pnm-vega-scraper-node';
 const HARVESTER_VERSION = '1.0.0';
 

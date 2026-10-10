@@ -18,7 +18,7 @@ describe('Governance and M8 requirements', () => {
     const filePath = path.join(rootDir, '.github', 'CODEOWNERS');
     assert.ok(fs.existsSync(filePath), 'CODEOWNERS should exist');
     const content = fs.readFileSync(filePath, 'utf-8');
-    assert.match(content, /@aplikasi-perpustakaan\//, 'CODEOWNERS should use organization teams');
+    assert.match(content, /@(?:aplikasi-perpustakaan|pustaka-terbuka)\//, 'CODEOWNERS should use organization teams');
     assert.match(content, /Write access/, 'Must document write access requirement');
     assert.match(content, /branch protection/, 'Must document branch protection requirement');
   });

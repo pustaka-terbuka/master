@@ -85,7 +85,7 @@ test('Build System Tests', async (t) => {
     // Attribution verification in endpoint
     const idXml = fs.readFileSync(path.join(DIST_DIR, 'id', 'REC1.xml'), 'utf8');
     assert.ok(idXml.includes('PustakaTerbuka'), 'PustakaTerbuka attribution must be present');
-    assert.ok(idXml.includes('https://github.com/aplikasi-perpustakaan/pustaka-terbuka'), 'GitHub link must be present in attribution');
+    assert.ok(idXml.includes('https://github.com/pustaka-terbuka/master'), 'GitHub link must be present in attribution');
     assert.ok(idXml.includes('tag="900"'), 'Custom tag 900 must be present');
     assert.ok(idXml.includes('tag="856"'), 'MARC 856 tag must be present');
     assert.ok(idXml.includes('tag="040"'), 'MARC 040 tag must be present');

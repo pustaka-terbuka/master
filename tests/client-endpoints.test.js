@@ -87,7 +87,7 @@ test('Client Endpoints & Attribution Tests', async (t) => {
     // Check 856
     const f856 = enriched.dataFields.find(f => f.tag === '856');
     assert.ok(f856);
-    assert.strictEqual(f856.subfields.find(s => s.code === 'u').value, 'https://github.com/aplikasi-perpustakaan/pustaka-terbuka');
+    assert.strictEqual(f856.subfields.find(s => s.code === 'u').value, 'https://github.com/pustaka-terbuka/master');
 
     // Check 900
     const f900 = enriched.dataFields.find(f => f.tag === '900');

@@ -226,7 +226,7 @@ async function downloadBasket() {
       let res = await fetch(`${BASE_URL}id/${id}.xml`);
       if (!res.ok) {
         const shard = id.substring(0, 2).toLowerCase();
-        res = await fetch(`https://raw.githubusercontent.com/aplikasi-perpustakaan/pustaka-terbuka/main/data/bib/${shard}/${id}.xml`);
+        res = await fetch(`https://raw.githubusercontent.com/pustaka-terbuka/pnm/main/data/bib/${shard}/${id}.xml`);
       }
       if (res.ok) {
         const text = await res.text();
@@ -314,7 +314,7 @@ function processResultNode(node) {
   // Add download button
   const shard = recordId.substring(0, 2).toLowerCase();
   const dlBtn = document.createElement('a');
-  dlBtn.href = `https://raw.githubusercontent.com/aplikasi-perpustakaan/pustaka-terbuka/main/data/bib/${shard}/${recordId}.xml`;
+  dlBtn.href = `https://raw.githubusercontent.com/pustaka-terbuka/pnm/main/data/bib/${shard}/${recordId}.xml`;
   dlBtn.download = `${recordId}.xml`;
   dlBtn.className = 'download-btn';
   dlBtn.textContent = i18n['download_record'] || 'Download MARCXML';

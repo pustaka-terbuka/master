@@ -7,12 +7,12 @@
 # to require review from Code Owners for the target branch (e.g., main).
 
 # Default owners for everything
-* @aplikasi-perpustakaan/pustaka-terbuka-maintainers
+* @pustaka-terbuka/maintainers
 
 # Each school's holdings file is owned by their team
-# data/holdings/SKBayanLepas.csv @aplikasi-perpustakaan/sk-bayan-lepas
-# data/holdings/SMKGeorgeTown.csv @aplikasi-perpustakaan/smk-george-town
+# data/holdings/SKBayanLepas.csv @pustaka-terbuka/sk-bayan-lepas
+# data/holdings/SMKGeorgeTown.csv @pustaka-terbuka/smk-george-town
 
 # Organization registry changes need maintainer review
-data/orgs.json @aplikasi-perpustakaan/pustaka-terbuka-maintainers
-data/sources.json @aplikasi-perpustakaan/pustaka-terbuka-maintainers
+data/orgs.json @pustaka-terbuka/maintainers
+data/sources.json @pustaka-terbuka/maintainers

@@ -20,7 +20,7 @@ namespace PNMHarvester
         const string BASE_API_URL = "https://ap.iiivega.com/api/search-result/search/format-groups";
         const string HARVESTER_NAME = "pnm-vega-scraper-csharp";
         const string HARVESTER_VERSION = "1.3.0";
-        const string USER_AGENT = "PustakaTerbuka Harvester (+https://github.com/aplikasi-perpustakaan/pustaka-terbuka)";
+        const string USER_AGENT = "PustakaTerbuka Harvester (+https://github.com/pustaka-terbuka/master)";
 
         static int Main(string[] args)
         {
