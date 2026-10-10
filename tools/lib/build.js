@@ -1218,8 +1218,11 @@ export async function buildSite(options) {
   const universalViewerHtml = generateUniversalViewerHtml(baseUrl);
   fs.writeFileSync(path.join(bookBaseDir, 'index.html'), universalViewerHtml, 'utf8');
 
-  // Update manifest
-  manifestLib.saveManifest(manifestPath, newManifest);
+  // Update manifest (only for complete local builds)
+  const isLocalDataDir = dataDir === 'data' || dataDir === path.join(process.cwd(), 'data');
+  if (isLocalDataDir && !maxRecords) {
+    manifestLib.saveManifest(manifestPath, newManifest);
+  }
 
   // Stats
   report.sizeMB = getDirectorySize(distDir) / (1024 * 1024);
