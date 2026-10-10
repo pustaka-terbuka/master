@@ -1,0 +1,48 @@
+name: Rebuild & Deploy on Upstream Update
+
+on:
+  repository_dispatch:
+    types: [pnm-catalog-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Master Hub
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Clone PNM data repository (shallow)
+        run: |
+          git clone --depth 1 https://github.com/pustaka-terbuka/pnm.git ../pnm
+
+      - name: Build catalog shards and Pagefind index
+        run: |
+          node tools/build.js --source pnm
+
+      - name: Deploy to GitHub Pages (gh-pages branch)
+        run: |
+          cd dist
+          git init -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "deploy: automated catalog rebuild from upstream PNM [skip ci]"
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git push origin gh-pages --force
