@@ -7,20 +7,26 @@
 <script>
 (function() {
   var path = window.location.pathname;
+  var base = path.includes('/master') ? '/master/' : (path.includes('/pustaka-terbuka') ? '/pustaka-terbuka/' : '/');
   // Match /book/{recordId}/ or /book/{recordId}
   var match = path.match(/\/book\/([a-zA-Z0-9_-]+)\/?$/);
   if (match && match[1] !== 'index.html') {
-    var base = path.substring(0, path.indexOf('/book/'));
-    var target = (base ? base : '') + '/book/?id=' + encodeURIComponent(match[1]);
+    var target = base + 'book/?id=' + encodeURIComponent(match[1]);
     if (window.location.search) {
       target += '&' + window.location.search.substring(1);
     }
     window.location.replace(target);
     return;
   }
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.querySelector('.not-found-btn');
+    if (btn) btn.href = base;
+    var link = document.getElementById('not-found-style');
+    if (link) link.href = base + 'style.css';
+  });
 })();
 </script>
-<link rel="stylesheet" href="/pustaka-terbuka/style.css">
+<link id="not-found-style" rel="stylesheet" href="style.css">
 <style>
 .not-found-card {
   max-width: 600px;
@@ -60,7 +66,7 @@
 <div class="not-found-card">
   <h1>Halaman Tidak Dijumpai / Page Not Found</h1>
   <p>Halaman atau rekod yang anda cari tidak dapat dijumpai dalam katalog terbuka.</p>
-  <a href="/pustaka-terbuka/" class="not-found-btn">Kembali ke Carian / Back to Search</a>
+  <a href="/master/" class="not-found-btn">Kembali ke Carian / Back to Search</a>
 </div>
 </body>
 </html>

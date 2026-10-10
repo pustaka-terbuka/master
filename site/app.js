@@ -1,4 +1,14 @@
-const BASE_URL = window.location.pathname.includes('/pustaka-terbuka') ? '/pustaka-terbuka/' : '/';
+function getBaseUrl() {
+  const path = window.location.pathname;
+  if (path.includes('/master')) return '/master/';
+  if (path.includes('/pustaka-terbuka')) return '/pustaka-terbuka/';
+  if (window.location.hostname.endsWith('github.io')) {
+    const parts = path.split('/').filter(Boolean);
+    if (parts.length > 0) return `/${parts[0]}/`;
+  }
+  return '/';
+}
+const BASE_URL = getBaseUrl();
 let i18n = {};
 let currentLang = 'en';
 let pagefind = null;
