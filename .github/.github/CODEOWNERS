@@ -1,0 +1,18 @@
+# PustakaTerbuka Code Owners
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# Note: Teams must be given Write access to this repository for their code owner
+# assignments to be valid and for them to be requested for reviews.
+# Code-owner review is enforced only if branch protection rules are configured
+# to require review from Code Owners for the target branch (e.g., main).
+
+# Default owners for everything
+* @aplikasi-perpustakaan/pustaka-terbuka-maintainers
+
+# Each school's holdings file is owned by their team
+# data/holdings/SKBayanLepas.csv @aplikasi-perpustakaan/sk-bayan-lepas
+# data/holdings/SMKGeorgeTown.csv @aplikasi-perpustakaan/smk-george-town
+
+# Organization registry changes need maintainer review
+data/orgs.json @aplikasi-perpustakaan/pustaka-terbuka-maintainers
+data/sources.json @aplikasi-perpustakaan/pustaka-terbuka-maintainers

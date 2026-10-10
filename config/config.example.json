@@ -1,0 +1,20 @@
+{
+  "organization": "pustaka-terbuka",
+  "repository": "master",
+  "remote": "https://github.com/pustaka-terbuka/master.git",
+  "baseUrl": "/master/",
+  "siteTitle": "PustakaTerbuka — Katalog Induk Kebangsaan",
+  "siteDescription": "An open, shared MARC catalog for Malaysian schools and libraries.",
+  "languages": [
+    "en",
+    "ms"
+  ],
+  "defaultLanguage": "en",
+  "idLength": 10,
+  "shardLength": 2,
+  "dropGatePercent": 5,
+  "sizeWarnMB": 700,
+  "sizeFailMB": 950,
+  "isbnFetchFiles": true,
+  "issnFetchFiles": true
+}
