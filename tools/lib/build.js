@@ -874,9 +874,14 @@ export async function buildSite(options) {
   let staticPagesWritten = 0;
   let pagefindRecordsIndexed = 0;
 
-  for (const shard of shards) {
+  for (let sIdx = 0; sIdx < shards.length; sIdx++) {
+    const shard = shards[sIdx];
     if (maxRecords && report.recordsProcessed >= maxRecords) {
       break;
+    }
+    if (sIdx > 0 && sIdx % 50 === 0) {
+      const pct = ((sIdx / shards.length) * 100).toFixed(1);
+      console.log(`[BUILD PROGRESS] ${sIdx}/${shards.length} shards (${pct}%) - ${report.recordsProcessed} records processed`);
     }
     const shardDir = path.join(bibDir, shard);
     const files = fs.readdirSync(shardDir).filter(f => f.endsWith('.xml'));
@@ -1218,9 +1223,9 @@ export async function buildSite(options) {
   const universalViewerHtml = generateUniversalViewerHtml(baseUrl);
   fs.writeFileSync(path.join(bookBaseDir, 'index.html'), universalViewerHtml, 'utf8');
 
-  // Update manifest (only for complete local builds)
-  const isLocalDataDir = dataDir === 'data' || dataDir === path.join(process.cwd(), 'data');
-  if (isLocalDataDir && !maxRecords) {
+  // Update manifest (protect upstream pnm provider and partial builds)
+  const isUpstreamProvider = dataDir.includes('pnm') || options.source === 'pnm';
+  if (!isUpstreamProvider && !maxRecords) {
     manifestLib.saveManifest(manifestPath, newManifest);
   }
 

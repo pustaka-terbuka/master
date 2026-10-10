@@ -49,21 +49,21 @@ export function cloneRecord(record) {
   return JSON.parse(JSON.stringify(record));
 }
 
+const defaultParser = new XMLParser({
+  ignoreAttributes: false,
+  attributeNamePrefix: '@_',
+  textNodeName: '#text',
+  isArray: (name, jpath, isLeafNode, isAttribute) => {
+    // Very loose path checking for collections/records/fields
+    return name === 'marc:record' || name === 'record' ||
+           name === 'marc:controlfield' || name === 'controlfield' ||
+           name === 'marc:datafield' || name === 'datafield' ||
+           name === 'marc:subfield' || name === 'subfield';
+  }
+});
+
 export function parse(xmlStr) {
-  const parser = new XMLParser({
-    ignoreAttributes: false,
-    attributeNamePrefix: '@_',
-    textNodeName: '#text',
-    isArray: (name, jpath, isLeafNode, isAttribute) => {
-      // Very loose path checking for collections/records/fields
-      return name === 'marc:record' || name === 'record' ||
-             name === 'marc:controlfield' || name === 'controlfield' ||
-             name === 'marc:datafield' || name === 'datafield' ||
-             name === 'marc:subfield' || name === 'subfield';
-    }
-  });
-  
-  const doc = parser.parse(xmlStr);
+  const doc = defaultParser.parse(xmlStr);
   if (!doc) return [];
   
   let records = [];
