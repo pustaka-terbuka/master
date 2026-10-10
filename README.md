@@ -1,12 +1,14 @@
 # Pustaka Terbuka — Master Hub & Union Catalog
 
-> **Katalog Induk Kebangsaan: An open, federated MARC catalog and static OPAC for Malaysian schools and libraries.**
+> **PustakaTerbuka: an open, shared MARC catalog for Malaysian schools and libraries.**  
+> *Katalog Induk Kebangsaan: An open, federated MARC catalog and static OPAC for Malaysian schools and libraries.*
 
 This repository is the central search engine, OPAC portal, and catalog aggregator for the **[Pustaka Terbuka Organization](https://github.com/pustaka-terbuka)**. It combines and deduplicates bibliographic records from participating library data providers (such as Perpustakaan Negara Malaysia), generates client-side [Pagefind](https://pagefind.app) search indices, and serves a static OPAC on GitHub Pages.
 
 ---
 
-## Federated Architecture
+## Architecture
+
 
 The Pustaka Terbuka ecosystem uses an autonomous multi-repository architecture:
 
@@ -79,6 +81,23 @@ If you are developing a **Library Management System client** (such as a custom .
 - **Client Contributions**: Export local holdings and new records as offline `.zip` contribution packages.
 
 See the complete [Client Developer Integration Guide](docs/CLIENT_DEVELOPER_GUIDE.md) for full C# code recipes and integration workflows.
+
+---
+
+## Quick Start for Librarians (Participating Schools)
+
+To add your school or library to PustakaTerbuka or update your holdings:
+
+1. Register or update your organization in `data/orgs.json`
+2. Create or update your holdings file at `data/holdings/<YOUR_ORG>.csv`
+3. Submit a pull request to the `main` branch (or export an offline contribution package).
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details on submitting and updating holdings.
+
+### Link to Your Organization's View
+```
+https://pustaka-terbuka.github.io/master/?org=YourOrgCode
+```
 
 ---
 
