@@ -7,6 +7,10 @@
   "pnm": {
     "name": "Perpustakaan Negara Malaysia",
     "prefix": "PNM",
-    "priority": 10
+    "priority": 10,
+    "organization": "PNM",
+    "repository": "https://github.com/pustaka-terbuka/pnm",
+    "localPath": "../pnm",
+    "dataPath": "../pnm/data"
   }
 }

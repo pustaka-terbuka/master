@@ -3,21 +3,48 @@ import path from 'path';
 import { buildSite } from './lib/build.js';
 
 const args = process.argv.slice(2);
-let dataDir = 'data';
+let dataDir = null;
 let distDir = 'dist';
 let configPath = 'config/config.json';
 let isbnFetchFiles = true;
 let issnFetchFiles = true;
+let source = null;
+let maxRecords = null;
+let maxPagefindRecords = null;
 
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--data-dir') dataDir = args[++i];
   else if (args[i] === '--dist-dir') distDir = args[++i];
   else if (args[i] === '--config') configPath = args[++i];
+  else if (args[i] === '--source') source = args[++i];
+  else if (args[i] === '--max-records') maxRecords = parseInt(args[++i], 10);
+  else if (args[i] === '--max-pagefind-records') maxPagefindRecords = parseInt(args[++i], 10);
   else if (args[i] === '--no-isbn-fetch') isbnFetchFiles = false;
   else if (args[i] === '--no-issn-fetch') issnFetchFiles = false;
 }
 
 const config = fs.existsSync(configPath) ? JSON.parse(fs.readFileSync(configPath, 'utf8')) : {};
+
+// Resolve data directory from registered sources or config
+if (!dataDir) {
+  const targetSource = source || config.defaultSource;
+  if (targetSource) {
+    const sourcesPath = path.join(process.cwd(), 'data', 'sources.json');
+    if (fs.existsSync(sourcesPath)) {
+      try {
+        const sources = JSON.parse(fs.readFileSync(sourcesPath, 'utf8'));
+        if (sources[targetSource]?.dataPath) {
+          dataDir = sources[targetSource].dataPath;
+        }
+      } catch (e) {
+        console.warn('Failed to parse sources.json:', e.message);
+      }
+    }
+  }
+  if (!dataDir) {
+    dataDir = config.dataDir || 'data';
+  }
+}
 
 async function run() {
   try {
@@ -28,7 +55,9 @@ async function run() {
       baseUrl: config.baseUrl || '/pustaka-terbuka/',
       config,
       isbnFetchFiles,
-      issnFetchFiles
+      issnFetchFiles,
+      maxRecords: maxRecords ?? config.maxRecords,
+      maxPagefindRecords: maxPagefindRecords ?? config.maxPagefindRecords
     });
     
     console.log('Build Report:');

@@ -764,6 +764,7 @@ export async function buildSite(options) {
   const maxStaticHtmlPages = options.maxStaticHtmlPages ?? options.config?.maxStaticHtmlPages ?? 100;
   const maxXmlEndpoints = options.maxXmlEndpoints ?? options.config?.maxXmlEndpoints ?? 100;
   const maxPagefindRecords = options.maxPagefindRecords ?? options.config?.maxPagefindRecords ?? 10000;
+  const maxRecords = options.maxRecords ?? options.config?.maxRecords ?? null;
 
   const siteDir = 'site';
   if (fs.existsSync(siteDir)) {
@@ -771,9 +772,18 @@ export async function buildSite(options) {
   }
 
   const bibDir = path.join(dataDir, 'bib');
-  const holdingsDir = path.join(dataDir, 'holdings');
-  const aliasesPath = path.join(dataDir, 'aliases.jsonl');
-  const orgsPath = path.join(dataDir, 'orgs.json');
+  let holdingsDir = path.join(dataDir, 'holdings');
+  if (!fs.existsSync(holdingsDir)) {
+    holdingsDir = path.join(process.cwd(), 'data', 'holdings');
+  }
+  let aliasesPath = path.join(dataDir, 'aliases.jsonl');
+  if (!fs.existsSync(aliasesPath) && !fs.existsSync(aliasesPath + '.gz')) {
+    aliasesPath = path.join(process.cwd(), 'data', 'aliases.jsonl');
+  }
+  let orgsPath = path.join(dataDir, 'orgs.json');
+  if (!fs.existsSync(orgsPath)) {
+    orgsPath = path.join(process.cwd(), 'data', 'orgs.json');
+  }
   let manifestPath = path.join(bibDir, 'manifest.json');
   if (!fs.existsSync(manifestPath)) {
     manifestPath = path.join(dataDir, 'manifest.json');
@@ -865,6 +875,9 @@ export async function buildSite(options) {
   let pagefindRecordsIndexed = 0;
 
   for (const shard of shards) {
+    if (maxRecords && report.recordsProcessed >= maxRecords) {
+      break;
+    }
     const shardDir = path.join(bibDir, shard);
     const files = fs.readdirSync(shardDir).filter(f => f.endsWith('.xml'));
     const shardRecords = [];
@@ -874,6 +887,9 @@ export async function buildSite(options) {
     const orgShardMrcBuffers = {};
 
     for (const file of files) {
+      if (maxRecords && report.recordsProcessed >= maxRecords) {
+        break;
+      }
       const recordId = path.basename(file, '.xml');
       const filePath = path.join(shardDir, file);
       const content = fs.readFileSync(filePath, 'utf8');
@@ -1182,11 +1198,16 @@ export async function buildSite(options) {
 
   // Aliases mapping & Universal dynamic viewer
   const aliasMap = {};
+  const filterAliases = Boolean(maxRecords);
   for (const [key, val] of aliases.entries()) {
+    let resolvedId;
     try {
-      aliasMap[key] = aliasesLib.resolveId(aliases, val.id);
+      resolvedId = aliasesLib.resolveId(aliases, val.id);
     } catch (e) {
-      aliasMap[key] = val.id;
+      resolvedId = val.id;
+    }
+    if (!filterAliases || newManifest[resolvedId]) {
+      aliasMap[key] = resolvedId;
     }
   }
   

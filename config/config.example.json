@@ -10,11 +10,14 @@
     "ms"
   ],
   "defaultLanguage": "en",
+  "defaultSource": "pnm",
   "idLength": 10,
   "shardLength": 2,
   "dropGatePercent": 5,
   "sizeWarnMB": 700,
   "sizeFailMB": 950,
   "isbnFetchFiles": true,
-  "issnFetchFiles": true
+  "issnFetchFiles": true,
+  "maxPagefindRecords": 10000,
+  "maxRecords": 10000
 }
