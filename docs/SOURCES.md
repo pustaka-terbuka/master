@@ -37,3 +37,16 @@ Per-source notes including quirks, terms of use, and last verified dates.
   - User-Agent: `PustakaTerbuka Harvester (+https://github.com/aplikasi-perpustakaan/pustaka-terbuka)`
   - 2,000 ms delay between page requests.
   - Exponential backoff on HTTP 429 and 5xx errors (5s up to 300s).
+
+---
+
+## 2. Perbadanan Perpustakaan Awam Pulau Pinang (PPAPP)
+
+- **Source Code**: `ppapp`
+- **Prefix**: `PPAPP`
+- **Priority**: 8
+- **Organization**: Penang Public Library Corporation
+- **Base OPAC URL**: `https://opac.penanglib.gov.my/`
+- **Catalog Software**: Koha ILS / Web OPAC
+- **Harvester Guide**: See [docs/HARVESTER_DEVELOPER_GUIDE.md](HARVESTER_DEVELOPER_GUIDE.md)
+

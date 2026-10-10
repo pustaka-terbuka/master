@@ -28,6 +28,8 @@ Whenever you inspect, refactor, or generate code in this repository, you must ma
    - The primary operator environment is Windows 10/11 with PowerShell and Node.js LTS.
    - Always write files as **UTF-8 without BOM**.
    - Use cross-platform path handling (`path.join`) and avoid Linux-only shell assumptions. Keep generated paths concise to respect Windows path limits.
+6. **Harvester Standards & Architecture:**
+   - All library scrapers and harvesters must strictly follow [docs/HARVESTERS.md](HARVESTERS.md) and [docs/HARVESTER_DEVELOPER_GUIDE.md](HARVESTER_DEVELOPER_GUIDE.md).
 
 ---
 

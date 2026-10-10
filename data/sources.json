@@ -12,5 +12,15 @@
     "repository": "https://github.com/pustaka-terbuka/pnm",
     "localPath": "../pnm",
     "dataPath": "../pnm/data"
+  },
+  "ppapp": {
+    "name": "Perbadanan Perpustakaan Awam Pulau Pinang",
+    "prefix": "PPAPP",
+    "priority": 8,
+    "organization": "PPAPP",
+    "repository": "https://github.com/pustaka-terbuka/ppapp",
+    "localPath": "../ppapp",
+    "dataPath": "../ppapp/data",
+    "opacUrl": "https://opac.penanglib.gov.my/"
   }
 }
