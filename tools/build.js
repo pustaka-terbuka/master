@@ -28,14 +28,13 @@ const config = fs.existsSync(configPath) ? JSON.parse(fs.readFileSync(configPath
 
 // Resolve data directory from registered sources or config
 if (!dataDir) {
-  const targetSource = source || config.defaultSource;
-  if (targetSource) {
+  if (source) {
     const sourcesPath = path.join(process.cwd(), 'data', 'sources.json');
     if (fs.existsSync(sourcesPath)) {
       try {
         const sources = JSON.parse(fs.readFileSync(sourcesPath, 'utf8'));
-        if (sources[targetSource]?.dataPath) {
-          dataDir = sources[targetSource].dataPath;
+        if (sources[source]?.dataPath) {
+          dataDir = sources[source].dataPath;
         }
       } catch (e) {
         console.warn('Failed to parse sources.json:', e.message);
