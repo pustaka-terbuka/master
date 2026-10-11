@@ -343,6 +343,7 @@ sequenceDiagram
     participant Scratch as Ephemeral Scratch Dir
     participant Validate as tools/validate-inbox.js
     participant Merge as tools/merge.js (Consolidated)
+    participant Master as Master Digest (Sequential Mutex)
     participant Build as tools/build.js
     participant Git as GitHub Remote
 
@@ -350,7 +351,9 @@ sequenceDiagram
     Harvester->>Validate: npm run validate-inbox -- "<chunkDir>"
     Validate-->>Harvester: Exit 0 (Pass)
     Harvester->>Merge: npm run merge -- "<chunkDir>"
-    Merge-->>Harvester: Exit 0 (1,024 Shards Updated)
+    Merge-->>Harvester: Exit 0 (Local catalog updated)
+    Harvester->>Master: npm run ingest:master (acquireMasterLock & Pagefind build)
+    Master-->>Harvester: Exit 0 (Master search index & OPAC updated)
     Harvester->>Build: npm run build
     Build-->>Harvester: Exit 0 (dist/ & Pagefind ready)
     Harvester->>Git: git add data/ && git commit && git push origin main
@@ -363,12 +366,16 @@ sequenceDiagram
 1. **Seal Chunk:** Close write stream, write `manifest.json` with status `"complete"`.
 2. **Validate:** `npm run validate-inbox -- "<scratchDir>/harvest/inbox/pnm/<run-id>-chunk-<N>"`
 3. **Merge (Consolidated Shards):** `npm run merge -- "<scratchDir>/harvest/inbox/pnm/<run-id>-chunk-<N>"`
-   - Updates `data/bib/shard_<shard>.jsonl`.
+   - Updates `data/bib/shard_<shard>.jsonl` (or loose shards in `data/bib/`).
    - Rewrites and compresses `data/aliases.jsonl.gz`.
    - Checkpoints `data/bib/manifest.json`.
-4. **Build:** `npm run build`
-   - Scans 1,024 consolidated shards to build `dist/` and generate the Pagefind search index.
-5. **Git Push (Choice B):**
+4. **Master Digest (Incremental Indexing & Search):** `npm run ingest:master`
+   - Acquires sequential mutex lock (`master-lock.js`) on `master`.
+   - Rebuilds master static search site and Pagefind search index (`node tools/build.js --source pnm --scan-sources`).
+   - Releases lock for concurrent state libraries.
+5. **Build Local Site:** `npm run build`
+   - Generates local `dist/` and local search index.
+6. **Git Push (Choice B):**
    - **Pre-Push Rebase Guard (Main branch):**
      To prevent `non-fast-forward` push rejections if remote `main` received commits during the fetch:
      ```bash
@@ -385,7 +392,7 @@ sequenceDiagram
      ```bash
      git push origin gh-pages --force
      ```
-6. **Purge & Resume:** Wipe ephemeral scratch folder, increment chunk counter, reset `chunkRecords = 0`, open chunk `N+1`, and continue.
+7. **Purge & Resume:** Wipe ephemeral scratch folder, increment chunk counter, reset `chunkRecords = 0`, open chunk `N+1`, and continue.
 
 ---
 

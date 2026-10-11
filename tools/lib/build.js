@@ -937,9 +937,10 @@ export async function buildSite(options) {
   if (!fs.existsSync(aliasesPath) && !fs.existsSync(aliasesPath + '.gz')) {
     aliasesPath = path.join(process.cwd(), 'data', 'aliases.jsonl');
   }
-  let orgsPath = path.join(dataDir, 'orgs.json');
+  const masterOrgsPath = path.join(process.cwd(), 'data', 'orgs.json');
+  let orgsPath = fs.existsSync(masterOrgsPath) ? masterOrgsPath : path.join(dataDir, 'orgs.json');
   if (!fs.existsSync(orgsPath)) {
-    orgsPath = path.join(process.cwd(), 'data', 'orgs.json');
+    orgsPath = masterOrgsPath;
   }
   let manifestPath = path.join(bibDir, 'manifest.json');
   if (!fs.existsSync(manifestPath)) {
@@ -959,10 +960,28 @@ export async function buildSite(options) {
   if (!fs.existsSync(dumpsDir)) fs.mkdirSync(dumpsDir, { recursive: true });
 
   const orgs = fs.existsSync(orgsPath) ? JSON.parse(fs.readFileSync(orgsPath, 'utf8')) : {};
-  if (fs.existsSync(orgsPath)) {
-    fs.copyFileSync(orgsPath, path.join(distDir, 'orgs.json'));
+  if (dataDir && path.resolve(dataDir) !== path.resolve(process.cwd(), 'data')) {
+    const dataOrgsPath = path.join(dataDir, 'orgs.json');
+    if (fs.existsSync(dataOrgsPath)) {
+      try {
+        const extraOrgs = JSON.parse(fs.readFileSync(dataOrgsPath, 'utf8'));
+        for (const [k, v] of Object.entries(extraOrgs)) {
+          if (!orgs[k]) orgs[k] = v;
+        }
+      } catch {}
+    }
   }
+  fs.writeFileSync(path.join(distDir, 'orgs.json'), JSON.stringify(orgs, null, 2), 'utf8');
   const aliases = aliasesLib.loadAliases(aliasesPath);
+  if (options.scanSources) {
+    const masterAliasesPath = path.join(process.cwd(), 'data', 'aliases.jsonl');
+    if (path.resolve(masterAliasesPath) !== path.resolve(aliasesPath) && (fs.existsSync(masterAliasesPath) || fs.existsSync(masterAliasesPath + '.gz'))) {
+      const masterAliases = aliasesLib.loadAliases(masterAliasesPath);
+      for (const [k, v] of masterAliases.entries()) {
+        if (!aliases.has(k)) aliases.set(k, v);
+      }
+    }
+  }
   const manifest = manifestLib.loadManifest(manifestPath);
   const newManifest = {};
 
@@ -1040,6 +1059,10 @@ export async function buildSite(options) {
           }
         }
       } catch (e) {}
+    }
+    const masterBib = path.resolve(process.cwd(), 'data', 'bib');
+    if (fs.existsSync(masterBib) && !bibDirs.includes(masterBib)) {
+      bibDirs.push(masterBib);
     }
   }
 

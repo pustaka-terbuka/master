@@ -68,6 +68,25 @@ function mergeProvenanceAndIdentifiers(target, source) {
       addDataField(target, cloneRecord({ dataFields: [f] }).dataFields[0]);
     }
   }
+
+  // Preserve 952 (Koha local holdings) and 852 (MARC location/call number)
+  const source952s = getDataFields(source, '952');
+  const target952Barcodes = getDataFields(target, '952').map(f => getSubfield(f, 'p'));
+  for (const f of source952s) {
+    const barcode = getSubfield(f, 'p');
+    if (!barcode || !target952Barcodes.includes(barcode)) {
+      addDataField(target, cloneRecord({ dataFields: [f] }).dataFields[0]);
+    }
+  }
+
+  const source852s = getDataFields(source, '852');
+  const target852s = getDataFields(target, '852').map(f => (getSubfield(f, 'b') || '') + ':' + (getSubfield(f, 'h') || ''));
+  for (const f of source852s) {
+    const key = (getSubfield(f, 'b') || '') + ':' + (getSubfield(f, 'h') || '');
+    if (!target852s.includes(key)) {
+      addDataField(target, cloneRecord({ dataFields: [f] }).dataFields[0]);
+    }
+  }
 }
 
 function getExistingIds(aliasMap) {
@@ -165,6 +184,14 @@ export async function mergeInbox(inboxPath, options = {}) {
         if (f996.length > 0) {
           sourceCode = getSubfield(f996[0], 'a') || 'unknown';
         }
+        if (sourceCode === 'unknown') {
+          const f003 = getControlField(record, '003');
+          if (f003 && sources[f003.toLowerCase()]) {
+            sourceCode = f003.toLowerCase();
+          } else if (f003 && sources[f003]) {
+            sourceCode = f003;
+          }
+        }
         
         const sourceInfo = sources[sourceCode] || { prefix: 'UNK', priority: 999 };
         const raw001 = getControlField(record, '001');
@@ -234,12 +261,16 @@ export async function mergeInbox(inboxPath, options = {}) {
           if (existingRecord) {
             const incScore = getRecordScore(record, sourceInfo.priority);
             
-            // Reconstruct existing priority based on 996
+            // Reconstruct existing priority based on 996 or 003
             let extPriority = 999;
             const ext996 = getDataFields(existingRecord, '996');
             if (ext996.length > 0) {
                const extSource = getSubfield(ext996[0], 'a');
                if (sources[extSource]) extPriority = sources[extSource].priority;
+            } else {
+               const ext003 = getControlField(existingRecord, '003');
+               if (ext003 && sources[ext003.toLowerCase()]) extPriority = sources[ext003.toLowerCase()].priority;
+               else if (ext003 && sources[ext003]) extPriority = sources[ext003].priority;
             }
             const extScore = getRecordScore(existingRecord, extPriority);
 

@@ -61,6 +61,7 @@ export function parseArgs(args) {
     ingestMaster: false,
     skipPipeline: false,
     partitioned: true,
+    includeUndated: true,
     help: false
   };
 
@@ -93,6 +94,8 @@ export function parseArgs(args) {
     } else if (arg === '--fresh' || arg === '--no-resume' || arg === '--new') {
       options.freshRun = true;
       options.resumeTarget = null;
+    } else if (arg === '--no-undated') {
+      options.includeUndated = false;
     } else if (arg === '--resume') {
       if (i + 1 < args.length && !args[i + 1].startsWith('--')) {
         options.resumeTarget = args[++i];
@@ -514,7 +517,7 @@ export function repairProvenance(provPath, validBatches) {
   fs.writeFileSync(provPath, retained.length > 0 ? retained.join('\n') + '\n' : '', 'utf8');
 }
 
-export function generatePartitionPlan() {
+export function generatePartitionPlan(options = {}) {
   const partitions = [];
   let id = 0;
 
@@ -536,6 +539,22 @@ export function generatePartitionPlan() {
 
   // 4. Future accession dates
   partitions.push({ id: id++, name: 'era_2027_2050', query: '*', dateFrom: 2027, dateTo: 2050 });
+
+  // 5. Undated / Legacy VTLS records (date 9999) partitioned by character
+  if (options.includeUndated !== false) {
+    const singleChars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'c', 'e', 'f', 'g', 'i', 'k', 'l', 'n', 'o', 'p', 'q', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    for (const c of singleChars) {
+      partitions.push({ id: id++, name: `undated_9999_${c}`, query: `${c}*`, dateFrom: 9999, dateTo: 9999 });
+    }
+
+    const denseLetters = ['a', 'b', 'd', 'h', 'j', 'm', 'r', 's'];
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789'.split('');
+    for (const dl of denseLetters) {
+      for (const a of alphabet) {
+        partitions.push({ id: id++, name: `undated_9999_${dl}${a}`, query: `${dl}${a}*`, dateFrom: 9999, dateTo: 9999 });
+      }
+    }
+  }
 
   return partitions;
 }
@@ -656,7 +675,7 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
     ? fs.readdirSync(recordsDir).filter(f => f.endsWith('.xml')).length
     : 0;
 
-  const partitions = generatePartitionPlan();
+  const partitions = generatePartitionPlan(options);
   console.log(`=======================================================`);
   console.log(` PustakaTerbuka PPAS Harvester`);
   console.log(` Source: ${SOURCE_NAME} (${SOURCE_CODE})`);

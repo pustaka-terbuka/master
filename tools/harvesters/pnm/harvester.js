@@ -43,13 +43,14 @@ function findRepoRoot(startDir) {
 }
 
 // Parse CLI arguments
-function parseArgs(args) {
+export function parseArgs(args) {
   const options = {
     maxPages: 0,
     pageSize: 100,
     query: '*',
     delayMs: 2000,
     mode: 'full',
+    chunkSize: 10000,
     outDir: null,
     skipPipeline: false,
     freshRun: false,
@@ -57,6 +58,7 @@ function parseArgs(args) {
     dateFrom: null,
     dateTo: null,
     partitioned: false,
+    ingestMaster: false,
     help: false
   };
 
@@ -68,6 +70,8 @@ function parseArgs(args) {
       options.maxPages = parseInt(args[++i], 10);
     } else if (arg === '--page-size' && i + 1 < args.length) {
       options.pageSize = parseInt(args[++i], 10);
+    } else if (arg === '--chunk-size' && i + 1 < args.length) {
+      options.chunkSize = parseInt(args[++i], 10);
     } else if (arg === '--query' && i + 1 < args.length) {
       options.query = args[++i];
     } else if (arg === '--delay' && i + 1 < args.length) {
@@ -82,6 +86,8 @@ function parseArgs(args) {
       options.dateTo = parseInt(args[++i], 10);
     } else if (arg === '--partitioned') {
       options.partitioned = true;
+    } else if (arg === '--ingest-master' || arg === '--master-digest') {
+      options.ingestMaster = true;
     } else if (arg === '--skip-pipeline' || arg === '--no-pipeline') {
       options.skipPipeline = true;
     } else if (arg === '--fresh' || arg === '--no-resume' || arg === '--new') {
@@ -108,6 +114,7 @@ Usage:
 Options:
   --max-pages <num>          Maximum number of pages to fetch (default: 0 for all records)
   --page-size <num>          Records per page, max 100 (default: 100)
+  --chunk-size <num>         Records per chunk before pausing for pipeline & master digest (default: 10000)
   --query <str>              Search query string (default: "*")
   --delay <ms>               Delay between page requests in ms (default: 2000)
   --mode <full|incremental>  Harvest mode (default: "full")
@@ -115,6 +122,8 @@ Options:
   --date-to <year>           Filter records by ending publication year
   --partitioned              Harvest catalog using query partitioning (bypasses OpenSearch 10k window)
   --out-dir <path>           Override output inbox directory
+  --ingest-master            Digest and index records into Master sequentially during chunk pause and at completion
+  --master-digest            Alias for --ingest-master
   --skip-pipeline            Skip automated validate, merge, and build steps
   --fresh, --no-resume       Always start a new harvest run (do not resume incomplete run)
   --resume [run-id]          Resume a specific run ID or folder (default: auto-resumes latest incomplete run)
@@ -512,13 +521,41 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
 
   const repoRoot = findRepoRoot(__dirname);
   const pnmInboxBase = path.join(repoRoot, 'harvest', 'inbox', SOURCE_CODE);
+  fs.mkdirSync(pnmInboxBase, { recursive: true });
+
+  const partitionStateFile = path.join(pnmInboxBase, 'partition_state.json');
+  let partitionState = {
+    completedPartitions: [],
+    nextBatchNumber: 0,
+    totalRecordsSaved: 0,
+    completedChunks: [],
+    currentChunkIndex: 1
+  };
+  if (fs.existsSync(partitionStateFile)) {
+    try {
+      const loaded = JSON.parse(fs.readFileSync(partitionStateFile, 'utf8'));
+      partitionState = { ...partitionState, ...loaded };
+      if (!Array.isArray(partitionState.completedChunks)) partitionState.completedChunks = [];
+      if (typeof partitionState.currentChunkIndex !== 'number') partitionState.currentChunkIndex = 1;
+    } catch {}
+  }
+
+  function savePartitionState() {
+    try {
+      fs.mkdirSync(path.dirname(partitionStateFile), { recursive: true });
+      fs.writeFileSync(partitionStateFile, JSON.stringify(partitionState, null, 2), 'utf8');
+    } catch (err) {
+      console.warn(`[WARN] Failed to write partition_state.json: ${err.message}`);
+    }
+  }
+
   let inboxDir = null;
   let runId = null;
   let isResuming = false;
-  let startPageNum = 0;
-  let fetchedCount = 0;
+  let fetchedCount = partitionState.totalRecordsSaved || 0;
   let errorCount = 0;
-  let startedAt = null;
+  const nowIso = new Date().toISOString();
+  let startedAt = nowIso;
 
   if (!options.freshRun) {
     if (options.resumeTarget && options.resumeTarget !== 'auto') {
@@ -545,18 +582,8 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
     }
   }
 
-  const nowIso = new Date().toISOString();
   if (isResuming && inboxDir) {
     runId = path.basename(inboxDir);
-    const recordsDir = path.join(inboxDir, 'records');
-    fs.mkdirSync(recordsDir, { recursive: true });
-
-    const inspected = inspectBatches(recordsDir);
-    startPageNum = inspected.highestPage + 1;
-    fetchedCount = inspected.recordCount;
-
-    cleanProvenanceFile(path.join(inboxDir, 'provenance.jsonl'), inspected.validBatches);
-
     const manifestPath = path.join(inboxDir, 'manifest.json');
     if (fs.existsSync(manifestPath)) {
       try {
@@ -565,57 +592,163 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
         if (typeof prev.error_count === 'number') errorCount = prev.error_count;
       } catch {}
     }
-    if (!startedAt) startedAt = nowIso;
   } else {
     isResuming = false;
-    startedAt = nowIso;
     runId = startedAt.replace(/:/g, '-').replace(/\..+/, '') + 'Z';
-    inboxDir = options.outDir
-      ? path.resolve(options.outDir)
-      : path.join(pnmInboxBase, runId);
-    fs.mkdirSync(path.join(inboxDir, 'records'), { recursive: true });
-    startPageNum = 0;
-    fetchedCount = 0;
   }
 
-  const recordsDir = path.join(inboxDir, 'records');
+  let chunkIndex = partitionState.currentChunkIndex || 1;
+  let chunkRecordsSaved = 0;
+  let chunkErrorCount = 0;
+  let chunkStartedAt = startedAt;
+  let batchNumberInChunk = 0;
+
+  function setupChunk(idx) {
+    const chunkSuffix = String(idx).padStart(3, '0');
+    const cRunId = options.outDir
+      ? (options.chunkSize > 0 ? `${path.basename(options.outDir)}-chunk-${chunkSuffix}` : path.basename(options.outDir))
+      : `${runId}-chunk-${chunkSuffix}`;
+    const cDir = options.outDir
+      ? (options.chunkSize > 0 ? path.join(path.dirname(path.resolve(options.outDir)), cRunId) : path.resolve(options.outDir))
+      : path.join(pnmInboxBase, cRunId);
+
+    const recDir = path.join(cDir, 'records');
+    fs.mkdirSync(recDir, { recursive: true });
+    const pFile = path.join(cDir, 'provenance.jsonl');
+    const pStream = fs.createWriteStream(pFile, { flags: 'a', encoding: 'utf8' });
+
+    return { chunkRunId: cRunId, chunkDir: cDir, recordsDir: recDir, provFile: pFile, provStream: pStream };
+  }
+
+  let activeChunk = isResuming && inboxDir
+    ? {
+        chunkRunId: path.basename(inboxDir),
+        chunkDir: inboxDir,
+        recordsDir: path.join(inboxDir, 'records'),
+        provFile: path.join(inboxDir, 'provenance.jsonl'),
+        provStream: fs.createWriteStream(path.join(inboxDir, 'provenance.jsonl'), { flags: 'a', encoding: 'utf8' })
+      }
+    : setupChunk(chunkIndex);
+
+  if (isResuming) {
+    const inspected = inspectBatches(activeChunk.recordsDir);
+    batchNumberInChunk = inspected.highestPage + 1;
+    chunkRecordsSaved = inspected.recordCount;
+    cleanProvenanceFile(activeChunk.provFile, inspected.validBatches);
+  }
 
   console.log(`=== PustakaTerbuka PNM Harvester (Node.js) ===`);
-  console.log(`Run ID:      ${runId} ${isResuming ? '[RESUMING]' : '[NEW]'}`);
-  console.log(`Inbox:       ${inboxDir}`);
+  console.log(`Run ID:        ${runId} ${isResuming ? '[RESUMING]' : '[NEW]'}`);
+  console.log(`Active Chunk:  ${activeChunk.chunkRunId} (Chunk #${chunkIndex})`);
+  console.log(`Chunk Size:    ${options.chunkSize > 0 ? options.chunkSize : 'Disabled'}`);
+  console.log(`Master Digest: ${options.ingestMaster ? 'Enabled (Automatic sequential ingestion & Pagefind indexing)' : 'Disabled'}`);
+  console.log(`Inbox Base:    ${pnmInboxBase}`);
   if (isResuming) {
-    console.log(`Resuming:    Starting at page ${startPageNum} (${fetchedCount} records already saved)`);
+    console.log(`Resuming:      Batch pointer at ${batchNumberInChunk} (${chunkRecordsSaved} records in chunk)`);
   }
-  console.log(`Query:       ${options.query}`);
-  console.log(`Page Size:   ${options.pageSize}`);
-  console.log(`Max Pages:   ${options.maxPages > 0 ? options.maxPages : 'Unlimited'}`);
-  console.log(`Rate Delay:  ${options.delayMs}ms`);
+  console.log(`Query:         ${options.query}`);
+  console.log(`Page Size:     ${options.pageSize}`);
+  console.log(`Max Pages:     ${options.maxPages > 0 ? options.maxPages : 'Unlimited'}`);
+  console.log(`Rate Delay:    ${options.delayMs}ms`);
   console.log(`===============================================`);
 
-  const provFile = path.join(inboxDir, 'provenance.jsonl');
-  const provStream = fs.createWriteStream(provFile, { flags: 'a', encoding: 'utf8' });
+  async function pauseAndProcessChunk(isFinal = false, status = 'complete') {
+    if (chunkRecordsSaved === 0) return;
 
-  let pageNum = startPageNum;
+    console.log(`\n========================================================`);
+    console.log(`[CHUNK ${isFinal ? 'FINAL' : 'PAUSE'}] Chunk ${chunkIndex} reached ${chunkRecordsSaved} records.`);
+    console.log(` Pausing harvest for chunk sealing, local merge, and master digest...`);
+    console.log(`========================================================\n`);
+
+    // 1. Close stream
+    await new Promise(resolve => activeChunk.provStream.end(resolve));
+
+    // 2. Seal manifest
+    const termsVerifiedOn = (startedAt || new Date().toISOString()).slice(0, 10);
+    const manifest = {
+      schema_version: '1.0',
+      source_code: SOURCE_CODE,
+      source_name: SOURCE_NAME,
+      source_base_url: SOURCE_BASE_URL,
+      terms_url: TERMS_URL,
+      terms_verified_on: termsVerifiedOn,
+      harvester_name: HARVESTER_NAME,
+      harvester_version: HARVESTER_VERSION,
+      run_id: activeChunk.chunkRunId,
+      mode: options.mode,
+      started_at: chunkStartedAt,
+      finished_at: new Date().toISOString(),
+      record_count: chunkRecordsSaved,
+      error_count: chunkErrorCount,
+      status: status,
+      user_agent: USER_AGENT,
+      notes: failureReason
+        ? `Chunk ${chunkIndex} ended with status '${status}': ${failureReason}`
+        : `Harvest chunk ${chunkIndex} completed successfully.`
+    };
+
+    const manifestPath = path.join(activeChunk.chunkDir, 'manifest.json');
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf8');
+    console.log(`[MANIFEST SEALED] Chunk ${chunkIndex} manifest written to ${manifestPath}`);
+
+    // 3. Pipeline & Master Digest
+    const isInsideRepo = fs.existsSync(path.join(repoRoot, 'package.json'));
+    if (status === 'complete' && isInsideRepo && !options.skipPipeline) {
+      console.log(`\n========================================================`);
+      console.log(` Running Pipeline for Chunk ${chunkIndex} (${activeChunk.chunkRunId}) `);
+      console.log(`========================================================`);
+
+      const { execSync } = await import('child_process');
+      try {
+        console.log(`\n[Step 1/3] Validating inbox chunk: ${activeChunk.chunkRunId}...`);
+        const validateFlags = (options.mode === 'incremental' || options.maxPages > 0 || options.chunkSize > 0) ? ' --allow-partial --skip-drop-gate' : '';
+        execSync(`npm run validate-inbox -- "${activeChunk.chunkDir}" ${validateFlags}`, { cwd: repoRoot, stdio: 'inherit' });
+
+        console.log(`\n[Step 2/3] Merging & deduplicating records into PNM catalog...`);
+        execSync(`npm run merge -- "${activeChunk.chunkDir}"`, { cwd: repoRoot, stdio: 'inherit' });
+
+        if (options.ingestMaster) {
+          console.log(`\n[Step 3/3] Master Digest: Ingesting into PustakaTerbuka Master & building Pagefind search index...`);
+          execSync(`npm run ingest:master`, { cwd: repoRoot, stdio: 'inherit' });
+          console.log(`\n[MASTER DIGEST] Master catalog successfully indexed and searchable for Chunk ${chunkIndex}!`);
+        }
+      } catch (err) {
+        console.error(`\n[ERROR] Pipeline step failed for chunk ${chunkIndex}: ${err.message}`);
+        throw err;
+      }
+    }
+
+    // 4. Update state
+    if (!partitionState.completedChunks.includes(chunkIndex)) {
+      partitionState.completedChunks.push(chunkIndex);
+    }
+    partitionState.totalRecordsSaved = fetchedCount;
+    partitionState.currentChunkIndex = chunkIndex + 1;
+    savePartitionState();
+
+    // 5. Open next chunk if not final
+    if (!isFinal) {
+      chunkIndex++;
+      chunkRecordsSaved = 0;
+      chunkErrorCount = 0;
+      batchNumberInChunk = 0;
+      chunkStartedAt = new Date().toISOString();
+      activeChunk = setupChunk(chunkIndex);
+
+      console.log(`\n========================================================`);
+      console.log(` [RESUME] Opened Chunk ${chunkIndex} (${activeChunk.chunkRunId})`);
+      console.log(` Resuming harvest loop...`);
+      console.log(`========================================================\n`);
+    }
+  }
+
   let pagesFetchedThisRun = 0;
-  let totalResults = (startPageNum + 1) * options.pageSize;
   let harvestStatus = 'complete';
   let failureReason = null;
 
   try {
     if (options.partitioned) {
       console.log(`[MODE] Partitioned harvest mode active (bypasses OpenSearch 10k window limit).`);
-      const partitionStateFile = path.join(inboxDir, 'partition_state.json');
-      let partitionState = { completedPartitions: [], nextBatchNumber: 0 };
-      if (fs.existsSync(partitionStateFile)) {
-        try {
-          partitionState = JSON.parse(fs.readFileSync(partitionStateFile, 'utf8'));
-        } catch {}
-      }
-
-      // Inspect existing batch files to continue numbering seamlessly
-      const inspected = inspectBatches(recordsDir);
-      let batchNumber = Math.max(inspected.highestPage + 1, partitionState.nextBatchNumber || 0);
-
       const plan = generatePartitionPlan();
       console.log(`[PLAN] Total partitions to process: ${plan.length} (${partitionState.completedPartitions.length} already completed)`);
 
@@ -663,6 +796,7 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
             const converted = convertItemToMarcRecord(item, (msg) => {
               console.warn(`[WARN] Skipping invalid record: ${msg}`);
               errorCount++;
+              chunkErrorCount++;
             });
             if (!converted) continue;
 
@@ -673,23 +807,28 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
               source_001: converted.localId,
               source_url: `${SOURCE_BASE_URL}search/resource/${converted.id}`,
               harvested_at: new Date().toISOString(),
-              file: `batch_${batchNumber}.xml`,
+              file: `batch_${batchNumberInChunk}.xml`,
               index: recordIndexInBatch
             };
-            provStream.write(JSON.stringify(prov) + '\n');
+            activeChunk.provStream.write(JSON.stringify(prov) + '\n');
 
             recordIndexInBatch++;
-            fetchedCount++;
           }
 
           xmlLines.push('</collection>');
-          const xmlPath = path.join(recordsDir, `batch_${batchNumber}.xml`);
+          const xmlPath = path.join(activeChunk.recordsDir, `batch_${batchNumberInChunk}.xml`);
           fs.writeFileSync(xmlPath, xmlLines.join('\n'), { encoding: 'utf8' });
-          console.log(`[SAVE] Wrote ${recordIndexInBatch} records to batch_${batchNumber}.xml (Partition: ${partPage + 1}/${Math.ceil(partTotal / options.pageSize)}, Total Run Fetched: ${fetchedCount})`);
+          console.log(`[SAVE] Wrote ${recordIndexInBatch} records to batch_${batchNumberInChunk}.xml (Partition: ${partPage + 1}/${Math.ceil(partTotal / options.pageSize)}, Chunk ${chunkIndex}: ${chunkRecordsSaved + recordIndexInBatch}/${options.chunkSize}, Total Fetched: ${fetchedCount + recordIndexInBatch})`);
 
-          batchNumber++;
+          chunkRecordsSaved += recordIndexInBatch;
+          fetchedCount += recordIndexInBatch;
+          batchNumberInChunk++;
           partPage++;
           pagesFetchedThisRun++;
+
+          if (options.chunkSize > 0 && chunkRecordsSaved >= options.chunkSize) {
+            await pauseAndProcessChunk(false, 'complete');
+          }
 
           if (partPage * options.pageSize < partTotal && (options.maxPages <= 0 || pagesFetchedThisRun < options.maxPages)) {
             await sleep(options.delayMs);
@@ -701,9 +840,9 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
         }
 
         partitionState.completedPartitions.push(partition.name);
-        partitionState.nextBatchNumber = batchNumber;
+        partitionState.nextBatchNumber = partitionState.nextBatchNumber + 1;
         partitionState.totalRecordsSaved = fetchedCount;
-        fs.writeFileSync(partitionStateFile, JSON.stringify(partitionState, null, 2), 'utf8');
+        savePartitionState();
 
         // Politeness sleep between partitions
         if (options.maxPages <= 0 || pagesFetchedThisRun < options.maxPages) {
@@ -715,6 +854,8 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
       const extra = {};
       if (options.dateFrom != null) extra.dateFrom = options.dateFrom;
       if (options.dateTo != null) extra.dateTo = options.dateTo;
+      let pageNum = 0;
+      let totalResults = options.pageSize;
 
       while (pageNum * options.pageSize < totalResults) {
         if (options.maxPages > 0 && pagesFetchedThisRun >= options.maxPages) {
@@ -739,11 +880,12 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
           '<collection xmlns="http://www.loc.gov/MARC21/slim">'
         ];
 
-        let recordIndex = 0;
+        let recordIndexInBatch = 0;
         for (const item of items) {
           const converted = convertItemToMarcRecord(item, (msg) => {
             console.warn(`[WARN] Skipping invalid record: ${msg}`);
             errorCount++;
+            chunkErrorCount++;
           });
           if (!converted) continue;
 
@@ -754,22 +896,28 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
             source_001: converted.localId,
             source_url: `${SOURCE_BASE_URL}search/resource/${converted.id}`,
             harvested_at: new Date().toISOString(),
-            file: `batch_${pageNum}.xml`,
-            index: recordIndex
+            file: `batch_${batchNumberInChunk}.xml`,
+            index: recordIndexInBatch
           };
-          provStream.write(JSON.stringify(prov) + '\n');
+          activeChunk.provStream.write(JSON.stringify(prov) + '\n');
 
-          recordIndex++;
-          fetchedCount++;
+          recordIndexInBatch++;
         }
 
         xmlLines.push('</collection>');
-        const xmlPath = path.join(recordsDir, `batch_${pageNum}.xml`);
+        const xmlPath = path.join(activeChunk.recordsDir, `batch_${batchNumberInChunk}.xml`);
         fs.writeFileSync(xmlPath, xmlLines.join('\n'), { encoding: 'utf8' });
-        console.log(`[SAVE] Wrote ${recordIndex} records to batch_${pageNum}.xml (Total fetched: ${fetchedCount} / ${totalResults})`);
+        console.log(`[SAVE] Wrote ${recordIndexInBatch} records to batch_${batchNumberInChunk}.xml (Chunk ${chunkIndex}: ${chunkRecordsSaved + recordIndexInBatch}/${options.chunkSize}, Total Fetched: ${fetchedCount + recordIndexInBatch} / ${totalResults})`);
 
+        chunkRecordsSaved += recordIndexInBatch;
+        fetchedCount += recordIndexInBatch;
+        batchNumberInChunk++;
         pageNum++;
         pagesFetchedThisRun++;
+
+        if (options.chunkSize > 0 && chunkRecordsSaved >= options.chunkSize) {
+          await pauseAndProcessChunk(false, 'complete');
+        }
 
         // Politeness sleep between page requests
         if (pageNum * options.pageSize < totalResults && (options.maxPages <= 0 || pagesFetchedThisRun < options.maxPages)) {
@@ -782,77 +930,28 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
     harvestStatus = fetchedCount > 0 ? 'partial' : 'failed';
     failureReason = err.message;
   } finally {
-    await new Promise(resolve => provStream.end(resolve));
-
-    const finishedAt = new Date().toISOString();
-    // terms_verified_on must match JSON schema format "date" (YYYY-MM-DD)
-    const termsVerifiedOn = startedAt.slice(0, 10);
-
-    const manifest = {
-      schema_version: '1.0',
-      source_code: SOURCE_CODE,
-      source_name: SOURCE_NAME,
-      source_base_url: SOURCE_BASE_URL,
-      terms_url: TERMS_URL,
-      terms_verified_on: termsVerifiedOn,
-      harvester_name: HARVESTER_NAME,
-      harvester_version: HARVESTER_VERSION,
-      run_id: runId,
-      mode: options.mode,
-      started_at: startedAt,
-      finished_at: finishedAt,
-      record_count: fetchedCount,
-      error_count: errorCount,
-      status: harvestStatus,
-      user_agent: USER_AGENT,
-      notes: failureReason
-        ? `Harvest ended with status '${harvestStatus}': ${failureReason}`
-        : (isResuming
-            ? `Harvest resumed and completed successfully from PNM Vega Discover REST API.`
-            : `Harvest completed successfully from PNM Vega Discover REST API.`)
-    };
-
-    const manifestPath = path.join(inboxDir, 'manifest.json');
-    fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf8');
-
-    console.log(`===============================================`);
-    console.log(`Harvest finished: status = ${harvestStatus}, records = ${fetchedCount}, errors = ${errorCount}`);
-    console.log(`Manifest written to ${manifestPath}`);
-    console.log(`===============================================`);
-
-    if (harvestStatus !== 'complete') {
-      console.log(`\n[WARN] Harvest ended with status '${harvestStatus}'. Automated pipeline will not run on incomplete data.`);
-      return 1;
-    }
-
-    const isInsideRepo = fs.existsSync(path.join(repoRoot, 'package.json'));
-    if (isInsideRepo && !options.skipPipeline) {
-      console.log(`\n================================================`);
-      console.log(` Running PustakaTerbuka Pipeline Automatically `);
-      console.log(`================================================`);
-
-      const { execSync } = await import('child_process');
-      try {
-        console.log(`\n[Step 1/3] Validating inbox...`);
-        execSync(`npm run validate-inbox -- "${inboxDir}"`, { cwd: repoRoot, stdio: 'inherit' });
-
-        console.log(`\n[Step 2/3] Merging & deduplicating records into catalog...`);
-        execSync(`npm run merge -- "${inboxDir}"`, { cwd: repoRoot, stdio: 'inherit' });
-
-        console.log(`\n[Step 3/3] Building static OPAC and search index...`);
-        execSync(`npm run build`, { cwd: repoRoot, stdio: 'inherit' });
-
-        console.log(`\n================================================`);
-        console.log(` Pipeline Completed: Catalog Updated & Built! `);
-        console.log(`================================================\n`);
-      } catch (err) {
-        console.error(`\n[ERROR] Pipeline step failed: ${err.message}`);
-        return 1;
+    if (chunkRecordsSaved > 0) {
+      await pauseAndProcessChunk(true, harvestStatus);
+    } else {
+      await new Promise(resolve => activeChunk.provStream.end(resolve));
+      if (fs.existsSync(activeChunk.recordsDir) && fs.readdirSync(activeChunk.recordsDir).length === 0) {
+        try {
+          if (fs.existsSync(activeChunk.provFile) && fs.statSync(activeChunk.provFile).size === 0) {
+            fs.unlinkSync(activeChunk.provFile);
+          }
+          fs.rmdirSync(activeChunk.recordsDir);
+          fs.rmdirSync(activeChunk.chunkDir);
+        } catch {}
       }
     }
+
+    console.log(`\n===============================================`);
+    console.log(`Harvest finished: status = ${harvestStatus}, total records = ${fetchedCount}, errors = ${errorCount}`);
+    console.log(`Completed chunks: ${partitionState.completedChunks.join(', ') || 'none'}`);
+    console.log(`===============================================\n`);
   }
 
-  return 0;
+  return harvestStatus === 'complete' ? 0 : 1;
 }
 
 // Execute if run directly
