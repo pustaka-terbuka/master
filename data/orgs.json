@@ -15,6 +15,14 @@
     "contact": "info@penanglib.gov.my",
     "opac_url": "https://opac.penanglib.gov.my/"
   },
+  "PPAS": {
+    "name": "Perbadanan Perpustakaan Awam Selangor",
+    "state": "Selangor",
+    "type": "public",
+    "default_scheme": "DDC",
+    "contact": "info@ppas.gov.my",
+    "opac_url": "https://ppas.ap.iiivega.com/"
+  },
   "SKBayanLepas": {
     "name": "SK Bayan Lepas",
     "state": "Pulau Pinang",

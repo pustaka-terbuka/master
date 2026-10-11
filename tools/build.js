@@ -12,6 +12,8 @@ let issnFetchFiles = true;
 let source = null;
 let maxRecords = null;
 let maxPagefindRecords = null;
+let scanSources = false;
+let skipLock = process.env.PUSTAKA_MASTER_LOCKED === '1';
 
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--data-dir') dataDir = args[++i];
@@ -22,13 +24,15 @@ for (let i = 0; i < args.length; i++) {
   else if (args[i] === '--max-pagefind-records') maxPagefindRecords = parseInt(args[++i], 10);
   else if (args[i] === '--no-isbn-fetch') isbnFetchFiles = false;
   else if (args[i] === '--no-issn-fetch') issnFetchFiles = false;
+  else if (args[i] === '--scan-sources') scanSources = true;
+  else if (args[i] === '--skip-lock') skipLock = true;
 }
 
 const config = fs.existsSync(configPath) ? JSON.parse(fs.readFileSync(configPath, 'utf8')) : {};
 
 // Resolve data directory from registered sources or config
 if (!dataDir) {
-  if (source) {
+  if (source && !scanSources) {
     const sourcesPath = path.join(process.cwd(), 'data', 'sources.json');
     if (fs.existsSync(sourcesPath)) {
       try {
@@ -49,12 +53,14 @@ if (!dataDir) {
 async function run() {
   let lock = null;
   try {
-    lock = await acquireMasterLock({
-      masterPath: process.cwd(),
-      provider: source || 'master',
-      operation: 'build',
-      wait: true
-    });
+    if (!skipLock) {
+      lock = await acquireMasterLock({
+        masterPath: process.cwd(),
+        provider: source || 'master',
+        operation: 'build',
+        wait: true
+      });
+    }
 
     const report = await buildSite({
       dataDir,
@@ -64,6 +70,7 @@ async function run() {
       config,
       isbnFetchFiles,
       issnFetchFiles,
+      scanSources,
       maxRecords: maxRecords ?? config.maxRecords,
       maxPagefindRecords: maxPagefindRecords ?? config.maxPagefindRecords
     });

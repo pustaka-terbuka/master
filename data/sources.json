@@ -22,5 +22,15 @@
     "localPath": "../ppapp",
     "dataPath": "../ppapp/data",
     "opacUrl": "https://opac.penanglib.gov.my/"
+  },
+  "ppas": {
+    "name": "Perbadanan Perpustakaan Awam Selangor",
+    "prefix": "PPAS",
+    "priority": 7,
+    "organization": "PPAS",
+    "repository": "https://github.com/pustaka-terbuka/ppas",
+    "localPath": "../ppas",
+    "dataPath": "../ppas/data",
+    "opacUrl": "https://ppas.ap.iiivega.com/"
   }
 }
