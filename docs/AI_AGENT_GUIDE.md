@@ -29,7 +29,7 @@ Whenever you inspect, refactor, or generate code in this repository, you must ma
    - Always write files as **UTF-8 without BOM**.
    - Use cross-platform path handling (`path.join`) and avoid Linux-only shell assumptions. Keep generated paths concise to respect Windows path limits.
 6. **Harvester Standards & Architecture:**
-   - All library scrapers and harvesters must strictly follow [docs/HARVESTERS.md](HARVESTERS.md) and [docs/HARVESTER_DEVELOPER_GUIDE.md](HARVESTER_DEVELOPER_GUIDE.md).
+   - All library scrapers and harvesters must strictly follow [docs/HARVESTERS.md](HARVESTERS.md), [docs/HARVESTER_DEVELOPER_GUIDE.md](HARVESTER_DEVELOPER_GUIDE.md), and [docs/ORGANIZATION_WORKFLOW.md](ORGANIZATION_WORKFLOW.md).
 
 ---
 
@@ -193,3 +193,35 @@ node --test tests/m5-build.test.js
 pwsh -ExecutionPolicy Bypass -File scripts/Publish-Catalog.ps1 -WhatIf -SkipHarvest
 ```
 Ensure all tests pass and that output size and file count budgets remain healthy.
+
+---
+
+## 7. Multi-Organization Harvester Concurrency & Conflict Prevention
+
+PustakaTerbuka operates as a multi-repository, multi-tenant union catalog. Each data provider institution (e.g., `pnm`, `ppapp`, and future library providers) maintains an independent repository and crawler engine.
+
+### 7.1 Why Concurrent Harvesters Do Not Conflict
+Running multiple harvesters for different institutions concurrently on the same machine or CI runner is fully supported and will not cause data corruption or collisions due to three architectural barriers:
+
+1. **Filesystem & Repository Isolation:**
+   - Each institution scraper runs strictly within its own directory tree (`pnm/`, `ppapp/`).
+   - Raw harvested outputs are namespaced under separate inboxes (`harvest/inbox/<provider>/<run-id>/`).
+   - Git commits, history, and branches are completely isolated across repositories.
+2. **Independent Target Domains:**
+   - Each harvester communicates exclusively with its institution's OPAC endpoint (e.g., `opac.pnm.gov.my` vs. `opac.penanglib.gov.my`).
+   - Network requests, HTTP sessions, rate limits, and IP quotas operate on separate domains, preventing rate-limiting crosstalk or shared 429 throttling.
+3. **Deterministic Union Merge in `master`:**
+   - `master` serves as the consumer union catalog. When records from multiple providers match the same physical book (identical ISBN-13, ISBN-10, or control key), `tools/lib/merge.js` resolves the canonical record deterministically using the priority scores in `data/sources.json`:
+     - **Bibliographic Metadata:** Higher priority source wins the canonical record fields (e.g., PNM priority 10 vs. PPAPP priority 8).
+     - **Holdings Preservation:** Local institutional holdings (MARC `852` / `952` and `data/holdings/`) are preserved for both institutions.
+     - **Global Alias Resolution:** Source-specific identifiers (`001`, local biblionumbers, and ISBNs) are all mapped to the shared Crockford Base32 ID in `data/aliases.jsonl.gz`.
+
+### 7.2 The 3 Golden Operational Rules for AI Agents and Operators
+
+1. **Rule 1: Maximum One Active Harvester Worker per Target Institution.**
+   - While you can safely run the PNM harvester and the PPAPP harvester in parallel, **never run multiple concurrent crawlers against the same library**. Spawning parallel workers against the same OPAC host risks IP bans, HTTP 429 throttling, or out-of-order cursor state collisions in `partition_state.json`.
+2. **Rule 2: Sequential Master Ingestion & Build.**
+   - Harvester runs in provider repos happen concurrently, but merging and building inside `master` (`node tools/merge.js`, `node tools/build.js`) must be executed **sequentially** to prevent write locks on `dist/` shards and the Pagefind index.
+3. **Rule 3: Machine Resource Budgeting.**
+   - Harvester workers enforce a mandatory politeness delay (2,000 ms between requests), which means each Node.js process spends >90% of its lifecycle sleeping and consumes only ~50–80 MB RAM. A standard developer machine can comfortably run 3 to 6 distinct provider harvesters simultaneously without resource exhaustion.
+

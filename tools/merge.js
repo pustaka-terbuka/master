@@ -1,6 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { mergeInbox } from './lib/merge.js';
+import { acquireMasterLock } from './lib/master-lock.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,7 +33,15 @@ async function main() {
     process.exit(1);
   }
 
+  let lock = null;
   try {
+    lock = await acquireMasterLock({
+      masterPath: process.cwd(),
+      provider: 'merge',
+      operation: 'merge',
+      wait: true
+    });
+
     console.log(`Starting merge process for inbox: ${inboxPath}`);
     if (options.dryRun) console.log('[DRY RUN MODE] No changes will be saved');
     
@@ -49,6 +58,8 @@ async function main() {
   } catch (err) {
     console.error('Merge failed:', err);
     process.exit(1);
+  } finally {
+    if (lock) lock.release();
   }
 }
 

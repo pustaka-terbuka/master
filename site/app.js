@@ -13,6 +13,7 @@ let i18n = {};
 let currentLang = 'en';
 let pagefind = null;
 let currentOrg = null;
+let orgsData = {};
 let orgHoldingsMap = {}; // recordId -> { call_number }
 let basket = new Set(); // Set of recordIds
 
@@ -71,39 +72,59 @@ function updateLangSelect() {
 
 async function loadOrgs() {
   try {
-    let orgsData = {};
     try {
       const orgsRes = await fetch(`${BASE_URL}orgs.json`);
       if (orgsRes.ok) orgsData = await orgsRes.json();
     } catch (e) {}
 
-    if (!pagefind) return;
-    const filters = await pagefind.filters();
+    let filters = null;
+    if (pagefind) {
+      try {
+        filters = await pagefind.filters();
+      } catch (e) {}
+    }
+
+    const select = document.getElementById('org-filter');
+    if (!select) return;
+
+    // Combine organizations from Pagefind index and registry orgs.json
+    const orgKeys = new Set();
     if (filters && filters.organization) {
-      const select = document.getElementById('org-filter');
-      
-      // Preserve existing "All Organizations" option
-      const currentVal = select.value;
-      
-      // Keep only first option
-      while (select.options.length > 1) {
-        select.remove(1);
+      for (const org of Object.keys(filters.organization)) {
+        orgKeys.add(org);
       }
-      
-      for (const org in filters.organization) {
-        const option = document.createElement('option');
-        option.value = org;
-        const orgName = orgsData[org]?.name ? `${orgsData[org].name} (${org})` : org;
-        option.textContent = orgName;
-        select.appendChild(option);
-      }
-      
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlOrg = urlParams.get('org');
-      if (urlOrg && filters.organization[urlOrg]) {
-        select.value = urlOrg;
-      }
-      
+    }
+    for (const org of Object.keys(orgsData)) {
+      orgKeys.add(org);
+    }
+
+    // Preserve existing "All Organizations" option
+    while (select.options.length > 1) {
+      select.remove(1);
+    }
+
+    const sortedOrgs = Array.from(orgKeys).sort((a, b) => {
+      const nameA = orgsData[a]?.name || a;
+      const nameB = orgsData[b]?.name || b;
+      return nameA.localeCompare(nameB);
+    });
+
+    for (const org of sortedOrgs) {
+      const option = document.createElement('option');
+      option.value = org;
+      const orgName = orgsData[org]?.name ? `${orgsData[org].name} (${org})` : org;
+      option.textContent = orgName;
+      select.appendChild(option);
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlOrg = urlParams.get('org');
+    if (urlOrg && orgKeys.has(urlOrg)) {
+      select.value = urlOrg;
+    }
+
+    if (!select.dataset.listenerAttached) {
+      select.dataset.listenerAttached = 'true';
       select.addEventListener('change', async (e) => {
         const val = e.target.value;
         const url = new URL(window.location);
@@ -115,10 +136,10 @@ async function loadOrgs() {
         window.history.pushState({}, '', url);
         await onOrgChange(val);
       });
-      
-      if (urlOrg) {
-        await onOrgChange(urlOrg);
-      }
+    }
+
+    if (urlOrg) {
+      await onOrgChange(urlOrg);
     }
   } catch (err) {
     console.error('Failed to load orgs', err);
@@ -130,7 +151,9 @@ async function onOrgChange(org) {
   orgHoldingsMap = {};
   
   const linksContainer = document.getElementById('shelf-browse-links');
-  linksContainer.innerHTML = '';
+  if (linksContainer) {
+    linksContainer.innerHTML = '';
+  }
   
   if (org) {
     try {
@@ -143,27 +166,34 @@ async function onOrgChange(org) {
         }
       }
       
-      // Add browse links
-      const lccLink = document.createElement('a');
-      lccLink.href = `${BASE_URL}browse/${org}/LCC.json`;
-      lccLink.textContent = `Browse LCC`;
-      lccLink.style.marginRight = '10px';
-      
-      const ddcLink = document.createElement('a');
-      ddcLink.href = `${BASE_URL}browse/${org}/DDC.json`;
-      ddcLink.textContent = `Browse DDC`;
-      
-      linksContainer.appendChild(lccLink);
-      linksContainer.appendChild(ddcLink);
+      if (linksContainer) {
+        // Add browse links
+        const lccLink = document.createElement('a');
+        lccLink.href = `${BASE_URL}browse/${org}/LCC.json`;
+        lccLink.textContent = `Browse LCC`;
+        lccLink.style.marginRight = '10px';
+        
+        const ddcLink = document.createElement('a');
+        ddcLink.href = `${BASE_URL}browse/${org}/DDC.json`;
+        ddcLink.textContent = `Browse DDC`;
+        
+        linksContainer.appendChild(lccLink);
+        linksContainer.appendChild(ddcLink);
+      }
     } catch (e) {
       console.warn('Could not load org index', e);
     }
   }
   
-  // Trigger pagefind search with filter if there's a search term
-  const input = document.querySelector('.pagefind-ui__search-input');
-  if (input && input.value) {
-    input.dispatchEvent(new Event('input', { bubbles: true }));
+  // Trigger search update
+  const customInput = document.getElementById('search-input');
+  const resultsContainer = document.getElementById('search-results');
+  if (customInput && resultsContainer) {
+    await performSearch(customInput.value, resultsContainer, false);
+  }
+  const pagefindInput = document.querySelector('.pagefind-ui__search-input');
+  if (pagefindInput && pagefindInput.value) {
+    pagefindInput.dispatchEvent(new Event('input', { bubbles: true }));
   }
 }
 
@@ -416,13 +446,6 @@ function buildCustomSearchUI() {
     await performSearch(input.value, resultsContainer, false);
   });
   
-  // Also hook into org changes
-  const oldOnOrgChange = window.onOrgChange;
-  window.onOrgChange = async (org) => {
-    if (oldOnOrgChange) await oldOnOrgChange(org);
-    await performSearch(input.value, resultsContainer, false);
-  };
-
   // Perform initial search on load so catalog books appear immediately
   performSearch('', resultsContainer, true);
 }
@@ -437,10 +460,14 @@ async function performSearch(query, resultsContainer, isInitial = false) {
     searchOpts.filters = { organization: [currentOrg] };
   }
   
-  const searchTerm = (query && query.trim()) ? query.trim() : (isInitial ? 'a' : '');
-  if (!searchTerm) {
-    resultsContainer.innerHTML = `<p>${escapeHTML(i18n['no_results'] || 'No results found.')}</p>`;
-    return;
+  let searchTerm = (query && query.trim()) ? query.trim() : null;
+  if (!searchTerm && !currentOrg) {
+    if (isInitial) {
+      searchTerm = 'a';
+    } else {
+      resultsContainer.innerHTML = `<p>${escapeHTML(i18n['no_results'] || 'No results found.')}</p>`;
+      return;
+    }
   }
 
   const search = await pagefind.search(searchTerm, searchOpts);
@@ -450,11 +477,15 @@ async function performSearch(query, resultsContainer, isInitial = false) {
     return;
   }
   
-  if (isInitial) {
+  if (isInitial && !currentOrg) {
     resultsContainer.innerHTML = `<p style="color:#555; margin-bottom:1rem;">📚 <strong>Catalog Highlights:</strong> Showing recent titles. Use the search bar above to search across all cataloged records.</p>`;
   } else {
     let msg = i18n['results_count'] || '{0} results found.';
     msg = msg.replace('{0}', search.results.length);
+    if (currentOrg) {
+      const orgName = orgsData[currentOrg]?.name || currentOrg;
+      msg += ` (${orgName})`;
+    }
     resultsContainer.innerHTML = `<p>${escapeHTML(msg)}</p>`;
   }
   

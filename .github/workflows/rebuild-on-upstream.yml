@@ -2,8 +2,12 @@ name: Rebuild & Deploy on Upstream Update
 
 on:
   repository_dispatch:
-    types: [pnm-catalog-updated]
+    types: [pnm-catalog-updated, ppapp-catalog-updated, upstream-catalog-updated]
   workflow_dispatch:
+
+concurrency:
+  group: master-catalog-build
+  cancel-in-progress: false
 
 permissions:
   contents: write

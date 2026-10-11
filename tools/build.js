@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { buildSite } from './lib/build.js';
+import { acquireMasterLock } from './lib/master-lock.js';
 
 const args = process.argv.slice(2);
 let dataDir = null;
@@ -47,7 +48,15 @@ if (!dataDir) {
 }
 
 async function run() {
+  let lock = null;
   try {
+    lock = await acquireMasterLock({
+      masterPath: process.cwd(),
+      provider: source || 'master',
+      operation: 'build',
+      wait: true
+    });
+
     const report = await buildSite({
       dataDir,
       distDir,
@@ -65,6 +74,10 @@ async function run() {
   } catch (err) {
     console.error('Build failed:', err);
     process.exit(1);
+  } finally {
+    if (lock) {
+      lock.release();
+    }
   }
 }
 

@@ -202,6 +202,8 @@ flowchart TD
 
 ## 7. Step-by-Step: Adding a New Library Harvester
 
+> **Authoritative Onboarding Guide**: For the complete end-to-end specification from registry to UI display, see [docs/ORGANIZATION_WORKFLOW.md](ORGANIZATION_WORKFLOW.md).
+
 Follow this standard procedure when introducing a new library source (e.g. PPAPP):
 
 ### Step 1: Register Source in `master/data/sources.json`
@@ -215,28 +217,66 @@ Add the organization entry with priority and repo coordinates:
   "repository": "https://github.com/pustaka-terbuka/ppapp",
   "localPath": "../ppapp",
   "dataPath": "../ppapp/data",
-  "opacUrl": "https://opac.penanglib.gov.my/",
-  "adapter": "koha-oai"
+  "opacUrl": "https://opac.penanglib.gov.my/"
 }
 ```
 
-### Step 2: Implement the Harvester
-Create `tools/harvesters/<source-code>/harvester.js` (or `.cs`). Wire CLI options:
+### Step 2: Register Organization in `master/data/orgs.json`
+Add institutional metadata so the organization is displayed in the master OPAC search filter:
+```json
+"PPAPP": {
+  "name": "Perbadanan Perpustakaan Awam Pulau Pinang",
+  "state": "Pulau Pinang",
+  "type": "public",
+  "default_scheme": "DDC",
+  "contact": "info@penanglib.gov.my",
+  "opac_url": "https://opac.penanglib.gov.my/"
+}
+```
+
+### Step 3: Implement the Harvester
+Create `tools/harvesters/<source-code>/harvester.js` (or `.cs`). Wire standard CLI options:
 * `--max-pages <n>`
 * `--page-size <n>`
-* `--delay <ms>` (default 2000)
+* `--delay <ms>` (default 2000 ms)
 * `--mode <full|incremental>`
 * `--resume [auto|id]`
 * `--fresh`
-
-### Step 3: Run Unit & Ingestion Tests
-Create `tests/harvester-<source-code>.test.js` validating:
-1. XML escaping and UTF-8 output.
-2. MARC 21 structure and required fields (`001`, `245 $a`).
-3. Resumption and corruption self-healing logic.
+* Preserve tags: Control number `001`, source agency `003`, cataloging agency `040 $a`, and item holdings (`952` for Koha or `852` for Vega).
 
 ### Step 4: Verify with Ingestion Gate
 ```bash
 node tools/validate-inbox.js harvest/inbox/<source-code>/<run-id>/
 ```
 Ensure exit code is `0` and all integrity checks pass.
+
+### Step 5: Merge into Master Shards
+```bash
+node tools/merge.js harvest/inbox/<source-code>/<run-id>/ --data-dir data
+```
+
+### Step 6: Build Master Site & Pagefind Index
+```bash
+node tools/build.js --data-dir data
+```
+This generates `dist/org/<ORG>/index.json`, `dist/browse/<ORG>/DDC.json`, and indexes `organization: ['<ORG>']` in Pagefind WASM.
+
+### Step 7: Verify Frontend Dropdown & Filter Browsing
+Open `dist/index.html` to confirm `<ORG>` appears in `#org-filter` with working shelf browse links and direct OPAC resolution.
+
+---
+
+## 8. Multi-Organization Harvester Concurrency & Conflict Prevention
+
+In a mature Pustaka Terbuka ecosystem, harvesters for dozens of libraries (`pnm`, `ppapp`, `ppas`, `uitm`, etc.) may run in parallel. The architecture guarantees zero collisions when adhering to these core principles:
+
+### 8.1 Isolation Matrix
+1. **Target OPAC Independence:** Each provider scraper connects to a completely distinct host and domain name. Running scrapers simultaneously does not cross-trigger 429 rate limits or firewall bans between institutions.
+2. **Repository Decoupling:** Provider scrapers execute in independent repositories and save to isolated inbox directories (`harvest/inbox/<source-code>/`). File writes and git commits are completely partitioned.
+3. **Union Catalog Priority Deduplication:** The master catalog resolves cross-library bibliographic overlap (same ISBN or title) automatically during the `master` merge phase using priority ranks defined in `data/sources.json`. Metadata is attributed to the highest-priority source while all institutional holdings (`852`/`952`) are preserved.
+
+### 8.2 Operational Rules
+* **Strictly 1 process per institution:** Never launch multiple concurrent scrapers targeting the same library OPAC host.
+* **Sequential Master Ingestion:** Run `tools/build.js` sequentially in `master` when ingesting harvested data from provider repositories.
+* **Resource footprint:** The 2,000 ms politeness delay ensures Node.js harvesters operate at ~50–80 MB RAM per process, allowing 3–6 concurrent crawlers on a single workstation without system degradation.
+

@@ -119,3 +119,20 @@ Each entry records: what was decided, why, and what alternatives were considered
 **Alternatives rejected:**
 - Requiring school librarians to use Git / GitHub Pull Requests: 95% friction barrier.
 - Committing SQLite `.db` into Git: causes massive repository bloat.
+
+---
+
+## D010: Multi-Organization Harvester Concurrency and Conflict Avoidance
+
+**Decision:**
+1. Harvester engines for distinct data providers (`pnm`, `ppapp`, and future institutions) run concurrently without locking or conflicting with each other.
+2. Provider scrapers operate inside isolated repositories with strictly namespaced inboxes (`harvest/inbox/<org>/<run-id>/`) and target separate OPAC domains.
+3. Master union catalog uses deterministic priority scoring (`data/sources.json`) to resolve bibliographic metadata deduplication while preserving multi-tenant holdings and registering aliases in `data/aliases.jsonl.gz`.
+4. Operational boundaries enforce: (a) strictly one harvester process per target institution OPAC, (b) sequential ingestion and build inside `master`, and (c) polite delay (2,000 ms) preventing machine or network resource saturation.
+
+**Rationale:** As the catalog scales to multiple state and university libraries across Malaysia, harvesting cannot be bottlenecked into a single sequential queue. Clear architectural decoupling ensures parallel collection runs without cross-contaminating datasets or triggering IP bans.
+
+**Alternatives rejected:**
+- Single monolithic crawler querying all institutions sequentially: excessively slow and creates a single point of failure.
+- Merging directly into `master` concurrently: causes Git branch and file locking conflicts on shards and Pagefind index.
+

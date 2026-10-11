@@ -20,11 +20,13 @@ function escapeHTML(str) {
 }
 
 function getSubfield(field, code) {
+  if (!field) return '';
   const sf = field.subfields?.find(s => s.code === code);
   return sf ? sf.value : '';
 }
 
 function getSubfields(field, code) {
+  if (!field) return [];
   return (field.subfields || []).filter(s => s.code === code).map(s => s.value);
 }
 
@@ -766,7 +768,7 @@ export async function buildSite(options) {
   const maxPagefindRecords = options.maxPagefindRecords ?? options.config?.maxPagefindRecords ?? 10000;
   const maxRecords = options.maxRecords ?? options.config?.maxRecords ?? null;
 
-  const siteDir = 'site';
+  const siteDir = options.siteDir || path.join(process.cwd(), 'site');
   if (fs.existsSync(siteDir)) {
     fs.cpSync(siteDir, distDir, { recursive: true });
   }
@@ -960,6 +962,18 @@ export async function buildSite(options) {
 
       const format = record.leader && record.leader.length >= 8 ? record.leader.substring(6, 8) : 'am';
 
+      // Identify source organization from MARC control tags and agency fields
+      const ctrl003 = record.controlFields?.find(f => f.tag === '003')?.value?.trim();
+      const agency040 = getSubfield(record.dataFields?.find(f => f.tag === '040'), 'a')?.trim();
+      let sourceOrg = null;
+      if (ctrl003 && orgs[ctrl003]) {
+        sourceOrg = ctrl003;
+      } else if (agency040 && orgs[agency040]) {
+        sourceOrg = agency040;
+      } else if (ctrl003 === 'MY-KLP' || agency040 === 'MY-KLP' || agency040 === 'PNM') {
+        sourceOrg = 'PNM';
+      }
+
       // Parse holdings
       const holdings = [];
       if (individualHoldingFiles.has(recordId)) {
@@ -969,14 +983,41 @@ export async function buildSite(options) {
       if (holdingsByRecord.has(recordId)) {
         holdings.push(...holdingsByRecord.get(recordId));
       }
-      if (orgs['PNM'] && (f852 || callNum852)) {
-        if (!holdings.some(h => h.org === 'PNM')) {
+
+      // 1. Check Koha item tags (952)
+      const f952List = record.dataFields?.filter(f => f.tag === '952') || [];
+      if (f952List.length > 0) {
+        const itemOrg = sourceOrg || 'PPAPP';
+        if (orgs[itemOrg]) {
+          for (const item of f952List) {
+            const itemCall = getSubfield(item, 'o') || callNum852 || ddc || lcc || 'General Collection';
+            const branchCode = getSubfield(item, 'a') || getSubfield(item, 'b') || '';
+            const location = branchCode ? `${orgs[itemOrg]?.name || itemOrg} (${branchCode})` : (orgs[itemOrg]?.name || itemOrg);
+            holdings.push({
+              org: itemOrg,
+              call_number: itemCall,
+              location
+            });
+          }
+        }
+      }
+
+      // 2. Check standard MARC 852 tags
+      if (f852 || callNum852) {
+        const itemOrg = sourceOrg || 'PNM';
+        if (orgs[itemOrg] && !holdings.some(h => h.org === itemOrg)) {
           holdings.push({
-            org: 'PNM',
+            org: itemOrg,
             call_number: callNum852 || 'General Collection',
-            location: getSubfield(f852, 'b') || 'PERPUSTAKAAN NEGARA MALAYSIA'
+            location: getSubfield(f852, 'b') || (orgs[itemOrg]?.name || itemOrg)
           });
         }
+      } else if (sourceOrg && orgs[sourceOrg] && holdings.length === 0) {
+        holdings.push({
+          org: sourceOrg,
+          call_number: ddc || lcc || 'General Collection',
+          location: orgs[sourceOrg]?.name || sourceOrg
+        });
       }
       
       const orgCodes = [...new Set(holdings.map(h => h.org))];
@@ -990,7 +1031,12 @@ export async function buildSite(options) {
         const orgName = orgInfo.name || h.org;
         const control001 = record.controlFields?.find(f => f.tag === '001')?.value;
         const pnmQuery = primaryIsbn || control001 || title;
-        const opacUrl = (h.org === 'PNM') ? `https://opac.pnm.gov.my/search?query=${encodeURIComponent(pnmQuery)}` : (orgInfo.opac_url || '#');
+        let opacUrl = orgInfo.opac_url || '#';
+        if (h.org === 'PNM') {
+          opacUrl = `https://opac.pnm.gov.my/search?query=${encodeURIComponent(pnmQuery)}`;
+        } else if (h.org === 'PPAPP' && control001) {
+          opacUrl = `https://opac.penanglib.gov.my/cgi-bin/koha/opac-detail.pl?biblionumber=${encodeURIComponent(control001)}`;
+        }
         
         formattedHoldings.push({
           org: h.org,

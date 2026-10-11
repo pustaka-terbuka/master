@@ -48,5 +48,5 @@ Per-source notes including quirks, terms of use, and last verified dates.
 - **Organization**: Penang Public Library Corporation
 - **Base OPAC URL**: `https://opac.penanglib.gov.my/`
 - **Catalog Software**: Koha ILS / Web OPAC
-- **Harvester Guide**: See [docs/HARVESTER_DEVELOPER_GUIDE.md](HARVESTER_DEVELOPER_GUIDE.md)
+- **Harvester Guide**: See [docs/HARVESTER_DEVELOPER_GUIDE.md](HARVESTER_DEVELOPER_GUIDE.md) and [docs/ORGANIZATION_WORKFLOW.md](ORGANIZATION_WORKFLOW.md)
 
