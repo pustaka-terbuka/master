@@ -123,8 +123,8 @@ async function loadOrgs() {
       select.value = urlOrg;
     }
 
-    if (!select.dataset.listenerAttached) {
-      select.dataset.listenerAttached = 'true';
+    if (!select._listenerAttached) {
+      select._listenerAttached = true;
       select.addEventListener('change', async (e) => {
         const val = e.target.value;
         const url = new URL(window.location);
@@ -397,6 +397,9 @@ async function init() {
   loadBasket();
   renderBasket();
   
+  // Populate organizations immediately from orgs.json so dropdown is ready without delay
+  await loadOrgs();
+
   window.addEventListener('pageshow', () => {
     loadBasket();
     renderBasket();
@@ -413,14 +416,8 @@ async function init() {
     pagefind = await import(`${BASE_URL}pagefind/pagefind.js`);
     await pagefind.init();
     
-    // We can't use PagefindUI directly if we want to filter by org from JS and pass it in dynamically unless we do it via search term or create a custom UI.
-    // Actually, PagefindUI handles filters if we use the default UI! But we have a custom dropdown for org.
-    // Let's implement our own simple search to have full control, or use PagefindUI and hook into it.
-    // PagefindUI is an external script, usually loaded via <link> and <script>.
-    // Since we don't have PagefindUI script included in index.html, we'll build a custom UI using the pagefind API.
-    
     buildCustomSearchUI();
-    loadOrgs();
+    await loadOrgs();
     
   } catch (err) {
     console.error('Pagefind not found or failed to load. Are you running a built site?', err);
