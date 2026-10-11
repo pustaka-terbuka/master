@@ -386,8 +386,16 @@ function generateUniversalViewerHtml(baseUrl) {
 <header class="detail-header">
   <div class="header-container">
     <a href="${baseUrl}" class="header-brand">
-      <span class="brand-name">PustakaTerbuka</span>
-      <span class="brand-tagline">Katalog Induk Terbuka Kebangsaan</span>
+      <div class="brand-logo-icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">PustakaTerbuka</span>
+        <span class="brand-tagline">Katalog Induk Terbuka Kebangsaan</span>
+      </div>
     </a>
     <div class="header-nav">
       <a href="${baseUrl}" class="nav-back-btn">
@@ -417,7 +425,8 @@ function generateUniversalViewerHtml(baseUrl) {
     </div>
     <div class="book-actions-panel">
       <button id="basket-toggle-btn" class="btn-action btn-basket-toggle" onclick="toggleRecordBasket()">+ Add to Basket</button>
-      <button class="btn-action btn-cite-trigger" onclick="toggleCiteSection()">❝ Cite Record</button>
+      <button class="btn-action btn-outline" onclick="switchBookTab('tab-marc')">🏷️ View MARC21</button>
+      <button class="btn-action btn-outline" onclick="printRecordSlip()">🖨️ Print Shelf Slip</button>
       <a id="download-marc-btn" href="#" download="" class="btn-action btn-download-xml">⬇ Download MARCXML</a>
     </div>
   </aside>
@@ -428,24 +437,59 @@ function generateUniversalViewerHtml(baseUrl) {
       <p id="book-author" class="book-author-lead"></p>
     </div>
 
-    <div id="metadata-container"></div>
-    <div id="summary-section"></div>
-    <div id="notes-section"></div>
-    <div id="holdings-section"></div>
+    <nav class="book-tabs-nav" aria-label="Record Details Tabs">
+      <button class="book-tab-btn active" data-tab="tab-overview" onclick="switchBookTab('tab-overview')">📖 Maklumat Buku / Overview</button>
+      <button class="book-tab-btn" data-tab="tab-marc" onclick="switchBookTab('tab-marc')">🏷️ Medan MARC21 / Tags</button>
+      <button class="book-tab-btn" data-tab="tab-holdings" onclick="switchBookTab('tab-holdings')">🏢 Lokasi Rak / Holdings</button>
+      <button class="book-tab-btn" data-tab="tab-citations" onclick="switchBookTab('tab-citations')">❝ Petikan / Citations</button>
+    </nav>
 
-    <div id="citation-section" class="card-section citation-box" style="display: none;">
-      <h2>Cite this Record <span id="cite-toast" class="cite-toast">Copied to clipboard!</span></h2>
-      <div class="cite-entry">
-        <h3>APA 7th <button class="btn-copy-cite" onclick="copyCitation('apa')">Copy APA</button></h3>
-        <div id="cite-apa-text" class="cite-text"></div>
+    <!-- Tab 1: Overview -->
+    <div id="tab-overview" class="book-tab-panel active">
+      <div id="metadata-container"></div>
+      <div id="summary-section"></div>
+      <div id="notes-section"></div>
+    </div>
+
+    <!-- Tab 2: MARC21 Tags -->
+    <div id="tab-marc" class="book-tab-panel">
+      <div class="card-section">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+          <h2 style="margin:0; border:none; padding:0;">Medan Katalog MARC21</h2>
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn-outline btn-sm" onclick="copyViewerMarc('xml')">Salin XML</button>
+            <button class="btn-outline btn-sm" onclick="copyViewerMarc('text')">Salin Teks</button>
+            <button class="btn-outline btn-sm" onclick="copyViewerMarc('csharp')">Salin C# (.NET)</button>
+            <span id="marc-copy-toast" class="cite-toast" style="display:none;">Disalin!</span>
+          </div>
+        </div>
+        <div id="marc-table-container">Memuatkan medan MARC21...</div>
       </div>
-      <div class="cite-entry" style="margin-top: 1rem;">
-        <h3>BibTeX <button class="btn-copy-cite" onclick="copyCitation('bibtex')">Copy BibTeX</button></h3>
-        <pre id="cite-bibtex-text" class="cite-text"></pre>
+    </div>
+
+    <!-- Tab 3: Holdings -->
+    <div id="tab-holdings" class="book-tab-panel">
+      <div id="holdings-section"></div>
+    </div>
+
+    <!-- Tab 4: Citations -->
+    <div id="tab-citations" class="book-tab-panel">
+      <div id="citation-section" class="card-section citation-box">
+        <h2>Cite this Record <span id="cite-toast" class="cite-toast" style="display:none;">Copied to clipboard!</span></h2>
+        <div class="cite-entry">
+          <h3>APA 7th <button class="btn-copy-cite" onclick="copyCitation('apa')">Copy APA</button></h3>
+          <div id="cite-apa-text" class="cite-text"></div>
+        </div>
+        <div class="cite-entry" style="margin-top: 1rem;">
+          <h3>BibTeX <button class="btn-copy-cite" onclick="copyCitation('bibtex')">Copy BibTeX</button></h3>
+          <pre id="cite-bibtex-text" class="cite-text"></pre>
+        </div>
       </div>
     </div>
   </article>
 </main>
+
+<div id="shelf-slip-print" class="print-slips-area" style="display:none;"></div>
 
 <script>
 (function() {
@@ -454,6 +498,7 @@ function generateUniversalViewerHtml(baseUrl) {
   let recordId = params.get('id');
   const bookAlias = params.get('book');
   const basketKey = 'pustaka-basket';
+  let loadedBook = null;
 
   function escapeHTML(str) {
     if (!str) return '';
@@ -498,6 +543,41 @@ function generateUniversalViewerHtml(baseUrl) {
     updateBasketUI();
   };
 
+  window.switchBookTab = function(tabId) {
+    document.querySelectorAll('.book-tab-btn').forEach(function(btn) {
+      if (btn.getAttribute('data-tab') === tabId) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+    document.querySelectorAll('.book-tab-panel').forEach(function(panel) {
+      if (panel.id === tabId) {
+        panel.classList.add('active');
+      } else {
+        panel.classList.remove('active');
+      }
+    });
+    if (tabId === 'tab-marc') {
+      loadViewerMarc(recordId);
+    }
+  };
+
+  window.printRecordSlip = function() {
+    const printArea = document.getElementById('shelf-slip-print');
+    if (printArea && loadedBook) {
+      const callNum = loadedBook.call_number || (loadedBook.ddc ? 'DDC ' + loadedBook.ddc : '---');
+      printArea.innerHTML = '<div class="shelf-slip">' +
+        '<div class="shelf-slip-title">' + escapeHTML(loadedBook.title || 'PustakaTerbuka') + '</div>' +
+        '<div class="shelf-slip-id">ID: <strong>' + escapeHTML(recordId) + '</strong></div>' +
+        '<div class="shelf-slip-call">' + escapeHTML(callNum) + '</div>' +
+        '<div class="shelf-slip-author">' + escapeHTML(loadedBook.author || '') + '</div>' +
+        '<div class="shelf-slip-date">Printed: ' + new Date().toLocaleDateString() + '</div>' +
+        '</div>';
+    }
+    window.print();
+  };
+
   window.copyCitation = function(format) {
     let text = '';
     if (format === 'apa') {
@@ -528,14 +608,88 @@ function generateUniversalViewerHtml(baseUrl) {
     }
   }
 
-  window.toggleCiteSection = function() {
-    const section = document.getElementById('citation-section');
-    if (section) {
-      const isHidden = (section.style.display === 'none' || !section.style.display);
-      section.style.display = isHidden ? 'block' : 'none';
-      if (isHidden) {
-        section.scrollIntoView({ behavior: 'smooth' });
+  let recordXmlCache = '';
+  async function loadViewerMarc(recId) {
+    const container = document.getElementById('marc-table-container');
+    if (!container || recordXmlCache) return;
+    try {
+      let res = await fetch(baseUrl + 'id/' + recId + '.xml');
+      if (!res.ok) {
+        const shard = recId.substring(0, 2).toLowerCase();
+        res = await fetch('https://raw.githubusercontent.com/pustaka-terbuka/pnm/main/data/bib/' + shard + '/' + recId + '.xml');
       }
+      if (!res.ok) throw new Error('MARCXML not found');
+      recordXmlCache = await res.text();
+      renderViewerMarcTable(recordXmlCache, container);
+    } catch (e) {
+      container.innerHTML = '<p style="color:#dc3545;">Ralat memuatkan MARCXML: ' + escapeHTML(e.message) + '</p>';
+    }
+  }
+
+  function renderViewerMarcTable(xmlText, container) {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+    const rows = [];
+
+    const leader = xmlDoc.querySelector('leader');
+    if (leader) {
+      rows.push('<tr><td><span class="marc-tag-badge">LDR</span></td><td>_</td><td>_</td><td>' + escapeHTML(leader.textContent) + '</td></tr>');
+    }
+
+    xmlDoc.querySelectorAll('controlfield').forEach(function(cf) {
+      rows.push('<tr><td><span class="marc-tag-badge">' + escapeHTML(cf.getAttribute('tag')) + '</span></td><td>_</td><td>_</td><td>' + escapeHTML(cf.textContent) + '</td></tr>');
+    });
+
+    xmlDoc.querySelectorAll('datafield').forEach(function(df) {
+      const tag = df.getAttribute('tag');
+      const ind1 = df.getAttribute('ind1') || ' ';
+      const ind2 = df.getAttribute('ind2') || ' ';
+      const subfields = [];
+      df.querySelectorAll('subfield').forEach(function(sf) {
+        subfields.push('<span class="marc-subfield-code">$' + escapeHTML(sf.getAttribute('code')) + '</span>' + escapeHTML(sf.textContent));
+      });
+      rows.push('<tr><td><span class="marc-tag-badge">' + escapeHTML(tag) + '</span></td><td>' + escapeHTML(ind1) + '</td><td>' + escapeHTML(ind2) + '</td><td>' + subfields.join(' ') + '</td></tr>');
+    });
+
+    container.innerHTML = '<div class="marc-table-container"><table class="marc-table">' +
+      '<thead><tr><th style="width:70px;">Tag</th><th style="width:40px;">I1</th><th style="width:40px;">I2</th><th>Subfield Data</th></tr></thead>' +
+      '<tbody>' + rows.join('') + '</tbody></table></div>';
+  }
+
+  window.copyViewerMarc = function(format) {
+    if (!recordXmlCache) return;
+    const toast = document.getElementById('marc-copy-toast');
+    function showMarcToast() {
+      if (toast) {
+        toast.style.display = 'inline-block';
+        setTimeout(function() { toast.style.display = 'none'; }, 2000);
+      }
+    }
+
+    if (format === 'xml') {
+      navigator.clipboard.writeText(recordXmlCache).then(showMarcToast);
+    } else if (format === 'csharp') {
+      const cs = '// PustakaTerbuka Copy Cataloging\\n' +
+        'using var client = new System.Net.Http.HttpClient();\\n' +
+        'string xml = await client.GetStringAsync("https://pustaka-terbuka.github.io/master/id/' + recordId + '.xml");';
+      navigator.clipboard.writeText(cs).then(showMarcToast);
+    } else if (format === 'text') {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(recordXmlCache, 'text/xml');
+      let text = '';
+      doc.querySelectorAll('controlfield, datafield').forEach(function(f) {
+        const tag = f.getAttribute('tag');
+        if (f.tagName === 'controlfield') {
+          text += tag + '    ' + f.textContent + '\\n';
+        } else {
+          let subs = [];
+          f.querySelectorAll('subfield').forEach(function(sf) {
+            subs.push('$' + sf.getAttribute('code') + ' ' + sf.textContent);
+          });
+          text += tag + ' ' + (f.getAttribute('ind1') || ' ') + (f.getAttribute('ind2') || ' ') + ' ' + subs.join(' ') + '\\n';
+        }
+      });
+      navigator.clipboard.writeText(text).then(showMarcToast);
     }
   };
 
@@ -551,6 +705,7 @@ function generateUniversalViewerHtml(baseUrl) {
   }
 
   function renderBook(book) {
+    loadedBook = book;
     document.title = (book.title || 'Untitled') + ' — PustakaTerbuka';
     const shortTitle = book.title && book.title.length > 55 ? book.title.substring(0, 52) + '...' : (book.title || 'Untitled');
     const bcTitle = document.getElementById('breadcrumb-title');
@@ -569,7 +724,7 @@ function generateUniversalViewerHtml(baseUrl) {
       }
     }
 
-    // Cover
+    // Cover: OpenLibrary -> Google Books -> Placeholder
     const primaryIsbn = (book.isbns && book.isbns.length > 0) ? book.isbns[0] : '';
     const coverContainer = document.getElementById('cover-container');
     if (coverContainer) {
@@ -577,7 +732,7 @@ function generateUniversalViewerHtml(baseUrl) {
         coverContainer.innerHTML = '<div class="book-cover-wrapper">' +
           '<img src="https://covers.openlibrary.org/b/isbn/' + escapeHTML(primaryIsbn) + '-M.jpg?default=false" ' +
           'alt="Cover for ' + escapeHTML(book.title || '') + '" class="book-cover" loading="lazy" ' +
-          'onerror="this.style.display=\\'none\\'; this.nextElementSibling.style.display=\\'flex\\';" />' +
+          'onerror="this.onerror=null; this.src=\\'https://books.google.com/books/content?vid=isbn' + escapeHTML(primaryIsbn) + '&printsec=frontcover&img=1&zoom=1\\'; this.onerror=function(){ this.style.display=\\'none\\'; this.nextElementSibling.style.display=\\'flex\\'; };" />' +
           '<div class="cover-placeholder" style="display: none;">' +
           '<div class="placeholder-title">' + escapeHTML(book.title || '') + '</div>' +
           '<div class="placeholder-author">' + escapeHTML(book.author || '') + '</div>' +
@@ -595,7 +750,7 @@ function generateUniversalViewerHtml(baseUrl) {
     const dlBtn = document.getElementById('download-marc-btn');
     if (dlBtn) {
       const shard = recordId.substring(0, 2).toLowerCase();
-      dlBtn.href = 'https://raw.githubusercontent.com/pustaka-terbuka/pnm/main/data/bib/' + shard + '/' + recordId + '.xml';
+      dlBtn.href = baseUrl + 'id/' + recordId + '.xml';
       dlBtn.download = recordId + '.xml';
     }
 
@@ -609,7 +764,7 @@ function generateUniversalViewerHtml(baseUrl) {
     if (book.ddc) metaEntries.push('<div class="meta-dt">DDC (Dewey)</div><div class="meta-dd"><span class="badge badge-ddc">' + escapeHTML(book.ddc) + '</span></div>');
     if (book.lcc) metaEntries.push('<div class="meta-dt">LCC</div><div class="meta-dd"><span class="badge badge-lcc">' + escapeHTML(book.lcc) + '</span></div>');
     if (book.subjects && book.subjects.length > 0) {
-      const subjectBadges = book.subjects.map(s => '<span class="badge badge-subject">' + escapeHTML(s) + '</span>').join(' ');
+      const subjectBadges = book.subjects.map(function(s) { return '<span class="badge badge-subject">' + escapeHTML(s) + '</span>'; }).join(' ');
       metaEntries.push('<div class="meta-dt">Subjects</div><div class="meta-dd">' + subjectBadges + '</div>');
     }
     const metaContainer = document.getElementById('metadata-container');
@@ -655,7 +810,7 @@ function generateUniversalViewerHtml(baseUrl) {
         hHtml += '</ul></section>';
         holdingsContainer.innerHTML = hHtml;
       } else {
-        holdingsContainer.innerHTML = '';
+        holdingsContainer.innerHTML = '<section class="card-section"><p style="color:#6c757d; font-style:italic;">Tiada pegangan fizikal direkodkan bagi naskhah ini.</p></section>';
       }
     }
 
@@ -732,7 +887,7 @@ function generateUniversalViewerHtml(baseUrl) {
         return;
       }
       const shardData = await res.json();
-      const book = Array.isArray(shardData) ? shardData.find(b => b.id.toUpperCase() === recordId.toUpperCase()) : null;
+      const book = Array.isArray(shardData) ? shardData.find(function(b) { return b.id.toUpperCase() === recordId.toUpperCase(); }) : null;
       if (!book) {
         renderError('Buku dengan pengecam "' + recordId + '" tidak dijumpai dalam shard ' + shard + '.');
         return;
