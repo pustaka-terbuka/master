@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import test from 'node:test';
 import assert from 'node:assert';
+import { fileURLToPath } from 'url';
 
 test('PPAPP Catalog Search & Endpoints Integration Test', async (t) => {
   const rootDir = process.cwd();
@@ -62,7 +63,13 @@ test('PPAPP Catalog Search & Endpoints Integration Test', async (t) => {
     globalThis.location = new URL('http://localhost:8080/master/');
     globalThis.document = { querySelector: () => null };
     globalThis.fetch = async (url) => {
-      const local = path.join(distDir, url.replace(/^http:\/\/localhost:8080\/master\//, ''));
+      let local;
+      if (typeof url === 'string' && url.startsWith('file://')) {
+        local = fileURLToPath(url.split('?')[0]);
+      } else {
+        const cleanUrl = String(url).replace(/^https?:\/\/[^\/]+\/master\//, '').split('?')[0];
+        local = path.join(distDir, cleanUrl);
+      }
       return {
         ok: true,
         arrayBuffer: async () => fs.readFileSync(local),
@@ -77,11 +84,11 @@ test('PPAPP Catalog Search & Endpoints Integration Test', async (t) => {
     const filters = await pagefindModule.filters();
     assert.ok(filters.organization, 'organization filter must exist');
     assert.ok(filters.organization.PPAPP, 'organization filter must contain PPAPP');
-    assert.strictEqual(filters.organization.PPAPP, 15, 'PPAPP must have 15 indexed records');
+    assert.strictEqual(filters.organization.PPAPP, 15, 'PPAPP must have 15 indexed records in unified catalog');
 
-    // Filter-only search (browse all PPAPP records)
+    // Filter-only search (browse PPAPP records)
     const browseAll = await pagefindModule.search(null, { filters: { organization: ['PPAPP'] } });
-    assert.strictEqual(browseAll.results.length, 15, 'Browse all PPAPP records must return 15 results');
+    assert.strictEqual(browseAll.results.length, 15, 'Browse PPAPP records must return 15 results');
 
     // Keyword search within PPAPP
     const searchIslam = await pagefindModule.search('Islam', { filters: { organization: ['PPAPP'] } });

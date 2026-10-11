@@ -868,24 +868,48 @@ export async function buildSite(options) {
   const shardDataDir = path.join(distDir, 'data', 'shard');
   fs.mkdirSync(shardDataDir, { recursive: true });
 
-  let shards = [];
-  if (fs.existsSync(bibDir)) {
-    shards = fs.readdirSync(bibDir).filter(f => fs.statSync(path.join(bibDir, f)).isDirectory());
+  const bibDirs = [];
+  if (fs.existsSync(bibDir)) bibDirs.push(bibDir);
+
+  if (!options.dataDir || options.scanSources) {
+    const sourcesPath = path.join(process.cwd(), 'data', 'sources.json');
+    if (fs.existsSync(sourcesPath)) {
+      try {
+        const sources = JSON.parse(fs.readFileSync(sourcesPath, 'utf8'));
+        for (const s of Object.values(sources)) {
+          if (s.dataPath) {
+            const extraBib = path.resolve(process.cwd(), s.dataPath, 'bib');
+            if (fs.existsSync(extraBib) && !bibDirs.includes(extraBib)) {
+              bibDirs.push(extraBib);
+            }
+          }
+        }
+      } catch (e) {}
+    }
+  }
+
+  const shardEntries = [];
+  for (const bDir of bibDirs) {
+    if (fs.existsSync(bDir)) {
+      const shList = fs.readdirSync(bDir).filter(f => fs.statSync(path.join(bDir, f)).isDirectory());
+      for (const sh of shList) {
+        shardEntries.push({ shard: sh, shardDir: path.join(bDir, sh) });
+      }
+    }
   }
 
   let staticPagesWritten = 0;
   let pagefindRecordsIndexed = 0;
 
-  for (let sIdx = 0; sIdx < shards.length; sIdx++) {
-    const shard = shards[sIdx];
+  for (let sIdx = 0; sIdx < shardEntries.length; sIdx++) {
+    const { shard, shardDir } = shardEntries[sIdx];
     if (maxRecords && report.recordsProcessed >= maxRecords) {
       break;
     }
     if (sIdx > 0 && sIdx % 50 === 0) {
-      const pct = ((sIdx / shards.length) * 100).toFixed(1);
-      console.log(`[BUILD PROGRESS] ${sIdx}/${shards.length} shards (${pct}%) - ${report.recordsProcessed} records processed`);
+      const pct = ((sIdx / shardEntries.length) * 100).toFixed(1);
+      console.log(`[BUILD PROGRESS] ${sIdx}/${shardEntries.length} shards (${pct}%) - ${report.recordsProcessed} records processed`);
     }
-    const shardDir = path.join(bibDir, shard);
     const files = fs.readdirSync(shardDir).filter(f => f.endsWith('.xml'));
     const shardRecords = [];
     const shardXmlChunks = [];
@@ -898,6 +922,7 @@ export async function buildSite(options) {
         break;
       }
       const recordId = path.basename(file, '.xml');
+      if (newManifest[recordId]) continue;
       const filePath = path.join(shardDir, file);
       const content = fs.readFileSync(filePath, 'utf8');
       let hash = manifest[recordId];
@@ -1096,7 +1121,7 @@ export async function buildSite(options) {
         await pfIndex.addCustomRecord({
           url: `book/?id=${recordId}`,
           content: searchableText,
-          language: lang,
+          language: 'en',
           meta: {
             title,
             author,
@@ -1105,6 +1130,7 @@ export async function buildSite(options) {
           },
           filters: {
             organization: orgCodes,
+            language: lang ? [lang] : [],
             year: year ? [year] : [],
             format: [format],
             subject: subjects,

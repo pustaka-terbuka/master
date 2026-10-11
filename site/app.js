@@ -425,6 +425,14 @@ async function init() {
   }
 }
 
+window.retryLastSearch = function() {
+  const customInput = document.getElementById('search-input');
+  const resultsContainer = document.getElementById('search-results');
+  if (resultsContainer) {
+    performSearch(customInput ? customInput.value : '', resultsContainer, false);
+  }
+};
+
 function buildCustomSearchUI() {
   const container = document.getElementById('search-ui');
   container.innerHTML = `
@@ -448,130 +456,170 @@ function buildCustomSearchUI() {
 }
 
 async function performSearch(query, resultsContainer, isInitial = false) {
-  if (!pagefind) return;
-  
-  resultsContainer.innerHTML = 'Searching...';
-  
-  const searchOpts = {};
-  if (currentOrg) {
-    searchOpts.filters = { organization: [currentOrg] };
-  }
-  
-  let searchTerm = (query && query.trim()) ? query.trim() : null;
-  if (!searchTerm && !currentOrg) {
-    if (isInitial) {
-      searchTerm = 'a';
-    } else {
-      resultsContainer.innerHTML = `<p>${escapeHTML(i18n['no_results'] || 'No results found.')}</p>`;
-      return;
-    }
-  }
-
-  const search = await pagefind.search(searchTerm, searchOpts);
-  
-  if (!search || !search.results || search.results.length === 0) {
-    resultsContainer.innerHTML = `<p>${escapeHTML(i18n['no_results'] || 'No results found.')}</p>`;
+  if (!pagefind) {
+    resultsContainer.innerHTML = `
+      <div class="search-alert-card">
+        <h4>${escapeHTML(i18n['index_unavailable'] || 'Indeks Carian Tidak Tersedia / Search Index Unavailable')}</h4>
+        <p>PustakaTerbuka search index is not yet initialized. Please reload the page.</p>
+      </div>
+    `;
     return;
   }
   
-  if (isInitial && !currentOrg) {
-    resultsContainer.innerHTML = `<p style="color:#555; margin-bottom:1rem;">📚 <strong>Catalog Highlights:</strong> Showing recent titles. Use the search bar above to search across all cataloged records.</p>`;
-  } else {
-    let msg = i18n['results_count'] || '{0} results found.';
-    msg = msg.replace('{0}', search.results.length);
+  // Show animated spinner and progress bar
+  resultsContainer.innerHTML = `
+    <div class="search-loading-container" role="status" aria-live="polite">
+      <div class="search-spinner"></div>
+      <div class="search-progress-bar">
+        <div class="search-progress-bar-fill"></div>
+      </div>
+      <p class="search-loading-text">${escapeHTML(i18n['searching'] || 'Mencari rekod katalog... / Searching catalog...')}</p>
+      <p class="search-loading-subtext">${escapeHTML(currentOrg ? `Menapis mengikut organisasi: ${orgsData[currentOrg]?.name || currentOrg}` : 'Mencari di seluruh katalog terbuka kebangsaan...')}</p>
+    </div>
+  `;
+  
+  try {
+    const searchOpts = {};
     if (currentOrg) {
-      const orgName = orgsData[currentOrg]?.name || currentOrg;
-      msg += ` (${orgName})`;
+      searchOpts.filters = { organization: [currentOrg] };
     }
-    resultsContainer.innerHTML = `<p>${escapeHTML(msg)}</p>`;
+    
+    let searchTerm = (query && query.trim()) ? query.trim() : null;
+    if (!searchTerm && !currentOrg) {
+      if (isInitial) {
+        searchTerm = 'a';
+      } else {
+        resultsContainer.innerHTML = `<p>${escapeHTML(i18n['no_results'] || 'No results found.')}</p>`;
+        return;
+      }
+    }
+
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(new Error('Search request timed out after 8 seconds. Please check your network connection or try again.')), 8000);
+    });
+
+    const search = await Promise.race([
+      pagefind.search(searchTerm, searchOpts),
+      timeoutPromise
+    ]);
+    
+    if (!search || !search.results || search.results.length === 0) {
+      resultsContainer.innerHTML = `<p>${escapeHTML(i18n['no_results'] || 'No results found.')}</p>`;
+      return;
+    }
+    
+    if (isInitial && !currentOrg) {
+      resultsContainer.innerHTML = `<p style="color:#555; margin-bottom:1rem;">📚 <strong>Catalog Highlights:</strong> Showing recent titles. Use the search bar above to search across all cataloged records.</p>`;
+    } else {
+      let msg = i18n['results_count'] || '{0} results found.';
+      msg = msg.replace('{0}', search.results.length);
+      if (currentOrg) {
+        const orgName = orgsData[currentOrg]?.name || currentOrg;
+        msg += ` (${orgName})`;
+      }
+      resultsContainer.innerHTML = `<p>${escapeHTML(msg)}</p>`;
+    }
+    
+    const list = document.createElement('div');
+    list.className = 'results-list';
+    
+    // Load first 10 results
+    const resultsToLoad = search.results.slice(0, 10);
+    for (const res of resultsToLoad) {
+      try {
+        const data = await res.data();
+        
+        const node = document.createElement('div');
+        node.className = 'result-item';
+        
+        const url = data.url;
+        const recordId = getRecordIdFromUrl(url) || 'unknown';
+        const bookUrl = (recordId !== 'unknown') ? `${BASE_URL}book/?id=${recordId}` : url;
+        
+        const isbn = data.meta?.isbn || '';
+        let thumbHtml = '';
+        if (isbn) {
+          thumbHtml = `<div class="result-thumb-wrapper">
+            <img src="https://covers.openlibrary.org/b/isbn/${escapeHTML(isbn)}-S.jpg?default=false" 
+                 alt="Cover" 
+                 class="result-thumb-img" 
+                 loading="lazy" 
+                 onerror="this.parentElement.style.display='none';" />
+          </div>`;
+        }
+        
+        let titleHtml = `<h3><a href="${escapeHTML(bookUrl)}">${escapeHTML(data.meta.title || 'Untitled')}</a></h3>`;
+        let metaHtml = data.meta.author ? `<p><strong>Author:</strong> ${escapeHTML(data.meta.author)}</p>` : '';
+        let excerptHtml = data.excerpt ? `<p>${data.excerpt}</p>` : '';
+        
+        node.innerHTML = `
+          <div class="result-card-inner">
+            ${thumbHtml}
+            <div class="result-body">
+              ${titleHtml}
+              ${metaHtml}
+              ${excerptHtml}
+            </div>
+          </div>`;
+        
+        // Actions
+        const actionsDiv = document.createElement('div');
+        actionsDiv.className = 'actions';
+        
+        const inBasket = basket.has(recordId);
+        const btn = document.createElement('button');
+        btn.className = 'basket-btn';
+        btn.textContent = inBasket ? (i18n['remove_from_basket'] || 'Remove') : (i18n['add_to_basket'] || 'Add to Basket');
+        btn.onclick = (e) => {
+          e.preventDefault();
+          toggleBasket(recordId);
+          btn.textContent = basket.has(recordId) ? (i18n['remove_from_basket'] || 'Remove') : (i18n['add_to_basket'] || 'Add to Basket');
+        };
+        
+        const dlBtn = document.createElement('a');
+        dlBtn.href = `${BASE_URL}id/${recordId}.xml`;
+        dlBtn.download = '';
+        dlBtn.className = 'download-btn';
+        dlBtn.textContent = i18n['download_record'] || 'Download MARCXML';
+        dlBtn.style.display = 'inline-block';
+        dlBtn.style.padding = '0.5rem 1rem';
+        dlBtn.style.background = '#28a745';
+        dlBtn.style.color = '#fff';
+        dlBtn.style.textDecoration = 'none';
+        dlBtn.style.borderRadius = '4px';
+        
+        actionsDiv.appendChild(btn);
+        actionsDiv.appendChild(dlBtn);
+        
+        if (currentOrg && orgHoldingsMap[recordId]) {
+          const callNum = orgHoldingsMap[recordId].call_number;
+          const holdingsDiv = document.createElement('div');
+          holdingsDiv.className = 'holdings-info';
+          holdingsDiv.innerHTML = `<strong>${escapeHTML(i18n['held_by'] || 'Held by: ')}${escapeHTML(currentOrg)}</strong><br>
+            Call Number: ${escapeHTML(callNum)}
+            <div class="availability-note">${escapeHTML(i18n['availability_note'] || 'Please check availability in the organization catalog.')}</div>`;
+          
+          node.appendChild(holdingsDiv);
+        }
+        
+        node.appendChild(actionsDiv);
+        list.appendChild(node);
+      } catch (itemErr) {
+        console.warn('Failed to load search result item:', itemErr);
+      }
+    }
+    
+    resultsContainer.appendChild(list);
+  } catch (err) {
+    console.error('Search failed:', err);
+    resultsContainer.innerHTML = `
+      <div class="search-alert-card" role="alert">
+        <h4>⚠️ Ralat Semasa Carian / Search Error</h4>
+        <p>${escapeHTML(err.message || 'Carian mengambil masa terlalu lama atau gagal dimuatkan.')}</p>
+        <button type="button" class="btn-retry-search" onclick="retryLastSearch()">Cuba Semula / Retry</button>
+      </div>
+    `;
   }
-  
-  const list = document.createElement('div');
-  list.className = 'results-list';
-  
-  // Load first 10 results
-  const resultsToLoad = search.results.slice(0, 10);
-  for (const res of resultsToLoad) {
-    const data = await res.data();
-    
-    const node = document.createElement('div');
-    node.className = 'result-item';
-    
-    const url = data.url;
-    const recordId = getRecordIdFromUrl(url) || 'unknown';
-    const bookUrl = (recordId !== 'unknown') ? `${BASE_URL}book/?id=${recordId}` : url;
-    
-    const isbn = data.meta?.isbn || '';
-    let thumbHtml = '';
-    if (isbn) {
-      thumbHtml = `<div class="result-thumb-wrapper">
-        <img src="https://covers.openlibrary.org/b/isbn/${escapeHTML(isbn)}-S.jpg?default=false" 
-             alt="Cover" 
-             class="result-thumb-img" 
-             loading="lazy" 
-             onerror="this.parentElement.style.display='none';" />
-      </div>`;
-    }
-    
-    let titleHtml = `<h3><a href="${escapeHTML(bookUrl)}">${escapeHTML(data.meta.title || 'Untitled')}</a></h3>`;
-    let metaHtml = data.meta.author ? `<p><strong>Author:</strong> ${escapeHTML(data.meta.author)}</p>` : '';
-    let excerptHtml = data.excerpt ? `<p>${data.excerpt}</p>` : '';
-    
-    node.innerHTML = `
-      <div class="result-card-inner">
-        ${thumbHtml}
-        <div class="result-body">
-          ${titleHtml}
-          ${metaHtml}
-          ${excerptHtml}
-        </div>
-      </div>`;
-    
-    // Actions
-    const actionsDiv = document.createElement('div');
-    actionsDiv.className = 'actions';
-    
-    const inBasket = basket.has(recordId);
-    const btn = document.createElement('button');
-    btn.className = 'basket-btn';
-    btn.textContent = inBasket ? (i18n['remove_from_basket'] || 'Remove') : (i18n['add_to_basket'] || 'Add to Basket');
-    btn.onclick = (e) => {
-      e.preventDefault();
-      toggleBasket(recordId);
-      btn.textContent = basket.has(recordId) ? (i18n['remove_from_basket'] || 'Remove') : (i18n['add_to_basket'] || 'Add to Basket');
-    };
-    
-    const dlBtn = document.createElement('a');
-    dlBtn.href = `${BASE_URL}id/${recordId}.xml`;
-    dlBtn.download = '';
-    dlBtn.className = 'download-btn';
-    dlBtn.textContent = i18n['download_record'] || 'Download MARCXML';
-    dlBtn.style.display = 'inline-block';
-    dlBtn.style.padding = '0.5rem 1rem';
-    dlBtn.style.background = '#28a745';
-    dlBtn.style.color = '#fff';
-    dlBtn.style.textDecoration = 'none';
-    dlBtn.style.borderRadius = '4px';
-    
-    actionsDiv.appendChild(btn);
-    actionsDiv.appendChild(dlBtn);
-    
-    if (currentOrg && orgHoldingsMap[recordId]) {
-      const callNum = orgHoldingsMap[recordId].call_number;
-      const holdingsDiv = document.createElement('div');
-      holdingsDiv.className = 'holdings-info';
-      holdingsDiv.innerHTML = `<strong>${escapeHTML(i18n['held_by'] || 'Held by: ')}${escapeHTML(currentOrg)}</strong><br>
-        Call Number: ${escapeHTML(callNum)}
-        <div class="availability-note">${escapeHTML(i18n['availability_note'] || 'Please check availability in the organization catalog.')}</div>`;
-      
-      node.appendChild(holdingsDiv);
-    }
-    
-    node.appendChild(actionsDiv);
-    list.appendChild(node);
-  }
-  
-  resultsContainer.appendChild(list);
 }
 
 document.addEventListener('DOMContentLoaded', init);

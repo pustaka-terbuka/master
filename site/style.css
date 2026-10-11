@@ -660,3 +660,109 @@ select {
   vertical-align: middle;
 }
 
+/* Search Loading State & Progress Indicator */
+.search-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.search-spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid #e9ecef;
+  border-top: 4px solid var(--primary, #0056b3);
+  border-radius: 50%;
+  animation: search-spin 0.8s linear infinite;
+  margin-bottom: 1.25rem;
+}
+
+@keyframes search-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.search-progress-bar {
+  width: 100%;
+  max-width: 320px;
+  height: 6px;
+  background: #e9ecef;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.search-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0056b3, #28a745, #0056b3);
+  background-size: 200% 100%;
+  animation: search-shimmer 1.5s infinite;
+  width: 100%;
+}
+
+@keyframes search-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.search-loading-text {
+  font-size: 1.05rem;
+  color: #343a40;
+  font-weight: 600;
+  margin: 0;
+}
+
+.search-loading-subtext {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+}
+
+/* Search Error / Warning Cards */
+.search-alert-card {
+  padding: 1.5rem;
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  color: #856404;
+  margin: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.search-alert-card h4 {
+  margin: 0 0 0.5rem 0;
+  color: #856404;
+  font-size: 1.1rem;
+}
+
+.search-alert-card p {
+  margin: 0 0 1rem 0;
+  font-size: 0.95rem;
+}
+
+.btn-retry-search {
+  background: #856404;
+  color: #fff;
+  border: none;
+  padding: 0.45rem 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.btn-retry-search:hover {
+  background: #6d5203;
+}
+
+
