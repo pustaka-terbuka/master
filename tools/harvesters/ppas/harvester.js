@@ -62,6 +62,7 @@ export function parseArgs(args) {
     skipPipeline: false,
     partitioned: true,
     includeUndated: true,
+    sweep: false,
     help: false
   };
 
@@ -69,6 +70,9 @@ export function parseArgs(args) {
     const arg = args[i];
     if (arg === '--help' || arg === '-h') {
       options.help = true;
+    } else if (arg === '--sweep') {
+      options.mode = 'sweep';
+      options.sweep = true;
     } else if (arg === '--max-pages' && i + 1 < args.length) {
       options.maxPages = parseInt(args[++i], 10);
     } else if (arg === '--page-size' && i + 1 < args.length) {
@@ -517,7 +521,73 @@ export function repairProvenance(provPath, validBatches) {
   fs.writeFileSync(provPath, retained.length > 0 ? retained.join('\n') + '\n' : '', 'utf8');
 }
 
+export function generateSweepPlan() {
+  const partitions = [];
+  let id = 0;
+
+  // 1. Single character queries (all <= 10,000 records across entire catalog)
+  const safeSingle = ['0', '2', '3', '4', '5', '6', '7', '8', '9', 'e', 'f', 'o', 'q', 'u', 'v', 'x', 'y', 'z'];
+  for (const c of safeSingle) {
+    partitions.push({ id: id++, name: `sweep_single_${c}`, query: `${c}*`, dateFrom: null, dateTo: null });
+  }
+
+  // 2. Number 1 prefix breakdown (19 has ~18k, so subdivide)
+  for (const c of ['0', '1', '2', '3', '4', '5', '6', '7', '8']) {
+    partitions.push({ id: id++, name: `sweep_1_${c}`, query: `1${c}*`, dateFrom: null, dateTo: null });
+  }
+  for (const d of ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']) {
+    partitions.push({ id: id++, name: `sweep_19_${d}`, query: `19${d}*`, dateFrom: null, dateTo: null });
+  }
+
+  // 3. Dense letters with two-character breakdown
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789'.split('');
+  const dense = ['a', 'b', 'c', 'd', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'w'];
+  for (const l of dense) {
+    for (const a of alphabet) {
+      // Skip 'bk' (the format code for books that contains 102k records)
+      if (l === 'b' && a === 'k') continue;
+
+      // Subdivide 'co' (> 11k)
+      if (l === 'c' && a === 'o') {
+        for (const c3 of 'abcdefghijklmnopqrstuvwxyz'.split('')) {
+          partitions.push({ id: id++, name: `sweep_co_${c3}`, query: `co${c3}*`, dateFrom: null, dateTo: null });
+        }
+        continue;
+      }
+
+      // Subdivide 'ma' (> 16k)
+      if (l === 'm' && a === 'a') {
+        for (const m3 of 'abcdefghijklmnopqrstuvwxyz'.split('')) {
+          partitions.push({ id: id++, name: `sweep_ma_${m3}`, query: `ma${m3}*`, dateFrom: null, dateTo: null });
+        }
+        continue;
+      }
+
+      partitions.push({ id: id++, name: `sweep_${l}${a}`, query: `${l}${a}*`, dateFrom: null, dateTo: null });
+    }
+  }
+
+  // 4. Non-Latin Unicode queries (Chinese, Arabic/Jawi, Tamil high frequency)
+  const nonLatin = [
+    '史', '中', '华', '国', '大', '人', '小', '生', '一', '新', '文', '学', '美', '马', '年',
+    '我', '在', '有', '作', '书', '本', '出', '版', '经', '理', '论', '语', '言', '社', '会',
+    '家', '现', '代', '世', '界', '心', '灵', '知', '识', '故', '事', '红', '楼', '三', '水',
+    '浒', '西', '游', '唐', '宋', '明', '清', '民', '童', '画', '精', '选', '诗', '词', '传',
+    'ال', 'كتاب', 'م', 'س', 'د', 'ف', 'ق', 'ب', 'ت', 'ن', 'ي', 'قرآن', 'حديث', 'إسلام',
+    'ப', 'த', 'ம', 'க', 'ச', 'வ', 'அ', 'இ', 'உ', 'எ'
+  ];
+  for (const nl of nonLatin) {
+    partitions.push({ id: id++, name: `sweep_nl_${encodeURIComponent(nl)}`, query: `${nl}*`, dateFrom: null, dateTo: null });
+  }
+
+  return partitions;
+}
+
 export function generatePartitionPlan(options = {}) {
+  if (options.sweep || options.mode === 'sweep') {
+    return generateSweepPlan();
+  }
+
   const partitions = [];
   let id = 0;
 
@@ -612,6 +682,9 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
   // Setup run directory and chunk management
   const pad = (n) => String(n).padStart(2, '0');
   let runId = `${now.getUTCFullYear()}${pad(now.getUTCMonth() + 1)}${pad(now.getUTCDate())}-${pad(now.getUTCHours())}${pad(now.getUTCMinutes())}${pad(now.getUTCSeconds())}`;
+  if (options.sweep) {
+    runId += '-sweep';
+  }
   let sessionDir = path.join(defaultBaseDir, runId);
   let chunkIndex = 1;
   let recordsInChunk = 0;
@@ -622,13 +695,17 @@ export async function runHarvest(cliArgs = process.argv.slice(2)) {
 
   // Session state resumption check
   if (!options.freshRun) {
-    const candidateRuns = fs.existsSync(defaultBaseDir)
+    let candidateRuns = fs.existsSync(defaultBaseDir)
       ? fs.readdirSync(defaultBaseDir, { withFileTypes: true })
           .filter(d => d.isDirectory() && !d.name.includes('-chunk-'))
           .map(d => d.name)
           .sort()
           .reverse()
       : [];
+
+    if (options.sweep) {
+      candidateRuns = candidateRuns.filter(r => r.endsWith('-sweep'));
+    }
 
     let targetRun = null;
     if (options.resumeTarget && options.resumeTarget !== 'auto') {
