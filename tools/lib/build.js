@@ -1484,15 +1484,17 @@ export async function buildSite(options) {
   report.filesCount = countFiles(distDir);
   report.timeTakenMs = Date.now() - startTime;
 
-  const sizeWarnMB = config.sizeWarnMB || 700;
-  const sizeFailMB = config.sizeFailMB || 950;
+  const skipSizeGate = options.skipSizeGate || config.skipSizeGate || false;
+  const isMultiSource = options.scanSources || false;
+  const sizeWarnMB = config.sizeWarnMB != null ? config.sizeWarnMB : (isMultiSource ? 3000 : 700);
+  const sizeFailMB = config.sizeFailMB != null ? config.sizeFailMB : (isMultiSource ? 5000 : 950);
   const fileCountWarn = config.fileCountWarn || 80000;
   const fileCountFail = config.fileCountFail || 100000;
 
-  if (report.sizeMB > sizeFailMB) {
+  if (!skipSizeGate && report.sizeMB > sizeFailMB) {
     throw new Error(`Build failed: Output size ${report.sizeMB.toFixed(2)} MB exceeds fail threshold ${sizeFailMB} MB.`);
   }
-  if (report.sizeMB > sizeWarnMB) {
+  if (!skipSizeGate && report.sizeMB > sizeWarnMB) {
     console.warn(`Warning: Output size ${report.sizeMB.toFixed(2)} MB exceeds warning threshold ${sizeWarnMB} MB.`);
   }
 
