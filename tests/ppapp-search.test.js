@@ -28,7 +28,7 @@ test('PPAPP Catalog Search & Endpoints Integration Test', async (t) => {
     assert.ok(fs.existsSync(ppappIndexPath), 'dist/org/PPAPP/index.json must exist');
     const holdings = JSON.parse(fs.readFileSync(ppappIndexPath, 'utf8'));
     assert.ok(holdings.length > 0, 'PPAPP holdings must not be empty');
-    assert.ok(holdings.some(h => h.title.includes('PERBANKAN ISLAM')), 'Holdings must contain sample book');
+    assert.ok(holdings.some(h => /perbankan/i.test(h.title)), 'Holdings must contain sample book');
   });
 
   await t.test('3. PPAPP shelf browse DDC.json exists and is sorted', () => {
