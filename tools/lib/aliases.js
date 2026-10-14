@@ -43,8 +43,8 @@ export function saveAliases(filePath, aliasMap) {
     entries.push({ key, ...value });
   }
   
-  // Sort by key for diff-friendliness
-  entries.sort((a, b) => a.key.localeCompare(b.key));
+  // Sort by key for diff-friendliness (fast deterministic code-point ordering)
+  entries.sort((a, b) => (a.key < b.key ? -1 : a.key > b.key ? 1 : 0));
   
   const lines = entries.map(e => JSON.stringify(e)).join('\n');
   

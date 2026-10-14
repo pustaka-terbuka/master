@@ -15,6 +15,7 @@ let maxPagefindRecords = null;
 let scanSources = false;
 let skipLock = process.env.PUSTAKA_MASTER_LOCKED === '1';
 let skipSizeGate = false;
+let skipDumps = false;
 
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--data-dir') dataDir = args[++i];
@@ -28,6 +29,7 @@ for (let i = 0; i < args.length; i++) {
   else if (args[i] === '--scan-sources') scanSources = true;
   else if (args[i] === '--skip-lock') skipLock = true;
   else if (args[i] === '--skip-size-gate') skipSizeGate = true;
+  else if (args[i] === '--skip-dumps') skipDumps = true;
 }
 
 const config = fs.existsSync(configPath) ? JSON.parse(fs.readFileSync(configPath, 'utf8')) : {};
@@ -74,6 +76,7 @@ async function run() {
       issnFetchFiles,
       scanSources,
       skipSizeGate,
+      skipDumps,
       maxRecords: maxRecords ?? config.maxRecords,
       maxPagefindRecords: maxPagefindRecords ?? config.maxPagefindRecords
     });

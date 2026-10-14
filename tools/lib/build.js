@@ -1015,25 +1015,38 @@ export async function buildSite(options) {
   const orgShelfBrowse = {};
   const isoDate = new Date().toISOString().substring(0, 10).replace(/-/g, '');
 
-  // Setup streaming bulk dumps
-  const allXmlPath = path.join(dumpsDir, `pustakaterbuka-all-${isoDate}.xml`);
-  const allMrcPath = path.join(dumpsDir, `pustakaterbuka-all-${isoDate}.mrc`);
-  const allXmlStream = fs.createWriteStream(allXmlPath);
-  allXmlStream.write('<?xml version="1.0" encoding="UTF-8"?>\n<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">\n');
-  const allMrcStream = fs.createWriteStream(allMrcPath);
+  const skipDumps = Boolean(options.skipDumps);
 
+  // Setup streaming bulk dumps
+  let allXmlStream = null;
+  let allMrcStream = null;
   const orgXmlStreams = {};
   const orgMrcStreams = {};
 
+  if (!skipDumps) {
+    fs.mkdirSync(dumpsDir, { recursive: true });
+    const allXmlPath = path.join(dumpsDir, `pustakaterbuka-all-${isoDate}.xml`);
+    const allMrcPath = path.join(dumpsDir, `pustakaterbuka-all-${isoDate}.mrc`);
+    allXmlStream = fs.createWriteStream(allXmlPath);
+    allXmlStream.on('error', err => console.warn(`[WARN] allXmlStream error: ${err.message}`));
+    allXmlStream.write('<?xml version="1.0" encoding="UTF-8"?>\n<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">\n');
+    allMrcStream = fs.createWriteStream(allMrcPath);
+    allMrcStream.on('error', err => console.warn(`[WARN] allMrcStream error: ${err.message}`));
+  }
+
   function writeToOrgStreams(org, xmlChunk, mrcBuffer) {
+    if (skipDumps) return;
     if (!orgXmlStreams[org]) {
       const xmlPath = path.join(dumpsDir, `pustakaterbuka-${org}-${isoDate}.xml`);
       const stream = fs.createWriteStream(xmlPath);
+      stream.on('error', err => console.warn(`[WARN] orgXmlStream (${org}) error: ${err.message}`));
       stream.write('<?xml version="1.0" encoding="UTF-8"?>\n<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">\n');
       orgXmlStreams[org] = stream;
 
       const mrcPath = path.join(dumpsDir, `pustakaterbuka-${org}-${isoDate}.mrc`);
-      orgMrcStreams[org] = fs.createWriteStream(mrcPath);
+      const mStream = fs.createWriteStream(mrcPath);
+      mStream.on('error', err => console.warn(`[WARN] orgMrcStream (${org}) error: ${err.message}`));
+      orgMrcStreams[org] = mStream;
     }
     if (xmlChunk) orgXmlStreams[org].write(xmlChunk);
     if (mrcBuffer) orgMrcStreams[org].write(mrcBuffer);
@@ -1372,39 +1385,43 @@ export async function buildSite(options) {
         staticPagesWritten++;
       }
 
-      // Buffer cleaned record for dumps
-      const has99x = record.dataFields && record.dataFields.some(df => df.tag.startsWith('99'));
-      const cleaned = has99x ? cleanRecord(record) : record;
+      if (!skipDumps) {
+        // Buffer cleaned record for dumps
+        const has99x = record.dataFields && record.dataFields.some(df => df.tag.startsWith('99'));
+        const cleaned = has99x ? cleanRecord(record) : record;
 
-      let singleXml;
-      if (has99x) {
-        singleXml = marcxml.serializeSingleRecord(cleaned);
-      } else {
-        const s = content.indexOf('<marc:record>');
-        const e = content.lastIndexOf('</marc:record>') + 14;
-        singleXml = (s !== -1 && e !== -1) ? content.substring(s, e) : marcxml.serializeSingleRecord(cleaned);
+        let singleXml;
+        if (has99x) {
+          singleXml = marcxml.serializeSingleRecord(cleaned);
+        } else {
+          const s = content.indexOf('<marc:record>');
+          const e = content.lastIndexOf('</marc:record>') + 14;
+          singleXml = (s !== -1 && e !== -1) ? content.substring(s, e) : marcxml.serializeSingleRecord(cleaned);
+        }
+
+        if (singleXml) shardXmlChunks.push(singleXml);
+        shardMrcBuffers.push(recordToIso2709(cleaned));
+
+        for (const org of orgCodes) {
+          if (!orgShardXmlChunks[org]) orgShardXmlChunks[org] = [];
+          if (!orgShardMrcBuffers[org]) orgShardMrcBuffers[org] = [];
+          if (singleXml) orgShardXmlChunks[org].push(singleXml);
+          orgShardMrcBuffers[org].push(recordToIso2709(cleaned));
+        }
       }
+    }
 
-      if (singleXml) shardXmlChunks.push(singleXml);
-      shardMrcBuffers.push(recordToIso2709(cleaned));
-
-      for (const org of orgCodes) {
-        if (!orgShardXmlChunks[org]) orgShardXmlChunks[org] = [];
-        if (!orgShardMrcBuffers[org]) orgShardMrcBuffers[org] = [];
-        if (singleXml) orgShardXmlChunks[org].push(singleXml);
-        orgShardMrcBuffers[org].push(recordToIso2709(cleaned));
+    if (!skipDumps) {
+      // Flush dumps for this shard
+      if (shardXmlChunks.length > 0 && allXmlStream) {
+        allXmlStream.write(shardXmlChunks.join('\n') + '\n');
       }
-    }
-
-    // Flush dumps for this shard
-    if (shardXmlChunks.length > 0) {
-      allXmlStream.write(shardXmlChunks.join('\n') + '\n');
-    }
-    if (shardMrcBuffers.length > 0) {
-      allMrcStream.write(Buffer.concat(shardMrcBuffers));
-    }
-    for (const org of Object.keys(orgShardXmlChunks)) {
-      writeToOrgStreams(org, orgShardXmlChunks[org].join('\n') + '\n', Buffer.concat(orgShardMrcBuffers[org]));
+      if (shardMrcBuffers.length > 0 && allMrcStream) {
+        allMrcStream.write(Buffer.concat(shardMrcBuffers));
+      }
+      for (const org of Object.keys(orgShardXmlChunks)) {
+        writeToOrgStreams(org, orgShardXmlChunks[org].join('\n') + '\n', Buffer.concat(orgShardMrcBuffers[org]));
+      }
     }
 
     // Write shard JSON
@@ -1414,14 +1431,31 @@ export async function buildSite(options) {
   }
 
   // Finalize dumps
-  allXmlStream.write('</marc:collection>\n');
-  allXmlStream.end();
-  allMrcStream.end();
+  if (!skipDumps) {
+    const closeStreamSafely = (stream) => new Promise(resolve => {
+      if (!stream || stream.destroyed || stream.closed) return resolve();
+      stream.on('finish', resolve);
+      stream.on('close', resolve);
+      stream.on('error', (err) => {
+        console.warn(`[WARN] Stream error (${stream.path}): ${err.message}`);
+        resolve();
+      });
+      try { stream.end(); } catch (_) { resolve(); }
+    });
 
-  for (const org of Object.keys(orgXmlStreams)) {
-    orgXmlStreams[org].write('</marc:collection>\n');
-    orgXmlStreams[org].end();
-    orgMrcStreams[org].end();
+    if (allXmlStream) {
+      allXmlStream.write('</marc:collection>\n');
+    }
+    for (const org of Object.keys(orgXmlStreams)) {
+      orgXmlStreams[org].write('</marc:collection>\n');
+    }
+
+    await Promise.all([
+      closeStreamSafely(allXmlStream),
+      closeStreamSafely(allMrcStream),
+      ...Object.values(orgXmlStreams).map(s => closeStreamSafely(s)),
+      ...Object.values(orgMrcStreams).map(s => closeStreamSafely(s))
+    ]);
   }
 
   // Write Pagefind files
@@ -1445,7 +1479,7 @@ export async function buildSite(options) {
     for (const scheme of ['LCC', 'DDC']) {
       const items = orgShelfBrowse[org][scheme];
       if (items && items.length > 0) {
-        items.sort((a, b) => a.sortKey.localeCompare(b.sortKey));
+        items.sort((a, b) => (a.sortKey < b.sortKey ? -1 : a.sortKey > b.sortKey ? 1 : 0));
         fs.writeFileSync(path.join(browseDir, `${scheme}.json`), JSON.stringify(items), 'utf8');
       }
     }

@@ -30,9 +30,12 @@ export const BASE_EXPORT_URL = 'https://opac.penanglib.gov.my/cgi-bin/koha/opac-
 export const BASE_DETAIL_URL = 'https://opac.penanglib.gov.my/cgi-bin/koha/opac-detail.pl';
 export const USER_AGENT = 'PustakaTerbuka-Harvester/1.0 (+https://github.com/pustaka-terbuka/ppapp; contact@pustakaterbuka.org)';
 export const HARVESTER_NAME = 'ppapp-koha-harvester';
-export const HARVESTER_VERSION = '1.1.0';
+export const HARVESTER_VERSION = '1.2.0';
 export const DEFAULT_MAX_BIB = 351871;
 export const DEFAULT_CHUNK_SIZE = 10000;
+
+// Global rate throttle timestamp shared across concurrent workers
+let globalThrottleUntil = 0;
 
 export function findRepoRoot(startDir) {
   let curr = path.resolve(startDir);
@@ -50,7 +53,8 @@ export function parseArgs(args) {
     startBib: 1,
     endBib: DEFAULT_MAX_BIB,
     batchSize: 100,
-    delayMs: 2000,
+    concurrency: 5,
+    delayMs: 200,
     chunkSize: DEFAULT_CHUNK_SIZE,
     maxRecords: 0,
     maxConsecutiveMisses: 100,
@@ -74,6 +78,8 @@ export function parseArgs(args) {
       options.endBib = parseInt(args[++i], 10);
     } else if (arg === '--batch-size' && i + 1 < args.length) {
       options.batchSize = parseInt(args[++i], 10);
+    } else if (arg === '--concurrency' && i + 1 < args.length) {
+      options.concurrency = parseInt(args[++i], 10);
     } else if (arg === '--delay' && i + 1 < args.length) {
       options.delayMs = parseInt(args[++i], 10);
     } else if (arg === '--chunk-size' && i + 1 < args.length) {
@@ -118,7 +124,8 @@ Options:
   --start-bib <num>          First biblionumber to harvest (default: 1)
   --end-bib <num>            Last biblionumber to harvest (default: ${DEFAULT_MAX_BIB})
   --batch-size <num>         Records per XML file (default: 100)
-  --delay <ms>               Delay between requests in ms (default: 2000)
+  --concurrency <num>        Concurrent worker threads (default: 5)
+  --delay <ms>               Delay between requests per worker in ms (default: 200)
   --chunk-size <num>         Records per harvest chunk for master digest (default: ${DEFAULT_CHUNK_SIZE})
   --no-chunk                 Disable chunk pauses (single monolithic output)
   --master-digest            Automatically validate, merge, and index into Master on each 10k pause
@@ -144,6 +151,12 @@ export async function fetchRecordMarcXml(bibNumber, options = {}, maxRetries = 5
     'User-Agent': USER_AGENT,
     'Accept': 'application/xml, text/xml, */*'
   };
+
+  // Cooperative rate limiting across concurrent workers
+  const now = Date.now();
+  if (now < globalThrottleUntil) {
+    await sleep(globalThrottleUntil - now);
+  }
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
@@ -185,6 +198,10 @@ export async function fetchRecordMarcXml(bibNumber, options = {}, maxRetries = 5
       if (retryAfter) {
         const parsed = parseInt(retryAfter, 10);
         if (!isNaN(parsed)) backoffMs = parsed * 1000;
+      }
+
+      if (response.status === 429 || response.status === 503) {
+        globalThrottleUntil = Math.max(globalThrottleUntil, Date.now() + backoffMs);
       }
 
       console.warn(`[WARN] HTTP ${response.status} on bib ${bibNumber} (attempt ${attempt}/${maxRetries}). Backing off ${Math.round(backoffMs / 1000)}s...`);
@@ -353,13 +370,11 @@ export async function runHarvest(userOptions = {}) {
   // Determine run ID & session resumption
   let runId = null;
   let isResumed = false;
-  let sessionDir = null;
 
   if (!options.freshRun && options.resumeTarget) {
     if (options.resumeTarget === 'auto') {
       const latest = findLatestIncompleteRun(inboxBaseDir);
       if (latest) {
-        sessionDir = latest;
         runId = path.basename(latest).replace(/-chunk-\d+$/, '');
         isResumed = true;
       }
@@ -368,7 +383,6 @@ export async function runHarvest(userOptions = {}) {
         ? options.resumeTarget
         : path.join(inboxBaseDir, options.resumeTarget);
       if (fs.existsSync(targetDir)) {
-        sessionDir = targetDir;
         runId = path.basename(targetDir).replace(/-chunk-\d+$/, '');
         isResumed = true;
       }
@@ -429,19 +443,36 @@ export async function runHarvest(userOptions = {}) {
     chunkRecordsSaved = inspected.recordCount;
   }
 
+  if (isResumed && fs.existsSync(activeChunk.provFile)) {
+    try {
+      const pLines = fs.readFileSync(activeChunk.provFile, 'utf8').trim().split('\n');
+      for (let i = pLines.length - 1; i >= 0 && i >= pLines.length - 100; i--) {
+        if (!pLines[i]) continue;
+        const obj = JSON.parse(pLines[i]);
+        const b = parseInt(obj.source_001, 10);
+        if (!isNaN(b) && b > (partitionState.lastBibNumber || 0)) {
+          partitionState.lastBibNumber = b;
+        }
+      }
+    } catch {}
+  }
+
   const startedAt = new Date().toISOString();
   let chunkStartedAt = startedAt;
+
+  const concurrency = Math.max(1, options.concurrency || 1);
 
   console.log(`=======================================================`);
   console.log(` PustakaTerbuka PPAPP Koha Harvester`);
   console.log(` Run ID:        ${runId} ${isResumed ? '[RESUMED]' : '[NEW]'}`);
   console.log(` Active Chunk:  ${activeChunk.chunkRunId} (Chunk #${chunkIndex})`);
   console.log(` Chunk Size:    ${options.chunkSize > 0 ? options.chunkSize : 'Disabled (Monolithic)'}`);
+  console.log(` Concurrency:   ${concurrency} worker threads`);
+  console.log(` Worker Delay:  ${options.delayMs} ms`);
   console.log(` Master Digest: ${options.ingestMaster ? 'Enabled (Automatic sequential ingestion & Pagefind indexing)' : 'Disabled'}`);
   console.log(` Output Base:   ${inboxBaseDir}`);
   console.log(` Bib Range:     ${options.startBib} -> ${options.endBib}`);
   console.log(` Discovery:     ${options.useSitemap ? 'Sitemap Index' : 'Sequential Incremental'}`);
-  console.log(` Politeness:    ${options.delayMs} ms delay between requests`);
   console.log(`=======================================================\n`);
 
   let totalSaved = partitionState.totalRecordsSaved || 0;
@@ -577,10 +608,41 @@ export async function runHarvest(userOptions = {}) {
 
   // Graceful shutdown handling
   let isShuttingDown = false;
+  let shouldStop = false;
+  let isPausedForChunk = false;
+  let isPausingChunk = false;
+  let activeWorkers = 0;
+
+  async function handleChunkPause() {
+    if (isPausingChunk) {
+      while (isPausedForChunk && !shouldStop) {
+        await sleep(100);
+      }
+      return;
+    }
+
+    isPausingChunk = true;
+    try {
+      while (activeWorkers > 0 && !shouldStop) {
+        await sleep(50);
+      }
+      if (isPausedForChunk && !shouldStop) {
+        await pauseAndProcessChunk(false, 'complete');
+        isPausedForChunk = false;
+      }
+    } finally {
+      isPausingChunk = false;
+    }
+  }
+
   const onSignal = async (sig) => {
     if (isShuttingDown) return;
     isShuttingDown = true;
-    console.log(`\n[SIGNAL] Received ${sig}. Gracefully flushing buffers and checkpointing chunk state...`);
+    shouldStop = true;
+    console.log(`\n[SIGNAL] Received ${sig}. Gracefully waiting for active workers, flushing buffers and checkpointing...`);
+    while (activeWorkers > 0) {
+      await sleep(100);
+    }
     harvestStatus = totalSaved > 0 ? 'partial' : 'failed';
     failureReason = `Interrupted by ${sig}`;
     try {
@@ -613,57 +675,88 @@ export async function runHarvest(userOptions = {}) {
 
     console.log(`[INFO] Starting harvest loop at biblionumber ${currentBib}...`);
 
-    while (true) {
-      if (options.useSitemap) {
-        if (bibIndex >= targetBibs.length) break;
-        currentBib = targetBibs[bibIndex];
-      } else {
-        if (currentBib > options.endBib) break;
-      }
-
+    function getNextBib() {
+      if (shouldStop) return null;
       if (options.maxRecords > 0 && savedThisRun >= options.maxRecords) {
-        console.log(`\n[INFO] Reached requested max records limit (${options.maxRecords}). Stopping.`);
-        break;
+        shouldStop = true;
+        return null;
       }
-
-      const recordXml = await fetchRecordMarcXml(currentBib, options);
-
-      if (recordXml) {
-        if (validateRecordContent(recordXml)) {
-          batchBuffer.push({
-            bib: currentBib,
-            xml: recordXml,
-            timestamp: new Date().toISOString()
-          });
-          savedThisRun++;
-
-          if (batchBuffer.length >= options.batchSize) {
-            flushBatch();
-          }
-
-          // Check if chunk threshold reached
-          if (options.chunkSize > 0 && chunkRecordsSaved + batchBuffer.length >= options.chunkSize) {
-            await pauseAndProcessChunk(false, 'complete');
-          }
-        } else {
-          console.warn(`[WARN] Bib ${currentBib} failed validation (missing 245 title or 001). Skipping.`);
-          chunkErrorCount++;
-        }
-      }
-
-      partitionState.lastBibNumber = currentBib;
 
       if (options.useSitemap) {
-        bibIndex++;
+        if (bibIndex >= targetBibs.length) {
+          shouldStop = true;
+          return null;
+        }
+        return targetBibs[bibIndex++];
       } else {
-        currentBib++;
-      }
-
-      const hasMore = options.useSitemap ? (bibIndex < targetBibs.length) : (currentBib <= options.endBib);
-      if (hasMore && (options.maxRecords <= 0 || savedThisRun < options.maxRecords)) {
-        await sleep(options.delayMs);
+        if (currentBib > options.endBib) {
+          shouldStop = true;
+          return null;
+        }
+        return currentBib++;
       }
     }
+
+    async function worker(workerId) {
+      while (!shouldStop) {
+        // If paused for chunk sealing/digest, wait until completed
+        while (isPausedForChunk && !shouldStop) {
+          await sleep(100);
+        }
+        if (shouldStop) break;
+
+        const bib = getNextBib();
+        if (bib === null) break;
+
+        activeWorkers++;
+        try {
+          const recordXml = await fetchRecordMarcXml(bib, options);
+
+          if (recordXml) {
+            if (validateRecordContent(recordXml)) {
+              batchBuffer.push({
+                bib,
+                xml: recordXml,
+                timestamp: new Date().toISOString()
+              });
+              savedThisRun++;
+
+              if (batchBuffer.length >= options.batchSize) {
+                flushBatch();
+              }
+
+              if (options.chunkSize > 0 && (chunkRecordsSaved + batchBuffer.length) >= options.chunkSize) {
+                isPausedForChunk = true;
+              }
+            } else {
+              console.warn(`[WARN] Bib ${bib} failed validation (missing 245 title or 001). Skipping.`);
+              chunkErrorCount++;
+            }
+          }
+
+          if (bib > (partitionState.lastBibNumber || 0)) {
+            partitionState.lastBibNumber = bib;
+          }
+
+        } finally {
+          activeWorkers--;
+        }
+
+        if (isPausedForChunk) {
+          await handleChunkPause();
+        }
+
+        if (options.delayMs > 0 && !shouldStop) {
+          await sleep(options.delayMs);
+        }
+      }
+    }
+
+    const workerPromises = [];
+    for (let w = 0; w < concurrency; w++) {
+      workerPromises.push(worker(w));
+    }
+    await Promise.all(workerPromises);
 
     // Flush & seal final chunk
     await pauseAndProcessChunk(true, 'complete');
