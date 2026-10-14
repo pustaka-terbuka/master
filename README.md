@@ -3,7 +3,9 @@
 > **PustakaTerbuka: an open, shared MARC catalog for Malaysian schools and libraries.**  
 > *Katalog Induk Kebangsaan: An open, federated MARC catalog and static OPAC for Malaysian schools and libraries.*
 
-This repository is the central search engine, OPAC portal, and catalog aggregator for the **[Pustaka Terbuka Organization](https://github.com/pustaka-terbuka)**. It combines and deduplicates bibliographic records from participating library data providers (such as Perpustakaan Negara Malaysia), generates client-side [Pagefind](https://pagefind.app) search indices, and serves a static OPAC on GitHub Pages.
+🌐 **Live OPAC & Search Portal:** [https://pustaka-terbuka.github.io/master/](https://pustaka-terbuka.github.io/master/)
+
+This repository is the central search engine, OPAC portal, and catalog aggregator for the **[Pustaka Terbuka Organization](https://github.com/pustaka-terbuka)**. It combines and deduplicates bibliographic records from participating library data providers (such as Perpustakaan Negara Malaysia), generates client-side [Pagefind](https://pagefind.app) search indices, and serves a static OPAC on GitHub Pages at [https://pustaka-terbuka.github.io/master/](https://pustaka-terbuka.github.io/master/).
 
 ---
 
@@ -31,7 +33,7 @@ The Pustaka Terbuka ecosystem uses an autonomous multi-repository architecture:
 └─────────────────────────┘                 └─────────────────────────┘
 ```
 
-- **[pustaka-terbuka/master](https://github.com/pustaka-terbuka/master)** (This repository) — OPAC frontend, aggregation tools, deduplication pipeline, test suite, and portal deployment.
+- **[pustaka-terbuka/master](https://github.com/pustaka-terbuka/master)** (This repository) — OPAC frontend, aggregation tools, deduplication pipeline, test suite, and portal deployment ([Live Portal](https://pustaka-terbuka.github.io/master/)).
 - **[pustaka-terbuka/pnm](https://github.com/pustaka-terbuka/pnm)** — Official Perpustakaan Negara Malaysia catalog repository (422k+ sharded MARCXML records).
 
 ---
@@ -42,7 +44,7 @@ The Pustaka Terbuka ecosystem uses an autonomous multi-repository architecture:
 - **Copy Cataloging API**: Real-time static endpoints for ISBN (`/isbn/{isbn}.xml`), ISSN (`/issn/{issn}.xml`), and permanent IDs (`/id/{id}.xml`) with preserved source tags and attribution.
 - **Bulk Releases**: ISO-2709 (`.mrc`) and MARCXML (`.xml`) collections published to GitHub Releases for client-side local database caching.
 - **Multi-Tenant Holdings**: Participating schools and libraries maintain their physical holdings joined seamlessly with master bibliographic records.
-- **Zero-Server Operations**: 100% static hosting on GitHub Pages with release assets on GitHub Releases.
+- **Zero-Server Operations**: 100% static hosting on [GitHub Pages](https://pustaka-terbuka.github.io/master/) with release assets on GitHub Releases.
 
 ---
 
