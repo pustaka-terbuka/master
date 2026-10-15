@@ -3,8 +3,8 @@ message: "If you use PustakaTerbuka, please cite it as below."
 title: "PustakaTerbuka"
 abstract: "An open, shared MARC catalog for Malaysian schools and libraries."
 type: software
-repository-code: "https://github.com/pustaka-terbuka/master"
-url: "https://pustaka-terbuka.github.io/master/"
+repository-code: "https://github.com/pustaka-terbuka/opac"
+url: "https://pustaka-terbuka.github.io/opac/"
 license: "TBD"
 authors:
   - name: "PustakaTerbuka Contributors"

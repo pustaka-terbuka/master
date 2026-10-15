@@ -13,7 +13,7 @@
   },
   "related_identifiers": [
     {
-      "identifier": "https://github.com/pustaka-terbuka/master",
+      "identifier": "https://github.com/pustaka-terbuka/opac",
       "relation": "isSupplementTo",
       "scheme": "url"
     }

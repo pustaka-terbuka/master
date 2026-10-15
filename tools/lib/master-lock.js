@@ -23,9 +23,10 @@ function isMasterDirectory(dir) {
     const pkgPath = path.join(dir, 'package.json');
     if (fs.existsSync(pkgPath)) {
       const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
-      if (pkg.name === 'pustaka-terbuka-master') return true;
+      if (pkg.name === 'pustaka-terbuka-opac' || pkg.name === 'pustaka-terbuka-master') return true;
     }
-    if (path.basename(dir) === 'master' && fs.existsSync(path.join(dir, 'tools', 'build.js'))) {
+    const base = path.basename(dir);
+    if ((base === 'opac' || base === 'master') && fs.existsSync(path.join(dir, 'tools', 'build.js'))) {
       return true;
     }
   } catch (_) {}
@@ -33,7 +34,8 @@ function isMasterDirectory(dir) {
 }
 
 /**
- * Locates the master repository root from a given directory.
+ * Locates the OPAC / master repository root from a given directory.
+ * Checks for opac directory first, then falls back to master for backward compatibility.
  * @param {string} [startDir=process.cwd()]
  * @returns {string|null}
  */
@@ -45,7 +47,11 @@ export function findMasterRepo(startDir = process.cwd()) {
     return current;
   }
 
-  // Check sibling ../master
+  // Check sibling ../opac then ../master
+  const siblingOpac = path.resolve(current, '..', 'opac');
+  if (isMasterDirectory(siblingOpac)) {
+    return siblingOpac;
+  }
   const siblingMaster = path.resolve(current, '..', 'master');
   if (isMasterDirectory(siblingMaster)) {
     return siblingMaster;
@@ -57,7 +63,11 @@ export function findMasterRepo(startDir = process.cwd()) {
     return parent;
   }
 
-  // Check grandparent ../../master
+  // Check grandparent ../../opac then ../../master
+  const grandSiblingOpac = path.resolve(current, '../..', 'opac');
+  if (isMasterDirectory(grandSiblingOpac)) {
+    return grandSiblingOpac;
+  }
   const grandSiblingMaster = path.resolve(current, '../..', 'master');
   if (isMasterDirectory(grandSiblingMaster)) {
     return grandSiblingMaster;
@@ -65,6 +75,9 @@ export function findMasterRepo(startDir = process.cwd()) {
 
   return null;
 }
+
+export const findOpacRepo = findMasterRepo;
+export const isOpacDirectory = isMasterDirectory;
 
 /**
  * Resolves the absolute path to the master lock file.
@@ -234,3 +247,7 @@ export async function acquireMasterLock(options = {}) {
     }
   }
 }
+
+export const isOpacLocked = isMasterLocked;
+export const acquireOpacLock = acquireMasterLock;
+

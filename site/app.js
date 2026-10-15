@@ -1,5 +1,6 @@
 function getBaseUrl() {
   const path = window.location.pathname;
+  if (path.includes('/opac')) return '/opac/';
   if (path.includes('/master')) return '/master/';
   if (path.includes('/pustaka-terbuka')) return '/pustaka-terbuka/';
   if (window.location.hostname.endsWith('github.io')) {
@@ -14,6 +15,12 @@ let currentLang = 'en';
 let pagefind = null;
 let currentOrg = null;
 let currentDdc = '';
+let currentSearchField = 'all'; // 'all', 'title', 'author', 'subject', 'isbn', 'call'
+let currentSort = 'relevance'; // 'relevance', 'year-desc', 'year-asc', 'title-asc'
+let searchDebounceTimer = null;
+let searchSequenceToken = 0;
+const resultDataCache = new Map();
+let lastSearchTimeMs = 0;
 let orgsData = {};
 let orgHoldingsMap = {}; // recordId -> { call_number }
 let basket = new Set(); // Set of recordIds
@@ -23,6 +30,26 @@ let currentSearchResults = [];
 let currentPage = 1;
 const PAGE_SIZE = 10;
 let currentQuery = '';
+
+async function getResultData(res) {
+  if (resultDataCache.has(res.id)) {
+    return resultDataCache.get(res.id);
+  }
+  const data = await res.data();
+  resultDataCache.set(res.id, data);
+  return data;
+}
+
+function extractSearchIsbn(text) {
+  if (!text) return null;
+  const match = text.match(/([\d\-\sX]{9,})/i);
+  if (!match) return null;
+  const clean = match[1].replace(/[-\s]/g, '').toUpperCase();
+  if (clean.length === 10 || clean.length === 13) {
+    return clean;
+  }
+  return null;
+}
 
 function escapeHTML(str) {
   if (!str) return '';
@@ -76,6 +103,22 @@ async function loadI18n(lang) {
     const searchInput = document.getElementById('search-input');
     if (searchInput && i18n['search_placeholder']) {
       searchInput.placeholder = i18n['search_placeholder'];
+    }
+
+    const fieldSelect = document.getElementById('search-field');
+    if (fieldSelect) {
+      fieldSelect.querySelectorAll('option').forEach(opt => {
+        const key = opt.getAttribute('data-i18n');
+        if (key && i18n[key]) opt.textContent = i18n[key];
+      });
+    }
+
+    const sortSelect = document.getElementById('sort-filter');
+    if (sortSelect) {
+      sortSelect.querySelectorAll('option').forEach(opt => {
+        const key = opt.getAttribute('data-i18n');
+        if (key && i18n[key]) opt.textContent = i18n[key];
+      });
     }
     
     const btn = document.getElementById('download-basket-btn');
@@ -260,17 +303,66 @@ function renderActiveFilters() {
     chipsList.appendChild(chip);
   }
 
+  if (currentSearchField && currentSearchField !== 'all') {
+    count++;
+    const fieldLabel = i18n[`search_field_${currentSearchField}`] || currentSearchField;
+    const chip = document.createElement('span');
+    chip.className = 'filter-chip';
+    chip.innerHTML = `Medan: ${escapeHTML(fieldLabel)} <button class="filter-chip-remove" aria-label="Remove filter">&times;</button>`;
+    chip.querySelector('.filter-chip-remove').onclick = () => {
+      currentSearchField = 'all';
+      const select = document.getElementById('search-field');
+      if (select) select.value = 'all';
+      renderActiveFilters();
+      const customInput = document.getElementById('search-input');
+      const resultsContainer = document.getElementById('search-results');
+      performSearch(customInput ? customInput.value : '', resultsContainer, false);
+    };
+    chipsList.appendChild(chip);
+  }
+
+  if (currentSort && currentSort !== 'relevance') {
+    count++;
+    const sortLabel = i18n[`sort_${currentSort.replace('-', '_')}`] || currentSort;
+    const chip = document.createElement('span');
+    chip.className = 'filter-chip';
+    chip.innerHTML = `Susun: ${escapeHTML(sortLabel)} <button class="filter-chip-remove" aria-label="Remove filter">&times;</button>`;
+    chip.querySelector('.filter-chip-remove').onclick = () => {
+      currentSort = 'relevance';
+      const select = document.getElementById('sort-filter');
+      if (select) select.value = 'relevance';
+      renderActiveFilters();
+      const customInput = document.getElementById('search-input');
+      const resultsContainer = document.getElementById('search-results');
+      performSearch(customInput ? customInput.value : '', resultsContainer, false);
+    };
+    chipsList.appendChild(chip);
+  }
+
   container.style.display = count > 0 ? 'flex' : 'none';
 
   const clearBtn = document.getElementById('clear-all-filters-btn');
   if (clearBtn && !clearBtn._attached) {
     clearBtn._attached = true;
     clearBtn.onclick = () => {
-      const select = document.getElementById('org-filter');
-      if (select) select.value = '';
+      const orgSelect = document.getElementById('org-filter');
+      if (orgSelect) orgSelect.value = '';
+      const fieldSelect = document.getElementById('search-field');
+      if (fieldSelect) fieldSelect.value = 'all';
+      const sortSelect = document.getElementById('sort-filter');
+      if (sortSelect) sortSelect.value = 'relevance';
+      const input = document.getElementById('search-input');
+      if (input) input.value = '';
+      const clearSearchBtn = document.getElementById('search-clear-btn');
+      if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+
       currentOrg = null;
       currentDdc = '';
+      currentSearchField = 'all';
+      currentSort = 'relevance';
+      currentQuery = '';
       updateDdcPills();
+      renderActiveFilters();
       const resultsContainer = document.getElementById('search-results');
       performSearch('', resultsContainer, false);
     };
@@ -630,7 +722,7 @@ using System.Net.Http;
 using System.Xml.Linq;
 
 using var client = new HttpClient();
-string xml = await client.GetStringAsync("https://pustaka-terbuka.github.io/master/id/${recordId}.xml");
+string xml = await client.GetStringAsync("https://pustaka-terbuka.github.io/opac/id/${recordId}.xml");
 XDocument doc = XDocument.Parse(xml);
 XNamespace ns = "http://www.loc.gov/MARC21/slim";
 var title = doc.Descendants(ns + "datafield")
@@ -670,28 +762,113 @@ function buildCustomSearchUI() {
 
   container.innerHTML = `
     <form id="search-form">
-      <input type="text" id="search-input" placeholder="${escapeHTML(i18n['search_placeholder'] || 'Search by title, author, ISBN, or subject...')}" />
-      <button type="submit" id="search-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <span>${escapeHTML(i18n['search_button'] || 'Search')}</span>
-      </button>
+      <div class="search-input-group">
+        <select id="search-field" class="search-field-select" aria-label="Search Field">
+          <option value="all" data-i18n="search_field_all">${escapeHTML(i18n['search_field_all'] || 'All Fields')}</option>
+          <option value="title" data-i18n="search_field_title">${escapeHTML(i18n['search_field_title'] || 'Title')}</option>
+          <option value="author" data-i18n="search_field_author">${escapeHTML(i18n['search_field_author'] || 'Author')}</option>
+          <option value="subject" data-i18n="search_field_subject">${escapeHTML(i18n['search_field_subject'] || 'Subject')}</option>
+          <option value="isbn" data-i18n="search_field_isbn">${escapeHTML(i18n['search_field_isbn'] || 'ISBN / ISSN')}</option>
+          <option value="call" data-i18n="search_field_call">${escapeHTML(i18n['search_field_call'] || 'Call Number')}</option>
+        </select>
+        <div class="search-input-wrapper">
+          <input type="text" id="search-input" autocomplete="off" spellcheck="false" placeholder="${escapeHTML(i18n['search_placeholder'] || 'Search by title, author, ISBN, or subject...')}" />
+          <button type="button" id="search-clear-btn" class="search-clear-btn" aria-label="Clear Search" style="display: none;">&times;</button>
+          <span class="search-kbd-hint" title="Press / to focus search">/</span>
+        </div>
+        <button type="submit" id="search-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>${escapeHTML(i18n['search_button'] || 'Search')}</span>
+        </button>
+      </div>
     </form>
   `;
-  
+
   const form = document.getElementById('search-form');
   const input = document.getElementById('search-input');
+  const clearBtn = document.getElementById('search-clear-btn');
+  const fieldSelect = document.getElementById('search-field');
+  const sortSelect = document.getElementById('sort-filter');
   const resultsContainer = document.getElementById('search-results');
-  
+
+  function toggleClearButton() {
+    if (clearBtn) {
+      clearBtn.style.display = input.value.trim().length > 0 ? 'flex' : 'none';
+    }
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      input.value = '';
+      currentQuery = '';
+      toggleClearButton();
+      input.focus();
+      currentPage = 1;
+      performSearch('', resultsContainer, false);
+    });
+  }
+
+  // Instant Search-as-you-type with debouncing (220ms)
+  input.addEventListener('input', () => {
+    toggleClearButton();
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(async () => {
+      currentQuery = input.value;
+      currentPage = 1;
+      await performSearch(currentQuery, resultsContainer, false);
+    }, 220);
+  });
+
+  // Instant submit (Enter or button click) cancels debounce and fires immediately
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    clearTimeout(searchDebounceTimer);
     currentQuery = input.value;
     currentPage = 1;
     await performSearch(currentQuery, resultsContainer, false);
   });
-  
+
+  // Field selector binding
+  if (fieldSelect) {
+    fieldSelect.addEventListener('change', async (e) => {
+      currentSearchField = e.target.value;
+      renderActiveFilters();
+      currentPage = 1;
+      await performSearch(input.value, resultsContainer, false);
+    });
+  }
+
+  // Sort selector binding
+  if (sortSelect) {
+    sortSelect.addEventListener('change', async (e) => {
+      currentSort = e.target.value;
+      renderActiveFilters();
+      currentPage = 1;
+      await performSearch(input.value, resultsContainer, false);
+    });
+  }
+
+  // Keyboard shortcut (/ to focus search, Escape to clear/blur)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement !== input && !['input', 'textarea', 'select'].includes((document.activeElement?.tagName || '').toLowerCase())) {
+      e.preventDefault();
+      input.focus();
+      input.select();
+    } else if (e.key === 'Escape' && document.activeElement === input) {
+      if (input.value) {
+        input.value = '';
+        currentQuery = '';
+        toggleClearButton();
+        performSearch('', resultsContainer, false);
+      } else {
+        input.blur();
+      }
+    }
+  });
+
   performSearch('', resultsContainer, true);
 }
 
@@ -703,6 +880,27 @@ window.retryLastSearch = function() {
   }
 };
 
+function updateSearchStats(count, timeMs) {
+  const statsEl = document.getElementById('search-stats');
+  if (!statsEl) return;
+  if (count === 0 && timeMs === 0) {
+    statsEl.style.display = 'none';
+    return;
+  }
+  statsEl.style.display = 'flex';
+  let msg = i18n['results_count'] || '{0} results found.';
+  msg = msg.replace('{0}', count);
+  if (currentOrg) {
+    const orgName = orgsData[currentOrg]?.name || currentOrg;
+    msg += ` (${orgName})`;
+  }
+  const timeStr = (i18n['search_time'] || 'in {0}ms').replace('{0}', timeMs);
+  statsEl.innerHTML = `
+    <span>${escapeHTML(msg)}</span>
+    <span class="search-stats-time">⚡ ${escapeHTML(timeStr)}</span>
+  `;
+}
+
 async function performSearch(query, resultsContainer, isInitial = false) {
   if (!pagefind) {
     resultsContainer.innerHTML = `
@@ -713,7 +911,9 @@ async function performSearch(query, resultsContainer, isInitial = false) {
     `;
     return;
   }
-  
+
+  const currentToken = ++searchSequenceToken;
+
   resultsContainer.innerHTML = `
     <div class="search-loading-container" role="status" aria-live="polite">
       <div class="search-spinner"></div>
@@ -724,29 +924,54 @@ async function performSearch(query, resultsContainer, isInitial = false) {
       <p class="search-loading-subtext">${escapeHTML(currentOrg ? `Menapis mengikut organisasi: ${orgsData[currentOrg]?.name || currentOrg}` : 'Mencari di seluruh katalog terbuka kebangsaan...')}</p>
     </div>
   `;
-  
+
   try {
     const searchOpts = {};
+    const filters = {};
+
     if (currentOrg) {
-      searchOpts.filters = { organization: [currentOrg] };
+      filters.organization = [currentOrg];
     }
-    
-    let searchTerm = (query && query.trim()) ? query.trim() : null;
     if (currentDdc) {
-      // Append DDC classification query prefix if selected
-      searchTerm = searchTerm ? `${searchTerm} ddc:${currentDdc}` : `${currentDdc}`;
+      filters.ddc_class = [currentDdc];
+    }
+    if (Object.keys(filters).length > 0) {
+      searchOpts.filters = filters;
     }
 
-    if (!searchTerm && !currentOrg) {
-      if (isInitial) {
-        searchTerm = 'a';
+    // Sort option
+    if (currentSort === 'year-desc') {
+      searchOpts.sort = { year: 'desc' };
+    } else if (currentSort === 'year-asc') {
+      searchOpts.sort = { year: 'asc' };
+    } else if (currentSort === 'title-asc') {
+      searchOpts.sort = { title: 'asc' };
+    }
+
+    let rawTerm = (query && query.trim()) ? query.trim() : null;
+    let searchTerm = rawTerm;
+
+    // ISBN Auto-normalization
+    if (searchTerm) {
+      const isbnCandidate = extractSearchIsbn(searchTerm);
+      if (isbnCandidate && currentSearchField === 'isbn') {
+        searchTerm = isbnCandidate;
+      }
+    }
+
+    // High performance search: if empty query, use filter-only browse (searchTerm = null)
+    if (!searchTerm) {
+      if (currentOrg || currentDdc || isInitial) {
+        searchTerm = null; // Filter-only browse mode: instant, no heavy chunk parsing
       } else {
+        updateSearchStats(0, 0);
         resultsContainer.innerHTML = `<p class="search-empty-note">${escapeHTML(i18n['no_results'] || 'No records found.')}</p>`;
         hidePagination();
         return;
       }
     }
 
+    const tStart = performance.now();
     const timeoutPromise = new Promise((_, reject) => {
       setTimeout(() => reject(new Error('Search request timed out after 8 seconds. Please check your network connection or try again.')), 8000);
     });
@@ -755,19 +980,76 @@ async function performSearch(query, resultsContainer, isInitial = false) {
       pagefind.search(searchTerm, searchOpts),
       timeoutPromise
     ]);
-    
+
+    const tDuration = Math.round(performance.now() - tStart);
+    lastSearchTimeMs = tDuration;
+
+    // Guard against race conditions from previous in-flight requests
+    if (currentToken !== searchSequenceToken) {
+      return;
+    }
+
     if (!search || !search.results || search.results.length === 0) {
+      updateSearchStats(0, tDuration);
       resultsContainer.innerHTML = `<p class="search-empty-note">${escapeHTML(i18n['no_results'] || 'No records found.')}</p>`;
       hidePagination();
       return;
     }
-    
-    currentSearchResults = search.results;
+
+    let results = search.results;
+
+    // Field-specific targeting if field is explicitly selected
+    if (rawTerm && currentSearchField !== 'all') {
+      const termLower = rawTerm.toLowerCase();
+      const topCandidates = await Promise.all(
+        results.slice(0, 60).map(async r => ({
+          res: r,
+          data: await getResultData(r)
+        }))
+      );
+
+      const matched = [];
+      const remainder = [];
+
+      for (const item of topCandidates) {
+        const meta = item.data?.meta || {};
+        let matches = false;
+        if (currentSearchField === 'title') {
+          matches = meta.title && meta.title.toLowerCase().includes(termLower);
+        } else if (currentSearchField === 'author') {
+          matches = meta.author && meta.author.toLowerCase().includes(termLower);
+        } else if (currentSearchField === 'subject') {
+          const subjects = item.data?.filters?.subject || [];
+          matches = subjects.some(s => s.toLowerCase().includes(termLower));
+        } else if (currentSearchField === 'isbn') {
+          const isbn = (meta.isbn || '').replace(/[-\s]/g, '');
+          matches = isbn.includes(termLower.replace(/[-\s]/g, ''));
+        } else if (currentSearchField === 'call') {
+          const call = `${meta.call_number || ''} ${meta.ddc || ''} ${meta.lcc || ''}`.toLowerCase();
+          matches = call.includes(termLower);
+        }
+
+        if (matches) {
+          matched.push(item.res);
+        } else {
+          remainder.push(item.res);
+        }
+      }
+
+      if (matched.length > 0) {
+        results = matched;
+      }
+    }
+
+    currentSearchResults = results;
     currentPage = 1;
+    updateSearchStats(currentSearchResults.length, tDuration);
     await renderCurrentPage(resultsContainer, isInitial);
   } catch (err) {
+    if (currentToken !== searchSequenceToken) return;
     console.error('Search failed:', err);
     hidePagination();
+    updateSearchStats(0, 0);
     resultsContainer.innerHTML = `
       <div class="search-alert-card" role="alert">
         <h4>⚠️ Ralat Semasa Carian / Search Error</h4>
@@ -784,16 +1066,8 @@ async function renderCurrentPage(resultsContainer, isInitial = false) {
   const totalResults = currentSearchResults.length;
   const totalPages = Math.ceil(totalResults / PAGE_SIZE);
 
-  if (isInitial && !currentOrg && !currentDdc) {
+  if (isInitial && !currentOrg && !currentDdc && !currentQuery) {
     resultsContainer.innerHTML = `<p style="color:var(--text-muted); margin-bottom:1rem;">📚 <strong>Sorotan Katalog Kebangsaan:</strong> Memaparkan judul terkini. Gunakan kotak carian di atas atau butang DDC untuk menapis.</p>`;
-  } else {
-    let msg = i18n['results_count'] || '{0} results found.';
-    msg = msg.replace('{0}', totalResults);
-    if (currentOrg) {
-      const orgName = orgsData[currentOrg]?.name || currentOrg;
-      msg += ` (${orgName})`;
-    }
-    resultsContainer.innerHTML = `<p style="font-weight:600; margin-bottom:1rem;">${escapeHTML(msg)}</p>`;
   }
 
   const list = document.createElement('div');
@@ -803,114 +1077,129 @@ async function renderCurrentPage(resultsContainer, isInitial = false) {
   const endIndex = Math.min(startIndex + PAGE_SIZE, totalResults);
   const pageSlice = currentSearchResults.slice(startIndex, endIndex);
 
-  for (const res of pageSlice) {
-    try {
-      const data = await res.data();
-      const node = document.createElement('div');
-      node.className = 'result-item';
-      
-      const url = data.url;
-      const recordId = getRecordIdFromUrl(url) || 'unknown';
-      const bookUrl = (recordId !== 'unknown') ? `${BASE_URL}book/?id=${recordId}` : url;
-      
-      const isbn = data.meta?.isbn || '';
-      let thumbHtml = '';
-      if (isbn) {
-        thumbHtml = `<div class="result-thumb-wrapper">
-          <img src="https://covers.openlibrary.org/b/isbn/${escapeHTML(isbn)}-M.jpg?default=false" 
-               alt="Cover for ${escapeHTML(data.meta.title || '')}" 
-               class="result-thumb-img" 
-               loading="lazy" 
-               onerror="this.onerror=null; this.src='https://books.google.com/books/content?vid=isbn${escapeHTML(isbn)}&printsec=frontcover&img=1&zoom=1'; this.onerror=()=>this.parentElement.style.display='none';" />
-        </div>`;
+  // Parallel hydration for high-speed rendering
+  const itemsData = await Promise.all(
+    pageSlice.map(async (res) => {
+      try {
+        const data = await getResultData(res);
+        return { res, data };
+      } catch (itemErr) {
+        console.warn('Failed to load search result item:', itemErr);
+        return null;
       }
-      
-      let titleHtml = `<h3><a href="${escapeHTML(bookUrl)}">${escapeHTML(data.meta.title || 'Untitled')}</a></h3>`;
-      let authorHtml = data.meta.author ? `<p class="result-author"><strong>${escapeHTML(data.meta.author)}</strong></p>` : '';
-      let excerptHtml = data.excerpt ? `<div class="result-excerpt">${data.excerpt}</div>` : '';
-      
-      // Meta badges (Call number, Year, DDC)
-      let badgesHtml = '<div class="result-meta-badges">';
-      if (data.meta?.ddc) {
-        badgesHtml += `<span class="badge badge-ddc">DDC ${escapeHTML(data.meta.ddc)}</span>`;
-      }
-      if (data.meta?.lcc) {
-        badgesHtml += `<span class="badge badge-lcc">LCC ${escapeHTML(data.meta.lcc)}</span>`;
-      }
-      if (data.meta?.year) {
-        badgesHtml += `<span class="badge badge-year">${escapeHTML(data.meta.year)}</span>`;
-      }
-      if (isbn) {
-        badgesHtml += `<span class="badge badge-year">ISBN ${escapeHTML(isbn)}</span>`;
-      }
-      badgesHtml += '</div>';
+    })
+  );
 
-      node.innerHTML = `
-        <div class="result-card-inner">
-          ${thumbHtml}
-          <div class="result-body">
-            <div class="result-title-row">
-              ${titleHtml}
-            </div>
-            ${authorHtml}
-            ${badgesHtml}
-            ${excerptHtml}
-          </div>
-        </div>`;
-      
-      // Actions
-      const actionsDiv = document.createElement('div');
-      actionsDiv.className = 'actions';
-      
-      const inBasket = basket.has(recordId);
-      const btn = document.createElement('button');
-      btn.className = 'basket-btn' + (inBasket ? ' in-basket' : '');
-      btn.setAttribute('data-id', recordId);
-      btn.textContent = inBasket ? (i18n['remove_from_basket'] || 'Remove') : (i18n['add_to_basket'] || '+ Add to Basket');
-      btn.onclick = (e) => {
-        e.preventDefault();
-        toggleBasket(recordId);
-      };
+  for (const item of itemsData) {
+    if (!item || !item.data) continue;
+    const { res, data } = item;
+    const node = document.createElement('div');
+    node.className = 'result-item';
 
-      const marcBtn = document.createElement('button');
-      marcBtn.className = 'marc-btn';
-      marcBtn.textContent = i18n['marc_preview'] || '👁️ MARC Tags';
-      marcBtn.onclick = (e) => {
-        e.preventDefault();
-        openMarcModal(recordId);
-      };
-      
-      const dlBtn = document.createElement('a');
-      dlBtn.href = `${BASE_URL}id/${recordId}.xml`;
-      dlBtn.download = `${recordId}.xml`;
-      dlBtn.className = 'download-btn';
-      dlBtn.textContent = i18n['download_record'] || '⬇ MARCXML';
+    const url = data.url;
+    const recordId = getRecordIdFromUrl(url) || 'unknown';
+    const bookUrl = (recordId !== 'unknown') ? `${BASE_URL}book/?id=${recordId}` : url;
 
-      const viewBtn = document.createElement('a');
-      viewBtn.href = bookUrl;
-      viewBtn.className = 'opac-link-btn';
-      viewBtn.textContent = i18n['view_details'] || 'View Record →';
-      
-      actionsDiv.appendChild(btn);
-      actionsDiv.appendChild(marcBtn);
-      actionsDiv.appendChild(dlBtn);
-      actionsDiv.appendChild(viewBtn);
-      
-      if (currentOrg && orgHoldingsMap[recordId]) {
-        const callNum = orgHoldingsMap[recordId].call_number;
-        const holdingsDiv = document.createElement('div');
-        holdingsDiv.className = 'holdings-info';
-        holdingsDiv.innerHTML = `<strong>${escapeHTML(i18n['held_by'] || 'Held by: ')}${escapeHTML(currentOrg)}</strong><br>
-          Call Number: <span class="badge badge-call">${escapeHTML(callNum)}</span>
-          <div class="availability-note">${escapeHTML(i18n['availability_note'] || 'Please check availability in the organization catalog.')}</div>`;
-        node.appendChild(holdingsDiv);
-      }
-      
-      node.appendChild(actionsDiv);
-      list.appendChild(node);
-    } catch (itemErr) {
-      console.warn('Failed to load search result item:', itemErr);
+    const isbn = data.meta?.isbn || '';
+    let thumbHtml = '';
+    if (isbn) {
+      thumbHtml = `<div class="result-thumb-wrapper">
+        <img src="https://covers.openlibrary.org/b/isbn/${escapeHTML(isbn)}-M.jpg?default=false" 
+             alt="Cover for ${escapeHTML(data.meta.title || '')}" 
+             class="result-thumb-img" 
+             loading="lazy" 
+             onerror="this.onerror=null; this.src='https://books.google.com/books/content?vid=isbn${escapeHTML(isbn)}&printsec=frontcover&img=1&zoom=1'; this.onerror=()=>this.parentElement.style.display='none';" />
+      </div>`;
     }
+
+    const titleHtml = `<h3><a href="${escapeHTML(bookUrl)}">${escapeHTML(data.meta.title || 'Untitled')}</a></h3>`;
+    const authorHtml = data.meta.author ? `<p class="result-author"><strong>${escapeHTML(data.meta.author)}</strong></p>` : '';
+    const publisherHtml = data.meta.publisher ? `<p class="result-publisher">${escapeHTML(data.meta.publisher)}</p>` : '';
+    const excerptHtml = data.excerpt ? `<div class="result-excerpt">${data.excerpt}</div>` : '';
+
+    // Meta badges (Format, Call number, Year, DDC, LCC, ISBN)
+    let badgesHtml = '<div class="result-meta-badges">';
+    if (data.meta?.format) {
+      badgesHtml += `<span class="badge badge-format">${escapeHTML(data.meta.format)}</span>`;
+    }
+    if (data.meta?.ddc) {
+      badgesHtml += `<span class="badge badge-ddc">DDC ${escapeHTML(data.meta.ddc)}</span>`;
+    }
+    if (data.meta?.lcc) {
+      badgesHtml += `<span class="badge badge-lcc">LCC ${escapeHTML(data.meta.lcc)}</span>`;
+    }
+    if (data.meta?.year) {
+      badgesHtml += `<span class="badge badge-year">${escapeHTML(data.meta.year)}</span>`;
+    }
+    if (isbn) {
+      badgesHtml += `<span class="badge badge-year">ISBN ${escapeHTML(isbn)}</span>`;
+    }
+    badgesHtml += '</div>';
+
+    node.innerHTML = `
+      <div class="result-card-inner">
+        ${thumbHtml}
+        <div class="result-body">
+          <div class="result-title-row">
+            ${titleHtml}
+          </div>
+          ${authorHtml}
+          ${publisherHtml}
+          ${badgesHtml}
+          ${excerptHtml}
+        </div>
+      </div>`;
+
+    // Actions
+    const actionsDiv = document.createElement('div');
+    actionsDiv.className = 'actions';
+
+    const inBasket = basket.has(recordId);
+    const btn = document.createElement('button');
+    btn.className = 'basket-btn' + (inBasket ? ' in-basket' : '');
+    btn.setAttribute('data-id', recordId);
+    btn.textContent = inBasket ? (i18n['remove_from_basket'] || 'Remove') : (i18n['add_to_basket'] || '+ Add to Basket');
+    btn.onclick = (e) => {
+      e.preventDefault();
+      toggleBasket(recordId);
+    };
+
+    const marcBtn = document.createElement('button');
+    marcBtn.className = 'marc-btn';
+    marcBtn.textContent = i18n['marc_preview'] || '👁️ MARC Tags';
+    marcBtn.onclick = (e) => {
+      e.preventDefault();
+      openMarcModal(recordId);
+    };
+
+    const dlBtn = document.createElement('a');
+    dlBtn.href = `${BASE_URL}id/${recordId}.xml`;
+    dlBtn.download = `${recordId}.xml`;
+    dlBtn.className = 'download-btn';
+    dlBtn.textContent = i18n['download_record'] || '⬇ MARCXML';
+
+    const viewBtn = document.createElement('a');
+    viewBtn.href = bookUrl;
+    viewBtn.className = 'opac-link-btn';
+    viewBtn.textContent = i18n['view_details'] || 'View Record →';
+
+    actionsDiv.appendChild(btn);
+    actionsDiv.appendChild(marcBtn);
+    actionsDiv.appendChild(dlBtn);
+    actionsDiv.appendChild(viewBtn);
+
+    if (currentOrg && orgHoldingsMap[recordId]) {
+      const callNum = orgHoldingsMap[recordId].call_number;
+      const holdingsDiv = document.createElement('div');
+      holdingsDiv.className = 'holdings-info';
+      holdingsDiv.innerHTML = `<strong>${escapeHTML(i18n['held_by'] || 'Held by: ')}${escapeHTML(currentOrg)}</strong><br>
+        Call Number: <span class="badge badge-call">${escapeHTML(callNum)}</span>
+        <div class="availability-note">${escapeHTML(i18n['availability_note'] || 'Please check availability in the organization catalog.')}</div>`;
+      node.appendChild(holdingsDiv);
+    }
+
+    node.appendChild(actionsDiv);
+    list.appendChild(node);
   }
 
   resultsContainer.appendChild(list);

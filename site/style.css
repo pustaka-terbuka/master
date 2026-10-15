@@ -219,13 +219,45 @@ body {
 
 .search-ui-wrapper form {
   display: flex;
-  gap: 0.75rem;
+  width: 100%;
+}
+
+.search-input-group {
+  display: flex;
+  gap: 0.5rem;
   align-items: stretch;
+  width: 100%;
+}
+
+.search-field-select {
+  padding: 0.75rem 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  min-width: 140px;
+}
+
+.search-field-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+  outline: none;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 #search-input {
-  flex: 1;
-  padding: 0.75rem 1rem;
+  width: 100%;
+  padding: 0.75rem 3.8rem 0.75rem 1rem;
   font-size: 1.05rem;
   border: 2px solid var(--border-color);
   border-radius: var(--radius-md);
@@ -240,11 +272,46 @@ body {
   outline: none;
 }
 
+.search-clear-btn {
+  position: absolute;
+  right: 2.1rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.search-clear-btn:hover {
+  color: var(--text-color);
+  background-color: var(--surface-secondary);
+}
+
+.search-kbd-hint {
+  position: absolute;
+  right: 0.75rem;
+  pointer-events: none;
+  border: 1px solid var(--border-color);
+  background: var(--surface-secondary);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-family: monospace;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
 #search-btn {
   background: var(--primary);
   color: #fff;
   border: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.4rem;
   font-size: 1rem;
   font-weight: 600;
   border-radius: var(--radius-md);
@@ -252,11 +319,21 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  white-space: nowrap;
   transition: background-color 0.15s ease;
 }
 
 #search-btn:hover {
   background: var(--primary-hover);
+}
+
+@media (max-width: 640px) {
+  .search-input-group {
+    flex-direction: column;
+  }
+  .search-field-select {
+    width: 100%;
+  }
 }
 
 /* DDC 000-900 Visual Classification Browse */
@@ -551,6 +628,38 @@ body {
   border: 1px solid var(--border-color);
 }
 
+.badge-format {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #c8e6c9;
+}
+
+.result-publisher {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0.15rem 0 0.4rem 0;
+}
+
+.search-stats-bar {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.search-stats-time {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  background: var(--surface-secondary);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
 .badge-subject {
   background: var(--surface-secondary);
   color: var(--text-color);
@@ -577,6 +686,11 @@ body {
   background: #3d2314;
   color: #f7a97b;
   border-color: #61371e;
+}
+[data-theme="dark"] .badge-format {
+  background: #1b3820;
+  color: #a5d6a7;
+  border-color: #2e7d32;
 }
 
 /* Holdings In Card */

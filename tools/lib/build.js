@@ -71,7 +71,7 @@ export function enrichWithAttribution(record, recordId) {
       ind1: '4',
       ind2: '2',
       subfields: [
-        { code: 'u', value: 'https://github.com/pustaka-terbuka/master' },
+        { code: 'u', value: 'https://github.com/pustaka-terbuka/opac' },
         { code: 'y', value: 'PustakaTerbuka' },
         { code: 'z', value: 'Shared open catalog record provided by PustakaTerbuka' }
       ]
@@ -87,7 +87,7 @@ export function enrichWithAttribution(record, recordId) {
       ind2: ' ',
       subfields: [
         { code: 'a', value: 'PustakaTerbuka' },
-        { code: 'u', value: 'https://github.com/pustaka-terbuka/master' },
+        { code: 'u', value: 'https://github.com/pustaka-terbuka/opac' },
         { code: 'd', value: 'Open Shared MARC Catalog for Malaysian Libraries' },
         { code: 'r', value: recordId }
       ]
@@ -671,7 +671,7 @@ function generateUniversalViewerHtml(baseUrl) {
     } else if (format === 'csharp') {
       const cs = '// PustakaTerbuka Copy Cataloging\\n' +
         'using var client = new System.Net.Http.HttpClient();\\n' +
-        'string xml = await client.GetStringAsync("https://pustaka-terbuka.github.io/master/id/' + recordId + '.xml");';
+        'string xml = await client.GetStringAsync("https://pustaka-terbuka.github.io/opac/id/' + recordId + '.xml");';
       navigator.clipboard.writeText(cs).then(showMarcToast);
     } else if (format === 'text') {
       const parser = new DOMParser();
@@ -1303,29 +1303,55 @@ export async function buildSite(options) {
       // Pagefind index (limit records indexed to avoid Pagefind fragment file explosion on huge catalogs)
       if (pagefindRecordsIndexed < maxPagefindRecords) {
         const indexedSummary = summary ? summary.substring(0, 150) : '';
-        const searchableText = [title, author, publisher, ...subjects, ...isbns, lcc, ddc, callNum852, indexedSummary, note].filter(Boolean).join(' ');
-        
         const schemes = [];
         if (lcc) schemes.push('LCC');
         if (ddc) schemes.push('DDC');
 
+        // Extract DDC main class group (0-9)
+        const ddcDigits = ddc ? ddc.replace(/^[^0-9]*/, '') : '';
+        const ddcClass = ddcDigits ? ddcDigits.charAt(0) : '';
+
+        // Structured HTML with field weighting for Pagefind relevance:
+        // Title (weight 10) > Author (weight 7) > Subjects (weight 5) > Metadata/Classification (weight 4) > Summary/Notes (weight 1)
+        const contentHtml = `
+          <h1 data-pagefind-weight="10">${escapeHTML(title || '')}</h1>
+          <h2 data-pagefind-weight="7">${escapeHTML(author || '')}</h2>
+          <div data-pagefind-weight="5">${(subjects || []).map(s => escapeHTML(s)).join(', ')}</div>
+          <div data-pagefind-weight="4">
+            ${escapeHTML(publisher || '')} ${isbns.join(' ')} ${issns.join(' ')} ${escapeHTML(lcc || '')} ${escapeHTML(ddc || '')} ${escapeHTML(callNum852 || '')}
+          </div>
+          <p data-pagefind-weight="1">${escapeHTML(indexedSummary || '')} ${escapeHTML(note || '')}</p>
+        `.trim();
+
         await pfIndex.addCustomRecord({
           url: `book/?id=${recordId}`,
-          content: searchableText,
+          content: contentHtml,
           language: 'en',
           meta: {
-            title,
-            author,
-            isbn: primaryIsbn,
-            image: primaryIsbn ? `https://covers.openlibrary.org/b/isbn/${primaryIsbn}-M.jpg` : ''
+            title: title || 'Untitled',
+            author: author || '',
+            isbn: primaryIsbn || '',
+            image: primaryIsbn ? `https://covers.openlibrary.org/b/isbn/${primaryIsbn}-M.jpg` : '',
+            year: year || '',
+            publisher: publisher || '',
+            ddc: ddc || '',
+            lcc: lcc || '',
+            call_number: callNum852 || (ddc ? `DDC ${ddc}` : (lcc ? `LCC ${lcc}` : '')),
+            format: format || 'Book',
+            id: recordId
           },
           filters: {
             organization: orgCodes,
             language: lang ? [lang] : [],
             year: year ? [year] : [],
-            format: [format],
+            format: [format || 'Book'],
             subject: subjects,
-            scheme: schemes
+            scheme: schemes,
+            ddc_class: ddcClass ? [ddcClass] : []
+          },
+          sort: {
+            year: year ? String(year).padStart(4, '0') : '0000',
+            title: title ? title.toLowerCase() : ''
           }
         });
         pagefindRecordsIndexed++;
@@ -1458,9 +1484,15 @@ export async function buildSite(options) {
     ]);
   }
 
+  // Clean old Pagefind index directory to prevent stale fragment accumulation
+  const pagefindOutputDir = path.join(distDir, "pagefind");
+  if (fs.existsSync(pagefindOutputDir)) {
+    fs.rmSync(pagefindOutputDir, { recursive: true, force: true });
+  }
+
   // Write Pagefind files
   await pfIndex.writeFiles({
-    outputPath: path.join(distDir, "pagefind")
+    outputPath: pagefindOutputDir
   });
 
   // Org indices

@@ -60,14 +60,14 @@ test('PPAPP Catalog Search & Endpoints Integration Test', async (t) => {
     }
 
     globalThis.window = globalThis;
-    globalThis.location = new URL('http://localhost:8080/master/');
+    globalThis.location = new URL('http://localhost:8080/opac/');
     globalThis.document = { querySelector: () => null };
     globalThis.fetch = async (url) => {
       let local;
       if (typeof url === 'string' && url.startsWith('file://')) {
         local = fileURLToPath(url.split('?')[0]);
       } else {
-        const cleanUrl = String(url).replace(/^https?:\/\/[^\/]+\/master\//, '').split('?')[0];
+        const cleanUrl = String(url).replace(/^https?:\/\/[^\/]+\/(?:master|opac)\//, '').split('?')[0];
         local = path.join(distDir, cleanUrl);
       }
       return {

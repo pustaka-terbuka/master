@@ -1,7 +1,7 @@
 {
-  "name": "pustaka-terbuka-master",
+  "name": "pustaka-terbuka-opac",
   "version": "0.1.0",
-  "description": "PustakaTerbuka Master: Central indexer, OPAC portal, and search aggregator for Malaysian libraries.",
+  "description": "PustakaTerbuka OPAC: Central indexer, OPAC portal, and search aggregator for Malaysian libraries.",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.js",

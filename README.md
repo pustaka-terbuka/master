@@ -1,11 +1,11 @@
-# Pustaka Terbuka — Master Hub & Union Catalog
+# Pustaka Terbuka — OPAC Hub & Union Catalog
 
 > **PustakaTerbuka: an open, shared MARC catalog for Malaysian schools and libraries.**  
 > *Katalog Induk Kebangsaan: An open, federated MARC catalog and static OPAC for Malaysian schools and libraries.*
 
-🌐 **Live OPAC & Search Portal:** [https://pustaka-terbuka.github.io/master/](https://pustaka-terbuka.github.io/master/)
+🌐 **Live OPAC & Search Portal:** [https://pustaka-terbuka.github.io/opac/](https://pustaka-terbuka.github.io/opac/)
 
-This repository is the central search engine, OPAC portal, and catalog aggregator for the **[Pustaka Terbuka Organization](https://github.com/pustaka-terbuka)**. It combines and deduplicates bibliographic records from participating library data providers (such as Perpustakaan Negara Malaysia), generates client-side [Pagefind](https://pagefind.app) search indices, and serves a static OPAC on GitHub Pages at [https://pustaka-terbuka.github.io/master/](https://pustaka-terbuka.github.io/master/).
+This repository is the central search engine, OPAC portal, and catalog aggregator for the **[Pustaka Terbuka Organization](https://github.com/pustaka-terbuka)**. It combines and deduplicates bibliographic records from participating library data providers (such as Perpustakaan Negara Malaysia), generates client-side [Pagefind](https://pagefind.app) search indices, and serves a static OPAC on GitHub Pages at [https://pustaka-terbuka.github.io/opac/](https://pustaka-terbuka.github.io/opac/).
 
 ---
 
@@ -17,7 +17,7 @@ The Pustaka Terbuka ecosystem uses an autonomous multi-repository architecture:
 ```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                      Pustaka Terbuka Hub                        │
-│                 (pustaka-terbuka/master)                        │
+│                  (pustaka-terbuka/opac)                         │
 │  - Static Search UI & OPAC (Pagefind WASM)                      │
 │  - Cross-institutional Deduplication & Merging                  │
 │  - Universal MARCXML & Copy Cataloging Endpoints                │
@@ -33,7 +33,7 @@ The Pustaka Terbuka ecosystem uses an autonomous multi-repository architecture:
 └─────────────────────────┘                 └─────────────────────────┘
 ```
 
-- **[pustaka-terbuka/master](https://github.com/pustaka-terbuka/master)** (This repository) — OPAC frontend, aggregation tools, deduplication pipeline, test suite, and portal deployment ([Live Portal](https://pustaka-terbuka.github.io/master/)).
+- **[pustaka-terbuka/opac](https://github.com/pustaka-terbuka/opac)** (This repository) — OPAC frontend, aggregation tools, deduplication pipeline, test suite, and portal deployment ([Live Portal](https://pustaka-terbuka.github.io/opac/)).
 - **[pustaka-terbuka/pnm](https://github.com/pustaka-terbuka/pnm)** — Official Perpustakaan Negara Malaysia catalog repository (422k+ sharded MARCXML records).
 
 ---
@@ -44,7 +44,7 @@ The Pustaka Terbuka ecosystem uses an autonomous multi-repository architecture:
 - **Copy Cataloging API**: Real-time static endpoints for ISBN (`/isbn/{isbn}.xml`), ISSN (`/issn/{issn}.xml`), and permanent IDs (`/id/{id}.xml`) with preserved source tags and attribution.
 - **Bulk Releases**: ISO-2709 (`.mrc`) and MARCXML (`.xml`) collections published to GitHub Releases for client-side local database caching.
 - **Multi-Tenant Holdings**: Participating schools and libraries maintain their physical holdings joined seamlessly with master bibliographic records.
-- **Zero-Server Operations**: 100% static hosting on [GitHub Pages](https://pustaka-terbuka.github.io/master/) with release assets on GitHub Releases.
+- **Zero-Server Operations**: 100% static hosting on [GitHub Pages](https://pustaka-terbuka.github.io/opac/) with release assets on GitHub Releases.
 
 ---
 
@@ -57,8 +57,8 @@ The Pustaka Terbuka ecosystem uses an autonomous multi-repository architecture:
 
 ### Installation
 ```powershell
-git clone https://github.com/pustaka-terbuka/master.git
-cd master
+git clone https://github.com/pustaka-terbuka/opac.git
+cd opac
 npm install
 cp config/config.example.json config/config.json
 ```
@@ -78,7 +78,7 @@ npm run build
 ## Client & LMS Integration
 
 If you are developing a **Library Management System client** (such as a custom .NET Framework Windows Forms application for Windows 7+, SLiMS, Koha, or mobile cataloging):
-- **Real-Time Copy Cataloging**: Query `https://pustaka-terbuka.github.io/master/isbn/{isbn}.xml`
+- **Real-Time Copy Cataloging**: Query `https://pustaka-terbuka.github.io/opac/isbn/{isbn}.xml`
 - **Offline / Rural Caching**: Ingest release dumps into local SQLite via streaming `XmlReader` (< 25MB RAM on Windows 7).
 - **Client Contributions**: Export local holdings and new records as offline `.zip` contribution packages.
 
@@ -98,7 +98,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on submitting and updating ho
 
 ### Link to Your Organization's View
 ```
-https://pustaka-terbuka.github.io/master/?org=YourOrgCode
+https://pustaka-terbuka.github.io/opac/?org=YourOrgCode
 ```
 
 ---

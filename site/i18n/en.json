@@ -56,5 +56,21 @@
   "call_number": "Call No:",
   "isbn_label": "ISBN:",
   "publisher_label": "Publisher:",
-  "year_label": "Year:"
+  "year_label": "Year:",
+  "search_field_all": "All Fields",
+  "search_field_title": "Title",
+  "search_field_author": "Author",
+  "search_field_subject": "Subject",
+  "search_field_isbn": "ISBN / ISSN",
+  "search_field_call": "Call Number",
+  "sort_by": "Sort:",
+  "sort_relevance": "Relevance",
+  "sort_year_desc": "Year (Newest)",
+  "sort_year_asc": "Year (Oldest)",
+  "sort_title_asc": "Title (A–Z)",
+  "clear_search": "Clear Search",
+  "search_stats": "{0} results found in {1}ms",
+  "search_stats_filter": "{0} records matching filters in {1}ms",
+  "searching": "Searching catalog...",
+  "index_unavailable": "Search Index Unavailable"
 }

@@ -56,5 +56,21 @@
   "call_number": "No. Panggilan:",
   "isbn_label": "ISBN:",
   "publisher_label": "Penerbit:",
-  "year_label": "Tahun:"
+  "year_label": "Tahun:",
+  "search_field_all": "Semua Medan",
+  "search_field_title": "Tajuk",
+  "search_field_author": "Pengarang",
+  "search_field_subject": "Subjek",
+  "search_field_isbn": "ISBN / ISSN",
+  "search_field_call": "No. Panggilan",
+  "sort_by": "Susun:",
+  "sort_relevance": "Ketepatan",
+  "sort_year_desc": "Tahun (Terkini)",
+  "sort_year_asc": "Tahun (Terawal)",
+  "sort_title_asc": "Tajuk (A–Z)",
+  "clear_search": "Padam Carian",
+  "search_stats": "{0} rekod ditemui dalam {1}ms",
+  "search_stats_filter": "{0} rekod sepadan dalam {1}ms",
+  "searching": "Mencari rekod katalog...",
+  "index_unavailable": "Indeks Carian Tidak Tersedia"
 }

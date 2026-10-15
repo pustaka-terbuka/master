@@ -85,6 +85,16 @@
             </select>
           </div>
 
+          <div class="filter-group">
+            <label for="sort-filter" data-i18n="sort_by">Susun:</label>
+            <select id="sort-filter">
+              <option value="relevance" data-i18n="sort_relevance">Ketepatan</option>
+              <option value="year-desc" data-i18n="sort_year_desc">Tahun (Terkini)</option>
+              <option value="year-asc" data-i18n="sort_year_asc">Tahun (Terawal)</option>
+              <option value="title-asc" data-i18n="sort_title_asc">Tajuk (A–Z)</option>
+            </select>
+          </div>
+
           <div id="shelf-browse-links" class="shelf-browse-links"></div>
 
           <div id="active-filters-chips" class="active-filters-chips" style="display: none;">
@@ -99,6 +109,7 @@
     <!-- Main Content Layout -->
     <div class="layout-grid">
       <section class="results-section" aria-label="Search Results">
+        <div id="search-stats" class="search-stats-bar" style="display: none;"></div>
         <div id="search-results"></div>
         <!-- Pagination controls -->
         <nav id="pagination-controls" class="pagination-nav" aria-label="Result Pagination" style="display: none;"></nav>
@@ -128,12 +139,12 @@
           <div class="card-body">
             <ul class="tools-link-list">
               <li>
-                <a href="https://github.com/pustaka-terbuka/master/blob/main/docs/CLIENT_DEVELOPER_GUIDE.md" target="_blank" rel="noopener">
+                <a href="https://github.com/pustaka-terbuka/opac/blob/main/docs/CLIENT_DEVELOPER_GUIDE.md" target="_blank" rel="noopener">
                   📖 Panduan Integrasi LMS (.NET / SLiMS)
                 </a>
               </li>
               <li>
-                <a href="https://github.com/pustaka-terbuka/master/blob/main/docs/HARVESTERS.md" target="_blank" rel="noopener">
+                <a href="https://github.com/pustaka-terbuka/opac/blob/main/docs/HARVESTERS.md" target="_blank" rel="noopener">
                   ⚙️ Piawaian Harvester MARC21
                 </a>
               </li>
@@ -192,9 +203,9 @@
         Data bibliografi dilesenkan di bawah ODC-By 1.0.
       </p>
       <p class="footer-links">
-        <a href="https://github.com/pustaka-terbuka/master" target="_blank" rel="noopener">GitHub</a> &bull;
+        <a href="https://github.com/pustaka-terbuka/opac" target="_blank" rel="noopener">GitHub</a> &bull;
         <a href="dumps/">Dumps</a> &bull;
-        <a href="https://github.com/pustaka-terbuka/master/blob/main/docs/AI_AGENT_GUIDE.md" target="_blank" rel="noopener">Docs</a>
+        <a href="https://github.com/pustaka-terbuka/opac/blob/main/docs/AI_AGENT_GUIDE.md" target="_blank" rel="noopener">Docs</a>
       </p>
     </div>
   </footer>
