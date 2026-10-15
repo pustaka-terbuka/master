@@ -32,7 +32,11 @@ for (let i = 0; i < args.length; i++) {
   else if (args[i] === '--skip-dumps') skipDumps = true;
 }
 
-const config = fs.existsSync(configPath) ? JSON.parse(fs.readFileSync(configPath, 'utf8')) : {};
+let resolvedConfigPath = configPath;
+if (!fs.existsSync(resolvedConfigPath) && fs.existsSync('config/config.example.json')) {
+  resolvedConfigPath = 'config/config.example.json';
+}
+const config = fs.existsSync(resolvedConfigPath) ? JSON.parse(fs.readFileSync(resolvedConfigPath, 'utf8')) : {};
 
 // Resolve data directory from registered sources or config
 if (!dataDir) {
@@ -70,7 +74,7 @@ async function run() {
       dataDir,
       distDir,
       dumpsDir: 'dumps',
-      baseUrl: config.baseUrl || '/pustaka-terbuka/',
+      baseUrl: config.baseUrl || '/opac/',
       config,
       isbnFetchFiles,
       issnFetchFiles,

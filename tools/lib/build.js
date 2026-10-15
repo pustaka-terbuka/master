@@ -493,7 +493,18 @@ function generateUniversalViewerHtml(baseUrl) {
 
 <script>
 (function() {
-  const baseUrl = '${baseUrl}';
+  function getBaseUrl() {
+    const path = window.location.pathname;
+    if (path.includes('/opac')) return '/opac/';
+    if (path.includes('/master')) return '/master/';
+    if (path.includes('/pustaka-terbuka')) return '/pustaka-terbuka/';
+    if (window.location.hostname.endsWith('github.io')) {
+      const parts = path.split('/').filter(Boolean);
+      if (parts.length > 0) return '/' + parts[0] + '/';
+    }
+    return '${baseUrl}' || '/opac/';
+  }
+  const baseUrl = getBaseUrl();
   const params = new URLSearchParams(window.location.search);
   let recordId = params.get('id');
   const bookAlias = params.get('book');
@@ -914,7 +925,7 @@ export async function buildSite(options) {
   const dataDir = options.dataDir || 'data';
   const distDir = options.distDir || 'dist';
   const dumpsDir = options.dumpsDir || 'dumps';
-  const baseUrl = options.baseUrl || '/pustaka-terbuka/';
+  const baseUrl = options.baseUrl || config.baseUrl || '/opac/';
   const config = options.config || {};
   const isbnFetchFiles = options.isbnFetchFiles !== false && options.config?.isbnFetchFiles !== false;
   const issnFetchFiles = options.issnFetchFiles !== false && options.config?.issnFetchFiles !== false;
