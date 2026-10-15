@@ -1115,7 +1115,7 @@ async function renderCurrentPage(resultsContainer, isInitial = false) {
     const titleHtml = `<h3><a href="${escapeHTML(bookUrl)}">${escapeHTML(data.meta.title || 'Untitled')}</a></h3>`;
     const authorHtml = data.meta.author ? `<p class="result-author"><strong>${escapeHTML(data.meta.author)}</strong></p>` : '';
     const publisherHtml = data.meta.publisher ? `<p class="result-publisher">${escapeHTML(data.meta.publisher)}</p>` : '';
-    const excerptHtml = data.excerpt ? `<div class="result-excerpt">${data.excerpt}</div>` : '';
+    const excerptHtml = (currentQuery && data.excerpt) ? `<div class="result-excerpt">${data.excerpt}</div>` : '';
 
     // Meta badges (Format, Call number, Year, DDC, LCC, ISBN)
     let badgesHtml = '<div class="result-meta-badges">';

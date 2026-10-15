@@ -1311,21 +1311,22 @@ export async function buildSite(options) {
         const ddcDigits = ddc ? ddc.replace(/^[^0-9]*/, '') : '';
         const ddcClass = ddcDigits ? ddcDigits.charAt(0) : '';
 
-        // Structured HTML with field weighting for Pagefind relevance:
-        // Title (weight 10) > Author (weight 7) > Subjects (weight 5) > Metadata/Classification (weight 4) > Summary/Notes (weight 1)
-        const contentHtml = `
-          <h1 data-pagefind-weight="10">${escapeHTML(title || '')}</h1>
-          <h2 data-pagefind-weight="7">${escapeHTML(author || '')}</h2>
-          <div data-pagefind-weight="5">${(subjects || []).map(s => escapeHTML(s)).join(', ')}</div>
-          <div data-pagefind-weight="4">
-            ${escapeHTML(publisher || '')} ${isbns.join(' ')} ${issns.join(' ')} ${escapeHTML(lcc || '')} ${escapeHTML(ddc || '')} ${escapeHTML(callNum852 || '')}
-          </div>
-          <p data-pagefind-weight="1">${escapeHTML(indexedSummary || '')} ${escapeHTML(note || '')}</p>
-        `.trim();
+        // Textual content for Pagefind indexing and clean human-readable excerpts
+        const cleanSubjects = (subjects || []).join(', ');
+        const identifiers = [publisher, isbns.join(' '), issns.join(' '), lcc, ddc, callNum852].filter(Boolean).join(' ');
+        const textParts = [
+          title,
+          author,
+          cleanSubjects,
+          identifiers,
+          indexedSummary,
+          note
+        ].filter(Boolean);
+        const recordContent = textParts.join('. ');
 
         await pfIndex.addCustomRecord({
           url: `book/?id=${recordId}`,
-          content: contentHtml,
+          content: recordContent,
           language: 'en',
           meta: {
             title: title || 'Untitled',
