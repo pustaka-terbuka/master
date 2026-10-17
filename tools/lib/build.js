@@ -1102,6 +1102,7 @@ export async function buildSite(options) {
 
   let staticPagesWritten = 0;
   let pagefindRecordsIndexed = 0;
+  const orgIndexedCounts = {};
 
   for (let sIdx = 0; sIdx < shardEntries.length; sIdx++) {
     const { shard, shardDir } = shardEntries[sIdx];
@@ -1318,7 +1319,8 @@ export async function buildSite(options) {
       });
 
       // Pagefind index (limit records indexed to avoid Pagefind fragment file explosion on huge catalogs)
-      if (pagefindRecordsIndexed < maxPagefindRecords) {
+      const orgNeedsIndexed = orgCodes.some(org => (orgIndexedCounts[org] || 0) < 50);
+      if (pagefindRecordsIndexed < maxPagefindRecords || orgNeedsIndexed) {
         const indexedSummary = summary ? summary.substring(0, 150) : '';
         const schemes = [];
         if (lcc) schemes.push('LCC');
@@ -1372,6 +1374,9 @@ export async function buildSite(options) {
             title: title ? title.toLowerCase() : ''
           }
         });
+        for (const org of orgCodes) {
+          orgIndexedCounts[org] = (orgIndexedCounts[org] || 0) + 1;
+        }
         pagefindRecordsIndexed++;
       }
 
@@ -1504,8 +1509,12 @@ export async function buildSite(options) {
 
   // Clean old Pagefind index directory to prevent stale fragment accumulation
   const pagefindOutputDir = path.join(distDir, "pagefind");
-  if (fs.existsSync(pagefindOutputDir)) {
-    fs.rmSync(pagefindOutputDir, { recursive: true, force: true });
+  try {
+    if (fs.existsSync(pagefindOutputDir)) {
+      fs.rmSync(pagefindOutputDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 300 });
+    }
+  } catch (err) {
+    console.warn(`[WARN] Pagefind output dir cleanup warning: ${err.message}`);
   }
 
   // Write Pagefind files
