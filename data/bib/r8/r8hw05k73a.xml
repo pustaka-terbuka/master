@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">69</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">131530232</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)69</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shah Alam</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">P90 .D47 1976</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">P90</marc:subfield>
+      <marc:subfield code="b">.D47 1976</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1=" " ind2=" ">
+      <marc:subfield code="a">DeVito, Joseph A.</marc:subfield>
+      <marc:subfield code="c">1938-</marc:subfield>
+      <marc:subfield code="y">comp</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Communication</marc:subfield>
+      <marc:subfield code="b">concepts and processes</marc:subfield>
+      <marc:subfield code="c">Joseph A. DeVito</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="250" ind1=" " ind2=" ">
+      <marc:subfield code="a">Rev. and enl</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Englewood Cliffs, N.J.</marc:subfield>
+      <marc:subfield code="b">Prentice-Hall</marc:subfield>
+      <marc:subfield code="c">1976</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xvii, 329 p.</marc:subfield>
+      <marc:subfield code="b">ill.</marc:subfield>
+      <marc:subfield code="c">23 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes indexes.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Bibliography: p. 318-323.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Communication</marc:subfield>
+      <marc:subfield code="x">Addresses, essays, lectures</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR UNDANG-UNDANG)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR UNDANG-UNDANG)</marc:subfield>
+      <marc:subfield code="o">P90 .D47 1976</marc:subfield>
+      <marc:subfield code="p">UiTM-000000449456</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM TERENGGANU (PERPUSTAKAAN CENDEKIAWAN KAMPUS DUNGUN)</marc:subfield>
+      <marc:subfield code="b">UiTM TERENGGANU (PERPUSTAKAAN CENDEKIAWAN KAMPUS DUNGUN)</marc:subfield>
+      <marc:subfield code="o">P90 .D47 1976</marc:subfield>
+      <marc:subfield code="p">UiTM-000000007144</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

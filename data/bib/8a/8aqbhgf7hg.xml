@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">946</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">444864814</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)946</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shah Alam</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TK5105.5 .I3426 1982</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">TK5105.5</marc:subfield>
+      <marc:subfield code="b">.I3426 1982</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="110" ind1=" " ind2=" ">
+      <marc:subfield code="a">IFIP WG 6.1 International Workshop on Protocal Specification, Testing and Verification</marc:subfield>
+      <marc:subfield code="i">2nd</marc:subfield>
+      <marc:subfield code="j">Idyllwild, California, U.S.A</marc:subfield>
+      <marc:subfield code="k">1982</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Protocol specification, testing, and verification</marc:subfield>
+      <marc:subfield code="b">proceedings of the IFIP WG 6.1 Second International Workshop on Protocol Specification, Testing, and Verification, organized by USC/ISI, Idyllwild, California, U.S.A., 17-20 May 1982</marc:subfield>
+      <marc:subfield code="c">edited b</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Amsterdam</marc:subfield>
+      <marc:subfield code="a">New York</marc:subfield>
+      <marc:subfield code="a">New York</marc:subfield>
+      <marc:subfield code="b">North-Holland Pub. Co.</marc:subfield>
+      <marc:subfield code="b">Sole distributors for the U.S.A. and Canada, Elsevier Science Pub. Co.</marc:subfield>
+      <marc:subfield code="c">1982</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">ix, 572 p.</marc:subfield>
+      <marc:subfield code="b">ill.</marc:subfield>
+      <marc:subfield code="c">24 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references and index</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Computer network protocols</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Sunshine, Carl A.</marc:subfield>
+      <marc:subfield code="y">editor</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1=" " ind2=" ">
+      <marc:subfield code="a">University of Southern California</marc:subfield>
+      <marc:subfield code="c">Information Sciences Institute</marc:subfield>
+      <marc:subfield code="a">International Federation for Information Processing (IFIP)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR KEJURUTERAAN)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR KEJURUTERAAN)</marc:subfield>
+      <marc:subfield code="o">TK5105.5 .I3426 1982</marc:subfield>
+      <marc:subfield code="p">UiTM-000000199848</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

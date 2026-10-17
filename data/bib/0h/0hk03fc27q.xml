@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">1040</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">444873309</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1040</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shah Alam</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TK5105.5 .I3425 1988</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">TK5105.5</marc:subfield>
+      <marc:subfield code="b">.I3425 1988</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="110" ind1=" " ind2=" ">
+      <marc:subfield code="a">International Federation for Information Processing (IFIP) TC6/TC8 Open Symposium Networking Information Processing System</marc:subfield>
+      <marc:subfield code="j">Sofia, Bulgaria</marc:subfield>
+      <marc:subfield code="k">1988</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Network information processing systems</marc:subfield>
+      <marc:subfield code="b">proceedings of the IFIP TC6/TC8 Open Symposium on Network Information Processing Systems, Sofia, Bulgaria, 9-13 May, 1988</marc:subfield>
+      <marc:subfield code="c">edited by Kiril Boyanov, Rasko Angelinov</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Amsterdam</marc:subfield>
+      <marc:subfield code="b">North-Holland</marc:subfield>
+      <marc:subfield code="c">1989</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xvi, 349 p.</marc:subfield>
+      <marc:subfield code="b">ill.</marc:subfield>
+      <marc:subfield code="c">24 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">&amp;quot;Sponsored by IFIP Technical Committee 6, Data Communication, IFIP Technical Committee 8, Information Systems, [and] International Federation for Information Processing (IFIP); organized by the Bulgarian Academy of Sciences ...&amp;quot;</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographies and index</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Electronic data processing</marc:subfield>
+      <marc:subfield code="a">Computer networks</marc:subfield>
+      <marc:subfield code="x">Distributed processing</marc:subfield>
+      <marc:subfield code="x">Distributed processing</marc:subfield>
+      <marc:subfield code="v">Congresses</marc:subfield>
+      <marc:subfield code="v">Congresses</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Angelinov, Rasko</marc:subfield>
+      <marc:subfield code="y">joint editor</marc:subfield>
+      <marc:subfield code="a">Boianov, Kiril L.</marc:subfield>
+      <marc:subfield code="y">editor</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1=" " ind2=" ">
+      <marc:subfield code="a">International Federation for Information Processing (IFIP)</marc:subfield>
+      <marc:subfield code="a">International Federation for Information Processing</marc:subfield>
+      <marc:subfield code="a">International Federation for Information Processing</marc:subfield>
+      <marc:subfield code="c">Technical Committee 6</marc:subfield>
+      <marc:subfield code="c">Technical Committee for Information Systems</marc:subfield>
+      <marc:subfield code="c">Technical Committee 6</marc:subfield>
+      <marc:subfield code="a">Bultgarska akademia na naukite</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR KEJURUTERAAN)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR KEJURUTERAAN)</marc:subfield>
+      <marc:subfield code="o">TK5105.5 .I3425 1988</marc:subfield>
+      <marc:subfield code="p">UiTM-000000295996</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

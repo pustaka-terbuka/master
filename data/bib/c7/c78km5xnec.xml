@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">1016</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">044486220X</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1016</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">UKM</marc:subfield>
+      <marc:subfield code="d">ITMB</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TK5105.5 .I34 1981</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">TK5105.5</marc:subfield>
+      <marc:subfield code="b">.I34 1981</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Data communication and computer networks</marc:subfield>
+      <marc:subfield code="b">proceedings of the IFIP (TC-6)/CSI Conference on Networks 80, Bombay, India, 4-6 February, 1981</marc:subfield>
+      <marc:subfield code="c">edited by S. Ramani ; sponsors, IFIP TC-6 [and] the Computer Society of India</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Amsterdam</marc:subfield>
+      <marc:subfield code="b">Elsevier North-Holland</marc:subfield>
+      <marc:subfield code="c">1981</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">viii, 309 p.</marc:subfield>
+      <marc:subfield code="b">ill.</marc:subfield>
+      <marc:subfield code="c">27 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographies</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Computer networks</marc:subfield>
+      <marc:subfield code="a">Data transmission systems</marc:subfield>
+      <marc:subfield code="v">Congresses</marc:subfield>
+      <marc:subfield code="v">Congresses</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Ramini, S.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1=" " ind2=" ">
+      <marc:subfield code="a">International Federation for Information Processing, Technical Committee 6</marc:subfield>
+      <marc:subfield code="a">Computer Society of India</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR KEJURUTERAAN)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR KEJURUTERAAN)</marc:subfield>
+      <marc:subfield code="o">TK5105.5 .I34 1981</marc:subfield>
+      <marc:subfield code="p">UiTM-000000187133</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">53</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">882751050</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)53</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shah Alam</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QA279 .K45 1952</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">QA279</marc:subfield>
+      <marc:subfield code="b">.K45 1952</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1=" " ind2=" ">
+      <marc:subfield code="a">Kempthorne, Oscar</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">The design and analysis of experiments</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2=" ">
+      <marc:subfield code="a">Huntington, N.Y.</marc:subfield>
+      <marc:subfield code="b">R. E. Krieger Pub. Co.</marc:subfield>
+      <marc:subfield code="c">1952</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xix, 631 pages</marc:subfield>
+      <marc:subfield code="b">illustrations</marc:subfield>
+      <marc:subfield code="c">24 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Originally published by Wiley, New York, in series: Wiley publications in statistics</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Experimental design</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="b">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="o">QA279 .K45 1952</marc:subfield>
+      <marc:subfield code="p">UiTM-000000018656</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="b">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="o">QA279 .K45 1952</marc:subfield>
+      <marc:subfield code="p">UiTM-000000018657</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA279 .K45 1952</marc:subfield>
+      <marc:subfield code="p">UiTM-000000138543</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

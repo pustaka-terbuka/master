@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">1133</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">444704108</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1133</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shah Alam</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1=" " ind2=" ">
+      <marc:subfield code="a">engfrejpn</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QA76.6 .F7227 1986</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">QA76.6</marc:subfield>
+      <marc:subfield code="b">.F7227 1986</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Programming of future generation computers</marc:subfield>
+      <marc:subfield code="b">proceedings of the First Franco-Japanese Symposium on Programming of Future Generation Computers, Tokyo, Japan, 6-8 October 1986</marc:subfield>
+      <marc:subfield code="c">edited by K. Fuchi, M. Nivat</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Amsterdam</marc:subfield>
+      <marc:subfield code="a">New York</marc:subfield>
+      <marc:subfield code="a">New York, N.Y., U.S.A.</marc:subfield>
+      <marc:subfield code="b">North-Holland</marc:subfield>
+      <marc:subfield code="b">Sole distributors for the U.S.A. and Canada, Elsevier Science Pub. Co.</marc:subfield>
+      <marc:subfield code="c">1988</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xvii, 456 p.</marc:subfield>
+      <marc:subfield code="b">ill.</marc:subfield>
+      <marc:subfield code="c">25 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Foreword in English, French, and Japanese.#</marc:subfield>
+      <marc:subfield code="a">&amp;quot;ICOT, INRIA&amp;quot;--Cover.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographies.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Electronic digital computers</marc:subfield>
+      <marc:subfield code="x">Programming</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+      <marc:subfield code="a">Fifth generation computers</marc:subfield>
+      <marc:subfield code="x">Programming</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Nivat, M</marc:subfield>
+      <marc:subfield code="a">Fuchi, Kazuhiro</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shin Sedai Konpyuta Gijutsu Kaihatdsu Kiko (Japan</marc:subfield>
+      <marc:subfield code="a">Institut national de recherche en informatique et en automatique (France)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="740" ind1=" " ind2=" ">
+      <marc:subfield code="a">Future generation computers</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR JLN OTHMAN)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR JLN OTHMAN)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .F7227 1986</marc:subfield>
+      <marc:subfield code="p">UiTM-000000267818</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

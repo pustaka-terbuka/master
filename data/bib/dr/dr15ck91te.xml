@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>01398nam a22003735i 4500</marc:leader>
+    <marc:controlfield tag="000">nam a22     7a 4500</marc:controlfield>
+    <marc:controlfield tag="001">22246714</marc:controlfield>
+    <marc:controlfield tag="005">20260913123614</marc:controlfield>
+    <marc:controlfield tag="008">210921s2022    nyua          000 0 eng</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9781260456400</marc:subfield>
+      <marc:subfield code="q">hardback</marc:subfield>
+      <marc:subfield code="c">RM338.00</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UMK)22246714</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+      <marc:subfield code="d">UKM</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">TJ163.9</marc:subfield>
+      <marc:subfield code="b">.V368 2022 3</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2=" ">
+      <marc:subfield code="a">Vanek, Francis M.,</marc:subfield>
+      <marc:subfield code="e">author.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Energy systems engineering :</marc:subfield>
+      <marc:subfield code="b">evaluation and implementation /</marc:subfield>
+      <marc:subfield code="c">Francis M. Vanek, Michael W. Ellis, David A. Dillard, Louis D. Albright, Largus T. Angenent.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="250" ind1=" " ind2=" ">
+      <marc:subfield code="a">Fourth edition.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="a">New York :</marc:subfield>
+      <marc:subfield code="b">McGraw Hill,</marc:subfield>
+      <marc:subfield code="c">2022</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xxvii, 734 pages :</marc:subfield>
+      <marc:subfield code="b">illustrations;</marc:subfield>
+      <marc:subfield code="c">25 cm.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="593" ind1=" " ind2=" ">
+      <marc:subfield code="a">PS Areesh education\Pustakawan\Puan Nor Asiah\KL Bookfair 2023.azrul-OC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Energy conservation.</marc:subfield>
+      <marc:subfield code="9">59633</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Power (Mechanics).</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Ellis, Michael W.,</marc:subfield>
+      <marc:subfield code="e">author.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Dillard, David A.,</marc:subfield>
+      <marc:subfield code="e">author.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Albright, Louis D.,</marc:subfield>
+      <marc:subfield code="e">author.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Angenent, Largus T.,</marc:subfield>
+      <marc:subfield code="e">author.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="907" ind1=" " ind2=" ">
+      <marc:subfield code="a">.b17005991</marc:subfield>
+      <marc:subfield code="b">2024-03-18</marc:subfield>
+      <marc:subfield code="c">2023-10-05</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="c">1</marc:subfield>
+      <marc:subfield code="n">0</marc:subfield>
+      <marc:subfield code="k">TJ163.9 .V368 2022 3</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="949" ind1=" " ind2=" ">
+      <marc:subfield code="a">600000858</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-09-28</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">388.22</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398891</marc:subfield>
+      <marc:subfield code="r">2026-09-28 00:00:00</marc:subfield>
+      <marc:subfield code="v">413</marc:subfield>
+      <marc:subfield code="w">2026-09-28</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-09-28</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">388.22</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398892</marc:subfield>
+      <marc:subfield code="r">2026-09-28 00:00:00</marc:subfield>
+      <marc:subfield code="v">413</marc:subfield>
+      <marc:subfield code="w">2026-09-28</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="990" ind1=" " ind2=" ">
+      <marc:subfield code="a">zsz</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="991" ind1=" " ind2=" ">
+      <marc:subfield code="a">Fakulti Kejuruteraan dan Alam Bina</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">umk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="998" ind1=" " ind2=" ">
+      <marc:subfield code="a">l</marc:subfield>
+      <marc:subfield code="b">2023-10-05</marc:subfield>
+      <marc:subfield code="c">m</marc:subfield>
+      <marc:subfield code="d">a</marc:subfield>
+      <marc:subfield code="e">-</marc:subfield>
+      <marc:subfield code="f">eng</marc:subfield>
+      <marc:subfield code="g">nyu</marc:subfield>
+      <marc:subfield code="h">0</marc:subfield>
+      <marc:subfield code="y">0</marc:subfield>
+      <marc:subfield code="z">.b17005991</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">132629</marc:subfield>
+      <marc:subfield code="d">132629</marc:subfield>
+      <marc:subfield code="x">1</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

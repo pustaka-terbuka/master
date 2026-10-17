@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">877</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">471885525</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)877</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shah Alam</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QA76.9.A73 S36 1985</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">QA76.9.A73</marc:subfield>
+      <marc:subfield code="b">S36 1985</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1=" " ind2=" ">
+      <marc:subfield code="a">Schneider, G. Michael</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">The principles of computer organization</marc:subfield>
+      <marc:subfield code="c">G. Michael Schneider</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">New York</marc:subfield>
+      <marc:subfield code="b">Wiley</marc:subfield>
+      <marc:subfield code="c">1985</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xvii, 526 p.</marc:subfield>
+      <marc:subfield code="b">ill.</marc:subfield>
+      <marc:subfield code="c">25 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Computer organization</marc:subfield>
+      <marc:subfield code="a">Assembler language (Computer program language)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.A73 S36 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000215396</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.A73 S36 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000215397</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.A73 S36 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000217914</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.A73 S36 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000221750</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">27</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">126045402</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)27</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shah Alam</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QA276.18 .T43 1982</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">QA276.18</marc:subfield>
+      <marc:subfield code="b">.T43 1982</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Teaching of statistics and statistical consulting</marc:subfield>
+      <marc:subfield code="b">proceedings of a conference held at the Ohio State University, November 24-25, 1980</marc:subfield>
+      <marc:subfield code="c">edited by Jagdish S. Rustagi, Douglas A. Wolfe</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">New York</marc:subfield>
+      <marc:subfield code="b">Academic Press</marc:subfield>
+      <marc:subfield code="c">1982</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xvi, 548 p.</marc:subfield>
+      <marc:subfield code="b">ill.</marc:subfield>
+      <marc:subfield code="c">24 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographies and index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="600" ind1=" " ind2=" ">
+      <marc:subfield code="a">Whitney</marc:subfield>
+      <marc:subfield code="h">D. Ransom</marc:subfield>
+      <marc:subfield code="q">Donald Ransom</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Statistics</marc:subfield>
+      <marc:subfield code="x">Study and teaching (Higher)</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+      <marc:subfield code="a">Statistics</marc:subfield>
+      <marc:subfield code="x">Study and teaching (Graduate)</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+      <marc:subfield code="a">Statistical consultants</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Rustagi, Jagdish S</marc:subfield>
+      <marc:subfield code="a">Wolfe, Douglas A</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1=" " ind2=" ">
+      <marc:subfield code="a">Ohio State University</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA276.18 .T43 1982</marc:subfield>
+      <marc:subfield code="p">UiTM-000000243721</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR ALAM BINA)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR ALAM BINA)</marc:subfield>
+      <marc:subfield code="o">QA276.18 .T43 1982</marc:subfield>
+      <marc:subfield code="p">UiTM-000000218389</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR SAINS DAN TEKNOLOGI)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR SAINS DAN TEKNOLOGI)</marc:subfield>
+      <marc:subfield code="o">QA276.18 .T43 1982</marc:subfield>
+      <marc:subfield code="p">UiTM-000000218390</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

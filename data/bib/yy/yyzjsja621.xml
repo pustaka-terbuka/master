@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">859</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="015" ind1=" " ind2=" ">
+      <marc:subfield code="a">ANL</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">702207691</marc:subfield>
+      <marc:subfield code="q">paperback</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)859</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="c">UiTM</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1=" " ind2=" ">
+      <marc:subfield code="a">eng</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QA76.5 .D38 1971</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">QA76.5</marc:subfield>
+      <marc:subfield code="b">.D38 1971</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">DATA ACQUISITION AND REAL-TIME SYSTEMS</marc:subfield>
+      <marc:subfield code="b">proceedings of a seminar.</marc:subfield>
+      <marc:subfield code="c">Editors: D. E. Lawrence and P. M. Fenwick</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="250" ind1=" " ind2=" ">
+      <marc:subfield code="a">Print book : Conference publication : English</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">St. Lucia,[Queensland]</marc:subfield>
+      <marc:subfield code="b">University of Queenslan d Press</marc:subfield>
+      <marc:subfield code="c">1971</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2=" ">
+      <marc:subfield code="a">Canberra</marc:subfield>
+      <marc:subfield code="b">Computer Center, Australian National University</marc:subfield>
+      <marc:subfield code="c">1971</marc:subfield>
+      <marc:subfield code="c">©1971</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">167 pages</marc:subfield>
+      <marc:subfield code="b">illustrations, diagrs.</marc:subfield>
+      <marc:subfield code="c">25 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Organized by and held at the Computer Centre, Australian National University, Dec. 9, 1970.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographies.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="546" ind1=" " ind2=" ">
+      <marc:subfield code="a">In English</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Computer input-output equipment</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+      <marc:subfield code="a">Electronic digital computers</marc:subfield>
+      <marc:subfield code="x">Programming</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+      <marc:subfield code="a">Automatic data collection systems</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+      <marc:subfield code="a">Real-time data processing</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Lawrence, D. E.</marc:subfield>
+      <marc:subfield code="e">editor</marc:subfield>
+      <marc:subfield code="q">David Emrys</marc:subfield>
+      <marc:subfield code="y">ed</marc:subfield>
+      <marc:subfield code="a">Fenwick, P. M.</marc:subfield>
+      <marc:subfield code="y">ed</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1=" " ind2=" ">
+      <marc:subfield code="a">Australian National University, Canberra.</marc:subfield>
+      <marc:subfield code="c">Computer Centre</marc:subfield>
+      <marc:subfield code="e">issuing body</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.5 .D38 1971</marc:subfield>
+      <marc:subfield code="p">UiTM-000000102162</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">940</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">672222353</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)940</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shah Alam</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TK5105 .D3696 1985</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">TK5105</marc:subfield>
+      <marc:subfield code="b">.D3696 1985</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Data communications, networks, and systems</marc:subfield>
+      <marc:subfield code="c">Thomas C. Bartee, editor-in-chief</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="250" ind1=" " ind2=" ">
+      <marc:subfield code="a">1st ed</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2=" ">
+      <marc:subfield code="a">Indianapolis, Ind.</marc:subfield>
+      <marc:subfield code="b">H.W. Sams</marc:subfield>
+      <marc:subfield code="c">1985</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">359 p.</marc:subfield>
+      <marc:subfield code="b">illustration</marc:subfield>
+      <marc:subfield code="c">27 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographies and index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Local area networks (Computer networks)</marc:subfield>
+      <marc:subfield code="a">Computer network protocols</marc:subfield>
+      <marc:subfield code="a">Data transmission systems</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Bartee, Thomas C</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="b">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="o">TK5105 .D3696 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000022480</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR KEJURUTERAAN)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR KEJURUTERAAN)</marc:subfield>
+      <marc:subfield code="o">TK5105 .D3696 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000217315</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR KEJURUTERAAN)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR KEJURUTERAAN)</marc:subfield>
+      <marc:subfield code="o">TK5105 .D3696 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000409298</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">918</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">534920853</marc:subfield>
+      <marc:subfield code="q">hardcover</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)918</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+      <marc:subfield code="d">UiTM</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QA76.9.S88 J67 1990</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">QA76.9.S88</marc:subfield>
+      <marc:subfield code="b">J67 1990</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1=" " ind2=" ">
+      <marc:subfield code="a">Jordan, Eleanor W</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Systems development</marc:subfield>
+      <marc:subfield code="b">requirements, evaluation, design, and implementation</marc:subfield>
+      <marc:subfield code="c">Eleanor W. Jordan, Jefry J. Machesky, with J.B. Matkowski</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2=" ">
+      <marc:subfield code="a">Boston</marc:subfield>
+      <marc:subfield code="b">PWS-KENT Pub. Co.</marc:subfield>
+      <marc:subfield code="c">1990</marc:subfield>
+      <marc:subfield code="c">©1990</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xx, 648 pages</marc:subfield>
+      <marc:subfield code="b">some color, illustrations</marc:subfield>
+      <marc:subfield code="c">25 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdacontent</marc:subfield>
+      <marc:subfield code="a">text</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdamedia</marc:subfield>
+      <marc:subfield code="a">unmediated</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+      <marc:subfield code="a">volume</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="490" ind1=" " ind2=" ">
+      <marc:subfield code="a">PWS-KENT series in computer science</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references and index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">Today it is likely that anyone working in an organization will be involved in systems development to some extent. The computer hardware and development tools now available have made it possible for employees to be directly responsible for creating their own systems, based on their specific needs.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">System analysis</marc:subfield>
+      <marc:subfield code="a">System design</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Matkowski, J. B</marc:subfield>
+      <marc:subfield code="a">Machesky, Jefry J</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM MELAKA (PTAR KAMPUS JASIN)</marc:subfield>
+      <marc:subfield code="b">UiTM MELAKA (PTAR KAMPUS JASIN)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 J67 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-0000000357KJ</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM MELAKA (PTAR KAMPUS JASIN)</marc:subfield>
+      <marc:subfield code="b">UiTM MELAKA (PTAR KAMPUS JASIN)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 J67 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-0000000358KJ</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PAHANG (PTAR KAMPUS RAUB)</marc:subfield>
+      <marc:subfield code="b">UiTM PAHANG (PTAR KAMPUS RAUB)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 J67 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000031107</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 J67 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000306470</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 J67 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000408078</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>03867cam a22004098i 4500</marc:leader>
+    <marc:controlfield tag="000">nam a22     7a 4500</marc:controlfield>
+    <marc:controlfield tag="001">23912109</marc:controlfield>
+    <marc:controlfield tag="005">20260913153144</marc:controlfield>
+    <marc:controlfield tag="008">241104s2025    nju           001 0 eng</marc:controlfield>
+    <marc:datafield tag="010" ind1=" " ind2=" ">
+      <marc:subfield code="a">2024050252</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9781394308828</marc:subfield>
+      <marc:subfield code="q">(cloth)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394308842</marc:subfield>
+      <marc:subfield code="q">(adobe pdf)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394308835</marc:subfield>
+      <marc:subfield code="q">(epub)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">23912109</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UMK)23912109</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+      <marc:subfield code="d">DLC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="042" ind1=" " ind2=" ">
+      <marc:subfield code="a">pcc</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TP184</marc:subfield>
+      <marc:subfield code="b">.A398 2025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="082" ind1="0" ind2="0">
+      <marc:subfield code="a">510.285/536</marc:subfield>
+      <marc:subfield code="2">23/eng/20250226</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2=" ">
+      <marc:subfield code="a">Al-Malah, Kamal I. M.,</marc:subfield>
+      <marc:subfield code="e">author.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">MATLAB-based computations of chemical engineering principles /</marc:subfield>
+      <marc:subfield code="c">Kamal I.M. Al-Malah, Russeifa, Jordan.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="263" ind1=" " ind2=" ">
+      <marc:subfield code="a">2502</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="a">Hoboken, New Jersey :</marc:subfield>
+      <marc:subfield code="b">Wiley,</marc:subfield>
+      <marc:subfield code="c">[2025]</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">pages cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="505" ind1="2" ind2=" ">
+      <marc:subfield code="a">What is chemical engineering? -- Measurement, analysis, and presentation of engineering data -- Precision measurement : instruments for process variables.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">&quot;In this digital era, we have to assure a smooth transition from the analog. This book serves as transforming classical chemical engineering principles and calculations into MATLAB-based calculations of chemical engineering principles. Consequently, I attempted to solve the problem in hand using two methods: Manually (i.e., classical) and via implementing MATLAB code (i.e., digital or software-assisted). Whenever the manual approach is made of simple steps, then the MATLAB-based approach will not be worth it. The MATLAB-based approach will definitely supersede the manual approach when it comes to problems involving multi-steps or complex solution or dealing with sets or databases of data, like physical properties of compounds, in general. The code has been verified using MATLAB platform. The MATLAB code is available for the user within the chapter itself or as an appendix. The human language algorithm is also included for the sake of learning, or the MATLAB code itself is annotated by an explanatory comment. I dedicated seven appendices from B to H, which contain large-size MATLAB codes for the instructor/user to refer to later. In general, a small-size MATLAB code is kept within the relevant chapter section. The book is meant to be a textbook, equipped with end of chapter problems, for a sophomore Chemical Engineering Principles course, or as it is called in different titles: Chemical Engineering Stoichiometric Calculations, Fundamentals of Chemical Engineering, Introduction to Chemical Engineering, or Essentials of Chemical Engineering. The textbook is essentially devoted to core chemical engineering principles with the injection of MATLAB code in solving numerical problems related to such principles. The chapters comprise: System units and measurement, process variables measurement, measurement variations and uncertainty, the types of errors involved in measurements, total and component material balances, chemical reaction stoichiometry, equations of state for gases, properties of pure substances and of mixtures, vapor liquid equilibrium for a single and multi-component mixture, and energy balance applications for closed and open (flow) systems&quot;--</marc:subfield>
+      <marc:subfield code="c">Provided by publisher.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="630" ind1="0" ind2="0">
+      <marc:subfield code="a">MATLAB.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Chemical engineering</marc:subfield>
+      <marc:subfield code="v">Problems, exercises, etc.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Chemical engineering</marc:subfield>
+      <marc:subfield code="x">Data processing.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="776" ind1="0" ind2="8">
+      <marc:subfield code="i">Online version:</marc:subfield>
+      <marc:subfield code="a">Al-Malah, Kamal I. M.</marc:subfield>
+      <marc:subfield code="t">MATLAB-based computations of chemical engineering principles</marc:subfield>
+      <marc:subfield code="d">Hoboken, New Jersey : Wiley, [2025]</marc:subfield>
+      <marc:subfield code="z">9781394308842</marc:subfield>
+      <marc:subfield code="w">(DLC) 2024050253</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="906" ind1=" " ind2=" ">
+      <marc:subfield code="a">7</marc:subfield>
+      <marc:subfield code="b">cbc</marc:subfield>
+      <marc:subfield code="c">orignew</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+      <marc:subfield code="e">ecip</marc:subfield>
+      <marc:subfield code="f">20</marc:subfield>
+      <marc:subfield code="g">y-gencatlg</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="925" ind1="0" ind2=" ">
+      <marc:subfield code="a">acquire</marc:subfield>
+      <marc:subfield code="b">1 shelf copy</marc:subfield>
+      <marc:subfield code="x">policy default</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-04</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">603.36</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398944</marc:subfield>
+      <marc:subfield code="r">2026-10-04 00:00:00</marc:subfield>
+      <marc:subfield code="v">635.12</marc:subfield>
+      <marc:subfield code="w">2026-10-04</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-04</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">603.36</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398945</marc:subfield>
+      <marc:subfield code="r">2026-10-04 00:00:00</marc:subfield>
+      <marc:subfield code="v">635.12</marc:subfield>
+      <marc:subfield code="w">2026-10-04</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="955" ind1=" " ind2=" ">
+      <marc:subfield code="w">xm13 2025-02-26</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">umk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">132657</marc:subfield>
+      <marc:subfield code="d">132657</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

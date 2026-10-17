@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">6</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="021" ind1=" " ind2=" ">
+      <marc:subfield code="a">T000032077</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)6</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shah Alam</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">T49.5 .S684 1987</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">T49.5</marc:subfield>
+      <marc:subfield code="b">.S684 1987</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Spirit of enterprise</marc:subfield>
+      <marc:subfield code="b">the 1987 Rolex Awards</marc:subfield>
+      <marc:subfield code="c">foreword by George Van B. Cochran, preface by Andre J. Heiniger</marc:subfield>
+      <marc:subfield code="f">edited by David W. Reed</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Wokingham, Berkshire, England</marc:subfield>
+      <marc:subfield code="b">Van Nostrand Reinhold</marc:subfield>
+      <marc:subfield code="c">1987</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xx, 460 p.</marc:subfield>
+      <marc:subfield code="b">ill. (some col.)</marc:subfield>
+      <marc:subfield code="c">24 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Projects submitted to Rolex Awards for Enterprise contest conducted by Montres Rolex S.A</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Inventions</marc:subfield>
+      <marc:subfield code="x">Awards</marc:subfield>
+      <marc:subfield code="a">Science</marc:subfield>
+      <marc:subfield code="x">Awards</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Reed, David W</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1=" " ind2=" ">
+      <marc:subfield code="a">Montres Rolex S.A</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">T49.5 .S684 1987</marc:subfield>
+      <marc:subfield code="p">UiTM-6</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

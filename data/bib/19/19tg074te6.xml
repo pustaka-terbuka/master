@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>01247cam a2200313 i 4500</marc:leader>
+    <marc:controlfield tag="001">23891739</marc:controlfield>
+    <marc:controlfield tag="003">UMK</marc:controlfield>
+    <marc:controlfield tag="005">20250519102912</marc:controlfield>
+    <marc:controlfield tag="008">241013s2024    paua     b    001 0 eng</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9798369320075</marc:subfield>
+      <marc:subfield code="q">(hardcover)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UMK)23891739</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+      <marc:subfield code="d">DLC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QA76.73.C153</marc:subfield>
+      <marc:subfield code="b">A416 2024</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2=" ">
+      <marc:subfield code="a">Al Ajrawi, Shams,</marc:subfield>
+      <marc:subfield code="d">1983-</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Advancements, Applications, and Foundations of C++ /</marc:subfield>
+      <marc:subfield code="c">by Shams Al Ajrawi, Charity Jennings, Paul Menefee, Wathiq Mansoor, Mansoor Ahmed Alaali.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="a">Hershey, PA :</marc:subfield>
+      <marc:subfield code="b">IGI Global,</marc:subfield>
+      <marc:subfield code="c">[2024]</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xii, 564 pages :</marc:subfield>
+      <marc:subfield code="b">illustrations ;</marc:subfield>
+      <marc:subfield code="c">24 cm.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="490" ind1="0" ind2=" ">
+      <marc:subfield code="a">A volume in the Advances in Systems Analysis, Software Engineering, and High Performance Computing (ASASEHPC) Book Series ;</marc:subfield>
+      <marc:subfield code="x">2327-3453</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Dr. Fakhitah Binti Ridzuan</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references and index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1="1" ind2="0">
+      <marc:subfield code="a">C++ (Computer program language)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Jennings, Charity,</marc:subfield>
+      <marc:subfield code="d">1974-</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Menefee, Paul,</marc:subfield>
+      <marc:subfield code="d">1972-</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Mansoor, Wathiq,</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Alaali, Mansoor,</marc:subfield>
+      <marc:subfield code="d">1954-</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="c">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">KOTA</marc:subfield>
+      <marc:subfield code="b">KOTA</marc:subfield>
+      <marc:subfield code="c">koos</marc:subfield>
+      <marc:subfield code="d">2025-04-20</marc:subfield>
+      <marc:subfield code="e">6</marc:subfield>
+      <marc:subfield code="g">1267.15</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">QA76.73.C153 A416 2024</marc:subfield>
+      <marc:subfield code="p">10393444</marc:subfield>
+      <marc:subfield code="r">2025-04-20 00:00:00</marc:subfield>
+      <marc:subfield code="v">1333.84</marc:subfield>
+      <marc:subfield code="w">2025-04-20</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">KOTA</marc:subfield>
+      <marc:subfield code="b">KOTA</marc:subfield>
+      <marc:subfield code="c">koos</marc:subfield>
+      <marc:subfield code="d">2025-04-20</marc:subfield>
+      <marc:subfield code="e">6</marc:subfield>
+      <marc:subfield code="g">1267.15</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">QA76.73.C153 A416 2024</marc:subfield>
+      <marc:subfield code="p">10393447</marc:subfield>
+      <marc:subfield code="r">2025-04-20 00:00:00</marc:subfield>
+      <marc:subfield code="v">1333.84</marc:subfield>
+      <marc:subfield code="w">2025-04-20</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">KOTA</marc:subfield>
+      <marc:subfield code="b">KOTA</marc:subfield>
+      <marc:subfield code="c">koos</marc:subfield>
+      <marc:subfield code="d">2025-04-20</marc:subfield>
+      <marc:subfield code="e">6</marc:subfield>
+      <marc:subfield code="g">1267.15</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">QA76.73.C153 A416 2024</marc:subfield>
+      <marc:subfield code="p">10393448</marc:subfield>
+      <marc:subfield code="r">2025-04-20 00:00:00</marc:subfield>
+      <marc:subfield code="v">1333.84</marc:subfield>
+      <marc:subfield code="w">2025-04-20</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">KOTA</marc:subfield>
+      <marc:subfield code="b">KOTA</marc:subfield>
+      <marc:subfield code="c">koos</marc:subfield>
+      <marc:subfield code="d">2025-04-20</marc:subfield>
+      <marc:subfield code="e">6</marc:subfield>
+      <marc:subfield code="g">1267.15</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">QA76.73.C153 A416 2024</marc:subfield>
+      <marc:subfield code="p">10393445</marc:subfield>
+      <marc:subfield code="r">2025-04-20 00:00:00</marc:subfield>
+      <marc:subfield code="v">1333.84</marc:subfield>
+      <marc:subfield code="w">2025-04-20</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">KOTA</marc:subfield>
+      <marc:subfield code="b">KOTA</marc:subfield>
+      <marc:subfield code="c">krref</marc:subfield>
+      <marc:subfield code="d">2025-04-20</marc:subfield>
+      <marc:subfield code="e">6</marc:subfield>
+      <marc:subfield code="g">1267.15</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">QA76.73.C153 A416 2024</marc:subfield>
+      <marc:subfield code="p">10393446</marc:subfield>
+      <marc:subfield code="r">2025-04-20 00:00:00</marc:subfield>
+      <marc:subfield code="v">1333.84</marc:subfield>
+      <marc:subfield code="w">2025-04-20</marc:subfield>
+      <marc:subfield code="y">2</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">umk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">130577</marc:subfield>
+      <marc:subfield code="d">130577</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

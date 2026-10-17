@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">990</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">136430163</marc:subfield>
+      <marc:subfield code="q">hardback</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)990</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+      <marc:subfield code="d">DLC</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1=" " ind2=" ">
+      <marc:subfield code="a">eng</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TK5105.5 .R67 1990</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">TK5105.5</marc:subfield>
+      <marc:subfield code="b">.R67 1990</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1=" " ind2=" ">
+      <marc:subfield code="a">Rose, Marshall T</marc:subfield>
+      <marc:subfield code="e">authror</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">THE OPEN BOOK</marc:subfield>
+      <marc:subfield code="b">a practical perspective on OSI</marc:subfield>
+      <marc:subfield code="c">Marshall T. Rose</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2=" ">
+      <marc:subfield code="a">Englewood Cliffs, N.J.</marc:subfield>
+      <marc:subfield code="b">Prentice Hall</marc:subfield>
+      <marc:subfield code="c">1990</marc:subfield>
+      <marc:subfield code="c">© 1990</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xxix, 651 pages</marc:subfield>
+      <marc:subfield code="b">illustrations</marc:subfield>
+      <marc:subfield code="c">24 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="2">illustrations</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references (p. 621-637).</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">The OSI protocol suite (an internationally standardized set of rules for computer communications) offers a unique promise: it has the potential to provide a political and technical solution to world-wide networking. Computers--from supers to workstations and PCs, from the executive suite to the laboratory, and from Palo Alto to London, or anywhere--can all share a common set of rules for communicating. But, with any emerging technology, there are numerous questions to be answered and issues to be addressed. The Open Book is designed to examine those complex questions and issues and provide a balanced set of perspectives.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Computer network architectures</marc:subfield>
+      <marc:subfield code="a">Computer network protocols</marc:subfield>
+      <marc:subfield code="a">Computer networks</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PAHANG (PAB KAMPUS JENGKA)</marc:subfield>
+      <marc:subfield code="b">UiTM PAHANG (PAB KAMPUS JENGKA)</marc:subfield>
+      <marc:subfield code="o">TK5105.5 .R67 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000042371</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR KEJURUTERAAN)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR KEJURUTERAAN)</marc:subfield>
+      <marc:subfield code="o">TK5105.5 .R67 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000307140</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">957</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">198536011</marc:subfield>
+      <marc:subfield code="q">paperback</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)957</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+      <marc:subfield code="d">DLC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QA76.5 .S895 1984</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">QA76.5</marc:subfield>
+      <marc:subfield code="b">.S895 1984</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Supercomputers and parallel computation</marc:subfield>
+      <marc:subfield code="b">based on the proceedings of a workshop on progress in the use of vector and array processors</marc:subfield>
+      <marc:subfield code="c">organized by the Institute of Mathematics and Its Applications, and held in Bristol, 2-3 September 1982 ; ed</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2=" ">
+      <marc:subfield code="a">Oxford [Oxfordshire]</marc:subfield>
+      <marc:subfield code="b">Clarendon Press</marc:subfield>
+      <marc:subfield code="c">1984</marc:subfield>
+      <marc:subfield code="c">©1984</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">x, 258 p.</marc:subfield>
+      <marc:subfield code="b">ill.</marc:subfield>
+      <marc:subfield code="c">24 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdacontent</marc:subfield>
+      <marc:subfield code="a">text</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdamedia</marc:subfield>
+      <marc:subfield code="a">unmediated</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+      <marc:subfield code="a">Volume-nc</marc:subfield>
+      <marc:subfield code="a">Sheet-nb</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="490" ind1=" " ind2=" ">
+      <marc:subfield code="a">The Institute of Mathematics and Its Applications conference series</marc:subfield>
+      <marc:subfield code="v">new ser, 1</marc:subfield>
+      <marc:subfield code="a">Oxford science publications</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographies and indexes.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Supercomputers</marc:subfield>
+      <marc:subfield code="a">Parallel computers</marc:subfield>
+      <marc:subfield code="a">Array processors</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+      <marc:subfield code="x">Congresses</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Paddon, D. J</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1=" " ind2=" ">
+      <marc:subfield code="a">Institute of Mathematics and Its Applications</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="740" ind1=" " ind2=" ">
+      <marc:subfield code="a">Super-computers and parallel computation</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SARAWAK (PTAR KAMPUS MUKAH)</marc:subfield>
+      <marc:subfield code="b">UiTM SARAWAK (PTAR KAMPUS MUKAH)</marc:subfield>
+      <marc:subfield code="o">QA76.5 .S895 1984</marc:subfield>
+      <marc:subfield code="p">UiTM-000000036138</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.5 .S895 1984</marc:subfield>
+      <marc:subfield code="p">UiTM-000000190202</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

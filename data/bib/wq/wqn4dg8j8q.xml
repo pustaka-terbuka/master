@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>01465cam a2200361 i 4500</marc:leader>
+    <marc:controlfield tag="001">23565829</marc:controlfield>
+    <marc:controlfield tag="003">UMK</marc:controlfield>
+    <marc:controlfield tag="005">20250518093306</marc:controlfield>
+    <marc:controlfield tag="008">240217s2024    paua     b    000 0 eng</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9798369315866</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UMK)23565829</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">LBSOR</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">LBSOR</marc:subfield>
+      <marc:subfield code="d">DLC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TJ808</marc:subfield>
+      <marc:subfield code="b">.A458 2024</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="0" ind2="0">
+      <marc:subfield code="a">AI approaches to smart and sustainable power systems /</marc:subfield>
+      <marc:subfield code="c">L. Ashok Kumar, S. Angalaeswari, K. Mohanasundaram, Ramesh Bansal, Arunkumar Patil.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="a">Hershey, PA, USA :</marc:subfield>
+      <marc:subfield code="b">Engineering Science Reference (an imprint of IGI Global),</marc:subfield>
+      <marc:subfield code="c">2024</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="4">
+      <marc:subfield code="c">&amp;#xA9;2024</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xxii, 432 pages :</marc:subfield>
+      <marc:subfield code="b">illustrations ;</marc:subfield>
+      <marc:subfield code="c">29 cm.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="490" ind1="0" ind2=" ">
+      <marc:subfield code="a">A volume in the Advances in Computational Intelligence and Robotics (ACIR) Book Series ;</marc:subfield>
+      <marc:subfield code="x">2327-0411</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Prof. Madya Ts. Dr. Hasyiya Karimah Binti Adli</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1="1" ind2="0">
+      <marc:subfield code="a">Renewable energy sources</marc:subfield>
+      <marc:subfield code="x">Technological innovations.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1="2" ind2="0">
+      <marc:subfield code="a">Clean energy</marc:subfield>
+      <marc:subfield code="x">Technological innovations.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Artificial intelligence</marc:subfield>
+      <marc:subfield code="x">Industrial applications.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1="2" ind2="0">
+      <marc:subfield code="a">Sustainable development.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Kumar, L. Ashok,</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Angalaeswari, S.,</marc:subfield>
+      <marc:subfield code="d">1981-</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">K., Mohanasundaram,</marc:subfield>
+      <marc:subfield code="d">1977-</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Bansal, Ramesh C.,</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Patil, Arunkumar,</marc:subfield>
+      <marc:subfield code="d">1985-</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="c">2</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">KOTA</marc:subfield>
+      <marc:subfield code="b">KOTA</marc:subfield>
+      <marc:subfield code="c">koos</marc:subfield>
+      <marc:subfield code="d">2025-05-11</marc:subfield>
+      <marc:subfield code="e">6</marc:subfield>
+      <marc:subfield code="g">1301.03</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">TJ808 .A458 2024</marc:subfield>
+      <marc:subfield code="p">10393736</marc:subfield>
+      <marc:subfield code="r">2025-05-11 00:00:00</marc:subfield>
+      <marc:subfield code="v">1369.5</marc:subfield>
+      <marc:subfield code="w">2025-05-11</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">KOTA</marc:subfield>
+      <marc:subfield code="b">KOTA</marc:subfield>
+      <marc:subfield code="c">koos</marc:subfield>
+      <marc:subfield code="d">2025-05-11</marc:subfield>
+      <marc:subfield code="e">6</marc:subfield>
+      <marc:subfield code="g">1301.03</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">TJ808 .A458 2024</marc:subfield>
+      <marc:subfield code="p">10393734</marc:subfield>
+      <marc:subfield code="r">2025-05-11 00:00:00</marc:subfield>
+      <marc:subfield code="v">1369.5</marc:subfield>
+      <marc:subfield code="w">2025-05-11</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">KOTA</marc:subfield>
+      <marc:subfield code="b">KOTA</marc:subfield>
+      <marc:subfield code="c">koos</marc:subfield>
+      <marc:subfield code="d">2025-05-11</marc:subfield>
+      <marc:subfield code="e">6</marc:subfield>
+      <marc:subfield code="g">1301.03</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">TJ808 .A458 2024</marc:subfield>
+      <marc:subfield code="p">10393735</marc:subfield>
+      <marc:subfield code="r">2025-05-11 00:00:00</marc:subfield>
+      <marc:subfield code="v">1369.5</marc:subfield>
+      <marc:subfield code="w">2025-05-11</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">umk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">130633</marc:subfield>
+      <marc:subfield code="d">130633</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

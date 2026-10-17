@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">882</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">538108606</marc:subfield>
+      <marc:subfield code="q">hardcover</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)882</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="c">UiTM</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QA76.9.S88 A33 1985</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">QA76.9.S88</marc:subfield>
+      <marc:subfield code="b">A33 1985</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1=" " ind2=" ">
+      <marc:subfield code="a">Adams, David R.</marc:subfield>
+      <marc:subfield code="c">1942-</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Computer information systems development</marc:subfield>
+      <marc:subfield code="b">design and implementation</marc:subfield>
+      <marc:subfield code="c">David R. Adams, Michael J. Powers and V. Arthur Owles</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2=" ">
+      <marc:subfield code="a">Cincinnati</marc:subfield>
+      <marc:subfield code="b">South-Western Pub. Co.</marc:subfield>
+      <marc:subfield code="c">1985</marc:subfield>
+      <marc:subfield code="c">©1985</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xvi, 623 pages</marc:subfield>
+      <marc:subfield code="b">illustrations</marc:subfield>
+      <marc:subfield code="c">24 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdacontent</marc:subfield>
+      <marc:subfield code="a">text</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdamedia</marc:subfield>
+      <marc:subfield code="a">unmediated</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+      <marc:subfield code="a">volume</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references and indexes</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">activity addition alternatives AMOUNT analysis application approach assignments batch becomes billing block called central changes chapter chart cohesion communication complete considerations considered costs coupling cycle data flow diagram data structure database decisions described detailed determine devices direct disk distributed documentation effect elements established evaluation example existing factors fields Figure format functions given identified implementation individual input installation involved logical maintained maintenance major master methods modules necessary needs objectives on-line operations organization output packages perform phase physical possible prepared presented problem procedures processing READING records reference represents requirements response result selection separate sequence sequential single software design specifications statements steps storage student systems design systems development technical terminal testing tion transaction updating</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">System analysis</marc:subfield>
+      <marc:subfield code="a">System design</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Powers, Michael J</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+      <marc:subfield code="a">Owles, V. Arthur</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM KELANTAN (PTA KAMPUS MACHANG)</marc:subfield>
+      <marc:subfield code="b">UiTM KELANTAN (PTA KAMPUS MACHANG)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000028286</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM MELAKA (PTAR KAMPUS ALOR GAJAH)</marc:subfield>
+      <marc:subfield code="b">UiTM MELAKA (PTAR KAMPUS ALOR GAJAH)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000019082</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PAHANG (PAB KAMPUS JENGKA)</marc:subfield>
+      <marc:subfield code="b">UiTM PAHANG (PAB KAMPUS JENGKA)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000013588</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PAHANG (PTAR KAMPUS RAUB)</marc:subfield>
+      <marc:subfield code="b">UiTM PAHANG (PTAR KAMPUS RAUB)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000022669</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="b">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000023519</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000215546</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000215547</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000215548</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000225064</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000225066</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000225068</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000408405</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 A33 1985</marc:subfield>
+      <marc:subfield code="p">UiTM-000000408406</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

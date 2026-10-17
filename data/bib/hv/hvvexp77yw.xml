@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>01570cam a22003618i 4500</marc:leader>
+    <marc:controlfield tag="001">24250114</marc:controlfield>
+    <marc:controlfield tag="003">UMK</marc:controlfield>
+    <marc:controlfield tag="005">20251006143343</marc:controlfield>
+    <marc:controlfield tag="008">250614t2025    njua     ib   001 0 eng c</marc:controlfield>
+    <marc:datafield tag="010" ind1=" " ind2=" ">
+      <marc:subfield code="a">2025023176</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9781119945048</marc:subfield>
+      <marc:subfield code="q">hardback</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UMK)24250114</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+      <marc:subfield code="d">DLC</marc:subfield>
+      <marc:subfield code="d">UMK</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TA168</marc:subfield>
+      <marc:subfield code="b">.L66 2025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2=" ">
+      <marc:subfield code="a">Longoria, Raul G.</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Modeling of Physical Systems :</marc:subfield>
+      <marc:subfield code="b">Simulation and Control /</marc:subfield>
+      <marc:subfield code="c">Raul G. Longoria and Joseph J. Beaman.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="a">Hoboken, NJ :</marc:subfield>
+      <marc:subfield code="b">Wiley ,</marc:subfield>
+      <marc:subfield code="c">2025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="4">
+      <marc:subfield code="c">@2025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xii, 638 pages :</marc:subfield>
+      <marc:subfield code="b">illustrations ;</marc:subfield>
+      <marc:subfield code="c">26 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="353" ind1=" " ind2=" ">
+      <marc:subfield code="a">index</marc:subfield>
+      <marc:subfield code="b">index</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/msupplcont/index</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Fakulti Biokejuruteraan Dan Teknologi (FBKT)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references and index</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1="1" ind2="0">
+      <marc:subfield code="a">Systems engineering</marc:subfield>
+      <marc:subfield code="x">Mathematical models</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1="2" ind2="0">
+      <marc:subfield code="a">Mathematical physics</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Beaman, Joseph J.</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="758" ind1=" " ind2=" ">
+      <marc:subfield code="1">http://id.loc.gov/resources/instances/24250114</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="758" ind1=" " ind2=" ">
+      <marc:subfield code="4">http://id.loc.gov/ontologies/bibframe/instanceOf</marc:subfield>
+      <marc:subfield code="1">http://id.loc.gov/resources/works/24250114</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="776" ind1="1" ind2=" ">
+      <marc:subfield code="i">Online version</marc:subfield>
+      <marc:subfield code="4">http://id.loc.gov/entities/relationships/onlineversion</marc:subfield>
+      <marc:subfield code="a">Longoria, Raul G.</marc:subfield>
+      <marc:subfield code="t">Modeling of physical systems</marc:subfield>
+      <marc:subfield code="d">Hoboken, NJ : Wiley, 2025</marc:subfield>
+      <marc:subfield code="z">9781118387627</marc:subfield>
+      <marc:subfield code="w">(DLC) 2025023177</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="884" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC bibframe2marc v2.10-dev</marc:subfield>
+      <marc:subfield code="g">20250620</marc:subfield>
+      <marc:subfield code="q">DLC</marc:subfield>
+      <marc:subfield code="u">https://github.com/lcnetdev/bibframe2marc/releases/tag/v2.10-dev</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="c">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">JELI</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2025-08-13</marc:subfield>
+      <marc:subfield code="e">7</marc:subfield>
+      <marc:subfield code="g">594.4</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">TA168 .L66 2025</marc:subfield>
+      <marc:subfield code="p">10394293</marc:subfield>
+      <marc:subfield code="r">2025-12-07 15:03:48</marc:subfield>
+      <marc:subfield code="v">625.68</marc:subfield>
+      <marc:subfield code="w">2025-08-13</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">JELI</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2025-08-13</marc:subfield>
+      <marc:subfield code="e">7</marc:subfield>
+      <marc:subfield code="g">594.4</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">TA168 .L66 2025</marc:subfield>
+      <marc:subfield code="p">10394294</marc:subfield>
+      <marc:subfield code="r">2025-12-07 15:03:37</marc:subfield>
+      <marc:subfield code="v">625.68</marc:subfield>
+      <marc:subfield code="w">2025-08-13</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">umk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">131027</marc:subfield>
+      <marc:subfield code="d">131027</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

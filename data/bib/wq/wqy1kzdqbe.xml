@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">917</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">0138802467 (paperback)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)917</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC</marc:subfield>
+      <marc:subfield code="d">UiTM</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1=" " ind2=" ">
+      <marc:subfield code="a">ENGLISH</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QA76.9.S88 K45 1988</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">QA76.9.S88</marc:subfield>
+      <marc:subfield code="b">K45 1988</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1=" " ind2=" ">
+      <marc:subfield code="a">Kendall, Kenneth E.</marc:subfield>
+      <marc:subfield code="c">1948-</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Systems analysis and design</marc:subfield>
+      <marc:subfield code="c">Kenneth E. Kendall and Julie E. Kendall</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="c">198</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2=" ">
+      <marc:subfield code="a">Englewood Cliffs, NJ</marc:subfield>
+      <marc:subfield code="b">Prentice Hall</marc:subfield>
+      <marc:subfield code="c">1988</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xxix, 770 pages</marc:subfield>
+      <marc:subfield code="b">illustration</marc:subfield>
+      <marc:subfield code="c">25 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographies and index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="526" ind1=" " ind2=" ">
+      <marc:subfield code="a">IM245</marc:subfield>
+      <marc:subfield code="b">IMS606</marc:subfield>
+      <marc:subfield code="5">IM</marc:subfield>
+      <marc:subfield code="a">IM245</marc:subfield>
+      <marc:subfield code="b">IMS655</marc:subfield>
+      <marc:subfield code="5">IM</marc:subfield>
+      <marc:subfield code="a">System Analysis in Information Management Il</marc:subfield>
+      <marc:subfield code="b">Bachelor of Information Science (Hons.)</marc:subfield>
+      <marc:subfield code="5">Information System Managment</marc:subfield>
+      <marc:subfield code="a">System Analysis in Information Management I</marc:subfield>
+      <marc:subfield code="b">Bachelor of Information Science (Hons.</marc:subfield>
+      <marc:subfield code="5">Information System Managment</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">System design</marc:subfield>
+      <marc:subfield code="a">System analysis</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Kendall, Julie E.</marc:subfield>
+      <marc:subfield code="c">1952-</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM KELANTAN (PTA KAMPUS MACHANG)</marc:subfield>
+      <marc:subfield code="b">UiTM KELANTAN (PTA KAMPUS MACHANG)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 K45 1988</marc:subfield>
+      <marc:subfield code="p">UiTM-000000022636</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM KELANTAN (PTA KAMPUS MACHANG)</marc:subfield>
+      <marc:subfield code="b">UiTM KELANTAN (PTA KAMPUS MACHANG)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 K45 1988</marc:subfield>
+      <marc:subfield code="p">UiTM-000000022637</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM KELANTAN (PTA KAMPUS MACHANG)</marc:subfield>
+      <marc:subfield code="b">UiTM KELANTAN (PTA KAMPUS MACHANG)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 K45 1988</marc:subfield>
+      <marc:subfield code="p">UiTM-000000024249</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 K45 1988</marc:subfield>
+      <marc:subfield code="p">UiTM-000000253942</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">QA76.9.S88 K45 1988</marc:subfield>
+      <marc:subfield code="p">UiTM-000000253944</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

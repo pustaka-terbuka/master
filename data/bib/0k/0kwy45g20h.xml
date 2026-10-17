@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>01967cam a2200385 i 4500</marc:leader>
+    <marc:controlfield tag="001">23933981</marc:controlfield>
+    <marc:controlfield tag="003">UMK</marc:controlfield>
+    <marc:controlfield tag="005">20250515092650</marc:controlfield>
+    <marc:controlfield tag="008">250515s2024    paua     bi   001 0 eng</marc:controlfield>
+    <marc:datafield tag="010" ind1=" " ind2=" ">
+      <marc:subfield code="a">2024037105</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9798369332788</marc:subfield>
+      <marc:subfield code="q">(hardcover)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UMK)23933981</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+      <marc:subfield code="d">UMK</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">Q325.5</marc:subfield>
+      <marc:subfield code="b">.P56 2024</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="0" ind2="4">
+      <marc:subfield code="a">The Pioneering Applications of Generative AI /</marc:subfield>
+      <marc:subfield code="c">edited by Raghvendra Kumar, Sandipan Sahu, Sudipta Bhattacharya.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="a">Hershey, PA, USA :</marc:subfield>
+      <marc:subfield code="b">IGI Global, Engineering Science Reference (an imprint of IGI Global),</marc:subfield>
+      <marc:subfield code="c">2024</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="4">
+      <marc:subfield code="c">&amp;#xA9;2024</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xi, 341 pages :</marc:subfield>
+      <marc:subfield code="b">illustrations ;</marc:subfield>
+      <marc:subfield code="c">29 cm.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="490" ind1="0" ind2=" ">
+      <marc:subfield code="a">Advances in Computational Intelligence and Robotics (ACIR) Book Series</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Prof. Madya Ts. Dr. Hasyiya Karimah Binti Adli</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references and index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">&quot;This book focused on teaching readers how to implement generative AI techniques using the Python programming language. It cover topics such as generative adversarial networks (GANs), variational autoencoders (VAEs), and other methods for creating AI systems that can generate new content, such as images, text, or music&quot;--</marc:subfield>
+      <marc:subfield code="c">Provided by publisher.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1="1" ind2="0">
+      <marc:subfield code="a">Machine learning.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1="2" ind2="0">
+      <marc:subfield code="a">Artificial intelligence.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1="2" ind2="0">
+      <marc:subfield code="a">Python (Computer program language)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Kumar, Raghvendra,</marc:subfield>
+      <marc:subfield code="d">1987-</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Sahu, Sandipan,</marc:subfield>
+      <marc:subfield code="d">1981-</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Bhattacharya, Sudipta,</marc:subfield>
+      <marc:subfield code="d">1981-</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="776" ind1="0" ind2="8">
+      <marc:subfield code="i">Online version:</marc:subfield>
+      <marc:subfield code="t">Pioneering applications of generative AI</marc:subfield>
+      <marc:subfield code="d">Hershey, PA : IGI Global, [2024]</marc:subfield>
+      <marc:subfield code="z">9798369332795</marc:subfield>
+      <marc:subfield code="w">(DLC) 2024037106</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="830" ind1=" " ind2=" ">
+      <marc:subfield code="a">Advances in Computational Intelligence and Robotics (ACIR) Book Series</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="c">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">KOTA</marc:subfield>
+      <marc:subfield code="b">KOTA</marc:subfield>
+      <marc:subfield code="c">koos</marc:subfield>
+      <marc:subfield code="d">2025-05-11</marc:subfield>
+      <marc:subfield code="e">6</marc:subfield>
+      <marc:subfield code="g">1539.55</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">Q325.5  .P56 2024</marc:subfield>
+      <marc:subfield code="p">10393724</marc:subfield>
+      <marc:subfield code="r">2025-05-11 00:00:00</marc:subfield>
+      <marc:subfield code="v">1620.58</marc:subfield>
+      <marc:subfield code="w">2025-05-11</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">KOTA</marc:subfield>
+      <marc:subfield code="b">KOTA</marc:subfield>
+      <marc:subfield code="c">koos</marc:subfield>
+      <marc:subfield code="d">2025-05-11</marc:subfield>
+      <marc:subfield code="e">6</marc:subfield>
+      <marc:subfield code="g">1539.55</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">Q325.5  .P56 2024</marc:subfield>
+      <marc:subfield code="p">10393725</marc:subfield>
+      <marc:subfield code="r">2025-05-11 00:00:00</marc:subfield>
+      <marc:subfield code="v">1620.58</marc:subfield>
+      <marc:subfield code="w">2025-05-11</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">KOTA</marc:subfield>
+      <marc:subfield code="b">KOTA</marc:subfield>
+      <marc:subfield code="c">koos</marc:subfield>
+      <marc:subfield code="d">2025-05-11</marc:subfield>
+      <marc:subfield code="e">6</marc:subfield>
+      <marc:subfield code="g">1539.55</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">Q325.5  .P56 2024</marc:subfield>
+      <marc:subfield code="p">10393723</marc:subfield>
+      <marc:subfield code="r">2025-05-11 00:00:00</marc:subfield>
+      <marc:subfield code="v">1620.58</marc:subfield>
+      <marc:subfield code="w">2025-05-11</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">umk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">130629</marc:subfield>
+      <marc:subfield code="d">130629</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

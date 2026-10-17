@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>03181cam a22004938i 4500</marc:leader>
+    <marc:controlfield tag="000">nam a22     7a 4500</marc:controlfield>
+    <marc:controlfield tag="001">in00024285897</marc:controlfield>
+    <marc:controlfield tag="003">DLC</marc:controlfield>
+    <marc:controlfield tag="005">20260913153252</marc:controlfield>
+    <marc:controlfield tag="007">t</marc:controlfield>
+    <marc:controlfield tag="008">250722s2025    nju      b    001 0 eng</marc:controlfield>
+    <marc:datafield tag="010" ind1=" " ind2=" ">
+      <marc:subfield code="a">2025026448</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9781394293278</marc:subfield>
+      <marc:subfield code="q">cloth</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394293308</marc:subfield>
+      <marc:subfield code="q">adobe pdf</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394293285</marc:subfield>
+      <marc:subfield code="q">epub</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UMK)in00024285897</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+      <marc:subfield code="d">DLC-MRC</marc:subfield>
+      <marc:subfield code="d">DLC</marc:subfield>
+      <marc:subfield code="d">DLC-MRC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="042" ind1=" " ind2=" ">
+      <marc:subfield code="a">pcc</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TP155.7</marc:subfield>
+      <marc:subfield code="b">.H35 2025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2=" ">
+      <marc:subfield code="a">Hameed, Khalid W.</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+      <marc:subfield code="4">aut</marc:subfield>
+      <marc:subfield code="4">http://id.loc.gov/vocabulary/relators/aut</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/authorities/names/n2025028892</marc:subfield>
+      <marc:subfield code="1">http://id.loc.gov/rwo/agents/n2025028892</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Chemical process simulations using Aspen HYSYS /</marc:subfield>
+      <marc:subfield code="c">Khalid W. Hameed.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="263" ind1=" " ind2=" ">
+      <marc:subfield code="a">2508</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="a">Hoboken, NJ :</marc:subfield>
+      <marc:subfield code="b">Wiley,</marc:subfield>
+      <marc:subfield code="c">[2025]</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">pages cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="334" ind1=" " ind2=" ">
+      <marc:subfield code="a">single unit</marc:subfield>
+      <marc:subfield code="b">mono</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/issuance/mono</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/contentTypes/txt</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/mediaTypes/n</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/carriers/nc</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="353" ind1=" " ind2=" ">
+      <marc:subfield code="a">bibliography</marc:subfield>
+      <marc:subfield code="b">bibliography</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/msupplcont/bibliography</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="353" ind1=" " ind2=" ">
+      <marc:subfield code="a">index</marc:subfield>
+      <marc:subfield code="b">index</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/msupplcont/index</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references and index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="505" ind1="0" ind2=" ">
+      <marc:subfield code="a">Starting with Aspen HYSYS -- Physical and thermodynamics properties -- Equipment of pressure change -- Flash separator -- Logical operations -- Piping equipment -- Reactors -- Separation columns -- Refinery process -- Optimizer -- Solid operation -- Dynamic state simulation -- Economic evaluation -- Plant wide projects.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">&quot;The book deals with the simulation and design of chemical, petrochemical, and petroleum industry processes using Aspen HYSYS. The book covers many chemical engineering topics including fluid flow, reactors, unit operation of heat and mass transfer, and control systems. The book includes highly interactive process flow diagram for building and navigating through large simulations&quot;-- Provided by publisher.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="630" ind1="0" ind2="0">
+      <marc:subfield code="a">Aspen HYSYS</marc:subfield>
+      <marc:subfield code="1">http://id.loc.gov/resources/hubs/32ec2713-d70a-8a33-dc9c-228abe3c6661</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Chemical processes</marc:subfield>
+      <marc:subfield code="x">Computer simulation</marc:subfield>
+      <marc:subfield code="v">Textbooks</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Chemical plants</marc:subfield>
+      <marc:subfield code="x">Computer simulation</marc:subfield>
+      <marc:subfield code="v">Textbooks</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="758" ind1=" " ind2=" ">
+      <marc:subfield code="1">http://id.loc.gov/resources/instances/in00024285897</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="758" ind1=" " ind2=" ">
+      <marc:subfield code="4">http://id.loc.gov/ontologies/bibframe/instanceOf</marc:subfield>
+      <marc:subfield code="1">http://id.loc.gov/resources/works/in00024285897</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="776" ind1="1" ind2=" ">
+      <marc:subfield code="i">Online version</marc:subfield>
+      <marc:subfield code="4">http://id.loc.gov/entities/relationships/onlineversion</marc:subfield>
+      <marc:subfield code="a">Hameed, Khalid W.</marc:subfield>
+      <marc:subfield code="t">Chemical process simulations using Aspen HYSYS</marc:subfield>
+      <marc:subfield code="d">Hoboken, NJ : Wiley, [2025]</marc:subfield>
+      <marc:subfield code="z">9781394293308</marc:subfield>
+      <marc:subfield code="w">(DLC) 2025026449</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="884" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC bibframe2marc v2.10</marc:subfield>
+      <marc:subfield code="g">20250724</marc:subfield>
+      <marc:subfield code="q">DLC</marc:subfield>
+      <marc:subfield code="u">https://github.com/lcnetdev/bibframe2marc/releases/tag/v2.10</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="906" ind1=" " ind2=" ">
+      <marc:subfield code="a">7</marc:subfield>
+      <marc:subfield code="b">cbc</marc:subfield>
+      <marc:subfield code="c">orignew</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+      <marc:subfield code="e">ecip</marc:subfield>
+      <marc:subfield code="f">20</marc:subfield>
+      <marc:subfield code="g">y-gencatlg</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="925" ind1="0" ind2=" ">
+      <marc:subfield code="a">acquire</marc:subfield>
+      <marc:subfield code="b">1 shelf copy</marc:subfield>
+      <marc:subfield code="x">policy default</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-05</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">709.88</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398947</marc:subfield>
+      <marc:subfield code="r">2026-10-05 00:00:00</marc:subfield>
+      <marc:subfield code="v">747.24</marc:subfield>
+      <marc:subfield code="w">2026-10-05</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-05</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">709.88</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398946</marc:subfield>
+      <marc:subfield code="r">2026-10-05 00:00:00</marc:subfield>
+      <marc:subfield code="v">747.24</marc:subfield>
+      <marc:subfield code="w">2026-10-05</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="955" ind1=" " ind2=" ">
+      <marc:subfield code="e">rp05 2025-07-23 to Cat Complete</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="985" ind1=" " ind2=" ">
+      <marc:subfield code="e">BIBFRAME</marc:subfield>
+      <marc:subfield code="d">2025-07-24T08:48:59</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">umk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">132658</marc:subfield>
+      <marc:subfield code="d">132658</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

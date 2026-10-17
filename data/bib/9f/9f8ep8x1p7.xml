@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>02744cam a22004218i 4500</marc:leader>
+    <marc:controlfield tag="000">nam a22     7a 4500</marc:controlfield>
+    <marc:controlfield tag="001">24249278</marc:controlfield>
+    <marc:controlfield tag="005">20260913150856</marc:controlfield>
+    <marc:controlfield tag="008">250616t20252025nju           001 0 eng</marc:controlfield>
+    <marc:datafield tag="010" ind1=" " ind2=" ">
+      <marc:subfield code="a">2025025545</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9781394187454</marc:subfield>
+      <marc:subfield code="q">(cloth)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394187478</marc:subfield>
+      <marc:subfield code="q">(adobe pdf)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394187461</marc:subfield>
+      <marc:subfield code="q">(epub)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">24249278</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UMK)24249278</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="042" ind1=" " ind2=" ">
+      <marc:subfield code="a">pcc</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TA347.F5</marc:subfield>
+      <marc:subfield code="b">K56 2025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2=" ">
+      <marc:subfield code="a">Kim, Nam H.,</marc:subfield>
+      <marc:subfield code="e">author.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Introduction to finite element analysis and design /</marc:subfield>
+      <marc:subfield code="c">Nam-Ho Kim, Bhavani V. Sankar, and Ashok V. Kumar.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="250" ind1=" " ind2=" ">
+      <marc:subfield code="a">Third edition.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="263" ind1=" " ind2=" ">
+      <marc:subfield code="a">2508</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="a">Hoboken, NJ :</marc:subfield>
+      <marc:subfield code="b">Wiley,</marc:subfield>
+      <marc:subfield code="c">2025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="4">
+      <marc:subfield code="c">&amp;#xA9;2025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">pages cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">&quot;Introduction to Finite Element Analysis and Design offers a clear and accessible way for students to learn the theoretical aspects of the Finite Element Method and understand its practical applications, even without a background in mathematics or computer programming. In order to establish a common ground before learning the main topics of FEM, the book reviews some concepts in mathematics and mechanics of materials that are prerequisite for learning FEM. Placing a greater focus on the design component than most other books, the Third Edition explains the process of Finite Element Analysis in relation to springs, bars, and truss elements; beams and frames; heat transfer problems; 2D solids; and dynamic problems. A brand-new chapter on plate and shell finite elements has been added, along with an extensive collection of updated examples and exercise problems. Another key feature of the book it its coverage of commercial software programs, supported by examples using six different commercial programs. This allows students to learn key concepts can be introduced to finite element theory in general, and then gain experience with practical applications can be carried out using different programs, based on the preference of the instructor or the project at hand&quot;--</marc:subfield>
+      <marc:subfield code="c">Provided by publisher.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Finite element method.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Engineering mathematics.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Sankar, Bhavani V.,</marc:subfield>
+      <marc:subfield code="e">author.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Kumar, Ashok V.,</marc:subfield>
+      <marc:subfield code="e">author.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="776" ind1="0" ind2="8">
+      <marc:subfield code="i">Online version:</marc:subfield>
+      <marc:subfield code="a">Kim, Nam-Ho.</marc:subfield>
+      <marc:subfield code="t">Introduction to finite element analysis and design</marc:subfield>
+      <marc:subfield code="b">Third edition.</marc:subfield>
+      <marc:subfield code="d">Hoboken, NJ : Wiley, 2025</marc:subfield>
+      <marc:subfield code="z">9781394187478</marc:subfield>
+      <marc:subfield code="w">(DLC) 2025025546</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="906" ind1=" " ind2=" ">
+      <marc:subfield code="a">7</marc:subfield>
+      <marc:subfield code="b">cbc</marc:subfield>
+      <marc:subfield code="c">orignew</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+      <marc:subfield code="e">ecip</marc:subfield>
+      <marc:subfield code="f">20</marc:subfield>
+      <marc:subfield code="g">y-gencatlg</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="925" ind1="0" ind2=" ">
+      <marc:subfield code="a">acquire</marc:subfield>
+      <marc:subfield code="b">1 shelf copy</marc:subfield>
+      <marc:subfield code="x">policy default</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-04</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">654.65</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398927</marc:subfield>
+      <marc:subfield code="r">2026-10-04 00:00:00</marc:subfield>
+      <marc:subfield code="v">689.11</marc:subfield>
+      <marc:subfield code="w">2026-10-04</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-04</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">654.65</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398926</marc:subfield>
+      <marc:subfield code="r">2026-10-04 00:00:00</marc:subfield>
+      <marc:subfield code="v">689.11</marc:subfield>
+      <marc:subfield code="w">2026-10-04</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">umk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">132648</marc:subfield>
+      <marc:subfield code="d">132648</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

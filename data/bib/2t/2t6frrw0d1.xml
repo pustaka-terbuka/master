@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">95</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">393001148</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)95</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">ITMB</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">HM251 .R84 1968</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">HM251</marc:subfield>
+      <marc:subfield code="b">.R84 1968</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1=" " ind2=" ">
+      <marc:subfield code="a">Ruesch, Jurgen</marc:subfield>
+      <marc:subfield code="d">1909-</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Communication</marc:subfield>
+      <marc:subfield code="b">the social matrix of psychiatry</marc:subfield>
+      <marc:subfield code="c">[by] Jurgen Ruesch and Gregory Bateson</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">New York, NY</marc:subfield>
+      <marc:subfield code="b">Norton</marc:subfield>
+      <marc:subfield code="c">1968</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">vi, 314 p.</marc:subfield>
+      <marc:subfield code="c">22 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references and index</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">The integration of psychiatry into the mainstream of American society following World War II involved rethinking and revision of psychiatric theories. While in the past, theories of personality had been concerned with the single individual, this pioneering volume argues that such theories are of little use. Instead, the individual must be seen in the context of social situations in which rapid advances in communication technology have brought people closer together, changing their behavior and self-expression. Ruesch and Bateson show that following World War II mass communication and culture have become so pervasive that no individual or group can escape their influences for long. Therefore, they argue that processes of psychoanalysis must now consider the individual within the framework of a social situation. Focusing upon the larger societal systems, of which both psychiatrist and patient are an integral part, they develop concepts that encompass large-scale events as well as happenings of an individual nature. They have outlined this relationship in a unified theory of communication, which encompasses events linking individual to individual, individual to the group, and ultimately, to events of worldwide concern. The term &amp;quot;social matrix,&amp;quot; then, refers to a larger scientific system, of which both the psychiatrist and the patient are integral parts.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Communication</marc:subfield>
+      <marc:subfield code="x">Psychological aspects</marc:subfield>
+      <marc:subfield code="a">Communication</marc:subfield>
+      <marc:subfield code="x">Psychological aspects</marc:subfield>
+      <marc:subfield code="a">Communication in psychiatry</marc:subfield>
+      <marc:subfield code="a">Mental Disorders</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Bateson, Gregory</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM NEGERI SEMBILAN (PTAR KAMPUS REMBAU)</marc:subfield>
+      <marc:subfield code="b">UiTM NEGERI SEMBILAN (PTAR KAMPUS REMBAU)</marc:subfield>
+      <marc:subfield code="o">HM251 .R84 1968</marc:subfield>
+      <marc:subfield code="p">UiTM-000000060326</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SELANGOR (PTAR KAMPUS PUNCAK PERDANA)</marc:subfield>
+      <marc:subfield code="b">UiTM SELANGOR (PTAR KAMPUS PUNCAK PERDANA)</marc:subfield>
+      <marc:subfield code="o">HM251 .R84 1968</marc:subfield>
+      <marc:subfield code="p">UiTM-000000060322</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PERPUSTAKAAN TUN ABDUL RAZAK)</marc:subfield>
+      <marc:subfield code="o">HM251 .R84 1968</marc:subfield>
+      <marc:subfield code="p">UiTM-000000060325</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR UNDANG-UNDANG)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR UNDANG-UNDANG)</marc:subfield>
+      <marc:subfield code="o">HM251 .R84 1968</marc:subfield>
+      <marc:subfield code="p">UiTM-000000060323</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

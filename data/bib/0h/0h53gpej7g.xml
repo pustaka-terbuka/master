@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">21</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)21</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)38</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)58</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)82</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)875</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)876</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)985</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1045</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1085</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1089</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1093</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1106</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1123</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1128</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1130</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1150</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1157</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1159</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1163</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1181</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1185</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1186</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1188</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1190</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1192</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1195</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1196</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1197</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1198</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">-</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Tanpa tajuk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-21</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-38</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-58</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-82</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-875</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-876</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-985</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1045</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1085</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1089</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1093</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1106</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1123</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1128</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1130</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1150</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1157</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1159</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1163</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1181</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1185</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1186</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1188</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1190</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1192</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1195</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1196</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1197</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-1198</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

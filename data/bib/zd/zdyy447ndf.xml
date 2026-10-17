@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">988</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="015" ind1=" " ind2=" ">
+      <marc:subfield code="a">GB***</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">850122074</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)988</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shah Alam</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QA76.6 .I585 1978</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">QA76.6</marc:subfield>
+      <marc:subfield code="b">.I585 1978</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Introducing systems analysis and design</marc:subfield>
+      <marc:subfield code="c">[edited by Barry Lee]</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Manchester, Eng.</marc:subfield>
+      <marc:subfield code="b">NCC Publications</marc:subfield>
+      <marc:subfield code="c">1978-1979</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">2 v.</marc:subfield>
+      <marc:subfield code="b">ill.</marc:subfield>
+      <marc:subfield code="c">21 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Electronic digital computers</marc:subfield>
+      <marc:subfield code="x">Programming</marc:subfield>
+      <marc:subfield code="x">Collected works</marc:subfield>
+      <marc:subfield code="a">System analysis</marc:subfield>
+      <marc:subfield code="x">Collected works</marc:subfield>
+      <marc:subfield code="a">System design</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Lee, Barry</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1=" " ind2=" ">
+      <marc:subfield code="a">National Computing Centre Limited</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR JLN OTHMAN)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR JLN OTHMAN)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .I585 1978</marc:subfield>
+      <marc:subfield code="p">UiTM-000000169153</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR SAINS DAN TEKNOLOGI)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR SAINS DAN TEKNOLOGI)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .I585 1978</marc:subfield>
+      <marc:subfield code="p">UiTM-000000169152</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR SAINS DAN TEKNOLOGI)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR SAINS DAN TEKNOLOGI)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .I585 1978</marc:subfield>
+      <marc:subfield code="p">UiTM-000000195618</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

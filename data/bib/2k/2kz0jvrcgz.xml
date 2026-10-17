@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">1013</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">673180085</marc:subfield>
+      <marc:subfield code="q">paperback</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1013</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="d">UiTM</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">HE6239.E54 C76 1986</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">HE6239.E54</marc:subfield>
+      <marc:subfield code="b">C76 1986</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1=" " ind2=" ">
+      <marc:subfield code="a">Cross, Thomas B</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">NETWORKING</marc:subfield>
+      <marc:subfield code="b">An Electronic Mail Handbook</marc:subfield>
+      <marc:subfield code="c">Thomas B. Cross and Majorie B. Raizman</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2=" ">
+      <marc:subfield code="a">Glenview, Illnois</marc:subfield>
+      <marc:subfield code="b">Scott, Foresman</marc:subfield>
+      <marc:subfield code="c">1986</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">216 pages</marc:subfield>
+      <marc:subfield code="b">illustrations</marc:subfield>
+      <marc:subfield code="c">24 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdacontent</marc:subfield>
+      <marc:subfield code="a">text</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdamedia</marc:subfield>
+      <marc:subfield code="a">unmediated</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+      <marc:subfield code="a">volume</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographicals pages 207-211 and index</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">this book  as an introductionto messegas and the messengers.from the vantage point can develop own approach to this exciting and important technology.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Electronic mail systems</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1=" " ind2=" ">
+      <marc:subfield code="a">Raizman, Marjorie B</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM MELAKA (PTAR KAMPUS ALOR GAJAH)</marc:subfield>
+      <marc:subfield code="b">UiTM MELAKA (PTAR KAMPUS ALOR GAJAH)</marc:subfield>
+      <marc:subfield code="o">HE6239.E54 C76 1986</marc:subfield>
+      <marc:subfield code="p">UiTM-000000022639</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM NEGERI SEMBILAN (PTAR KAMPUS REMBAU)</marc:subfield>
+      <marc:subfield code="b">UiTM NEGERI SEMBILAN (PTAR KAMPUS REMBAU)</marc:subfield>
+      <marc:subfield code="o">HE6239.E54 C76 1986</marc:subfield>
+      <marc:subfield code="p">UiTM-000000282126</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="b">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="o">HE6239.E54 C76 1986</marc:subfield>
+      <marc:subfield code="p">UiTM-000000028019</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SELANGOR (PTAR KAMPUS PUNCAK PERDANA)</marc:subfield>
+      <marc:subfield code="b">UiTM SELANGOR (PTAR KAMPUS PUNCAK PERDANA)</marc:subfield>
+      <marc:subfield code="o">HE6239.E54 C76 1986</marc:subfield>
+      <marc:subfield code="p">UiTM-000000282128</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR UNDANG-UNDANG)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR UNDANG-UNDANG)</marc:subfield>
+      <marc:subfield code="o">HE6239.E54 C76 1986</marc:subfield>
+      <marc:subfield code="p">UiTM-000000282127</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR UNDANG-UNDANG)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR UNDANG-UNDANG)</marc:subfield>
+      <marc:subfield code="o">HE6239.E54 C76 1986</marc:subfield>
+      <marc:subfield code="p">UiTM-000000409922</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM TERENGGANU (PERPUSTAKAAN CENDEKIAWAN KAMPUS DUNGUN)</marc:subfield>
+      <marc:subfield code="b">UiTM TERENGGANU (PERPUSTAKAAN CENDEKIAWAN KAMPUS DUNGUN)</marc:subfield>
+      <marc:subfield code="o">HE6239.E54 C76 1986</marc:subfield>
+      <marc:subfield code="p">UiTM-000000036184</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>04694cam a22004938i 4500</marc:leader>
+    <marc:controlfield tag="000">nam a22     7a 4500</marc:controlfield>
+    <marc:controlfield tag="001">23953374</marc:controlfield>
+    <marc:controlfield tag="005">20260913150815</marc:controlfield>
+    <marc:controlfield tag="008">241213s2024    flu      b    000 0 eng</marc:controlfield>
+    <marc:datafield tag="010" ind1=" " ind2=" ">
+      <marc:subfield code="a">2024030775</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9781032705941</marc:subfield>
+      <marc:subfield code="q">(hardback)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9781032705965</marc:subfield>
+      <marc:subfield code="q">(paperback)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781032706030</marc:subfield>
+      <marc:subfield code="q">(ebook)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">23953374</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UMK)23953374</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">LBSOR</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">LBSOR</marc:subfield>
+      <marc:subfield code="d">DLC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="042" ind1=" " ind2=" ">
+      <marc:subfield code="a">pcc</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TD804</marc:subfield>
+      <marc:subfield code="b">.S87 2024</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="082" ind1="0" ind2="0">
+      <marc:subfield code="a">628.4/4</marc:subfield>
+      <marc:subfield code="2">23/eng/20241228</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="0" ind2="0">
+      <marc:subfield code="a">Sustainable technologies for food waste management /</marc:subfield>
+      <marc:subfield code="c">edited by Ranjna Sirohi, Ayon Tarafdar, Luciana Porto de Souza Vandenberghe, Mohammad J. Taherzadeh, and Ashok Pandey.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="250" ind1=" " ind2=" ">
+      <marc:subfield code="a">First edition.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="263" ind1=" " ind2=" ">
+      <marc:subfield code="a">2502</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="a">Boca Raton :</marc:subfield>
+      <marc:subfield code="b">CRC Press,</marc:subfield>
+      <marc:subfield code="c">2024</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">pages cm.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="490" ind1="0" ind2=" ">
+      <marc:subfield code="a">Sustainable industrial and environmental bioprocesses</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="505" ind1="0" ind2=" ">
+      <marc:subfield code="a">Introduction to food waste management / Piyush Verma, Ranjna Sirohi, Ayon Tarafdar, Ashok Pandey -- Methods for food waste characterization / Yogesh Kumar, Swarnima Dey, Kunal Balhara -- Thermo-chemical processes for food waste treatment / Ayon Tarafdar, Ranjna Sirohi, Uadal Singh -- Biological processes for food waste treatment / Prachi Gaur, Komal Kumari, Poonam Sharma, Vartika Gupta, Vivek Kumar Gaur -- Production of biohydrogen from food waste / Marcela Moreira Albuquerque, Walter Jose Martinez-Burgos, Gabriela de Bona Sartor, Carlos Ricardo Soccol, Adriane Bianchi Pedroni Medeiros -- Production of biogas from food waste / Sharareh Harirchi, Mojdeh Mirshafiei, Abdullah Bilal &amp;#xD6;zt&amp;#xFC;rk, Mohsen Parchami. Fatemeh Yazdian, Mohammad J. Taherzade -- Production of biopolymers from food waste / Ariane F&amp;#xE1;tima Murawski de Mello, Luciana Porto de Souza Vandenberghe, Clara Matte Borges Machado, Priscilla Zwiercheczewski de Oliveira, Thamarys Scapini, Rafael Novaes -- Production of organic acids from food waste / Walter Jos&amp;#xE9; Mart&amp;#xED;nez-Burgosa, Priscilla Zwiercheczewski de Oliveiraa, Juliana de Oliveirab, Rafael Novaes Barrosa, Cristine Rodrigues -- Production of compost and vermicompost from food waste / Shiqing Chen, Haoyuan Zhang, Yuzhe Chen, Suyue Hao, Mukesh Kumar Awasthi -- Production of biochar from food waste / Mehak Bhardwaj, Payal Sahu, Varaprasad Kolla, Arjun Suresh, Amita Shakya -- Bioactive compounds from food waste / Taru Negi, Anupama Anand, Shubham Samkaria3, Ranjan Kaushik -- Food waste management through machine learning, IoT and blockchain / Abdullah Bilal Ozturk, Ida Eyi Heathcote-Fumador, Isaac Arnold McSey, Elaine M&apos;Nkubitu, Daniel Thomi, Steven Wainaina, Mohammad J Taherzadeh.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">&quot;This book comprehensively explores various aspects of food waste management, ranging from understanding the issue to innovative solutions that convert waste into valuable resources. The initial chapters provide an in-depth analysis of advanced methods for characterizing food waste. The book examines cutting-edge methodologies, including physico-chemical, thermal, and biological approaches, for converting food waste into valuable resources such as biohydrogen, biopolymers, biogas, organic acids, bioactive compounds, biochar, compost, and vermicompost. Additionally, it delves into the utilization of advanced technologies like machine learning, the Internet of Things (IoT), sensors, and robotics for food waste treatment and management, thus contributing to a sustainable future. It underscores the conversion of food waste into renewable energy sources, sustainable materials, and valuable compounds. This book is useful for researchers, practitioners, and policymakers seeking sustainable approaches to tackle the global challenge of food waste&quot;--</marc:subfield>
+      <marc:subfield code="c">Provided by publisher.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Food waste.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Refuse and refuse disposal</marc:subfield>
+      <marc:subfield code="x">Technological innovations.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Sustainable engineering.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Sustainable development.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Sirohi, Ranjna,</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Tarafdar, Ayon,</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Porto de Souza Vandenberghe, Luciana,</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Taherzadeh, Mohammad,</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Pandey, Ashok</marc:subfield>
+      <marc:subfield code="c">(Professor),</marc:subfield>
+      <marc:subfield code="e">editor.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="776" ind1="0" ind2="8">
+      <marc:subfield code="i">Online version:</marc:subfield>
+      <marc:subfield code="t">Sustainable technologies for food waste management.</marc:subfield>
+      <marc:subfield code="b">First edition</marc:subfield>
+      <marc:subfield code="d">Boca Raton : CRC Press, 2024</marc:subfield>
+      <marc:subfield code="z">9781032706030</marc:subfield>
+      <marc:subfield code="w">(DLC)  2024030776</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="906" ind1=" " ind2=" ">
+      <marc:subfield code="a">7</marc:subfield>
+      <marc:subfield code="b">cbc</marc:subfield>
+      <marc:subfield code="c">orignew</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+      <marc:subfield code="e">ecip</marc:subfield>
+      <marc:subfield code="f">20</marc:subfield>
+      <marc:subfield code="g">y-gencatlg</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="925" ind1="0" ind2=" ">
+      <marc:subfield code="a">acquire</marc:subfield>
+      <marc:subfield code="b">1 shelf copy</marc:subfield>
+      <marc:subfield code="x">policy default</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-04</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">854.54</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398925</marc:subfield>
+      <marc:subfield code="r">2026-10-04 00:00:00</marc:subfield>
+      <marc:subfield code="v">899.52</marc:subfield>
+      <marc:subfield code="w">2026-10-04</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-04</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">854.54</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398924</marc:subfield>
+      <marc:subfield code="r">2026-10-04 00:00:00</marc:subfield>
+      <marc:subfield code="v">899.52</marc:subfield>
+      <marc:subfield code="w">2026-10-04</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="955" ind1=" " ind2=" ">
+      <marc:subfield code="e">rp06 2024-12-27 to Dewey</marc:subfield>
+      <marc:subfield code="w">xm13 2024-12-28</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">umk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">132647</marc:subfield>
+      <marc:subfield code="d">132647</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

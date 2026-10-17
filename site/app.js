@@ -1766,7 +1766,7 @@ async function performSearch(query, resultsContainer, isInitial = false) {
 
     const tStart = performance.now();
     const timeoutPromise = new Promise((_, reject) => {
-      setTimeout(() => reject(new Error('Search request timed out after 8 seconds. Please check your network connection or try again.')), 8000);
+      setTimeout(() => reject(new Error('Search request timed out after 16 seconds. Please check your network connection or try again.')), 16000);
     });
 
     const search = await Promise.race([
@@ -1784,7 +1784,21 @@ async function performSearch(query, resultsContainer, isInitial = false) {
 
     if (!search || !search.results || search.results.length === 0) {
       updateSearchStats(0, tDuration);
-      resultsContainer.innerHTML = `<p class="search-empty-note">${escapeHTML(i18n['no_results'] || 'No records found.')}</p>`;
+      resultsContainer.innerHTML = `
+        <div class="search-empty-card">
+          <p class="search-empty-note">${escapeHTML(i18n['no_results'] || 'Tiada rekod dijumpai / No records found.')}</p>
+          <div class="search-empty-suggestions">
+            <p>💡 <strong>Cadangan Carian:</strong></p>
+            <ul>
+              <li>Pastikan ejaan perkataan adalah tepat / Check your spelling.</li>
+              <li>Gunakan kata kunci yang lebih umum / Try broader keywords.</li>
+              ${currentOrg ? `<li>Cuba keluarkan tapisan organisasi (<strong>${orgsData[currentOrg]?.name || currentOrg}</strong>).</li>` : ''}
+              ${currentDdc ? `<li>Keluarkan tapisan kelas Dewey (DDC).</li>` : ''}
+              ${currentSearchField !== 'all' ? `<li>Tukar medan carian ke "Semua Medan" / Switch to All Fields.</li>` : ''}
+            </ul>
+          </div>
+        </div>
+      `;
       hidePagination();
       return;
     }
@@ -1794,8 +1808,9 @@ async function performSearch(query, resultsContainer, isInitial = false) {
     // Field-specific targeting if field is explicitly selected
     if (rawTerm && currentSearchField !== 'all') {
       const termLower = rawTerm.toLowerCase();
+      const candidateLimit = Math.min(results.length, 25);
       const topCandidates = await Promise.all(
-        results.slice(0, 60).map(async r => ({
+        results.slice(0, candidateLimit).map(async r => ({
           res: r,
           data: await getResultData(r)
         }))
@@ -1831,6 +1846,8 @@ async function performSearch(query, resultsContainer, isInitial = false) {
 
       if (matched.length > 0) {
         results = matched;
+      } else {
+        results = [];
       }
     }
 
@@ -1959,7 +1976,7 @@ async function renderCurrentPage(resultsContainer, isInitial = false) {
       badgesHtml += `<span class="badge badge-year">${escapeHTML(data.meta.year)}</span>`;
     }
     if (isbn) {
-      badgesHtml += `<span class="badge badge-year">ISBN ${escapeHTML(isbn)}</span>`;
+      badgesHtml += `<span class="badge badge-isbn">ISBN ${escapeHTML(isbn)}</span>`;
     }
     badgesHtml += '</div>';
 

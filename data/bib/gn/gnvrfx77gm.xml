@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">20</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">576400181</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)20</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shah Alam</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">-</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="082" ind1=" " ind2=" ">
+      <marc:subfield code="a">015.41/075</marc:subfield>
+      <marc:subfield code="2">20</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">The BRITS index</marc:subfield>
+      <marc:subfield code="b">an index to the British theses collections, 1971-1987 held at the British Document Supply Centre and London University</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Godstone, Surrey, England</marc:subfield>
+      <marc:subfield code="b">British Theses Service</marc:subfield>
+      <marc:subfield code="c">1989</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">3 v.</marc:subfield>
+      <marc:subfield code="c">32 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="505" ind1=" " ind2=" ">
+      <marc:subfield code="a">v. 1. Author index. -- v. 2. Subject index. -- v. 3. Title index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Dissertations, Academic</marc:subfield>
+      <marc:subfield code="v">Periodicals</marc:subfield>
+      <marc:subfield code="v">Bibliography</marc:subfield>
+      <marc:subfield code="z">Great Britain</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1=" " ind2=" ">
+      <marc:subfield code="a">British Library.</marc:subfield>
+      <marc:subfield code="b">Document Supply Centre</marc:subfield>
+      <marc:subfield code="a">University of London</marc:subfield>
+      <marc:subfield code="a">British Theses Service</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SELANGOR (PTAR KAMPUS PUNCAK PERDANA)</marc:subfield>
+      <marc:subfield code="b">UiTM SELANGOR (PTAR KAMPUS PUNCAK PERDANA)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-000000276372</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SELANGOR (PTAR KAMPUS PUNCAK PERDANA)</marc:subfield>
+      <marc:subfield code="b">UiTM SELANGOR (PTAR KAMPUS PUNCAK PERDANA)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-000000276373</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SELANGOR (PTAR KAMPUS PUNCAK PERDANA)</marc:subfield>
+      <marc:subfield code="b">UiTM SELANGOR (PTAR KAMPUS PUNCAK PERDANA)</marc:subfield>
+      <marc:subfield code="o">-</marc:subfield>
+      <marc:subfield code="p">UiTM-000000276374</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

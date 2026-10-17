@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">1073</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">387071865</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)1073</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">Shah Alam</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TK7895.M3 F84</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">TK7895.M3</marc:subfield>
+      <marc:subfield code="b">F84</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1=" " ind2=" ">
+      <marc:subfield code="a">Fuller, Samuel H.</marc:subfield>
+      <marc:subfield code="d">1946-</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">Analysis of drum and disk storage units</marc:subfield>
+      <marc:subfield code="c">Samuel H. Fuller</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Berlin</marc:subfield>
+      <marc:subfield code="a">New York</marc:subfield>
+      <marc:subfield code="b">Springer-Verlag</marc:subfield>
+      <marc:subfield code="c">1975</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">ix, 283 p.</marc:subfield>
+      <marc:subfield code="b">ill.</marc:subfield>
+      <marc:subfield code="c">25 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="490" ind1=" " ind2=" ">
+      <marc:subfield code="a">Lecture notes in computer science</marc:subfield>
+      <marc:subfield code="v">31</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Bibliography: p. [279]-283.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Magnetic memory (Calculating-machines</marc:subfield>
+      <marc:subfield code="x">Mathematical models</marc:subfield>
+      <marc:subfield code="a">Computer storage devices</marc:subfield>
+      <marc:subfield code="x">Mathematical models</marc:subfield>
+      <marc:subfield code="a">Magnetic disks</marc:subfield>
+      <marc:subfield code="x">Mathematical models</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Tun Abdul Razak (Shah Alam)</marc:subfield>
+      <marc:subfield code="o">TK7895.M3 F84</marc:subfield>
+      <marc:subfield code="p">UiTM-1073</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

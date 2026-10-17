@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>04911cam a22005058i 4500</marc:leader>
+    <marc:controlfield tag="000">nam a22     7a 4500</marc:controlfield>
+    <marc:controlfield tag="001">in00024290973</marc:controlfield>
+    <marc:controlfield tag="003">DLC</marc:controlfield>
+    <marc:controlfield tag="005">20260913153414</marc:controlfield>
+    <marc:controlfield tag="007">t</marc:controlfield>
+    <marc:controlfield tag="008">250724s2025    nju           001 0 eng c</marc:controlfield>
+    <marc:datafield tag="010" ind1=" " ind2=" ">
+      <marc:subfield code="a">2025029987</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9781394257065</marc:subfield>
+      <marc:subfield code="q">hardback</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394257089</marc:subfield>
+      <marc:subfield code="q">adobe pdf</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394257072</marc:subfield>
+      <marc:subfield code="q">epub</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394257096</marc:subfield>
+      <marc:subfield code="q">ebook</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UMK)in00024290973</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">WaSeSS/DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+      <marc:subfield code="d">DLC-MRC</marc:subfield>
+      <marc:subfield code="d">WaSeSS/DLC</marc:subfield>
+      <marc:subfield code="d">DLC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="042" ind1=" " ind2=" ">
+      <marc:subfield code="a">pcc</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TA347.A78</marc:subfield>
+      <marc:subfield code="b">A3856 2025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="0" ind2="0">
+      <marc:subfield code="a">Advances in artificial intelligence applications in industrial and systems engineering /</marc:subfield>
+      <marc:subfield code="c">edited by Gavriel Salvendy, Waldemar Karwowski, Vincent Duffy.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="263" ind1=" " ind2=" ">
+      <marc:subfield code="a">2509</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="a">Hoboken, New Jersey :</marc:subfield>
+      <marc:subfield code="b">Wiley,</marc:subfield>
+      <marc:subfield code="c">[2025]</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">pages cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="334" ind1=" " ind2=" ">
+      <marc:subfield code="a">single unit</marc:subfield>
+      <marc:subfield code="b">mono</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/issuance/mono</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/contentTypes/txt</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/mediaTypes/n</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/carriers/nc</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="353" ind1=" " ind2=" ">
+      <marc:subfield code="a">index</marc:subfield>
+      <marc:subfield code="b">index</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/msupplcont/index</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="490" ind1="0" ind2=" ">
+      <marc:subfield code="a">Advances in industrial and systems engineering</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">&quot;This book focuses on the recent developments, challenges, risks, and promising applications of artificial intelligence (AI) systems and technologies to the broad field of industrial and systems engineering (ISE). Over the past five years, the field of AI has been rapidly growing in theory and applications. Responsible implementation of AI in industry necessitates intentional strategic planning, collaboration of various stakeholders, investment in human resources and infrastructure, and ongoing monitoring of AI integration. It also requires compliance with regulatory requirements and adherence to ethical guidelines and norms that align with societal values. The adoption and continued success of AI system applications in ISE are fraught with many challenges. These include issues related to data quality and access, gaps in talent and skills, explainability, integration with existing systems, change management, cost-effectiveness, regulatory and legal concerns, privacy and security, ethical considerations, and gaining trust and acceptance. Chapter 1 introduces the AI concepts and techniques and discusses the benefits of their potential applications in ISE. Chapter 2 explores the applications of autonomous systems and intelligent agents in ISE. Chapter 3 examines the applications of natural language processing (NLP) in selected applications in ISE. Chapter 4 covers the applications of AI in smart manufacturing and robotics. Chapter 5 provides an overview of the applications of AI in healthcare. Chapter 6 outlines the applications of AI to ensure security for ISE systems. Chapter 7 discusses the applications of AI in the defense sector. Chapter 8 focuses on the applications of AI in systems engineering and management. Chapter 9 explains how machine learning can assist in forecasting the cryptocurrency markets. Chapter 10 describes recent applications of AI in the field of civil aviation. Chapter 11 assesses the benefits and challenges of using AI for personalized learning and education. Chapter 12 explains the process of securing AI systems in the era of large language models. Chapter 13 outlines the responsible applications of AI for social good. Finally, Chapter 14 projects future directions of AI applications in ISE.&quot;-- Provided by publisher.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Artificial intelligence</marc:subfield>
+      <marc:subfield code="x">Industrial applications</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Industrial engineering</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/authorities/subjects/sh85065864</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Systems engineering</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/authorities/subjects/sh85131750</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Salvendy, Gavriel,</marc:subfield>
+      <marc:subfield code="d">1938-</marc:subfield>
+      <marc:subfield code="e">editor</marc:subfield>
+      <marc:subfield code="4">http://id.loc.gov/vocabulary/relators/edt</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/authorities/names/n81147014</marc:subfield>
+      <marc:subfield code="1">http://id.loc.gov/rwo/agents/n81147014</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Karwowski, Waldemar,</marc:subfield>
+      <marc:subfield code="d">1953-</marc:subfield>
+      <marc:subfield code="e">editor</marc:subfield>
+      <marc:subfield code="4">http://id.loc.gov/vocabulary/relators/edt</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/authorities/names/n85377443</marc:subfield>
+      <marc:subfield code="1">http://id.loc.gov/rwo/agents/n85377443</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Duffy, Vincent G.</marc:subfield>
+      <marc:subfield code="e">editor</marc:subfield>
+      <marc:subfield code="4">http://id.loc.gov/vocabulary/relators/edt</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/authorities/names/nb2007019323</marc:subfield>
+      <marc:subfield code="1">http://id.loc.gov/rwo/agents/nb2007019323</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="758" ind1=" " ind2=" ">
+      <marc:subfield code="1">http://id.loc.gov/resources/instances/in00024290973</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="758" ind1=" " ind2=" ">
+      <marc:subfield code="4">http://id.loc.gov/ontologies/bibframe/instanceOf</marc:subfield>
+      <marc:subfield code="1">http://id.loc.gov/resources/works/in00024290973</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="884" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC bibframe2marc v2.10</marc:subfield>
+      <marc:subfield code="g">20250731</marc:subfield>
+      <marc:subfield code="q">DLC</marc:subfield>
+      <marc:subfield code="u">https://github.com/lcnetdev/bibframe2marc/releases/tag/v2.10</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="906" ind1=" " ind2=" ">
+      <marc:subfield code="a">7</marc:subfield>
+      <marc:subfield code="b">rip</marc:subfield>
+      <marc:subfield code="c">orignew</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+      <marc:subfield code="e">ecip</marc:subfield>
+      <marc:subfield code="f">20</marc:subfield>
+      <marc:subfield code="g">y-gencatlg</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="925" ind1="0" ind2=" ">
+      <marc:subfield code="a">acquire</marc:subfield>
+      <marc:subfield code="b">1 shelf copy</marc:subfield>
+      <marc:subfield code="x">policy default</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-05</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">488.97</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398951</marc:subfield>
+      <marc:subfield code="r">2026-10-05 00:00:00</marc:subfield>
+      <marc:subfield code="v">514.7</marc:subfield>
+      <marc:subfield code="w">2026-10-05</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-05</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">488.97</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398950</marc:subfield>
+      <marc:subfield code="r">2026-10-05 00:00:00</marc:subfield>
+      <marc:subfield code="v">514.7</marc:subfield>
+      <marc:subfield code="w">2026-10-05</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="955" ind1=" " ind2=" ">
+      <marc:subfield code="e">rp11 2025-07-31 to Cat Complete</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="985" ind1=" " ind2=" ">
+      <marc:subfield code="e">BIBFRAME</marc:subfield>
+      <marc:subfield code="d">2025-07-31T08:29:44</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">umk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">132660</marc:subfield>
+      <marc:subfield code="d">132660</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

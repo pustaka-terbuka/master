@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>03042cam a22004698i 4500</marc:leader>
+    <marc:controlfield tag="000">nam a22     7a 4500</marc:controlfield>
+    <marc:controlfield tag="001">24260418</marc:controlfield>
+    <marc:controlfield tag="003">DLC</marc:controlfield>
+    <marc:controlfield tag="005">20260913153333</marc:controlfield>
+    <marc:controlfield tag="007">t</marc:controlfield>
+    <marc:controlfield tag="008">250613s2026    nju           001 0 eng c</marc:controlfield>
+    <marc:datafield tag="010" ind1=" " ind2=" ">
+      <marc:subfield code="a">2025025167</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9781394246410</marc:subfield>
+      <marc:subfield code="q">paperback</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394246434</marc:subfield>
+      <marc:subfield code="q">adobe pdf</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394246427</marc:subfield>
+      <marc:subfield code="q">epub</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UMK)24260418</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">WaSeSS/DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+      <marc:subfield code="d">WaSeSS/DLC</marc:subfield>
+      <marc:subfield code="d">DLC-MRC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="042" ind1=" " ind2=" ">
+      <marc:subfield code="a">pcc</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TP155.2.M35</marc:subfield>
+      <marc:subfield code="b">B87 2026</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="082" ind1="0" ind2="0">
+      <marc:subfield code="a">660.01/511</marc:subfield>
+      <marc:subfield code="2">23/eng/20250730</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2=" ">
+      <marc:subfield code="a">Burk, Chris</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+      <marc:subfield code="4">aut</marc:subfield>
+      <marc:subfield code="4">http://id.loc.gov/vocabulary/relators/aut</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/authorities/names/no2025073345</marc:subfield>
+      <marc:subfield code="1">http://id.loc.gov/rwo/agents/no2025073345</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Techno-economic modeling for chemical and bioprocess innovations /</marc:subfield>
+      <marc:subfield code="c">Chris Burk.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="263" ind1=" " ind2=" ">
+      <marc:subfield code="a">2509</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="a">Hoboken, New Jersey :</marc:subfield>
+      <marc:subfield code="b">Wiley,</marc:subfield>
+      <marc:subfield code="c">[2026]</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">pages cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="334" ind1=" " ind2=" ">
+      <marc:subfield code="a">single unit</marc:subfield>
+      <marc:subfield code="b">mono</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/issuance/mono</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/contentTypes/txt</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/mediaTypes/n</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/carriers/nc</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="353" ind1=" " ind2=" ">
+      <marc:subfield code="a">index</marc:subfield>
+      <marc:subfield code="b">index</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/msupplcont/index</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">&quot;Techno-economic Analysis (TEA) plays an important role in determining which processes and projects are economically competitive and scalable as well as environmentally and socially acceptable. TEA uses analytical modeling to examine how technical and financial parameters influence economic benefit. These parameters span technical, financial and economic benefits. TEA is valuable for assessing economic viability, but a good techno-economic model (TEM) is more than a one-off analysis; it is a tool for understanding design tradeoffs and development risks, and for effectively guiding the development of a technology. For example, TEA sensitivity analyses, like tornado diagrams, can help developers to identify technical opportunities, risks, and areas of uncertainty.&quot;-- Provided by publisher.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Chemical engineering</marc:subfield>
+      <marc:subfield code="x">Mathematical models</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Biochemical engineering</marc:subfield>
+      <marc:subfield code="x">Mathematical models</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="758" ind1=" " ind2=" ">
+      <marc:subfield code="1">http://id.loc.gov/resources/instances/24260418</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="758" ind1=" " ind2=" ">
+      <marc:subfield code="4">http://id.loc.gov/ontologies/bibframe/instanceOf</marc:subfield>
+      <marc:subfield code="1">http://id.loc.gov/resources/works/24260418</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="776" ind1="1" ind2=" ">
+      <marc:subfield code="i">Online version</marc:subfield>
+      <marc:subfield code="4">http://id.loc.gov/entities/relationships/onlineversion</marc:subfield>
+      <marc:subfield code="a">Burk, Chris</marc:subfield>
+      <marc:subfield code="t">Techno-economic modeling for chemical and bioprocess innovations</marc:subfield>
+      <marc:subfield code="d">Hoboken, New Jersey : Wiley, [2026]</marc:subfield>
+      <marc:subfield code="z">9781394246434</marc:subfield>
+      <marc:subfield code="w">(DLC) 2025025168</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="884" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC bibframe2marc v2.10</marc:subfield>
+      <marc:subfield code="g">20250730</marc:subfield>
+      <marc:subfield code="q">DLC</marc:subfield>
+      <marc:subfield code="u">https://github.com/lcnetdev/bibframe2marc/releases/tag/v2.10</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="906" ind1=" " ind2=" ">
+      <marc:subfield code="a">7</marc:subfield>
+      <marc:subfield code="b">cbc</marc:subfield>
+      <marc:subfield code="c">orignew</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+      <marc:subfield code="e">ecip</marc:subfield>
+      <marc:subfield code="f">20</marc:subfield>
+      <marc:subfield code="g">y-gencatlg</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="925" ind1="0" ind2=" ">
+      <marc:subfield code="a">acquire</marc:subfield>
+      <marc:subfield code="b">1 shelf copy</marc:subfield>
+      <marc:subfield code="x">policy default</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-05</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">508.69</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398949</marc:subfield>
+      <marc:subfield code="r">2026-10-05 00:00:00</marc:subfield>
+      <marc:subfield code="v">535.46</marc:subfield>
+      <marc:subfield code="w">2026-10-05</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-05</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">508.69</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398948</marc:subfield>
+      <marc:subfield code="r">2026-10-05 00:00:00</marc:subfield>
+      <marc:subfield code="v">535.46</marc:subfield>
+      <marc:subfield code="w">2026-10-05</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="955" ind1=" " ind2=" ">
+      <marc:subfield code="e">rp11 2025-06-26  to Dewey</marc:subfield>
+      <marc:subfield code="w">xm13 2025-07-30</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="985" ind1=" " ind2=" ">
+      <marc:subfield code="e">BIBFRAME</marc:subfield>
+      <marc:subfield code="d">2025-07-30T17:37:19</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">umk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">132659</marc:subfield>
+      <marc:subfield code="d">132659</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

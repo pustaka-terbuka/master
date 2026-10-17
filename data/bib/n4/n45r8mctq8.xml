@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>03813cam a22004698i 4500</marc:leader>
+    <marc:controlfield tag="000">nam a22     7a 4500</marc:controlfield>
+    <marc:controlfield tag="001">24207718</marc:controlfield>
+    <marc:controlfield tag="003">DLC</marc:controlfield>
+    <marc:controlfield tag="005">20260913151823</marc:controlfield>
+    <marc:controlfield tag="007">t</marc:controlfield>
+    <marc:controlfield tag="008">250515s2025    nju           001 0 eng c</marc:controlfield>
+    <marc:datafield tag="010" ind1=" " ind2=" ">
+      <marc:subfield code="a">2025021502</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9781394292141</marc:subfield>
+      <marc:subfield code="q">cloth</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394292165</marc:subfield>
+      <marc:subfield code="q">adobe pdf</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="z">9781394292158</marc:subfield>
+      <marc:subfield code="q">epub</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UMK)24207718</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">WaSeSS/DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">DLC</marc:subfield>
+      <marc:subfield code="d">WaSeSS/DLC</marc:subfield>
+      <marc:subfield code="d">DLC-MRC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="042" ind1=" " ind2=" ">
+      <marc:subfield code="a">pcc</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TA174</marc:subfield>
+      <marc:subfield code="b">.M657 2025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="082" ind1="0" ind2="0">
+      <marc:subfield code="a">620/.0042071</marc:subfield>
+      <marc:subfield code="2">23/eng/20250709</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2=" ">
+      <marc:subfield code="a">Morozov, Alexei</marc:subfield>
+      <marc:subfield code="c">(Academic associate)</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+      <marc:subfield code="4">aut</marc:subfield>
+      <marc:subfield code="4">http://id.loc.gov/vocabulary/relators/aut</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/authorities/names/no2025058387</marc:subfield>
+      <marc:subfield code="1">http://id.loc.gov/rwo/agents/no2025058387</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Engineering capstone design :</marc:subfield>
+      <marc:subfield code="b">project planning, organizing and executing /</marc:subfield>
+      <marc:subfield code="c">Alexei Morozov [and four others].</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="263" ind1=" " ind2=" ">
+      <marc:subfield code="a">2508</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="a">Hoboken, New Jersey :</marc:subfield>
+      <marc:subfield code="b">Wiley,</marc:subfield>
+      <marc:subfield code="c">2025</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">pages cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="334" ind1=" " ind2=" ">
+      <marc:subfield code="a">single unit</marc:subfield>
+      <marc:subfield code="b">mono</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/issuance/mono</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/contentTypes/txt</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/mediaTypes/n</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/carriers/nc</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="353" ind1=" " ind2=" ">
+      <marc:subfield code="a">index</marc:subfield>
+      <marc:subfield code="b">index</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/vocabulary/msupplcont/index</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes index.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">&quot;Engineering Capstone Design: Project Planning, Organizing, and Executing provides a single-source of information for a mechanical engineering capstone course, with coverage of topics like team formation, project organization and task distribution, basics of project management, principles of design, and the design process from problem definition to final prototyping. The book focuses on two aspects of a typical capstone course: project planning (including teamwork organization, project management, and communication with the clients, suppliers, and manufacturers) and the step-by-step design process. It reviews fundamental design laws and methods before going on to systematically take students through the steps for tackling a capstone design project. It offers detailed explanations of the various design phases and best practices for design analysis and optimization, using graphics to communicate a design, and prototyping, and planning for testing and quality control. The final chapters feature case studies of actual capstone projects in the areas of robotics, multi-speed automotive transmission, designing a Formula SAE vehicle, high power diodes for street lighting, and biomedical knee design. The book is accompanied by supplemental material for instructors that explains how to organize a successful capstone design course, with suggestions for learning outcomes, grade attribution, principles of student team formation, project selection, and distribution process.&quot;-- Provided by publisher.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Engineering design</marc:subfield>
+      <marc:subfield code="x">Study and teaching (Higher)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Engineering students</marc:subfield>
+      <marc:subfield code="0">http://id.loc.gov/authorities/subjects/sh85043243</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="758" ind1=" " ind2=" ">
+      <marc:subfield code="1">http://id.loc.gov/resources/instances/24207718</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="758" ind1=" " ind2=" ">
+      <marc:subfield code="4">http://id.loc.gov/ontologies/bibframe/instanceOf</marc:subfield>
+      <marc:subfield code="1">http://id.loc.gov/resources/works/24207718</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="776" ind1="1" ind2=" ">
+      <marc:subfield code="i">Online version</marc:subfield>
+      <marc:subfield code="4">http://id.loc.gov/entities/relationships/onlineversion</marc:subfield>
+      <marc:subfield code="a">Morozov, Alexei</marc:subfield>
+      <marc:subfield code="t">Engineering capstone design</marc:subfield>
+      <marc:subfield code="d">Hoboken, New Jersey : Wiley, 2025</marc:subfield>
+      <marc:subfield code="z">9781394292165</marc:subfield>
+      <marc:subfield code="w">(DLC) 2025021503</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="884" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC bibframe2marc v2.10-dev</marc:subfield>
+      <marc:subfield code="g">20250709</marc:subfield>
+      <marc:subfield code="q">DLC</marc:subfield>
+      <marc:subfield code="u">https://github.com/lcnetdev/bibframe2marc/releases/tag/v2.10-dev</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="906" ind1=" " ind2=" ">
+      <marc:subfield code="a">7</marc:subfield>
+      <marc:subfield code="b">rip</marc:subfield>
+      <marc:subfield code="c">orignew</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+      <marc:subfield code="e">ecip</marc:subfield>
+      <marc:subfield code="f">20</marc:subfield>
+      <marc:subfield code="g">y-gencatlg</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="925" ind1="0" ind2=" ">
+      <marc:subfield code="a">acquire</marc:subfield>
+      <marc:subfield code="b">1 shelf copy</marc:subfield>
+      <marc:subfield code="x">policy default</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-04</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">453.46</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398930</marc:subfield>
+      <marc:subfield code="r">2026-10-04 00:00:00</marc:subfield>
+      <marc:subfield code="v">477.33</marc:subfield>
+      <marc:subfield code="w">2026-10-04</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">15</marc:subfield>
+      <marc:subfield code="a">JELI</marc:subfield>
+      <marc:subfield code="b">UMK</marc:subfield>
+      <marc:subfield code="c">joos</marc:subfield>
+      <marc:subfield code="d">2026-10-04</marc:subfield>
+      <marc:subfield code="e">18</marc:subfield>
+      <marc:subfield code="g">453.46</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">In process</marc:subfield>
+      <marc:subfield code="p">10398931</marc:subfield>
+      <marc:subfield code="r">2026-10-04 00:00:00</marc:subfield>
+      <marc:subfield code="v">477.33</marc:subfield>
+      <marc:subfield code="w">2026-10-04</marc:subfield>
+      <marc:subfield code="y">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="955" ind1=" " ind2=" ">
+      <marc:subfield code="e">rp06 2025-05-17 STM to Dewey</marc:subfield>
+      <marc:subfield code="w">xm13 2025-07-09</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="985" ind1=" " ind2=" ">
+      <marc:subfield code="e">BIBFRAME</marc:subfield>
+      <marc:subfield code="d">2025-07-09T14:21:14</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">umk</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">132650</marc:subfield>
+      <marc:subfield code="d">132650</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

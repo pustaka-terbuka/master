@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">873</marc:controlfield>
+    <marc:controlfield tag="003">UiTM</marc:controlfield>
+    <marc:controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">138546622</marc:subfield>
+      <marc:subfield code="q">hardback</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UiTM)873</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">DLC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="d">UiTM</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QA76.6 .T38 1990</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="090" ind1=" " ind2=" ">
+      <marc:subfield code="a">QA76.6</marc:subfield>
+      <marc:subfield code="b">.T38 1990</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1=" " ind2=" ">
+      <marc:subfield code="a">Tanenbaum, Andrew S.</marc:subfield>
+      <marc:subfield code="c">1944-</marc:subfield>
+      <marc:subfield code="e">author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1=" " ind2=" ">
+      <marc:subfield code="a">STRUCTURED COMPUTER ORGANIZATION</marc:subfield>
+      <marc:subfield code="c">ANDREW S. TANENBAUM</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="250" ind1=" " ind2=" ">
+      <marc:subfield code="a">THIRD EDITION</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2=" ">
+      <marc:subfield code="a">Englewood Cliffs, N.J.</marc:subfield>
+      <marc:subfield code="b">Prentice Hall</marc:subfield>
+      <marc:subfield code="c">1990</marc:subfield>
+      <marc:subfield code="c">©1990</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">xvii, 587 pages</marc:subfield>
+      <marc:subfield code="b">illustrations</marc:subfield>
+      <marc:subfield code="c">24 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdacontent</marc:subfield>
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdamedia</marc:subfield>
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="504" ind1=" " ind2=" ">
+      <marc:subfield code="a">Includes bibliographical references</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2=" ">
+      <marc:subfield code="a">Computer organization</marc:subfield>
+      <marc:subfield code="a">Electronic digital computers</marc:subfield>
+      <marc:subfield code="x">Programming</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERAK (PTAR KAMPUS SERI ISKANDAR)</marc:subfield>
+      <marc:subfield code="b">UiTM PERAK (PTAR KAMPUS SERI ISKANDAR)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .T38 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000039174</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERAK (PTAR KAMPUS TAPAH)</marc:subfield>
+      <marc:subfield code="b">UiTM PERAK (PTAR KAMPUS TAPAH)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .T38 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000039171</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERAK (PTAR KAMPUS TAPAH)</marc:subfield>
+      <marc:subfield code="b">UiTM PERAK (PTAR KAMPUS TAPAH)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .T38 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000039172</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERAK (PTAR KAMPUS TAPAH)</marc:subfield>
+      <marc:subfield code="b">UiTM PERAK (PTAR KAMPUS TAPAH)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .T38 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000039173</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERAK (PTAR KAMPUS TAPAH)</marc:subfield>
+      <marc:subfield code="b">UiTM PERAK (PTAR KAMPUS TAPAH)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .T38 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000039175</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERAK (PTAR KAMPUS TAPAH)</marc:subfield>
+      <marc:subfield code="b">UiTM PERAK (PTAR KAMPUS TAPAH)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .T38 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000039176</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERAK (PTAR KAMPUS TAPAH)</marc:subfield>
+      <marc:subfield code="b">UiTM PERAK (PTAR KAMPUS TAPAH)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .T38 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000039177</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="b">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .T38 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000061736</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="b">UiTM PERLIS (PDJH KAMPUS ARAU)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .T38 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-SU0000061736</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR JLN OTHMAN)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR JLN OTHMAN)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .T38 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000293868</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UiTM SHAH ALAM (PTAR SAINS DAN TEKNOLOGI)</marc:subfield>
+      <marc:subfield code="b">UiTM SHAH ALAM (PTAR SAINS DAN TEKNOLOGI)</marc:subfield>
+      <marc:subfield code="o">QA76.6 .T38 1990</marc:subfield>
+      <marc:subfield code="p">UiTM-000000293869</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="964" ind1=" " ind2=" ">
+      <marc:subfield code="c">BOK</marc:subfield>
+      <marc:subfield code="d">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">uitm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>
