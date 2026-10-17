@@ -72,5 +72,19 @@
   "search_stats": "{0} rekod ditemui dalam {1}ms",
   "search_stats_filter": "{0} rekod sepadan dalam {1}ms",
   "searching": "Mencari rekod katalog...",
-  "index_unavailable": "Indeks Carian Tidak Tersedia"
+  "index_unavailable": "Indeks Carian Tidak Tersedia",
+  "org_search_placeholder": "Cari perpustakaan mengikut nama, kod, negeri...",
+  "org_tab_all": "Semua",
+  "org_tab_active": "Aktif (Ada Koleksi)",
+  "org_tab_public": "Awam & Negeri",
+  "org_tab_university": "Universiti & Kolej",
+  "org_tab_special": "Khusus & Agensi",
+  "org_tab_school": "Sekolah",
+  "org_records_count": "{0} rekod",
+  "org_in_progress": "Rakan Kongsi (Dalam proses)",
+  "org_open_opac": "Buka Portal OPAC Asal",
+  "org_shelf_browse": "Imbas Rak Koleksi",
+  "org_close_banner": "Semua Perpustakaan",
+  "org_showing_count": "Memaparkan {0} daripada {1} perpustakaan",
+  "org_holding_label": "No. Panggilan Rak {0}:"
 }

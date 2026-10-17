@@ -148,13 +148,63 @@ function updateLangSelect() {
   }
 }
 
-/* Organization & Filter Loading */
+/* ==========================================================================
+   Organization State & Enhanced Combobox Management
+   ========================================================================== */
+let orgFilterCounts = {}; // orgCode -> record count
+let allOrgListItems = [];
+let activeOrgTypeFilter = 'all';
+let orgComboboxSearchQuery = '';
+let currentShelfScheme = 'DDC';
+let shelfBrowseDataCache = {};
+
+function getSectorTitle(type) {
+  switch (type) {
+    case 'public': return i18n['org_tab_public'] || 'Perpustakaan Awam & Negeri';
+    case 'university': return i18n['org_tab_university'] || 'Perpustakaan Universiti & Kolej';
+    case 'special': return i18n['org_tab_special'] || 'Perpustakaan Khusus & Agensi';
+    case 'school': return i18n['org_tab_school'] || 'Perpustakaan Sekolah';
+    default: return i18n['organization'] || 'Organisasi';
+  }
+}
+
+function updateOrgComboboxUI(selectedOrg) {
+  const triggerLabel = document.getElementById('org-trigger-label');
+  const triggerBadge = document.getElementById('org-trigger-count-badge');
+  const triggerBtn = document.getElementById('org-combobox-trigger');
+
+  if (!selectedOrg) {
+    if (triggerLabel) triggerLabel.textContent = i18n['all_organizations'] || 'Semua Organisasi';
+    if (triggerBadge) triggerBadge.style.display = 'none';
+    if (triggerBtn) triggerBtn.setAttribute('title', i18n['all_organizations'] || 'Semua Organisasi');
+    return;
+  }
+
+  const orgInfo = orgsData[selectedOrg];
+  const count = orgFilterCounts[selectedOrg] || 0;
+  const displayName = orgInfo?.name ? `${orgInfo.name} (${selectedOrg})` : selectedOrg;
+
+  if (triggerLabel) triggerLabel.textContent = displayName;
+  if (triggerBtn) triggerBtn.setAttribute('title', displayName);
+
+  if (triggerBadge) {
+    if (count > 0) {
+      triggerBadge.textContent = `${count.toLocaleString()}`;
+      triggerBadge.style.display = 'inline-block';
+    } else {
+      triggerBadge.style.display = 'none';
+    }
+  }
+}
+
 async function loadOrgs() {
   try {
     try {
       const orgsRes = await fetch(`${BASE_URL}orgs.json`);
       if (orgsRes.ok) orgsData = await orgsRes.json();
-    } catch (e) {}
+    } catch (e) {
+      console.warn('Could not load orgs.json:', e);
+    }
 
     let filters = null;
     if (pagefind) {
@@ -163,42 +213,91 @@ async function loadOrgs() {
       } catch (e) {}
     }
 
+    orgFilterCounts = {};
+    if (filters && filters.organization) {
+      for (const [code, count] of Object.entries(filters.organization)) {
+        orgFilterCounts[code] = Number(count) || 0;
+      }
+    }
+
     const select = document.getElementById('org-filter');
     if (!select) return;
 
+    // Reset native options except the first "Semua Organisasi"
     while (select.options.length > 1) {
       select.remove(1);
     }
 
-    const orgKeys = new Set();
-    if (filters && filters.organization) {
-      for (const org of Object.keys(filters.organization)) {
-        orgKeys.add(org);
-      }
-    }
-    for (const org of Object.keys(orgsData)) {
-      orgKeys.add(org);
-    }
+    const allOrgCodes = new Set();
+    Object.keys(orgsData).forEach(code => allOrgCodes.add(code));
+    Object.keys(orgFilterCounts).forEach(code => allOrgCodes.add(code));
 
-    const sortedOrgs = Array.from(orgKeys).sort((a, b) => {
-      const nameA = orgsData[a]?.name || a;
-      const nameB = orgsData[b]?.name || b;
-      return nameA.localeCompare(nameB);
+    allOrgListItems = Array.from(allOrgCodes).map(code => {
+      const data = orgsData[code] || {};
+      return {
+        code,
+        name: data.name || code,
+        type: data.type || 'public',
+        state: data.state || '',
+        default_scheme: data.default_scheme || 'DDC',
+        opac_url: data.opac_url || '',
+        contact: data.contact || '',
+        count: orgFilterCounts[code] || 0
+      };
     });
 
-    for (const org of sortedOrgs) {
-      const option = document.createElement('option');
-      option.value = org;
-      const orgName = orgsData[org]?.name ? `${orgsData[org].name} (${org})` : org;
-      option.textContent = orgName;
-      select.appendChild(option);
+    // Partition: Active collections first (with record count), followed by categories
+    const activeOrgs = allOrgListItems.filter(item => item.count > 0).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+    const publicOrgs = allOrgListItems.filter(item => item.type === 'public' && item.count === 0).sort((a, b) => a.name.localeCompare(b.name));
+    const uniOrgs = allOrgListItems.filter(item => item.type === 'university' && item.count === 0).sort((a, b) => a.name.localeCompare(b.name));
+    const specialOrgs = allOrgListItems.filter(item => item.type === 'special' && item.count === 0).sort((a, b) => a.name.localeCompare(b.name));
+    const schoolOrgs = allOrgListItems.filter(item => item.type === 'school' && item.count === 0).sort((a, b) => a.name.localeCompare(b.name));
+
+    // Populate native <select> with categorized <optgroup>s (keeps automated tests & accessibility 100% working)
+    if (activeOrgs.length > 0) {
+      const groupActive = document.createElement('optgroup');
+      groupActive.label = `⭐ ${i18n['org_tab_active'] || 'Perpustakaan Berpenyertaan Aktif (Ada Koleksi)'}`;
+      for (const item of activeOrgs) {
+        const opt = document.createElement('option');
+        opt.value = item.code;
+        opt.textContent = `${item.name} (${item.code}) — ${item.count.toLocaleString()} rekod`;
+        groupActive.appendChild(opt);
+      }
+      select.appendChild(groupActive);
     }
 
+    const sectorGroups = [
+      { label: i18n['org_tab_public'] || 'Perpustakaan Awam & Negeri', items: publicOrgs },
+      { label: i18n['org_tab_university'] || 'Perpustakaan Universiti & Kolej', items: uniOrgs },
+      { label: i18n['org_tab_special'] || 'Perpustakaan Khusus & Agensi', items: specialOrgs },
+      { label: i18n['org_tab_school'] || 'Perpustakaan Sekolah', items: schoolOrgs }
+    ];
+
+    for (const sec of sectorGroups) {
+      if (sec.items.length > 0) {
+        const grp = document.createElement('optgroup');
+        grp.label = sec.label;
+        for (const item of sec.items) {
+          const opt = document.createElement('option');
+          opt.value = item.code;
+          const statusText = item.count > 0 ? `${item.count.toLocaleString()} rekod` : (i18n['org_in_progress'] || 'Rakan Kongsi');
+          opt.textContent = `${item.name} (${item.code}) — ${statusText}`;
+          grp.appendChild(opt);
+        }
+        select.appendChild(grp);
+      }
+    }
+
+    // Initialize custom combobox UI
+    setupOrgCombobox();
+
+    // Check URL query param ?org=
     const urlParams = new URLSearchParams(window.location.search);
     const urlOrg = urlParams.get('org');
-    if (urlOrg && orgKeys.has(urlOrg)) {
+    if (urlOrg && allOrgCodes.has(urlOrg)) {
       select.value = urlOrg;
       currentOrg = urlOrg;
+      updateOrgComboboxUI(urlOrg);
     }
 
     if (!select._listenerAttached) {
@@ -212,6 +311,7 @@ async function loadOrgs() {
           url.searchParams.delete('org');
         }
         window.history.pushState({}, '', url);
+        updateOrgComboboxUI(val);
         await onOrgChange(val);
       });
     }
@@ -220,20 +320,285 @@ async function loadOrgs() {
       await onOrgChange(urlOrg);
     }
   } catch (err) {
-    console.error('Failed to load orgs', err);
+    console.error('Failed to load orgs:', err);
   }
+}
+
+function setupOrgCombobox() {
+  const trigger = document.getElementById('org-combobox-trigger');
+  const dropdown = document.getElementById('org-combobox-dropdown');
+  const searchInput = document.getElementById('org-dropdown-search');
+  const clearSearchBtn = document.getElementById('org-search-clear-btn');
+  const typeTabsContainer = document.getElementById('org-type-tabs');
+  const resetBtn = document.getElementById('org-dropdown-reset-btn');
+  const select = document.getElementById('org-filter');
+
+  if (!trigger || !dropdown) return;
+
+  function openDropdown() {
+    dropdown.style.display = 'flex';
+    trigger.setAttribute('aria-expanded', 'true');
+    renderOrgComboboxList();
+    if (searchInput) {
+      setTimeout(() => searchInput.focus(), 50);
+    }
+  }
+
+  function closeDropdown() {
+    dropdown.style.display = 'none';
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  function toggleDropdown() {
+    if (dropdown.style.display === 'none' || !dropdown.style.display) {
+      openDropdown();
+    } else {
+      closeDropdown();
+    }
+  }
+
+  if (!trigger._attached) {
+    trigger._attached = true;
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+  }
+
+  if (searchInput && !searchInput._attached) {
+    searchInput._attached = true;
+    searchInput.addEventListener('input', (e) => {
+      orgComboboxSearchQuery = e.target.value.trim().toLowerCase();
+      if (clearSearchBtn) {
+        clearSearchBtn.style.display = orgComboboxSearchQuery ? 'inline-block' : 'none';
+      }
+      renderOrgComboboxList();
+    });
+  }
+
+  if (clearSearchBtn && !clearSearchBtn._attached) {
+    clearSearchBtn._attached = true;
+    clearSearchBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (searchInput) {
+        searchInput.value = '';
+        searchInput.focus();
+      }
+      orgComboboxSearchQuery = '';
+      clearSearchBtn.style.display = 'none';
+      renderOrgComboboxList();
+    });
+  }
+
+  if (typeTabsContainer && !typeTabsContainer._attached) {
+    typeTabsContainer._attached = true;
+    typeTabsContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('.org-type-tab');
+      if (!btn) return;
+      typeTabsContainer.querySelectorAll('.org-type-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeOrgTypeFilter = btn.getAttribute('data-type') || 'all';
+      renderOrgComboboxList();
+    });
+  }
+
+  if (resetBtn && !resetBtn._attached) {
+    resetBtn._attached = true;
+    resetBtn.addEventListener('click', () => {
+      if (select) {
+        select.value = '';
+        select.dispatchEvent(new Event('change'));
+      }
+      closeDropdown();
+    });
+  }
+
+  // Dismiss dropdown on click outside or Escape key
+  if (!document._orgComboboxDismissAttached) {
+    document._orgComboboxDismissAttached = true;
+    document.addEventListener('click', (e) => {
+      const wrapper = document.getElementById('org-combobox-wrapper');
+      if (wrapper && !wrapper.contains(e.target)) {
+        closeDropdown();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dropdown.style.display !== 'none') {
+        closeDropdown();
+        trigger.focus();
+      }
+    });
+  }
+
+  renderOrgComboboxList();
+}
+
+function renderOrgComboboxList() {
+  const listContainer = document.getElementById('org-dropdown-list');
+  const countInfo = document.getElementById('org-dropdown-count-info');
+  const select = document.getElementById('org-filter');
+  if (!listContainer) return;
+
+  listContainer.innerHTML = '';
+
+  const q = orgComboboxSearchQuery;
+  const typeFilter = activeOrgTypeFilter;
+
+  // Filter items by type and search query
+  const filtered = allOrgListItems.filter(item => {
+    if (typeFilter === 'active' && item.count === 0) return false;
+    if (typeFilter !== 'all' && typeFilter !== 'active' && item.type !== typeFilter) return false;
+
+    if (q) {
+      const matchCode = item.code.toLowerCase().includes(q);
+      const matchName = item.name.toLowerCase().includes(q);
+      const matchState = item.state.toLowerCase().includes(q);
+      const matchType = item.type.toLowerCase().includes(q);
+      let matchAlias = false;
+      if (q.includes('penang') && item.state.toLowerCase().includes('pulau pinang')) matchAlias = true;
+      if (q.includes('malacca') && item.state.toLowerCase().includes('melaka')) matchAlias = true;
+      if (q.includes('kl') && item.state.toLowerCase().includes('kuala lumpur')) matchAlias = true;
+      return matchCode || matchName || matchState || matchType || matchAlias;
+    }
+    return true;
+  });
+
+  if (countInfo) {
+    const template = i18n['org_showing_count'] || 'Memaparkan {0} daripada {1} perpustakaan';
+    countInfo.textContent = template.replace('{0}', filtered.length).replace('{1}', allOrgListItems.length);
+  }
+
+  if (filtered.length === 0) {
+    listContainer.innerHTML = `
+      <div class="org-dropdown-empty">
+        <p>Tiada perpustakaan sepadan dengan carian "<strong>${escapeHTML(q)}</strong>".</p>
+      </div>
+    `;
+    return;
+  }
+
+  // Option for "Semua Organisasi" (at top of list if no search query)
+  if (!q && (typeFilter === 'all' || typeFilter === 'active')) {
+    const allOpt = document.createElement('div');
+    allOpt.className = 'org-option-item' + (!currentOrg ? ' is-selected' : '');
+    allOpt.innerHTML = `
+      <div class="org-option-content">
+        <div class="org-option-title-row">
+          <span class="org-option-name"><strong>${escapeHTML(i18n['all_organizations'] || 'Semua Organisasi')}</strong></span>
+        </div>
+        <div class="org-option-meta-row">
+          <span>Katalog Induk Terbuka Kebangsaan</span>
+        </div>
+      </div>
+      <div class="org-option-badges">
+        <span class="org-badge-count-pill">Semua</span>
+      </div>
+    `;
+    allOpt.onclick = () => {
+      if (select) {
+        select.value = '';
+        select.dispatchEvent(new Event('change'));
+      }
+      const dropdown = document.getElementById('org-combobox-dropdown');
+      if (dropdown) dropdown.style.display = 'none';
+    };
+    listContainer.appendChild(allOpt);
+  }
+
+  // Group items by category if no search query, or flat list if searching
+  if (!q && typeFilter === 'all') {
+    const active = filtered.filter(x => x.count > 0).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+    const publicList = filtered.filter(x => x.type === 'public' && x.count === 0).sort((a, b) => a.name.localeCompare(b.name));
+    const uniList = filtered.filter(x => x.type === 'university' && x.count === 0).sort((a, b) => a.name.localeCompare(b.name));
+    const specList = filtered.filter(x => x.type === 'special' && x.count === 0).sort((a, b) => a.name.localeCompare(b.name));
+    const schoolList = filtered.filter(x => x.type === 'school' && x.count === 0).sort((a, b) => a.name.localeCompare(b.name));
+
+    const groups = [
+      { header: `⭐ ${i18n['org_tab_active'] || 'Perpustakaan Berpenyertaan Aktif (Ada Koleksi)'}`, items: active },
+      { header: i18n['org_tab_public'] || 'Perpustakaan Awam & Negeri', items: publicList },
+      { header: i18n['org_tab_university'] || 'Perpustakaan Universiti & Kolej', items: uniList },
+      { header: i18n['org_tab_special'] || 'Perpustakaan Khusus & Agensi', items: specList },
+      { header: i18n['org_tab_school'] || 'Perpustakaan Sekolah', items: schoolList }
+    ];
+
+    for (const g of groups) {
+      if (g.items.length === 0) continue;
+      const h = document.createElement('div');
+      h.className = 'org-group-header';
+      h.innerHTML = `<span>${escapeHTML(g.header)}</span><span>${g.items.length}</span>`;
+      listContainer.appendChild(h);
+
+      for (const item of g.items) {
+        listContainer.appendChild(createOrgOptionElement(item));
+      }
+    }
+  } else {
+    const sorted = filtered.sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+    for (const item of sorted) {
+      listContainer.appendChild(createOrgOptionElement(item));
+    }
+  }
+}
+
+function createOrgOptionElement(item) {
+  const el = document.createElement('div');
+  const isSelected = currentOrg === item.code;
+  el.className = 'org-option-item' + (isSelected ? ' is-selected' : '');
+
+  const countBadgeHtml = item.count > 0
+    ? `<span class="org-badge-count-pill">${item.count.toLocaleString()} rekod</span>`
+    : `<span class="org-badge-count-pill is-zero">${escapeHTML(i18n['org_in_progress'] || 'Rakan Kongsi')}</span>`;
+
+  const stateHtml = item.state ? `<span class="org-badge-state">📍 ${escapeHTML(item.state)}</span>` : '';
+  const typeLabel = getSectorTitle(item.type);
+
+  el.innerHTML = `
+    <div class="org-option-content">
+      <div class="org-option-title-row">
+        <span class="org-option-name" title="${escapeHTML(item.name)}">${escapeHTML(item.name)}</span>
+      </div>
+      <div class="org-option-meta-row">
+        <span>${escapeHTML(typeLabel)}</span>
+        ${stateHtml ? '<span>•</span> ' + stateHtml : ''}
+      </div>
+    </div>
+    <div class="org-option-badges">
+      <span class="org-badge-code">${escapeHTML(item.code)}</span>
+      ${countBadgeHtml}
+    </div>
+  `;
+
+  el.onclick = () => {
+    const select = document.getElementById('org-filter');
+    if (select) {
+      select.value = item.code;
+      select.dispatchEvent(new Event('change'));
+    }
+    const dropdown = document.getElementById('org-combobox-dropdown');
+    if (dropdown) dropdown.style.display = 'none';
+  };
+
+  return el;
 }
 
 async function onOrgChange(org) {
   currentOrg = org;
   orgHoldingsMap = {};
-  
-  const linksContainer = document.getElementById('shelf-browse-links');
-  if (linksContainer) {
-    linksContainer.innerHTML = '';
+  updateOrgComboboxUI(org);
+
+  const banner = document.getElementById('org-profile-banner');
+  const shelfDrawer = document.getElementById('org-shelf-drawer');
+
+  if (shelfDrawer) {
+    shelfDrawer.style.display = 'none';
   }
-  
+
   if (org) {
+    const orgInfo = orgsData[org] || { name: org };
+    const count = orgFilterCounts[org] || 0;
+
+    // Fetch holdings index for this organization
     try {
       const res = await fetch(`${BASE_URL}org/${org}/index.json`);
       if (res.ok) {
@@ -242,31 +607,155 @@ async function onOrgChange(org) {
           orgHoldingsMap[item.id] = item;
         }
       }
-      
-      if (linksContainer) {
-        const lccLink = document.createElement('a');
-        lccLink.href = `${BASE_URL}browse/${org}/LCC.json`;
-        lccLink.textContent = `Browse LCC`;
-        lccLink.style.marginRight = '8px';
-        
-        const ddcLink = document.createElement('a');
-        ddcLink.href = `${BASE_URL}browse/${org}/DDC.json`;
-        ddcLink.textContent = `Browse DDC`;
-        
-        linksContainer.appendChild(lccLink);
-        linksContainer.appendChild(ddcLink);
-      }
     } catch (e) {
-      console.warn('Could not load org index', e);
+      console.warn('Could not load org holdings index:', e);
     }
+
+    // Render Organization Profile Banner
+    if (banner) {
+      const titleEl = document.getElementById('org-banner-name');
+      const codeEl = document.getElementById('org-banner-code');
+      const typeEl = document.getElementById('org-banner-type');
+      const stateEl = document.getElementById('org-banner-state');
+      const countEl = document.getElementById('org-banner-count');
+      const schemeEl = document.getElementById('org-banner-scheme');
+      const opacLinkEl = document.getElementById('org-banner-opac-link');
+      const shelfBtn = document.getElementById('org-banner-shelf-toggle-btn');
+      const closeBtn = document.getElementById('org-banner-close-btn');
+
+      if (titleEl) titleEl.textContent = orgInfo.name || org;
+      if (codeEl) codeEl.textContent = org;
+      if (typeEl) typeEl.textContent = getSectorTitle(orgInfo.type);
+      if (stateEl) stateEl.textContent = orgInfo.state ? `📍 ${orgInfo.state}` : 'Malaysia';
+      if (countEl) countEl.textContent = `📚 ${count.toLocaleString()} rekod katalog diindeks`;
+      if (schemeEl) schemeEl.textContent = `🏷️ Skim: ${orgInfo.default_scheme || 'DDC'}`;
+
+      if (opacLinkEl) {
+        if (orgInfo.opac_url) {
+          opacLinkEl.href = orgInfo.opac_url;
+          opacLinkEl.style.display = 'inline-flex';
+        } else {
+          opacLinkEl.style.display = 'none';
+        }
+      }
+
+      if (shelfBtn && !shelfBtn._attached) {
+        shelfBtn._attached = true;
+        shelfBtn.onclick = () => toggleOrgShelfDrawer();
+      }
+
+      if (closeBtn && !closeBtn._attached) {
+        closeBtn._attached = true;
+        closeBtn.onclick = () => {
+          const select = document.getElementById('org-filter');
+          if (select) {
+            select.value = '';
+            select.dispatchEvent(new Event('change'));
+          }
+        };
+      }
+
+      banner.style.display = 'block';
+    }
+  } else {
+    if (banner) banner.style.display = 'none';
   }
-  
+
   renderActiveFilters();
   const customInput = document.getElementById('search-input');
   const resultsContainer = document.getElementById('search-results');
   if (resultsContainer) {
     await performSearch(customInput ? customInput.value : '', resultsContainer, false);
   }
+}
+
+async function toggleOrgShelfDrawer() {
+  const shelfDrawer = document.getElementById('org-shelf-drawer');
+  if (!shelfDrawer || !currentOrg) return;
+
+  if (shelfDrawer.style.display === 'block') {
+    shelfDrawer.style.display = 'none';
+    return;
+  }
+
+  shelfDrawer.style.display = 'block';
+  await renderOrgShelfBrowse(currentShelfScheme);
+}
+
+async function renderOrgShelfBrowse(scheme = 'DDC') {
+  currentShelfScheme = scheme;
+  const itemsContainer = document.getElementById('org-shelf-items');
+  const schemesContainer = document.getElementById('org-shelf-schemes');
+  if (!itemsContainer || !currentOrg) return;
+
+  itemsContainer.innerHTML = '<div class="shelf-card-empty"><p>Memuatkan rak koleksi tersusun...</p></div>';
+
+  if (schemesContainer) {
+    schemesContainer.innerHTML = `
+      <button type="button" class="shelf-scheme-btn ${scheme === 'DDC' ? 'active' : ''}" data-scheme="DDC">Dewey (DDC)</button>
+      <button type="button" class="shelf-scheme-btn ${scheme === 'LCC' ? 'active' : ''}" data-scheme="LCC">Library of Congress (LCC)</button>
+    `;
+
+    if (!schemesContainer._listenerAttached) {
+      schemesContainer._listenerAttached = true;
+      schemesContainer.addEventListener('click', (e) => {
+        const btn = e.target.closest('.shelf-scheme-btn');
+        if (!btn) return;
+        const newScheme = btn.getAttribute('data-scheme');
+        renderOrgShelfBrowse(newScheme);
+      });
+    }
+  }
+
+  const cacheKey = `${currentOrg}_${scheme}`;
+  let shelfItems = shelfBrowseDataCache[cacheKey];
+
+  if (!shelfItems) {
+    try {
+      const res = await fetch(`${BASE_URL}browse/${currentOrg}/${scheme}.json`);
+      if (res.ok) {
+        shelfItems = await res.json();
+        shelfBrowseDataCache[cacheKey] = shelfItems;
+      }
+    } catch (e) {
+      console.warn('Shelf browse fetch error:', e);
+    }
+  }
+
+  if (!shelfItems || shelfItems.length === 0) {
+    const orgIndex = Object.values(orgHoldingsMap);
+    if (orgIndex.length > 0) {
+      shelfItems = orgIndex.slice(0, 30).map(x => ({
+        id: x.id,
+        title: x.title,
+        callNumber: x.call_number || '---'
+      }));
+    }
+  }
+
+  if (!shelfItems || shelfItems.length === 0) {
+    itemsContainer.innerHTML = `
+      <div class="shelf-card-empty">
+        <p>${escapeHTML(i18n['org_shelf_empty'] || 'Tiada rekod klasifikasi rak untuk skim ini.')}</p>
+      </div>
+    `;
+    return;
+  }
+
+  itemsContainer.innerHTML = '';
+  // Show up to 40 shelf items
+  shelfItems.slice(0, 40).forEach(item => {
+    const a = document.createElement('a');
+    a.href = `${BASE_URL}book/?id=${encodeURIComponent(item.id)}`;
+    a.className = 'shelf-card-item';
+    a.title = `${item.title} (${item.callNumber || ''})`;
+    a.innerHTML = `
+      <span class="shelf-card-spine">${escapeHTML(item.callNumber || 'DDC')}</span>
+      <span class="shelf-card-title">${escapeHTML(item.title || 'Untitled')}</span>
+      <span class="shelf-card-link">Lihat Rekod &rarr;</span>
+    `;
+    itemsContainer.appendChild(a);
+  });
 }
 
 /* Active Filter Chips */
@@ -281,12 +770,16 @@ function renderActiveFilters() {
   if (currentOrg) {
     count++;
     const orgName = orgsData[currentOrg]?.name || currentOrg;
+    const orgCount = orgFilterCounts[currentOrg] ? ` (${orgFilterCounts[currentOrg].toLocaleString()} rekod)` : '';
     const chip = document.createElement('span');
     chip.className = 'filter-chip';
-    chip.innerHTML = `${escapeHTML(i18n['organization'] || 'Org')}: ${escapeHTML(orgName)} <button class="filter-chip-remove" aria-label="Remove filter">&times;</button>`;
+    chip.innerHTML = `${escapeHTML(i18n['organization'] || 'Org')}: ${escapeHTML(orgName)}${escapeHTML(orgCount)} <button class="filter-chip-remove" aria-label="Remove filter">&times;</button>`;
     chip.querySelector('.filter-chip-remove').onclick = () => {
       const select = document.getElementById('org-filter');
       if (select) select.value = '';
+      const url = new URL(window.location);
+      url.searchParams.delete('org');
+      window.history.pushState({}, '', url);
       onOrgChange('');
     };
     chipsList.appendChild(chip);
@@ -356,11 +849,21 @@ function renderActiveFilters() {
       const clearSearchBtn = document.getElementById('search-clear-btn');
       if (clearSearchBtn) clearSearchBtn.style.display = 'none';
 
+      const url = new URL(window.location);
+      url.searchParams.delete('org');
+      window.history.pushState({}, '', url);
+
       currentOrg = null;
       currentDdc = '';
       currentSearchField = 'all';
       currentSort = 'relevance';
       currentQuery = '';
+      orgHoldingsMap = {};
+      updateOrgComboboxUI('');
+      const banner = document.getElementById('org-profile-banner');
+      if (banner) banner.style.display = 'none';
+      const shelfDrawer = document.getElementById('org-shelf-drawer');
+      if (shelfDrawer) shelfDrawer.style.display = 'none';
       updateDdcPills();
       renderActiveFilters();
       const resultsContainer = document.getElementById('search-results');
@@ -1117,6 +1620,20 @@ async function renderCurrentPage(resultsContainer, isInitial = false) {
     const publisherHtml = data.meta.publisher ? `<p class="result-publisher">${escapeHTML(data.meta.publisher)}</p>` : '';
     const excerptHtml = (currentQuery && data.excerpt) ? `<div class="result-excerpt">${data.excerpt}</div>` : '';
 
+    // Holding call number badge if specific org is selected and found in holdings map
+    let holdingBadgeHtml = '';
+    if (currentOrg && orgHoldingsMap[recordId]) {
+      const holding = orgHoldingsMap[recordId];
+      if (holding.call_number) {
+        holdingBadgeHtml = `
+          <div class="result-org-holding-badge">
+            <span>📍 <strong>${escapeHTML(currentOrg)}</strong> ${escapeHTML(i18n['call_number'] || 'No. Panggilan:')}</span>
+            <code>${escapeHTML(holding.call_number)}</code>
+          </div>
+        `;
+      }
+    }
+
     // Meta badges (Format, Call number, Year, DDC, LCC, ISBN)
     let badgesHtml = '<div class="result-meta-badges">';
     if (data.meta?.format) {
@@ -1145,6 +1662,7 @@ async function renderCurrentPage(resultsContainer, isInitial = false) {
           </div>
           ${authorHtml}
           ${publisherHtml}
+          ${holdingBadgeHtml}
           ${badgesHtml}
           ${excerptHtml}
         </div>

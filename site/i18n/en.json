@@ -72,5 +72,19 @@
   "search_stats": "{0} results found in {1}ms",
   "search_stats_filter": "{0} records matching filters in {1}ms",
   "searching": "Searching catalog...",
-  "index_unavailable": "Search Index Unavailable"
+  "index_unavailable": "Search Index Unavailable",
+  "org_search_placeholder": "Search library by name, code, state...",
+  "org_tab_all": "All",
+  "org_tab_active": "Active (Collections)",
+  "org_tab_public": "Public & State",
+  "org_tab_university": "University & Academic",
+  "org_tab_special": "Special & Agencies",
+  "org_tab_school": "Schools",
+  "org_records_count": "{0} records",
+  "org_in_progress": "Partner (In progress)",
+  "org_open_opac": "Open Library OPAC",
+  "org_shelf_browse": "Shelf Browse",
+  "org_close_banner": "All Libraries",
+  "org_showing_count": "Showing {0} of {1} libraries",
+  "org_holding_label": "{0} Shelf Call No:"
 }

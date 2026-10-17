@@ -78,11 +78,47 @@
 
         <!-- Filter Bar -->
         <div class="filter-bar">
-          <div class="filter-group">
+          <div class="filter-group org-filter-group">
             <label for="org-filter" data-i18n="organization">Organisasi:</label>
-            <select id="org-filter">
-              <option value="" data-i18n="all_organizations">Semua Organisasi</option>
-            </select>
+            <div class="org-combobox-wrapper" id="org-combobox-wrapper">
+              <!-- Native select preserved for accessibility, form bindings & automated test suite -->
+              <select id="org-filter" class="org-filter-native">
+                <option value="" data-i18n="all_organizations">Semua Organisasi</option>
+              </select>
+
+              <!-- Enhanced Combobox Trigger -->
+              <button type="button" id="org-combobox-trigger" class="org-combobox-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="org-combobox-dropdown" aria-label="Pilih Organisasi / Select Organization">
+                <span class="org-trigger-icon" aria-hidden="true">🏢</span>
+                <span class="org-trigger-label" id="org-trigger-label" data-i18n="all_organizations">Semua Organisasi</span>
+                <span class="org-trigger-count-badge" id="org-trigger-count-badge" style="display: none;"></span>
+                <span class="org-trigger-arrow" aria-hidden="true">▾</span>
+              </button>
+
+              <!-- Floating Searchable Dropdown Menu -->
+              <div id="org-combobox-dropdown" class="org-combobox-dropdown" role="listbox" style="display: none;">
+                <div class="org-dropdown-search-box">
+                  <span class="org-search-icon" aria-hidden="true">🔍</span>
+                  <input type="text" id="org-dropdown-search" class="org-dropdown-search" placeholder="Cari nama perpustakaan, kod, negeri..." autocomplete="off" />
+                  <button type="button" id="org-search-clear-btn" class="org-search-clear-btn" style="display: none;" title="Kosongkan carian">✕</button>
+                </div>
+
+                <div class="org-dropdown-type-tabs" id="org-type-tabs">
+                  <button type="button" class="org-type-tab active" data-type="all" data-i18n="org_tab_all">Semua</button>
+                  <button type="button" class="org-type-tab" data-type="active" data-i18n="org_tab_active">Aktif (Koleksi)</button>
+                  <button type="button" class="org-type-tab" data-type="public" data-i18n="org_tab_public">Awam & Negeri</button>
+                  <button type="button" class="org-type-tab" data-type="university" data-i18n="org_tab_university">Universiti</button>
+                  <button type="button" class="org-type-tab" data-type="special" data-i18n="org_tab_special">Khusus</button>
+                  <button type="button" class="org-type-tab" data-type="school" data-i18n="org_tab_school">Sekolah</button>
+                </div>
+
+                <div class="org-dropdown-list" id="org-dropdown-list" tabindex="-1"></div>
+
+                <div class="org-dropdown-footer">
+                  <span id="org-dropdown-count-info" class="org-dropdown-count-info"></span>
+                  <button type="button" id="org-dropdown-reset-btn" class="org-dropdown-reset-btn" data-i18n="all_organizations">Semua Organisasi</button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="filter-group">
@@ -95,7 +131,7 @@
             </select>
           </div>
 
-          <div id="shelf-browse-links" class="shelf-browse-links"></div>
+          <div id="shelf-browse-links" class="shelf-browse-links" style="display: none;"></div>
 
           <div id="active-filters-chips" class="active-filters-chips" style="display: none;">
             <span class="active-filters-label" data-i18n="active_filter">Penapis Aktif:</span>
@@ -109,6 +145,48 @@
     <!-- Main Content Layout -->
     <div class="layout-grid">
       <section class="results-section" aria-label="Search Results">
+        <!-- Rich Organization Profile Banner -->
+        <div id="org-profile-banner" class="org-profile-banner" style="display: none;" role="region" aria-label="Organization Profile">
+          <div class="org-banner-card">
+            <div class="org-banner-header">
+              <div class="org-banner-icon" aria-hidden="true">🏛️</div>
+              <div class="org-banner-info">
+                <div class="org-banner-title-line">
+                  <h2 class="org-banner-title" id="org-banner-name">Nama Perpustakaan</h2>
+                  <span class="org-banner-code-badge" id="org-banner-code">KOD</span>
+                </div>
+                <div class="org-banner-tags" id="org-banner-tags">
+                  <span class="badge org-badge-type" id="org-banner-type">Perpustakaan Awam</span>
+                  <span class="badge org-badge-state" id="org-banner-state">Negeri</span>
+                  <span class="badge org-badge-count" id="org-banner-count">0 rekod</span>
+                  <span class="badge org-badge-scheme" id="org-banner-scheme">DDC</span>
+                </div>
+              </div>
+              <div class="org-banner-controls">
+                <a id="org-banner-opac-link" href="#" target="_blank" rel="noopener" class="btn-org-action btn-opac-link" style="display: none;">
+                  <span data-i18n="org_open_opac">🌐 Buka Portal OPAC Asal</span>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <button type="button" id="org-banner-shelf-toggle-btn" class="btn-org-action btn-shelf-toggle">
+                  <span data-i18n="org_shelf_browse">📚 Imbas Rak (Shelf Browse)</span>
+                </button>
+                <button type="button" id="org-banner-close-btn" class="btn-org-action btn-close-banner" title="Tutup penapis organisasi">
+                  <span data-i18n="org_close_banner">✕ Semua Perpustakaan</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Interactive Shelf Browser Drawer -->
+            <div id="org-shelf-drawer" class="org-shelf-drawer" style="display: none;">
+              <div class="org-shelf-bar">
+                <span class="org-shelf-title">📚 Koleksi Tersusun Mengikut Nombor Panggilan (Shelf Order)</span>
+                <div class="org-shelf-schemes" id="org-shelf-schemes"></div>
+              </div>
+              <div class="org-shelf-items" id="org-shelf-items"></div>
+            </div>
+          </div>
+        </div>
+
         <div id="search-stats" class="search-stats-bar" style="display: none;"></div>
         <div id="search-results"></div>
         <!-- Pagination controls -->
