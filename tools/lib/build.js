@@ -1513,15 +1513,17 @@ export async function buildSite(options) {
     outputPath: pagefindOutputDir
   });
 
-  // Org indices
+  // Org indices (capped to adhere to GitHub 100MB file limit)
+  const MAX_ORG_BROWSE_ITEMS = config.maxOrgBrowseItems || 15000;
   for (const org of Object.keys(orgHoldings)) {
     const orgDir = path.join(distDir, 'org', org);
     fs.mkdirSync(orgDir, { recursive: true });
-    fs.writeFileSync(path.join(orgDir, 'index.json'), JSON.stringify(orgHoldings[org]), 'utf8');
+    const items = orgHoldings[org].slice(0, MAX_ORG_BROWSE_ITEMS);
+    fs.writeFileSync(path.join(orgDir, 'index.json'), JSON.stringify(items), 'utf8');
     report.fetchFiles++;
   }
 
-  // Shelf browse
+  // Shelf browse (capped to adhere to GitHub 100MB file limit)
   for (const org of Object.keys(orgShelfBrowse)) {
     const browseDir = path.join(distDir, 'browse', org);
     fs.mkdirSync(browseDir, { recursive: true });
@@ -1530,7 +1532,8 @@ export async function buildSite(options) {
       const items = orgShelfBrowse[org][scheme];
       if (items && items.length > 0) {
         items.sort((a, b) => (a.sortKey < b.sortKey ? -1 : a.sortKey > b.sortKey ? 1 : 0));
-        fs.writeFileSync(path.join(browseDir, `${scheme}.json`), JSON.stringify(items), 'utf8');
+        const capped = items.slice(0, MAX_ORG_BROWSE_ITEMS);
+        fs.writeFileSync(path.join(browseDir, `${scheme}.json`), JSON.stringify(capped), 'utf8');
       }
     }
   }

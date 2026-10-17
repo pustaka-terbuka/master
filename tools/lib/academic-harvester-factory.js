@@ -370,15 +370,17 @@ Options:
       // If startBib is sparse, use query partition discovery
       console.log(`[${AGENCY_CODE}] Sparse initial bib detected. Initiating query discovery partition...`);
       const searchQueries = [
+        'engineering', 'technology', 'science', 'management', 'malaysia',
+        'computer', 'pendidikan', 'sejarah', 'business', 'system',
+        'research', 'design', 'social', 'health', 'international',
         'yr:2024', 'yr:2023', 'yr:2022', 'yr:2021', 'yr:2020',
-        'yr:2019', 'yr:2018', 'yr:2017', 'yr:2016', 'yr:2015',
-        'ccl=yr>2000', 'ccl=yr>1990', 'malaysia', 'a*', 'b*', 'c*'
+        'ccl=yr>2010', 'a*', 'b*', 'c*', 'd*', 'e*', 'm*', 'p*', 's*'
       ];
 
       for (const q of searchQueries) {
         if (targetBibs.length >= (options.maxRecords || 500)) break;
         let offset = 0;
-        while (offset < 200 && targetBibs.length < (options.maxRecords || 500)) {
+        while (offset < 400 && targetBibs.length < (options.maxRecords || 500)) {
           const found = await discoverBiblionumbers(q, 50, offset);
           if (!found || found.length === 0) break;
           for (const b of found) {
