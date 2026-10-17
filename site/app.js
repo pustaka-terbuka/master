@@ -183,6 +183,8 @@ const PustakaDB = (() => {
         tx.objectStore(storeName).clear();
       } catch (e) {}
     }
+  }
+
   async function getStorageStats() {
     const db = await getDB();
     if (!db) return { supported: false, records: 0, orgs: 0, shards: 0, queries: 0, bytes: 0 };
