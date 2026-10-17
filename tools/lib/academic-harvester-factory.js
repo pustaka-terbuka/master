@@ -37,6 +37,7 @@ export function createAcademicHarvester(config) {
   const DEFAULT_MAX_BIB = config.defaultMaxBib || 250000;
   const DEFAULT_BRANCH = config.defaultBranch || `${SOURCE_NAME} (Perpustakaan Utama)`;
   const DEFAULT_SCHEME = config.defaultScheme || 'LCC';
+  const PLATFORM = config.platform || 'koha';
 
   let sessionCookie = '';
 
@@ -151,8 +152,123 @@ Options:
     });
   }
 
+  function parsePermataRecordHtml(html, recordNo) {
+    if (!html || !html.includes('Butiran Rekod')) return null;
+
+    const marcLines = [];
+    let lcc050 = '';
+    let title = '';
+
+    const tagMatches = Array.from(html.matchAll(/<div class="m-mini mono">(\d{3})<\/div>[\s\S]*?<div class="m-items">([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>/gi));
+    for (const tm of tagMatches) {
+      const tag = tm[1];
+      const itemsHtml = tm[2];
+      const sfMatches = Array.from(itemsHtml.matchAll(/<span class="sfcode">([a-z0-9])<\/span><span class="sfval">([\s\S]*?)<\/span>/gi));
+      if (sfMatches.length === 0) continue;
+
+      if (tag === '245') {
+        const aSf = sfMatches.find(m => m[1] === 'a');
+        if (aSf) title = aSf[2].replace(/<[^>]+>/g, '').trim();
+      }
+      if ((tag === '090' || tag === '050') && !lcc050) {
+        const parts = sfMatches.map(m => m[2].replace(/<[^>]+>/g, '').trim());
+        lcc050 = parts.join(' ');
+      }
+
+      let df = `  <datafield tag="${tag}" ind1=" " ind2=" ">\n`;
+      for (const sf of sfMatches) {
+        const code = sf[1];
+        const val = escapeXml(sf[2].replace(/<[^>]+>/g, '').trim());
+        df += `    <subfield code="${code}">${val}</subfield>\n`;
+      }
+      df += `  </datafield>`;
+      marcLines.push(df);
+    }
+
+    if (!title) {
+      const tMatch = html.match(/<div class="k">Tajuk<\/div>\s*<div class="v">([\s\S]*?)<\/div>/i);
+      if (tMatch) {
+        title = tMatch[1].replace(/<[^>]+>/g, '').trim();
+        marcLines.push(`  <datafield tag="245" ind1="1" ind2="0">\n    <subfield code="a">${escapeXml(title)}</subfield>\n  </datafield>`);
+      }
+    }
+    if (!title) return null;
+
+    if (!lcc050) {
+      const cMatch = html.match(/<div class="k">Nombor Panggilan<\/div>\s*<div class="v[^"]*">([\s\S]*?)<\/div>/i);
+      if (cMatch) {
+        lcc050 = cMatch[1].replace(/<[^>]+>/g, '').trim();
+      }
+    }
+
+    if (lcc050 && !marcLines.some(l => l.includes('tag="050"'))) {
+      marcLines.unshift(`  <datafield tag="050" ind1="0" ind2="0">\n    <subfield code="a">${escapeXml(lcc050)}</subfield>\n  </datafield>`);
+    }
+
+    const tbodyMatch = html.match(/<tbody>([\s\S]*?)<\/tbody>/i);
+    if (tbodyMatch) {
+      const rows = tbodyMatch[1].match(/<tr[\s\S]*?<\/tr>/gi) || [];
+      for (const r of rows) {
+        const cols = Array.from(r.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)).map(m => m[1].replace(/<[^>]+>/g, '').trim());
+        if (cols.length >= 3) {
+          const campus = cols[0];
+          const location = cols[1];
+          const copyId = cols[2];
+          const branch = campus ? `UiTM ${campus} (${location})` : `UiTM PTAR (${location})`;
+          const barcode = copyId ? `UiTM-${copyId}` : `UiTM-${recordNo}`;
+          marcLines.push(
+            `  <datafield tag="952" ind1=" " ind2=" ">\n` +
+            `    <subfield code="a">${escapeXml(branch)}</subfield>\n` +
+            `    <subfield code="b">${escapeXml(branch)}</subfield>\n` +
+            `    <subfield code="o">${escapeXml(lcc050 || 'LCC')}</subfield>\n` +
+            `    <subfield code="p">${escapeXml(barcode)}</subfield>\n` +
+            `  </datafield>`
+          );
+        }
+      }
+    }
+
+    if (!marcLines.some(l => l.includes('tag="952"'))) {
+      marcLines.push(
+        `  <datafield tag="952" ind1=" " ind2=" ">\n` +
+        `    <subfield code="a">${escapeXml(DEFAULT_BRANCH)}</subfield>\n` +
+        `    <subfield code="b">${escapeXml(DEFAULT_BRANCH)}</subfield>\n` +
+        `    <subfield code="o">${escapeXml(lcc050 || 'LCC')}</subfield>\n` +
+        `    <subfield code="p">${escapeXml(`${AGENCY_CODE}-${recordNo}`)}</subfield>\n` +
+        `  </datafield>`
+      );
+    }
+
+    marcLines.push(`  <datafield tag="996" ind1=" " ind2=" ">\n    <subfield code="a">${SOURCE_CODE}</subfield>\n  </datafield>`);
+
+    return [
+      '<record>',
+      '  <leader>00000cam a2200000 i 4500</leader>',
+      `  <controlfield tag="001">${recordNo}</controlfield>`,
+      `  <controlfield tag="003">${AGENCY_CODE}</controlfield>`,
+      '  <controlfield tag="008">261017s2020    my ||||| |||| 00| 0 may d</controlfield>',
+      ...marcLines,
+      '</record>'
+    ].join('\n');
+  }
+
   async function fetchRecord(bibNumber, options = {}) {
     const headers = await getSessionHeaders();
+
+    if (PLATFORM === 'permata') {
+      const detailUrl = `${BASE_DETAIL_URL}&recordno=${bibNumber}&cat=HARDCOPY`;
+      try {
+        const res = await fetchWithBackoff(detailUrl, {
+          headers,
+          signal: AbortSignal.timeout(15000)
+        }, { baseDelayMs: options.delayMs || 1500, maxRetries: 2 });
+        if (!res || !res.ok) return null;
+        const html = await res.text();
+        return parsePermataRecordHtml(html, bibNumber);
+      } catch {
+        return null;
+      }
+    }
 
     // 1. Primary Strategy: Koha direct MARCXML export
     const exportUrl = `${BASE_EXPORT_URL}?op=export&bib=${bibNumber}&format=marcxml`;
@@ -281,6 +397,22 @@ Options:
    */
   async function discoverBiblionumbers(query, count = 100, offset = 0) {
     const headers = await getSessionHeaders();
+    if (PLATFORM === 'permata') {
+      const page = Math.floor(offset / 24) + 1;
+      const searchUrl = `${SOURCE_BASE_URL}page/page.php?p=02&lang=ms&query=${encodeURIComponent(query)}&type=all&searchby=title&page=${page}`;
+      try {
+        const res = await fetchWithBackoff(searchUrl, {
+          headers,
+          signal: AbortSignal.timeout(15000)
+        }, { baseDelayMs: 1500, maxRetries: 2 });
+        if (!res || !res.ok) return [];
+        const text = await res.text();
+        const matches = Array.from(text.matchAll(/recordno=(\d+)/gi)).map(m => parseInt(m[1], 10));
+        return Array.from(new Set(matches));
+      } catch {
+        return [];
+      }
+    }
     const searchUrl = `${SOURCE_BASE_URL}cgi-bin/koha/opac-search.pl?q=${encodeURIComponent(query)}&count=${count}&offset=${offset}`;
     try {
       const res = await fetchWithBackoff(searchUrl, {
