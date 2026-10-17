@@ -855,18 +855,26 @@ export function generateUniversalViewerHtml(baseUrl) {
       }
     }
 
-    // Holdings
+    // Holdings & Cross-Library Comparative Table
     const holdingsContainer = document.getElementById('holdings-section');
     if (holdingsContainer) {
       if (book.holdings && book.holdings.length > 0) {
-        let hHtml = '<section class="card-section"><h2>Held By</h2><ul class="holdings-list">';
+        let hHtml = '<section class="card-section"><h2>🏢 Pegangan Naskhah &amp; Lokasi Rak (' + book.holdings.length + ' Perpustakaan)</h2>';
+        hHtml += '<div style="overflow-x:auto;"><table class="union-holdings-table">';
+        hHtml += '<thead><tr><th>Perpustakaan / Institusi</th><th>Cawangan / Lokasi</th><th>Nombor Panggilan (Call Number)</th><th>Pautan OPAC</th></tr></thead><tbody>';
         for (const h of book.holdings) {
           const orgName = h.org_name || h.name || h.org;
-          const callNum = h.call_number || '';
+          const loc = h.location || 'Koleksi Utama';
+          const callNum = h.call_number || '---';
           const opacUrl = h.opac_url || '#';
-          hHtml += '<li><div><strong>' + escapeHTML(orgName) + '</strong> &mdash; Call Number: <span class="badge badge-call">' + escapeHTML(callNum) + '</span></div> <a href="' + escapeHTML(opacUrl) + '" target="_blank" rel="noopener" class="opac-link-btn">View in OPAC &rarr;</a></li>';
+          hHtml += '<tr>';
+          hHtml += '<td><strong>' + escapeHTML(orgName) + '</strong></td>';
+          hHtml += '<td>' + escapeHTML(loc) + '</td>';
+          hHtml += '<td><span class="badge badge-call">' + escapeHTML(callNum) + '</span></td>';
+          hHtml += '<td><a href="' + escapeHTML(opacUrl) + '" target="_blank" rel="noopener" class="opac-link-btn">Buka OPAC &rarr;</a></td>';
+          hHtml += '</tr>';
         }
-        hHtml += '</ul></section>';
+        hHtml += '</tbody></table></div></section>';
         holdingsContainer.innerHTML = hHtml;
       } else {
         holdingsContainer.innerHTML = '<section class="card-section"><p style="color:#6c757d; font-style:italic;">Tiada pegangan fizikal direkodkan bagi naskhah ini.</p></section>';
