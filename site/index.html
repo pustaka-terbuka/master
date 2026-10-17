@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="title">PustakaTerbuka Search</title>
   
+  <meta name="theme-color" content="#1e3a8a">
+  <link rel="manifest" href="manifest.json">
+
   <!-- Content Security Policy: Self, Pagefind WASM, HTTPS book covers, and external catalog data APIs -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; connect-src 'self' https: data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self' data:;">
   
@@ -167,6 +170,9 @@
                   <span data-i18n="org_open_opac">🌐 Buka Portal OPAC Asal</span>
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
+                <button type="button" id="org-banner-preload-btn" class="btn-org-action btn-preload" title="Pramuat koleksi ini ke storan pelayar untuk capaian segera">
+                  <span id="org-banner-preload-text">⚡ Pramuat Koleksi</span>
+                </button>
                 <button type="button" id="org-banner-shelf-toggle-btn" class="btn-org-action btn-shelf-toggle">
                   <span data-i18n="org_shelf_browse">📚 Imbas Rak (Shelf Browse)</span>
                 </button>
@@ -276,15 +282,25 @@
 
   <footer class="main-footer">
     <div class="footer-inner">
-      <p>
-        <strong>PustakaTerbuka</strong> &mdash; Inisiatif Katalog Induk Terbuka Kebangsaan.
-        Data bibliografi dilesenkan di bawah ODC-By 1.0.
-      </p>
-      <p class="footer-links">
-        <a href="https://github.com/pustaka-terbuka/opac" target="_blank" rel="noopener">GitHub</a> &bull;
-        <a href="dumps/">Dumps</a> &bull;
-        <a href="https://github.com/pustaka-terbuka/opac/blob/main/docs/AI_AGENT_GUIDE.md" target="_blank" rel="noopener">Docs</a>
-      </p>
+      <div class="footer-info-col">
+        <p>
+          <strong>PustakaTerbuka</strong> &mdash; Inisiatif Katalog Induk Terbuka Kebangsaan.
+          Data bibliografi dilesenkan di bawah ODC-By 1.0.
+        </p>
+        <p class="footer-links">
+          <a href="https://github.com/pustaka-terbuka/opac" target="_blank" rel="noopener">GitHub</a> &bull;
+          <a href="dumps/">Dumps</a> &bull;
+          <a href="https://github.com/pustaka-terbuka/opac/blob/main/docs/AI_AGENT_GUIDE.md" target="_blank" rel="noopener">Docs</a>
+        </p>
+      </div>
+
+      <div class="footer-storage-col">
+        <div id="storage-status-pill" class="storage-status-pill" role="status" aria-label="Offline Storage Status">
+          <span class="storage-icon">📦</span>
+          <span id="storage-status-text">Storan Luar Talian: Memeriksa...</span>
+          <button type="button" id="storage-clear-btn" class="storage-clear-btn" title="Kosongkan cache storan pelayar">Padam Cache</button>
+        </div>
+      </div>
     </div>
   </footer>
 

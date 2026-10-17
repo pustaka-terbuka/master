@@ -998,6 +998,24 @@ body {
   background: var(--border-subtle);
 }
 
+.btn-preload {
+  background: var(--surface-secondary);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.btn-preload:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-preload.is-preloaded {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+}
+
 .btn-close-banner {
   background: transparent;
   color: var(--text-muted);
@@ -2050,7 +2068,7 @@ button:disabled {
   font-weight: 500;
 }
 
-/* Footer */
+/* Footer & Offline Storage Widget */
 .main-footer {
   background: var(--card-bg);
   border-top: 1px solid var(--border-color);
@@ -2058,12 +2076,25 @@ button:disabled {
   margin-top: 3rem;
   font-size: 0.88rem;
   color: var(--text-muted);
-  text-align: center;
 }
 
 .footer-inner {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
 }
 
 .footer-links {
@@ -2076,6 +2107,94 @@ button:disabled {
 }
 .footer-links a:hover {
   text-decoration: underline;
+}
+
+.storage-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  color: var(--text-color);
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+}
+
+.storage-icon {
+  font-size: 1rem;
+}
+
+.storage-clear-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.storage-clear-btn:hover {
+  background: #dc3545;
+  color: #fff;
+  border-color: #dc3545;
+}
+
+/* Result Union Holdings & Comparative Badges */
+.result-union-holdings {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.45rem;
+  padding: 0.35rem 0.6rem;
+  background: var(--surface-secondary);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+}
+
+.union-label {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.badge-union-org {
+  background: var(--card-bg);
+  color: var(--primary);
+  border: 1px solid var(--border-color);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+/* Cross-Library Comparative Table */
+.union-holdings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.88rem;
+}
+
+.union-holdings-table th,
+.union-holdings-table td {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.union-holdings-table th {
+  background: var(--surface-secondary);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.union-holdings-table tr:hover {
+  background: var(--surface-secondary);
 }
 
 /* Mobile Drawer & Responsiveness */

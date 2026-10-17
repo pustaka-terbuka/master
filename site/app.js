@@ -183,6 +183,43 @@ const PustakaDB = (() => {
         tx.objectStore(storeName).clear();
       } catch (e) {}
     }
+  async function getStorageStats() {
+    const db = await getDB();
+    if (!db) return { supported: false, records: 0, orgs: 0, shards: 0, queries: 0, bytes: 0 };
+    return new Promise(async (resolve) => {
+      try {
+        const tx = db.transaction(STORES, 'readonly');
+        let records = 0, orgs = 0, shards = 0, queries = 0;
+        
+        tx.objectStore('records').count().onsuccess = (e) => { records = e.target.result; };
+        tx.objectStore('orgs').count().onsuccess = (e) => { orgs = e.target.result; };
+        tx.objectStore('shards').count().onsuccess = (e) => { shards = e.target.result; };
+        tx.objectStore('queries').count().onsuccess = (e) => { queries = e.target.result; };
+
+        let estimatedBytes = 0;
+        if (typeof navigator !== 'undefined' && navigator.storage && navigator.storage.estimate) {
+          try {
+            const estimate = await navigator.storage.estimate();
+            estimatedBytes = estimate.usage || 0;
+          } catch (e) {}
+        }
+
+        tx.oncomplete = () => {
+          resolve({
+            supported: true,
+            records,
+            orgs,
+            shards,
+            queries,
+            totalItems: records + orgs + shards + queries,
+            bytes: estimatedBytes
+          });
+        };
+        tx.onerror = () => resolve({ supported: true, records: 0, orgs: 0, shards: 0, queries: 0, bytes: 0 });
+      } catch (err) {
+        resolve({ supported: false, records: 0, orgs: 0, shards: 0, queries: 0, bytes: 0 });
+      }
+    });
   }
 
   return {
@@ -191,7 +228,8 @@ const PustakaDB = (() => {
     set,
     cachedFetchJson,
     cachedFetchText,
-    clearCache
+    clearCache,
+    getStorageStats
   };
 })();
 if (typeof window !== 'undefined') {
@@ -367,6 +405,40 @@ function updateOrgComboboxUI(selectedOrg) {
     } else {
       triggerBadge.style.display = 'none';
     }
+  }
+}
+
+async function updateStorageStatusUI() {
+  const textEl = document.getElementById('storage-status-text');
+  const clearBtn = document.getElementById('storage-clear-btn');
+  if (!textEl) return;
+
+  const stats = await PustakaDB.getStorageStats();
+  if (!stats.supported) {
+    textEl.textContent = 'Storan Pelayar: Mod Memori';
+    if (clearBtn) clearBtn.style.display = 'none';
+    return;
+  }
+
+  const mb = stats.bytes > 0 ? ` (${(stats.bytes / (1024 * 1024)).toFixed(1)} MB)` : '';
+  textEl.textContent = `Storan Luar Talian: ${stats.records} rekod, ${stats.orgs} indeks${mb}`;
+
+  if (clearBtn && !clearBtn._attached) {
+    clearBtn._attached = true;
+    clearBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      await PustakaDB.clearCache();
+      resultDataCache.clear();
+      shelfBrowseDataCache = {};
+      orgHoldingsMap = {};
+      await updateStorageStatusUI();
+      const toast = document.getElementById('modal-toast');
+      if (toast) {
+        toast.textContent = '✓ Storan luar talian dikosongkan!';
+        toast.style.display = 'inline-block';
+        setTimeout(() => { toast.style.display = 'none'; }, 2200);
+      }
+    });
   }
 }
 
@@ -742,6 +814,13 @@ function createOrgOptionElement(item) {
     </div>
   `;
 
+  // Predictive prefetch of org holdings when hovered
+  el.addEventListener('pointerenter', () => {
+    if (item.code && item.count > 0) {
+      PustakaDB.cachedFetchJson(`${BASE_URL}org/${item.code}/index.json`, 'orgs', `holdings:${item.code}`).catch(() => {});
+    }
+  }, { once: true });
+
   el.onclick = () => {
     const select = document.getElementById('org-filter');
     if (select) {
@@ -809,6 +888,35 @@ async function onOrgChange(org) {
         } else {
           opacLinkEl.style.display = 'none';
         }
+      }
+
+      const preloadBtn = document.getElementById('org-banner-preload-btn');
+      const preloadText = document.getElementById('org-banner-preload-text');
+      if (preloadBtn) {
+        PustakaDB.get('orgs', `holdings:${org}`).then(cached => {
+          if (cached && Array.isArray(cached) && cached.length > 0) {
+            if (preloadText) preloadText.textContent = `✓ Koleksi Dipramuat (${cached.length})`;
+            preloadBtn.classList.add('is-preloaded');
+          } else {
+            if (preloadText) preloadText.textContent = '⚡ Pramuat Koleksi';
+            preloadBtn.classList.remove('is-preloaded');
+          }
+        });
+
+        preloadBtn.onclick = async () => {
+          if (preloadText) preloadText.textContent = '⚡ Memuatkan...';
+          try {
+            const hData = await PustakaDB.cachedFetchJson(`${BASE_URL}org/${org}/index.json`, 'orgs', `holdings:${org}`, 86400000);
+            const scheme = orgInfo.default_scheme || 'DDC';
+            await PustakaDB.cachedFetchJson(`${BASE_URL}browse/${org}/${scheme}.json`, 'orgs', `shelf:${org}:${scheme}`, 86400000);
+            const recCount = (hData && Array.isArray(hData)) ? hData.length : count;
+            if (preloadText) preloadText.textContent = `✓ Koleksi Dipramuat (${recCount})`;
+            preloadBtn.classList.add('is-preloaded');
+            updateStorageStatusUI();
+          } catch (e) {
+            if (preloadText) preloadText.textContent = 'Ralat Pramuat';
+          }
+        };
       }
 
       if (shelfBtn && !shelfBtn._attached) {
@@ -1817,6 +1925,23 @@ async function renderCurrentPage(resultsContainer, isInitial = false) {
       }
     }
 
+    // Union holdings comparison badge if held by multiple libraries
+    let unionHoldingsHtml = '';
+    const orgsList = Array.isArray(data.filters?.organization) ? data.filters.organization : [];
+    if (orgsList.length > 0) {
+      const orgBadges = orgsList.slice(0, 5).map(c => {
+        const oName = orgsData[c]?.name || c;
+        return `<span class="badge-union-org" title="${escapeHTML(oName)}">🏛️ ${escapeHTML(c)}</span>`;
+      }).join(' ');
+      const moreText = orgsList.length > 5 ? `<span style="font-size:0.75rem; color:var(--text-muted);">+${orgsList.length - 5}</span>` : '';
+      unionHoldingsHtml = `
+        <div class="result-union-holdings">
+          <span class="union-label">🏛️ ${escapeHTML(i18n['held_by'] || 'Pegangan:')}</span>
+          ${orgBadges} ${moreText}
+        </div>
+      `;
+    }
+
     // Meta badges (Format, Call number, Year, DDC, LCC, ISBN)
     let badgesHtml = '<div class="result-meta-badges">';
     if (data.meta?.format) {
@@ -1846,10 +1971,20 @@ async function renderCurrentPage(resultsContainer, isInitial = false) {
           ${authorHtml}
           ${publisherHtml}
           ${holdingBadgeHtml}
+          ${unionHoldingsHtml}
           ${badgesHtml}
           ${excerptHtml}
         </div>
       </div>`;
+
+    // Predictive hover prefetching: prefetch MARCXML on mouseenter or focus
+    if (recordId && recordId !== 'unknown') {
+      const triggerPrefetch = () => {
+        PustakaDB.cachedFetchText(`${BASE_URL}id/${recordId}.xml`, 'records', `xml:${recordId}`).catch(() => {});
+      };
+      node.addEventListener('pointerenter', triggerPrefetch, { once: true });
+      node.addEventListener('focusin', triggerPrefetch, { once: true });
+    }
 
     // Actions
     const actionsDiv = document.createElement('div');
@@ -2028,6 +2163,18 @@ async function init() {
     console.error('Pagefind not found or failed to load. Are you running a built site?', err);
     const searchUi = document.getElementById('search-ui');
     if (searchUi) searchUi.textContent = 'Search index not available.';
+  }
+
+  // Hydrate offline storage status indicator
+  await updateStorageStatusUI();
+
+  // Register Service Worker for PWA offline capabilities
+  if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch((err) => {
+        console.debug('[SW] Registration note:', err.message);
+      });
+    });
   }
 }
 
