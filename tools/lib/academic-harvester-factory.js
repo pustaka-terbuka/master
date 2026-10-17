@@ -252,6 +252,82 @@ Options:
     ].join('\n');
   }
 
+  function parseKohaShowMarc(text, bibNumber) {
+    if (!text || !text.includes('<pre>')) return null;
+    const preMatch = text.match(/<pre>([\s\S]*?)<\/pre>/i);
+    if (!preMatch) return null;
+    const raw = preMatch[1];
+    if (!raw.includes('LDR') && !raw.includes('245')) return null;
+
+    const lines = raw.split('\n');
+    let leader = '00000nam a2200000 a 4500';
+    const controlFields = [];
+    const dataFields = [];
+    let currentField = null;
+
+    for (let line of lines) {
+      if (!line.trim()) continue;
+      if (line.startsWith('LDR ')) {
+        leader = line.substring(4).trim();
+        continue;
+      }
+      const tagMatch = line.match(/^([0-9]{3})\s*(.*)$/);
+      if (tagMatch) {
+        if (currentField) { dataFields.push(currentField); currentField = null; }
+        const tag = tagMatch[1];
+        const rest = tagMatch[2];
+        if (tag.startsWith('00')) {
+          controlFields.push(`  <controlfield tag="${tag}">${escapeXml(rest.trim())}</controlfield>`);
+        } else {
+          let ind1 = ' ', ind2 = ' ';
+          let subfieldsStr = rest;
+          if (rest.length >= 2 && !rest.startsWith('_')) {
+            ind1 = rest[0] !== ' ' ? rest[0] : ' ';
+            ind2 = rest[1] !== ' ' ? rest[1] : ' ';
+            subfieldsStr = rest.substring(2);
+          }
+          currentField = { tag, ind1, ind2, subfields: [] };
+          const parts = subfieldsStr.split(/_([a-z0-9])/);
+          for (let i = 1; i < parts.length; i += 2) {
+            const code = parts[i];
+            const val = (parts[i + 1] || '').trim();
+            if (val) currentField.subfields.push({ code, val });
+          }
+        }
+      } else if (currentField && line.trim().startsWith('_')) {
+        const parts = line.trim().split(/_([a-z0-9])/);
+        for (let i = 1; i < parts.length; i += 2) {
+          const code = parts[i];
+          const val = (parts[i + 1] || '').trim();
+          if (val) currentField.subfields.push({ code, val });
+        }
+      }
+    }
+    if (currentField) dataFields.push(currentField);
+
+    if (!controlFields.some(f => f.includes('tag="001"'))) {
+      controlFields.unshift(`  <controlfield tag="001">${bibNumber}</controlfield>`);
+    }
+    if (!controlFields.some(f => f.includes('tag="003"'))) {
+      controlFields.push(`  <controlfield tag="003">${AGENCY_CODE}</controlfield>`);
+    }
+
+    const xmlDataFields = dataFields.map(f => {
+      const subs = f.subfields.map(s => `    <subfield code="${s.code}">${escapeXml(s.val)}</subfield>`).join('\n');
+      return `  <datafield tag="${f.tag}" ind1="${f.ind1}" ind2="${f.ind2}">\n${subs}\n  </datafield>`;
+    });
+
+    xmlDataFields.push(`  <datafield tag="996" ind1=" " ind2=" ">\n    <subfield code="a">${SOURCE_CODE}</subfield>\n  </datafield>`);
+
+    return [
+      '<record>',
+      `  <leader>${leader}</leader>`,
+      ...controlFields,
+      ...xmlDataFields,
+      '</record>'
+    ].join('\n');
+  }
+
   async function fetchRecord(bibNumber, options = {}) {
     const headers = await getSessionHeaders();
 
@@ -291,6 +367,27 @@ Options:
               );
             }
             return recordStr;
+          }
+        }
+      }
+    } catch {
+      // Fall through
+    }
+
+    // 1.5 Strategy: Koha opac-showmarc.pl plain text MARC extraction
+    const showMarcUrl = BASE_DETAIL_URL.replace(/opac-detail\.pl.*$/, `opac-showmarc.pl?id=${bibNumber}`);
+    try {
+      const res = await fetchWithBackoff(showMarcUrl, {
+        headers,
+        signal: AbortSignal.timeout(12000)
+      }, { baseDelayMs: options.delayMs || 2000, maxRetries: 2 });
+
+      if (res && res.ok) {
+        const text = await res.text();
+        if (text && text.includes('<pre>') && (text.includes('LDR') || text.includes('245'))) {
+          const parsed = parseKohaShowMarc(text, bibNumber);
+          if (parsed && validateRecordContent(parsed)) {
+            return parsed;
           }
         }
       }
