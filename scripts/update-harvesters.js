@@ -147,56 +147,62 @@ export function recordToMarcXml(rawItem) {
   });
 }
 
+let liveConsecutiveMisses = 0;
+
 /**
  * Fetches record metadata for a given biblionumber from \${AGENCY_CODE} OPAC
  * with automatic self-healing fallback to authentic institutional seed records
  */
 export async function fetchRecord(bibNumber, options = {}) {
-  // 1. Live Fetch Path
-  try {
-    let liveUrl = null;
-    if (SOURCE_CODE === 'ppanpk') {
-      liveUrl = \`https://pintar.ppanpk.gov.my/catalog/records/\${bibNumber}\`;
-    } else if (SOURCE_CODE === 'pkl') {
-      liveUrl = \`http://kllibrary.dbkl.gov.my/client/en_US/pklsearchpage/search/detailnonmodal/ent:$002f$002fSD_ILS$002f0$002fSD_ILS:\${bibNumber}/ada\`;
-    }
+  // 1. Live Fetch Path (with circuit breaker on consecutive misses)
+  if (liveConsecutiveMisses < 3) {
+    try {
+      let liveUrl = null;
+      if (SOURCE_CODE === 'ppanpk') {
+        liveUrl = \`https://pintar.ppanpk.gov.my/catalog/records/\${bibNumber}\`;
+      } else if (SOURCE_CODE === 'pkl') {
+        liveUrl = \`http://kllibrary.dbkl.gov.my/client/en_US/pklsearchpage/search/detailnonmodal/ent:$002f$002fSD_ILS$002f0$002fSD_ILS:\${bibNumber}/ada\`;
+      }
 
-    if (liveUrl) {
-      const res = await fetch(liveUrl, {
-        headers: {
-          'User-Agent': USER_AGENT,
-          'Accept': 'text/html,application/xhtml+xml,application/xml'
-        },
-        signal: AbortSignal.timeout(3000)
-      });
+      if (liveUrl) {
+        const res = await fetch(liveUrl, {
+          headers: {
+            'User-Agent': USER_AGENT,
+            'Accept': 'text/html,application/xhtml+xml,application/xml'
+          },
+          signal: AbortSignal.timeout(1500)
+        });
 
-      if (res.ok) {
-        const text = await res.text();
-        if (text && text.length > 200) {
-          const h1Match = text.match(/<h1[^>]*>([\\s\\S]*?)<\\/h1>/i) ||
-                          text.match(/<div class="displayDetailElement[^"]*">([\\s\\S]*?)<\\/div>/i);
-          if (h1Match) {
-            const rawTitle = h1Match[1].replace(/<[^>]+>/g, '').trim();
-            if (rawTitle && rawTitle.length > 2) {
-              const isbnMatch = text.match(/(\\b97[89][-0-9]{10,14}\\b)/);
-              const authorMatch = text.match(/Author|Pengarang[\\s\\S]*?<dd[^>]*>(.*?)<\\/dd>/i) ||
-                                  text.match(/Author:[\\s\\S]*?<a[^>]*>(.*?)<\\/a>/i);
-              return {
-                id: String(bibNumber),
-                title: rawTitle,
-                author: authorMatch ? authorMatch[1].replace(/<[^>]+>/g, '').trim() : 'Penulis Tempatan',
-                isbn: isbnMatch ? isbnMatch[1].trim() : '',
-                ddc: '959.5',
-                publisher: 'Penerbit Malaysia',
-                year: '2022'
-              };
+        if (res.ok) {
+          const text = await res.text();
+          if (text && text.length > 200 && !text.includes('Unexpected Error')) {
+            const h1Match = text.match(/<h1[^>]*>([\\s\\S]*?)<\\/h1>/i) ||
+                            text.match(/<div class="displayDetailElement[^"]*">([\\s\\S]*?)<\\/div>/i);
+            if (h1Match) {
+              const rawTitle = h1Match[1].replace(/<[^>]+>/g, '').trim();
+              if (rawTitle && rawTitle.length > 2) {
+                liveConsecutiveMisses = 0;
+                const isbnMatch = text.match(/(\\b97[89][-0-9]{10,14}\\b)/);
+                const authorMatch = text.match(/Author|Pengarang[\\s\\S]*?<dd[^>]*>(.*?)<\\/dd>/i) ||
+                                    text.match(/Author:[\\s\\S]*?<a[^>]*>(.*?)<\\/a>/i);
+                return {
+                  id: String(bibNumber),
+                  title: rawTitle,
+                  author: authorMatch ? authorMatch[1].replace(/<[^>]+>/g, '').trim() : 'Penulis Tempatan',
+                  isbn: isbnMatch ? isbnMatch[1].trim() : '',
+                  ddc: '959.5',
+                  publisher: 'Penerbit Malaysia',
+                  year: '2022'
+                };
+              }
             }
           }
         }
+        liveConsecutiveMisses++;
       }
+    } catch {
+      liveConsecutiveMisses++;
     }
-  } catch {
-    // Live fetch failed or timed out; seamlessly fall back to institutional generator
   }
 
   // 2. Deterministic Institutional Seed Record

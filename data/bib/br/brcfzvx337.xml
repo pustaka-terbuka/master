@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">665640</marc:controlfield>
+    <marc:controlfield tag="003">UKM</marc:controlfield>
+    <marc:controlfield tag="008">261016s        my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UKM)665640</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">UKM</marc:subfield>
+      <marc:subfield code="c">UKM</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1="0" ind2=" ">
+      <marc:subfield code="a">may</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">TP593 .R833 2023 tesis )</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2=" ">
+      <marc:subfield code="a">Rubiah Ajan [author.]</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Faktor peramal pengambilan alkohol dalam kalangan Iban dewasa : kombinasi model kepercayaan kesihatan dan teori tingkah laku terancang / Rubiah anak Ajan.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="b">Producer:</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">PERPUSTAKAAN TUN SERI LANANG</marc:subfield>
+      <marc:subfield code="b">PERPUSTAKAAN TUN SERI LANANG</marc:subfield>
+      <marc:subfield code="o">TP593 .R833 2023 tesis )</marc:subfield>
+      <marc:subfield code="p">2277178</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">ukm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

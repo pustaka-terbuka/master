@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">670441</marc:controlfield>
+    <marc:controlfield tag="003">UKM</marc:controlfield>
+    <marc:controlfield tag="008">261016s        my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UKM)670441</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">UKM</marc:subfield>
+      <marc:subfield code="c">UKM</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1="0" ind2=" ">
+      <marc:subfield code="a">may</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">QP144.G73K66 )</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2=" ">
+      <marc:subfield code="a">Koo, Hui Chin [author.]</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Bijirin penuh: intervensi menangani obesiti kanak-kanak / Koo Hui Chin, Ruzita Abd. Talib, Poh Bee Koon.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">PERPUSTAKAAN TUN SERI LANANG</marc:subfield>
+      <marc:subfield code="b">PERPUSTAKAAN TUN SERI LANANG</marc:subfield>
+      <marc:subfield code="o">QP144.G73K66 )</marc:subfield>
+      <marc:subfield code="p">2287203</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">PERPUSTAKAAN TUN SERI LANANG</marc:subfield>
+      <marc:subfield code="b">PERPUSTAKAAN TUN SERI LANANG</marc:subfield>
+      <marc:subfield code="o">QP144.G73.K66 arkib )</marc:subfield>
+      <marc:subfield code="p">2286219</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">PERPUSTAKAAN TUN SERI LANANG</marc:subfield>
+      <marc:subfield code="b">PERPUSTAKAAN TUN SERI LANANG</marc:subfield>
+      <marc:subfield code="o">QP144.G73.K66 )</marc:subfield>
+      <marc:subfield code="p">2264724</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">PERPUSTAKAAN TUN SERI LANANG</marc:subfield>
+      <marc:subfield code="b">PERPUSTAKAAN TUN SERI LANANG</marc:subfield>
+      <marc:subfield code="o">QP144.G73.K66 arkib )</marc:subfield>
+      <marc:subfield code="p">2282062</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">ukm</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>
