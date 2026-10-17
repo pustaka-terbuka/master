@@ -31,12 +31,185 @@ let currentPage = 1;
 const PAGE_SIZE = 10;
 let currentQuery = '';
 
+/* ==========================================================================
+   IndexedDB Offline & Caching Layer (PustakaDB)
+   ========================================================================== */
+const PustakaDB = (() => {
+  const DB_NAME = 'pustaka-opac-db';
+  const DB_VERSION = 1;
+  const STORES = ['records', 'shards', 'orgs', 'queries'];
+  let dbPromise = null;
+
+  function isAvailable() {
+    return typeof window !== 'undefined' && typeof window.indexedDB !== 'undefined';
+  }
+
+  function getDB() {
+    if (!isAvailable()) return Promise.resolve(null);
+    if (!dbPromise) {
+      dbPromise = new Promise((resolve) => {
+        try {
+          const req = window.indexedDB.open(DB_NAME, DB_VERSION);
+          req.onupgradeneeded = (e) => {
+            const db = e.target.result;
+            for (const store of STORES) {
+              if (!db.objectStoreNames.contains(store)) {
+                db.createObjectStore(store, { keyPath: 'key' });
+              }
+            }
+          };
+          req.onsuccess = () => resolve(req.result);
+          req.onerror = () => {
+            console.warn('[PustakaDB] IndexedDB error, fallback to memory/network');
+            resolve(null);
+          };
+        } catch (err) {
+          console.warn('[PustakaDB] IndexedDB unavailable:', err);
+          resolve(null);
+        }
+      });
+    }
+    return dbPromise;
+  }
+
+  async function get(storeName, key) {
+    const db = await getDB();
+    if (!db) return null;
+    return new Promise((resolve) => {
+      try {
+        const tx = db.transaction(storeName, 'readonly');
+        const store = tx.objectStore(storeName);
+        const req = store.get(key);
+        req.onsuccess = () => {
+          if (req.result && req.result.data !== undefined) {
+            resolve(req.result.data);
+          } else {
+            resolve(null);
+          }
+        };
+        req.onerror = () => resolve(null);
+      } catch (e) {
+        resolve(null);
+      }
+    });
+  }
+
+  async function set(storeName, key, data, ttlMs = 86400000) {
+    const db = await getDB();
+    if (!db) return;
+    try {
+      const tx = db.transaction(storeName, 'readwrite');
+      const store = tx.objectStore(storeName);
+      store.put({ key, data, expiresAt: Date.now() + ttlMs, cachedAt: Date.now() });
+    } catch (e) {
+      // Graceful ignore
+    }
+  }
+
+  async function getWithExpiry(storeName, key) {
+    const db = await getDB();
+    if (!db) return null;
+    return new Promise((resolve) => {
+      try {
+        const tx = db.transaction(storeName, 'readonly');
+        const store = tx.objectStore(storeName);
+        const req = store.get(key);
+        req.onsuccess = () => {
+          const item = req.result;
+          if (item && item.data !== undefined) {
+            const isExpired = item.expiresAt && Date.now() > item.expiresAt;
+            resolve({ data: item.data, isExpired });
+          } else {
+            resolve(null);
+          }
+        };
+        req.onerror = () => resolve(null);
+      } catch (e) {
+        resolve(null);
+      }
+    });
+  }
+
+  async function cachedFetchJson(url, storeName, key, ttlMs = 86400000) {
+    const cached = await getWithExpiry(storeName, key);
+    if (cached && !cached.isExpired) {
+      return cached.data;
+    }
+
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        const data = await res.json();
+        set(storeName, key, data, ttlMs).catch(() => {});
+        return data;
+      }
+    } catch (err) {
+      console.warn(`[PustakaDB] Network fetch error for ${url}:`, err.message);
+      if (cached && cached.data) return cached.data;
+      throw err;
+    }
+    if (cached && cached.data) return cached.data;
+    return null;
+  }
+
+  async function cachedFetchText(url, storeName, key, ttlMs = 86400000) {
+    const cached = await getWithExpiry(storeName, key);
+    if (cached && !cached.isExpired) {
+      return cached.data;
+    }
+
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        const text = await res.text();
+        set(storeName, key, text, ttlMs).catch(() => {});
+        return text;
+      }
+    } catch (err) {
+      console.warn(`[PustakaDB] Network fetch error for ${url}:`, err.message);
+      if (cached && cached.data) return cached.data;
+      throw err;
+    }
+    if (cached && cached.data) return cached.data;
+    return null;
+  }
+
+  async function clearCache() {
+    const db = await getDB();
+    if (!db) return;
+    for (const storeName of STORES) {
+      try {
+        const tx = db.transaction(storeName, 'readwrite');
+        tx.objectStore(storeName).clear();
+      } catch (e) {}
+    }
+  }
+
+  return {
+    isAvailable,
+    get,
+    set,
+    cachedFetchJson,
+    cachedFetchText,
+    clearCache
+  };
+})();
+if (typeof window !== 'undefined') {
+  window.PustakaDB = PustakaDB;
+}
+
 async function getResultData(res) {
   if (resultDataCache.has(res.id)) {
     return resultDataCache.get(res.id);
   }
+  const cached = await PustakaDB.get('records', res.id);
+  if (cached) {
+    resultDataCache.set(res.id, cached);
+    return cached;
+  }
   const data = await res.data();
   resultDataCache.set(res.id, data);
+  PustakaDB.set('records', res.id, data, 7 * 86400000).catch(() => {});
   return data;
 }
 
@@ -200,8 +373,8 @@ function updateOrgComboboxUI(selectedOrg) {
 async function loadOrgs() {
   try {
     try {
-      const orgsRes = await fetch(`${BASE_URL}orgs.json`);
-      if (orgsRes.ok) orgsData = await orgsRes.json();
+      const data = await PustakaDB.cachedFetchJson(`${BASE_URL}orgs.json`, 'orgs', 'registry', 86400000);
+      if (data) orgsData = data;
     } catch (e) {
       console.warn('Could not load orgs.json:', e);
     }
@@ -600,9 +773,8 @@ async function onOrgChange(org) {
 
     // Fetch holdings index for this organization
     try {
-      const res = await fetch(`${BASE_URL}org/${org}/index.json`);
-      if (res.ok) {
-        const data = await res.json();
+      const data = await PustakaDB.cachedFetchJson(`${BASE_URL}org/${org}/index.json`, 'orgs', `holdings:${org}`, 86400000);
+      if (data && Array.isArray(data)) {
         for (const item of data) {
           orgHoldingsMap[item.id] = item;
         }
@@ -712,9 +884,13 @@ async function renderOrgShelfBrowse(scheme = 'DDC') {
 
   if (!shelfItems) {
     try {
-      const res = await fetch(`${BASE_URL}browse/${currentOrg}/${scheme}.json`);
-      if (res.ok) {
-        shelfItems = await res.json();
+      shelfItems = await PustakaDB.cachedFetchJson(
+        `${BASE_URL}browse/${currentOrg}/${scheme}.json`,
+        'orgs',
+        `shelf:${currentOrg}:${scheme}`,
+        86400000
+      );
+      if (shelfItems) {
         shelfBrowseDataCache[cacheKey] = shelfItems;
       }
     } catch (e) {
@@ -1082,13 +1258,17 @@ async function openMarcModal(recordId) {
 
   let xmlText = '';
   try {
-    let res = await fetch(`${BASE_URL}id/${recordId}.xml`);
-    if (!res.ok) {
+    xmlText = await PustakaDB.cachedFetchText(`${BASE_URL}id/${recordId}.xml`, 'records', `xml:${recordId}`, 7 * 86400000);
+    if (!xmlText) {
       const shard = recordId.substring(0, 2).toLowerCase();
-      res = await fetch(`https://raw.githubusercontent.com/pustaka-terbuka/pnm/main/data/bib/${shard}/${recordId}.xml`);
+      xmlText = await PustakaDB.cachedFetchText(
+        `https://raw.githubusercontent.com/pustaka-terbuka/pnm/main/data/bib/${shard}/${recordId}.xml`,
+        'records',
+        `xml:${recordId}`,
+        7 * 86400000
+      );
     }
-    if (!res.ok) throw new Error('Record XML not accessible.');
-    xmlText = await res.text();
+    if (!xmlText) throw new Error('Record XML not accessible.');
   } catch (err) {
     if (loader) loader.style.display = 'none';
     if (tableContainer) {
@@ -1547,6 +1727,9 @@ async function performSearch(query, resultsContainer, isInitial = false) {
     currentSearchResults = results;
     currentPage = 1;
     updateSearchStats(currentSearchResults.length, tDuration);
+    if (rawTerm && currentSearchResults.length > 0) {
+      PustakaDB.set('queries', rawTerm.toLowerCase(), { query: rawTerm, count: currentSearchResults.length }, 30 * 86400000).catch(() => {});
+    }
     await renderCurrentPage(resultsContainer, isInitial);
   } catch (err) {
     if (currentToken !== searchSequenceToken) return;

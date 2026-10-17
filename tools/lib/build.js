@@ -373,7 +373,7 @@ ${primaryIsbn ? `<meta property="og:image" content="https://covers.openlibrary.o
 </html>`;
 }
 
-function generateUniversalViewerHtml(baseUrl) {
+export function generateUniversalViewerHtml(baseUrl) {
   return `<!DOCTYPE html>
 <html lang="ms">
 <head>
@@ -619,11 +619,58 @@ function generateUniversalViewerHtml(baseUrl) {
     }
   }
 
+  function getViewerDb() {
+    if (typeof window === 'undefined' || !window.indexedDB) return Promise.resolve(null);
+    return new Promise(function(resolve) {
+      try {
+        const req = window.indexedDB.open('pustaka-opac-db', 1);
+        req.onupgradeneeded = function(e) {
+          const db = e.target.result;
+          ['records', 'shards', 'orgs', 'queries'].forEach(function(s) {
+            if (!db.objectStoreNames.contains(s)) db.createObjectStore(s, { keyPath: 'key' });
+          });
+        };
+        req.onsuccess = function() { resolve(req.result); };
+        req.onerror = function() { resolve(null); };
+      } catch(e) { resolve(null); }
+    });
+  }
+
+  async function getViewerCachedData(storeName, key) {
+    const db = await getViewerDb();
+    if (!db || !db.objectStoreNames.contains(storeName)) return null;
+    return new Promise(function(resolve) {
+      try {
+        const tx = db.transaction(storeName, 'readonly');
+        const req = tx.objectStore(storeName).get(key);
+        req.onsuccess = function() { resolve(req.result && req.result.data !== undefined ? req.result.data : null); };
+        req.onerror = function() { resolve(null); };
+      } catch(e) { resolve(null); }
+    });
+  }
+
+  async function setViewerCachedData(storeName, key, data) {
+    const db = await getViewerDb();
+    if (!db || !db.objectStoreNames.contains(storeName)) return;
+    try {
+      const tx = db.transaction(storeName, 'readwrite');
+      tx.objectStore(storeName).put({ key: key, data: data, cachedAt: Date.now() });
+    } catch(e) {}
+  }
+
   let recordXmlCache = '';
   async function loadViewerMarc(recId) {
     const container = document.getElementById('marc-table-container');
     if (!container || recordXmlCache) return;
     try {
+      // Check IndexedDB cache first
+      const cachedXml = await getViewerCachedData('records', 'xml:' + recId);
+      if (cachedXml) {
+        recordXmlCache = cachedXml;
+        renderViewerMarcTable(recordXmlCache, container);
+        return;
+      }
+
       let res = await fetch(baseUrl + 'id/' + recId + '.xml');
       if (!res.ok) {
         const shard = recId.substring(0, 2).toLowerCase();
@@ -631,6 +678,7 @@ function generateUniversalViewerHtml(baseUrl) {
       }
       if (!res.ok) throw new Error('MARCXML not found');
       recordXmlCache = await res.text();
+      setViewerCachedData('records', 'xml:' + recId, recordXmlCache);
       renderViewerMarcTable(recordXmlCache, container);
     } catch (e) {
       container.innerHTML = '<p style="color:#dc3545;">Ralat memuatkan MARCXML: ' + escapeHTML(e.message) + '</p>';
@@ -892,12 +940,16 @@ function generateUniversalViewerHtml(baseUrl) {
     const shard = recordId.substring(0, 2).toLowerCase();
 
     try {
-      const res = await fetch(baseUrl + 'data/shard/' + shard + '.json');
-      if (!res.ok) {
-        renderError('Gagal memuatkan data katalog untuk shard ' + shard);
-        return;
+      let shardData = await getViewerCachedData('shards', shard);
+      if (!shardData) {
+        const res = await fetch(baseUrl + 'data/shard/' + shard + '.json');
+        if (!res.ok) {
+          renderError('Gagal memuatkan data katalog untuk shard ' + shard);
+          return;
+        }
+        shardData = await res.json();
+        setViewerCachedData('shards', shard, shardData);
       }
-      const shardData = await res.json();
       const book = Array.isArray(shardData) ? shardData.find(function(b) { return b.id.toUpperCase() === recordId.toUpperCase(); }) : null;
       if (!book) {
         renderError('Buku dengan pengecam "' + recordId + '" tidak dijumpai dalam shard ' + shard + '.');
