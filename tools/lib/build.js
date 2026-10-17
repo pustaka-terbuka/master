@@ -1261,8 +1261,14 @@ export async function buildSite(options) {
         let opacUrl = orgInfo.opac_url || '#';
         if (h.org === 'PNM') {
           opacUrl = `https://opac.pnm.gov.my/search?query=${encodeURIComponent(pnmQuery)}`;
-        } else if (h.org === 'PPAPP' && control001) {
-          opacUrl = `https://opac.penanglib.gov.my/cgi-bin/koha/opac-detail.pl?biblionumber=${encodeURIComponent(control001)}`;
+        } else if (h.org === 'PPAS') {
+          opacUrl = `https://ppas.ap.iiivega.com/search?query=${encodeURIComponent(pnmQuery)}`;
+        } else if (['PPAPP', 'PPAK', 'PPANK', 'PPANPK'].includes(h.org) && control001 && orgInfo.opac_url) {
+          const base = orgInfo.opac_url.replace(/\/$/, '');
+          opacUrl = `${base}/cgi-bin/koha/opac-detail.pl?biblionumber=${encodeURIComponent(control001)}`;
+        } else if (control001 && orgInfo.opac_url) {
+          const base = orgInfo.opac_url.replace(/\/$/, '');
+          opacUrl = `${base}/detail?id=${encodeURIComponent(control001)}`;
         }
         
         formattedHoldings.push({

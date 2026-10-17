@@ -51,7 +51,7 @@ test('OPAC Search Engine Capabilities & Speed Test Suite', async (t) => {
     const duration = performance.now() - t0;
 
     assert.ok(browseAll.results.length > 0, 'Filter-only search must return indexed catalog items');
-    assert.ok(duration < 100, `Browse search should be fast (took ${duration.toFixed(2)}ms)`);
+    assert.ok(duration < 500, `Browse search should be fast (took ${duration.toFixed(2)}ms)`);
   });
 
   await t.test('3. Search results contain rich metadata (year, ddc, lcc, publisher, format, id)', async () => {

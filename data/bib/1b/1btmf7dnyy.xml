@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>00000cam a2200000 i 4500</marc:leader>
+    <marc:controlfield tag="001">462</marc:controlfield>
+    <marc:controlfield tag="003">PAPL</marc:controlfield>
+    <marc:controlfield tag="008">261016s2012    my ||||| |||| 00| 0 may d</marc:controlfield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">9789670007854</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(PAPL)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(PPJ)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(DBP)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(PARLIMEN)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(KEHAKIMAN)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(BARCOUNCIL)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(BNM)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(INTAN)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(FRIM)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(MARDI)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(MPOB)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(NIH)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(ARKIB)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(MUZIUM)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UNIKL)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(OUM)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(WOU)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UCSI)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(APU)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(INTI)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(MONASHMY)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(NOTTMY)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(CURTINMY)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(SWINMY)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(JPPKK)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(IPG)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(PSSSLIMS)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(MRSM)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(MYTO)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(MYJURNAL)462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">PAPL</marc:subfield>
+      <marc:subfield code="c">PAPL</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1="0" ind2=" ">
+      <marc:subfield code="a">may</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2="0">
+      <marc:subfield code="a">AZ103</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="082" ind1="0" ind2="4">
+      <marc:subfield code="a">1.4</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2=" ">
+      <marc:subfield code="a">Panel Penyelidik PAPL</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Monograf Penyelidikan dan Bahan Dokumentasi Kebangsaan Siri #116</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="1">
+      <marc:subfield code="b">PAPL Press</marc:subfield>
+      <marc:subfield code="c">2012</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">Rekod rasmi berkanun Perpustakaan Awam Perbadanan Labuan bagi nombor kawalan PAPL-462.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="4">
+      <marc:subfield code="a">Perpustakaan Awam Perbadanan Labuan -- Collections</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="4">
+      <marc:subfield code="a">Malaysia -- Publications</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="4">
+      <marc:subfield code="a">Library Cataloging -- MARC21</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Awam Labuan (Bandar Labuan)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Awam Labuan (Bandar Labuan)</marc:subfield>
+      <marc:subfield code="o">001.4 MAL</marc:subfield>
+      <marc:subfield code="p">PAPL-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Awam Putrajaya (Presint 9)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Awam Putrajaya (Presint 9)</marc:subfield>
+      <marc:subfield code="o">001.4 MAL</marc:subfield>
+      <marc:subfield code="p">PPJ-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Pusat Dokumentasi Melayu (Wisma DBP)</marc:subfield>
+      <marc:subfield code="b">Pusat Dokumentasi Melayu (Wisma DBP)</marc:subfield>
+      <marc:subfield code="o">499.285 MAL</marc:subfield>
+      <marc:subfield code="p">DBP-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Parlimen (Bangunan Parlimen)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Parlimen (Bangunan Parlimen)</marc:subfield>
+      <marc:subfield code="o">J618 .M3 2012</marc:subfield>
+      <marc:subfield code="p">PARLIMEN-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Istana Kehakiman (Putrajaya)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Istana Kehakiman (Putrajaya)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">KEHAKIMAN-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Bar Council Library (Kuala Lumpur)</marc:subfield>
+      <marc:subfield code="b">Bar Council Library (Kuala Lumpur)</marc:subfield>
+      <marc:subfield code="o">001.4 MAL</marc:subfield>
+      <marc:subfield code="p">BARCOUNCIL-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">BNM Knowledge Management Centre (Sasana Kijang)</marc:subfield>
+      <marc:subfield code="b">BNM Knowledge Management Centre (Sasana Kijang)</marc:subfield>
+      <marc:subfield code="o">KPG885 .M3 2012</marc:subfield>
+      <marc:subfield code="p">BNM-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan INTAN Main Campus (Bukit Kiara)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan INTAN Main Campus (Bukit Kiara)</marc:subfield>
+      <marc:subfield code="o">001.4 MAL</marc:subfield>
+      <marc:subfield code="p">INTAN-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan FRIM (Kepong)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan FRIM (Kepong)</marc:subfield>
+      <marc:subfield code="o">SD235.M3 .M3 2012</marc:subfield>
+      <marc:subfield code="p">FRIM-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan MARDI (Serdang)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan MARDI (Serdang)</marc:subfield>
+      <marc:subfield code="o">001.4 MAL</marc:subfield>
+      <marc:subfield code="p">MARDI-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan MPOB (Bangi)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan MPOB (Bangi)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">MPOB-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">NIH Knowledge Hub (Setia Alam)</marc:subfield>
+      <marc:subfield code="b">NIH Knowledge Hub (Setia Alam)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">NIH-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Pusat Penyelidikan Arkib Negara (Jalan Tuanku Abdul Halim)</marc:subfield>
+      <marc:subfield code="b">Pusat Penyelidikan Arkib Negara (Jalan Tuanku Abdul Halim)</marc:subfield>
+      <marc:subfield code="o">001.4 MAL</marc:subfield>
+      <marc:subfield code="p">ARKIB-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Perpustakaan Muzium Negara (Kuala Lumpur)</marc:subfield>
+      <marc:subfield code="b">Perpustakaan Muzium Negara (Kuala Lumpur)</marc:subfield>
+      <marc:subfield code="o">001.4 MAL</marc:subfield>
+      <marc:subfield code="p">MUZIUM-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UniKL Library Network (12 Institutes)</marc:subfield>
+      <marc:subfield code="b">UniKL Library Network (12 Institutes)</marc:subfield>
+      <marc:subfield code="o">TL210 .M3 2012</marc:subfield>
+      <marc:subfield code="p">UNIKL-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">TSDAS Digital Library (Kelana Jaya)</marc:subfield>
+      <marc:subfield code="b">TSDAS Digital Library (Kelana Jaya)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">OUM-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">WOU Main Campus Library (George Town)</marc:subfield>
+      <marc:subfield code="b">WOU Main Campus Library (George Town)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">WOU-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">UCSI Main Campus Library (Cheras)</marc:subfield>
+      <marc:subfield code="b">UCSI Main Campus Library (Cheras)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">UCSI-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">APU Library (Technology Park Malaysia, Bukit Jalil)</marc:subfield>
+      <marc:subfield code="b">APU Library (Technology Park Malaysia, Bukit Jalil)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">APU-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">INTI Nilai Campus Library (Nilai)</marc:subfield>
+      <marc:subfield code="b">INTI Nilai Campus Library (Nilai)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">INTI-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Monash Malaysia Library (Sunway)</marc:subfield>
+      <marc:subfield code="b">Monash Malaysia Library (Sunway)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">MONASHMY-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Nottingham Malaysia Library (Semenyih)</marc:subfield>
+      <marc:subfield code="b">Nottingham Malaysia Library (Semenyih)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">NOTTMY-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Curtin Malaysia Library (Miri)</marc:subfield>
+      <marc:subfield code="b">Curtin Malaysia Library (Miri)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">CURTINMY-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Swinburne Sarawak Library (Kuching)</marc:subfield>
+      <marc:subfield code="b">Swinburne Sarawak Library (Kuching)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">SWINMY-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">JPPKK TVET Library Central Network (36 Politeknik &amp; 105 Kolej Komuniti)</marc:subfield>
+      <marc:subfield code="b">JPPKK TVET Library Central Network (36 Politeknik &amp; 105 Kolej Komuniti)</marc:subfield>
+      <marc:subfield code="o">AZ103 .M3 2012</marc:subfield>
+      <marc:subfield code="p">JPPKK-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Pusat Sumber IPGM Induk (27 Kampus Guru)</marc:subfield>
+      <marc:subfield code="b">Pusat Sumber IPGM Induk (27 Kampus Guru)</marc:subfield>
+      <marc:subfield code="o">001.4 MAL</marc:subfield>
+      <marc:subfield code="p">IPG-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Pusat Sumber Sekolah Kebangsaan (KPM Network)</marc:subfield>
+      <marc:subfield code="b">Pusat Sumber Sekolah Kebangsaan (KPM Network)</marc:subfield>
+      <marc:subfield code="o">001.4 MAL</marc:subfield>
+      <marc:subfield code="p">PSSSLIMS-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Pusat Sumber Pembelajaran MRSM (55+ Maktab)</marc:subfield>
+      <marc:subfield code="b">Pusat Sumber Pembelajaran MRSM (55+ Maktab)</marc:subfield>
+      <marc:subfield code="o">001.4 MAL</marc:subfield>
+      <marc:subfield code="p">MRSM-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Pangkalan Tesis Kebangsaan PNM (Kuala Lumpur)</marc:subfield>
+      <marc:subfield code="b">Pangkalan Tesis Kebangsaan PNM (Kuala Lumpur)</marc:subfield>
+      <marc:subfield code="o">TP339 .M3 2012</marc:subfield>
+      <marc:subfield code="p">MYTO-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="a">Pusat Sitasi Malaysia (Kementerian Pendidikan Tinggi)</marc:subfield>
+      <marc:subfield code="b">Pusat Sitasi Malaysia (Kementerian Pendidikan Tinggi)</marc:subfield>
+      <marc:subfield code="o">499.28 MAL</marc:subfield>
+      <marc:subfield code="p">MYJURNAL-462</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">labuan</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">putrajaya</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">dbp</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">parlimen</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">kehakiman</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">barcouncil</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">bnm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">intan</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">frim</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">mardi</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">mpob</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">nih</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">arkib</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">muzium</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">unikl</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">oum</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">wou</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">ucsi</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">apu</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">inti</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">monashmy</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">nottmy</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">curtinmy</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">swinmy</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">politeknik</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">ipg</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">pssslims</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">mrsm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">myto</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">myjurnal</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

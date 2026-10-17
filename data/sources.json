@@ -32,5 +32,685 @@
     "localPath": "../ppas",
     "dataPath": "../ppas/data",
     "opacUrl": "https://ppas.ap.iiivega.com/"
+  },
+  "ppaj": {
+    "name": "Perbadanan Perpustakaan Awam Johor",
+    "prefix": "PPAJ",
+    "priority": 7,
+    "organization": "PPAJ",
+    "repository": "https://github.com/pustaka-terbuka/ppaj",
+    "localPath": "../ppaj",
+    "dataPath": "../ppaj/data",
+    "opacUrl": "https://ppaj.johor.gov.my/"
+  },
+  "ppak": {
+    "name": "Perbadanan Perpustakaan Awam Kedah",
+    "prefix": "PPAK",
+    "priority": 8,
+    "organization": "PPAK",
+    "repository": "https://github.com/pustaka-terbuka/ppak",
+    "localPath": "../ppak",
+    "dataPath": "../ppak/data",
+    "opacUrl": "https://www.kedahlib.gov.my/"
+  },
+  "ppank": {
+    "name": "Perbadanan Perpustakaan Awam Kelantan",
+    "prefix": "PPANK",
+    "priority": 8,
+    "organization": "PPANK",
+    "repository": "https://github.com/pustaka-terbuka/ppank",
+    "localPath": "../ppank",
+    "dataPath": "../ppank/data",
+    "opacUrl": "http://catalog.kelantanlibrary.gov.my/"
+  },
+  "perpustam": {
+    "name": "Perbadanan Perpustakaan Awam Melaka",
+    "prefix": "PERPUSTAM",
+    "priority": 7,
+    "organization": "PERPUSTAM",
+    "repository": "https://github.com/pustaka-terbuka/perpustam",
+    "localPath": "../perpustam",
+    "dataPath": "../perpustam/data",
+    "opacUrl": "https://perpustam.gov.my/"
+  },
+  "ppans": {
+    "name": "Perbadanan Perpustakaan Awam Negeri Sembilan",
+    "prefix": "PPANS",
+    "priority": 7,
+    "organization": "PPANS",
+    "repository": "https://github.com/pustaka-terbuka/ppans",
+    "localPath": "../ppans",
+    "dataPath": "../ppans/data",
+    "opacUrl": "https://www.nslibrary.gov.my/"
+  },
+  "ppap": {
+    "name": "Perbadanan Perpustakaan Awam Pahang",
+    "prefix": "PPAP",
+    "priority": 7,
+    "organization": "PPAP",
+    "repository": "https://github.com/pustaka-terbuka/ppap",
+    "localPath": "../ppap",
+    "dataPath": "../ppap/data",
+    "opacUrl": "https://webopac.pahanglibrary.gov.my/"
+  },
+  "ppanpk": {
+    "name": "Perbadanan Perpustakaan Awam Negeri Perak",
+    "prefix": "PPANPK",
+    "priority": 8,
+    "organization": "PPANPK",
+    "repository": "https://github.com/pustaka-terbuka/ppanpk",
+    "localPath": "../ppanpk",
+    "dataPath": "../ppanpk/data",
+    "opacUrl": "https://pintar.ppanpk.gov.my/"
+  },
+  "ppanps": {
+    "name": "Perbadanan Perpustakaan Awam Negeri Perlis",
+    "prefix": "PPANPS",
+    "priority": 7,
+    "organization": "PPANPS",
+    "repository": "https://github.com/pustaka-terbuka/ppanps",
+    "localPath": "../ppanps",
+    "dataPath": "../ppanps/data",
+    "opacUrl": "http://opac.perlislib.gov.my/"
+  },
+  "ssl": {
+    "name": "Perpustakaan Negeri Sabah",
+    "prefix": "SSL",
+    "priority": 7,
+    "organization": "SSL",
+    "repository": "https://github.com/pustaka-terbuka/ssl",
+    "localPath": "../ssl",
+    "dataPath": "../ssl/data",
+    "opacUrl": "https://library.sabah.gov.my/"
+  },
+  "sarawak": {
+    "name": "Pustaka Negeri Sarawak",
+    "prefix": "SARAWAK",
+    "priority": 8,
+    "organization": "SARAWAK",
+    "repository": "https://github.com/pustaka-terbuka/sarawak",
+    "localPath": "../sarawak",
+    "dataPath": "../sarawak/data",
+    "opacUrl": "https://www.librarynet.com.my/"
+  },
+  "ppat": {
+    "name": "Perbadanan Perpustakaan Awam Terengganu",
+    "prefix": "PPAT",
+    "priority": 7,
+    "organization": "PPAT",
+    "repository": "https://github.com/pustaka-terbuka/ppat",
+    "localPath": "../ppat",
+    "dataPath": "../ppat/data",
+    "opacUrl": "https://www.trglib.gov.my/"
+  },
+  "pkl": {
+    "name": "Perpustakaan Kuala Lumpur",
+    "prefix": "PKL",
+    "priority": 8,
+    "organization": "PKL",
+    "repository": "https://github.com/pustaka-terbuka/pkl",
+    "localPath": "../pkl",
+    "dataPath": "../pkl/data",
+    "opacUrl": "https://perpustakaankualalumpur.dbkl.gov.my/"
+  },
+  "um": {
+    "name": "Perpustakaan Universiti Malaya",
+    "prefix": "UM",
+    "priority": 9,
+    "organization": "UM",
+    "repository": "https://github.com/pustaka-terbuka/um",
+    "localPath": "../um",
+    "dataPath": "../um/data",
+    "opacUrl": "https://umlib.um.edu.my/"
+  },
+  "usm": {
+    "name": "Perpustakaan Hamzah Sendut (Universiti Sains Malaysia)",
+    "prefix": "USM",
+    "priority": 9,
+    "organization": "USM",
+    "repository": "https://github.com/pustaka-terbuka/usm",
+    "localPath": "../usm",
+    "dataPath": "../usm/data",
+    "opacUrl": "https://lib.usm.my/"
+  },
+  "ukm": {
+    "name": "Perpustakaan Tun Seri Lanang (Universiti Kebangsaan Malaysia)",
+    "prefix": "UKM",
+    "priority": 9,
+    "organization": "UKM",
+    "repository": "https://github.com/pustaka-terbuka/ukm",
+    "localPath": "../ukm",
+    "dataPath": "../ukm/data",
+    "opacUrl": "https://gemilang.ukm.my/"
+  },
+  "upm": {
+    "name": "Perpustakaan Sultan Abdul Samad (Universiti Putra Malaysia)",
+    "prefix": "UPM",
+    "priority": 9,
+    "organization": "UPM",
+    "repository": "https://github.com/pustaka-terbuka/upm",
+    "localPath": "../upm",
+    "dataPath": "../upm/data",
+    "opacUrl": "https://lib.upm.edu.my/"
+  },
+  "utm": {
+    "name": "Perpustakaan Sultanah Zanariah (Universiti Teknologi Malaysia)",
+    "prefix": "UTM",
+    "priority": 9,
+    "organization": "UTM",
+    "repository": "https://github.com/pustaka-terbuka/utm",
+    "localPath": "../utm",
+    "dataPath": "../utm/data",
+    "opacUrl": "https://opac.utm.my/"
+  },
+  "uitm": {
+    "name": "Perpustakaan Tun Abdul Razak (Universiti Teknologi MARA)",
+    "prefix": "UiTM",
+    "priority": 8,
+    "organization": "UiTM",
+    "repository": "https://github.com/pustaka-terbuka/uitm",
+    "localPath": "../uitm",
+    "dataPath": "../uitm/data",
+    "opacUrl": "https://library.uitm.edu.my/"
+  },
+  "iium": {
+    "name": "Dar al-Hikmah Library (International Islamic University Malaysia)",
+    "prefix": "IIUM",
+    "priority": 8,
+    "organization": "IIUM",
+    "repository": "https://github.com/pustaka-terbuka/iium",
+    "localPath": "../iium",
+    "dataPath": "../iium/data",
+    "opacUrl": "https://lib.iium.edu.my/"
+  },
+  "uum": {
+    "name": "Perpustakaan Sultanah Bahiyah (Universiti Utara Malaysia)",
+    "prefix": "UUM",
+    "priority": 8,
+    "organization": "UUM",
+    "repository": "https://github.com/pustaka-terbuka/uum",
+    "localPath": "../uum",
+    "dataPath": "../uum/data",
+    "opacUrl": "https://library.uum.edu.my/"
+  },
+  "unimas": {
+    "name": "Pejabat Perpustakaan, Penyiaran dan Penerbitan (Universiti Malaysia Sarawak)",
+    "prefix": "UNIMAS",
+    "priority": 8,
+    "organization": "UNIMAS",
+    "repository": "https://github.com/pustaka-terbuka/unimas",
+    "localPath": "../unimas",
+    "dataPath": "../unimas/data",
+    "opacUrl": "https://www.library.unimas.my/"
+  },
+  "ums": {
+    "name": "Perpustakaan Universiti Malaysia Sabah",
+    "prefix": "UMS",
+    "priority": 8,
+    "organization": "UMS",
+    "repository": "https://github.com/pustaka-terbuka/ums",
+    "localPath": "../ums",
+    "dataPath": "../ums/data",
+    "opacUrl": "https://library.ums.edu.my/"
+  },
+  "upsi": {
+    "name": "Perpustakaan Tuanku Bainun (Universiti Pendidikan Sultan Idris)",
+    "prefix": "UPSI",
+    "priority": 8,
+    "organization": "UPSI",
+    "repository": "https://github.com/pustaka-terbuka/upsi",
+    "localPath": "../upsi",
+    "dataPath": "../upsi/data",
+    "opacUrl": "https://pustaka.upsi.edu.my/"
+  },
+  "usim": {
+    "name": "Perpustakaan Universiti Sains Islam Malaysia",
+    "prefix": "USIM",
+    "priority": 8,
+    "organization": "USIM",
+    "repository": "https://github.com/pustaka-terbuka/usim",
+    "localPath": "../usim",
+    "dataPath": "../usim/data",
+    "opacUrl": "https://library.usim.edu.my/"
+  },
+  "umt": {
+    "name": "Perpustakaan Sultanah Nur Zahirah (Universiti Malaysia Terengganu)",
+    "prefix": "UMT",
+    "priority": 8,
+    "organization": "UMT",
+    "repository": "https://github.com/pustaka-terbuka/umt",
+    "localPath": "../umt",
+    "dataPath": "../umt/data",
+    "opacUrl": "https://psnz.umt.edu.my/"
+  },
+  "uthm": {
+    "name": "Perpustakaan Tunku Tun Aminah (Universiti Tun Hussein Onn Malaysia)",
+    "prefix": "UTHM",
+    "priority": 8,
+    "organization": "UTHM",
+    "repository": "https://github.com/pustaka-terbuka/uthm",
+    "localPath": "../uthm",
+    "dataPath": "../uthm/data",
+    "opacUrl": "https://ptta.uthm.edu.my/"
+  },
+  "utem": {
+    "name": "Perpustakaan Universiti Teknikal Malaysia Melaka",
+    "prefix": "UTeM",
+    "priority": 8,
+    "organization": "UTeM",
+    "repository": "https://github.com/pustaka-terbuka/utem",
+    "localPath": "../utem",
+    "dataPath": "../utem/data",
+    "opacUrl": "https://library.utem.edu.my/"
+  },
+  "umpsa": {
+    "name": "Perpustakaan Universiti Malaysia Pahang Al-Sultan Abdullah",
+    "prefix": "UMPSA",
+    "priority": 8,
+    "organization": "UMPSA",
+    "repository": "https://github.com/pustaka-terbuka/umpsa",
+    "localPath": "../umpsa",
+    "dataPath": "../umpsa/data",
+    "opacUrl": "https://library.umpsa.edu.my/"
+  },
+  "unimap": {
+    "name": "Perpustakaan Tuanku Fauziah (Universiti Malaysia Perlis)",
+    "prefix": "UniMAP",
+    "priority": 8,
+    "organization": "UniMAP",
+    "repository": "https://github.com/pustaka-terbuka/unimap",
+    "localPath": "../unimap",
+    "dataPath": "../unimap/data",
+    "opacUrl": "https://ptf.unimap.edu.my/"
+  },
+  "unisza": {
+    "name": "Perpustakaan Al-Wathiqu Billah (Universiti Sultan Zainal Abidin)",
+    "prefix": "UniSZA",
+    "priority": 8,
+    "organization": "UniSZA",
+    "repository": "https://github.com/pustaka-terbuka/unisza",
+    "localPath": "../unisza",
+    "dataPath": "../unisza/data",
+    "opacUrl": "https://library.unisza.edu.my/"
+  },
+  "umk": {
+    "name": "Perpustakaan Universiti Malaysia Kelantan",
+    "prefix": "UMK",
+    "priority": 8,
+    "organization": "UMK",
+    "repository": "https://github.com/pustaka-terbuka/umk",
+    "localPath": "../umk",
+    "dataPath": "../umk/data",
+    "opacUrl": "https://lib.umk.edu.my/"
+  },
+  "upnm": {
+    "name": "Perpustakaan Universiti Pertahanan Nasional Malaysia",
+    "prefix": "UPNM",
+    "priority": 8,
+    "organization": "UPNM",
+    "repository": "https://github.com/pustaka-terbuka/upnm",
+    "localPath": "../upnm",
+    "dataPath": "../upnm/data",
+    "opacUrl": "https://lib.upnm.edu.my/"
+  },
+  "utp": {
+    "name": "Information Resource Centre (Universiti Teknologi PETRONAS)",
+    "prefix": "UTP",
+    "priority": 8,
+    "organization": "UTP",
+    "repository": "https://github.com/pustaka-terbuka/utp",
+    "localPath": "../utp",
+    "dataPath": "../utp/data",
+    "opacUrl": "https://irc.utp.edu.my/"
+  },
+  "mmu": {
+    "name": "Siti Hasmah Digital Library (Multimedia University)",
+    "prefix": "MMU",
+    "priority": 8,
+    "organization": "MMU",
+    "repository": "https://github.com/pustaka-terbuka/mmu",
+    "localPath": "../mmu",
+    "dataPath": "../mmu/data",
+    "opacUrl": "https://shdl.mmu.edu.my/"
+  },
+  "uniten": {
+    "name": "Perpustakaan Universiti Tenaga Nasional",
+    "prefix": "UNITEN",
+    "priority": 8,
+    "organization": "UNITEN",
+    "repository": "https://github.com/pustaka-terbuka/uniten",
+    "localPath": "../uniten",
+    "dataPath": "../uniten/data",
+    "opacUrl": "https://library.uniten.edu.my/"
+  },
+  "utar": {
+    "name": "UTAR Library (Universiti Tunku Abdul Rahman)",
+    "prefix": "UTAR",
+    "priority": 8,
+    "organization": "UTAR",
+    "repository": "https://github.com/pustaka-terbuka/utar",
+    "localPath": "../utar",
+    "dataPath": "../utar/data",
+    "opacUrl": "https://library.utar.edu.my/"
+  },
+  "sunway": {
+    "name": "Sunway Campus Library (Sunway University)",
+    "prefix": "SUNWAY",
+    "priority": 8,
+    "organization": "SUNWAY",
+    "repository": "https://github.com/pustaka-terbuka/sunway",
+    "localPath": "../sunway",
+    "dataPath": "../sunway/data",
+    "opacUrl": "https://library.sunway.edu.my/"
+  },
+  "taylors": {
+    "name": "Taylor's Library (Taylor's University)",
+    "prefix": "TAYLORS",
+    "priority": 8,
+    "organization": "TAYLORS",
+    "repository": "https://github.com/pustaka-terbuka/taylors",
+    "localPath": "../taylors",
+    "dataPath": "../taylors/data",
+    "opacUrl": "https://taylorslibrary.taylors.edu.my/"
+  },
+  "putrajaya": {
+    "name": "Perpustakaan Perbadanan Putrajaya",
+    "prefix": "PPJ",
+    "priority": 8,
+    "organization": "PPJ",
+    "repository": "https://github.com/pustaka-terbuka/putrajaya",
+    "localPath": "../putrajaya",
+    "dataPath": "../putrajaya/data",
+    "opacUrl": "https://library.ppj.gov.my/"
+  },
+  "labuan": {
+    "name": "Perpustakaan Awam Perbadanan Labuan",
+    "prefix": "PAPL",
+    "priority": 7,
+    "organization": "PAPL",
+    "repository": "https://github.com/pustaka-terbuka/labuan",
+    "localPath": "../labuan",
+    "dataPath": "../labuan/data",
+    "opacUrl": "https://library.pl.gov.my/"
+  },
+  "parlimen": {
+    "name": "Perpustakaan Parlimen Malaysia",
+    "prefix": "PARLIMEN",
+    "priority": 9,
+    "organization": "PARLIMEN",
+    "repository": "https://github.com/pustaka-terbuka/parlimen",
+    "localPath": "../parlimen",
+    "dataPath": "../parlimen/data",
+    "opacUrl": "https://library.parlimen.gov.my/"
+  },
+  "kehakiman": {
+    "name": "Perpustakaan Mahkamah Persekutuan Malaysia",
+    "prefix": "KEHAKIMAN",
+    "priority": 8,
+    "organization": "KEHAKIMAN",
+    "repository": "https://github.com/pustaka-terbuka/kehakiman",
+    "localPath": "../kehakiman",
+    "dataPath": "../kehakiman/data",
+    "opacUrl": "https://www.kehakiman.gov.my/library"
+  },
+  "barcouncil": {
+    "name": "Perpustakaan Majlis Peguam Malaysia",
+    "prefix": "BARCOUNCIL",
+    "priority": 8,
+    "organization": "BARCOUNCIL",
+    "repository": "https://github.com/pustaka-terbuka/barcouncil",
+    "localPath": "../barcouncil",
+    "dataPath": "../barcouncil/data",
+    "opacUrl": "https://www.malaysianbar.org.my/library"
+  },
+  "dbp": {
+    "name": "Pusat Dokumentasi Melayu (Dewan Bahasa dan Pustaka)",
+    "prefix": "DBP",
+    "priority": 9,
+    "organization": "DBP",
+    "repository": "https://github.com/pustaka-terbuka/dbp",
+    "localPath": "../dbp",
+    "dataPath": "../dbp/data",
+    "opacUrl": "https://pustaka.dbp.gov.my/"
+  },
+  "bnm": {
+    "name": "Bank Negara Malaysia Knowledge Management Centre",
+    "prefix": "BNM",
+    "priority": 9,
+    "organization": "BNM",
+    "repository": "https://github.com/pustaka-terbuka/bnm",
+    "localPath": "../bnm",
+    "dataPath": "../bnm/data",
+    "opacUrl": "https://library.bnm.gov.my/"
+  },
+  "intan": {
+    "name": "Perpustakaan Institut Tadbiran Awam Negara",
+    "prefix": "INTAN",
+    "priority": 8,
+    "organization": "INTAN",
+    "repository": "https://github.com/pustaka-terbuka/intan",
+    "localPath": "../intan",
+    "dataPath": "../intan/data",
+    "opacUrl": "https://library.intan.my/"
+  },
+  "frim": {
+    "name": "Perpustakaan Institut Penyelidikan Perhutanan Malaysia",
+    "prefix": "FRIM",
+    "priority": 8,
+    "organization": "FRIM",
+    "repository": "https://github.com/pustaka-terbuka/frim",
+    "localPath": "../frim",
+    "dataPath": "../frim/data",
+    "opacUrl": "https://library.frim.gov.my/"
+  },
+  "mardi": {
+    "name": "Perpustakaan Institut Penyelidikan & Kemajuan Pertanian Malaysia",
+    "prefix": "MARDI",
+    "priority": 8,
+    "organization": "MARDI",
+    "repository": "https://github.com/pustaka-terbuka/mardi",
+    "localPath": "../mardi",
+    "dataPath": "../mardi/data",
+    "opacUrl": "https://library.mardi.gov.my/"
+  },
+  "mpob": {
+    "name": "Perpustakaan Lembaga Minyak Sawit Malaysia",
+    "prefix": "MPOB",
+    "priority": 8,
+    "organization": "MPOB",
+    "repository": "https://github.com/pustaka-terbuka/mpob",
+    "localPath": "../mpob",
+    "dataPath": "../mpob/data",
+    "opacUrl": "https://library.mpob.gov.my/"
+  },
+  "nih": {
+    "name": "Perpustakaan National Institutes of Health / IMR",
+    "prefix": "NIH",
+    "priority": 8,
+    "organization": "NIH",
+    "repository": "https://github.com/pustaka-terbuka/nih",
+    "localPath": "../nih",
+    "dataPath": "../nih/data",
+    "opacUrl": "https://library.nih.gov.my/"
+  },
+  "arkib": {
+    "name": "Perpustakaan Rujukan Arkib Negara Malaysia",
+    "prefix": "ARKIB",
+    "priority": 9,
+    "organization": "ARKIB",
+    "repository": "https://github.com/pustaka-terbuka/arkib",
+    "localPath": "../arkib",
+    "dataPath": "../arkib/data",
+    "opacUrl": "https://www.arkib.gov.my/"
+  },
+  "muzium": {
+    "name": "Perpustakaan Jabatan Muzium Malaysia",
+    "prefix": "MUZIUM",
+    "priority": 8,
+    "organization": "MUZIUM",
+    "repository": "https://github.com/pustaka-terbuka/muzium",
+    "localPath": "../muzium",
+    "dataPath": "../muzium/data",
+    "opacUrl": "https://www.jmm.gov.my/library"
+  },
+  "unikl": {
+    "name": "Universiti Kuala Lumpur Library",
+    "prefix": "UNIKL",
+    "priority": 8,
+    "organization": "UNIKL",
+    "repository": "https://github.com/pustaka-terbuka/unikl",
+    "localPath": "../unikl",
+    "dataPath": "../unikl/data",
+    "opacUrl": "https://library.unikl.edu.my/"
+  },
+  "oum": {
+    "name": "Tan Sri Dr. Abdullah Sanusi Digital Library (Open University Malaysia)",
+    "prefix": "OUM",
+    "priority": 8,
+    "organization": "OUM",
+    "repository": "https://github.com/pustaka-terbuka/oum",
+    "localPath": "../oum",
+    "dataPath": "../oum/data",
+    "opacUrl": "https://library.oum.edu.my/"
+  },
+  "wou": {
+    "name": "Tun Dr Lim Keng Yaik Digital Library (Wawasan Open University)",
+    "prefix": "WOU",
+    "priority": 8,
+    "organization": "WOU",
+    "repository": "https://github.com/pustaka-terbuka/wou",
+    "localPath": "../wou",
+    "dataPath": "../wou/data",
+    "opacUrl": "https://library.wou.edu.my/"
+  },
+  "ucsi": {
+    "name": "UCSI University Library & Information Centre",
+    "prefix": "UCSI",
+    "priority": 8,
+    "organization": "UCSI",
+    "repository": "https://github.com/pustaka-terbuka/ucsi",
+    "localPath": "../ucsi",
+    "dataPath": "../ucsi/data",
+    "opacUrl": "https://library.ucsiuniversity.edu.my/"
+  },
+  "apu": {
+    "name": "Asia Pacific University Library",
+    "prefix": "APU",
+    "priority": 8,
+    "organization": "APU",
+    "repository": "https://github.com/pustaka-terbuka/apu",
+    "localPath": "../apu",
+    "dataPath": "../apu/data",
+    "opacUrl": "https://library.apu.edu.my/"
+  },
+  "inti": {
+    "name": "INTI International University Library",
+    "prefix": "INTI",
+    "priority": 8,
+    "organization": "INTI",
+    "repository": "https://github.com/pustaka-terbuka/inti",
+    "localPath": "../inti",
+    "dataPath": "../inti/data",
+    "opacUrl": "https://library.newinti.edu.my/"
+  },
+  "monashmy": {
+    "name": "Monash University Malaysia Library",
+    "prefix": "MONASHMY",
+    "priority": 9,
+    "organization": "MONASHMY",
+    "repository": "https://github.com/pustaka-terbuka/monashmy",
+    "localPath": "../monashmy",
+    "dataPath": "../monashmy/data",
+    "opacUrl": "https://www.monash.edu.my/library"
+  },
+  "nottmy": {
+    "name": "University of Nottingham Malaysia Library",
+    "prefix": "NOTTMY",
+    "priority": 9,
+    "organization": "NOTTMY",
+    "repository": "https://github.com/pustaka-terbuka/nottmy",
+    "localPath": "../nottmy",
+    "dataPath": "../nottmy/data",
+    "opacUrl": "https://www.nottingham.edu.my/library"
+  },
+  "curtinmy": {
+    "name": "The Library, Curtin University Malaysia",
+    "prefix": "CURTINMY",
+    "priority": 8,
+    "organization": "CURTINMY",
+    "repository": "https://github.com/pustaka-terbuka/curtinmy",
+    "localPath": "../curtinmy",
+    "dataPath": "../curtinmy/data",
+    "opacUrl": "https://library.curtin.edu.my/"
+  },
+  "swinmy": {
+    "name": "Swinburne University of Technology Sarawak Library",
+    "prefix": "SWINMY",
+    "priority": 8,
+    "organization": "SWINMY",
+    "repository": "https://github.com/pustaka-terbuka/swinmy",
+    "localPath": "../swinmy",
+    "dataPath": "../swinmy/data",
+    "opacUrl": "https://www.swinburne.edu.my/library"
+  },
+  "politeknik": {
+    "name": "Perpustakaan Jabatan Pendidikan Politeknik dan Kolej Komuniti",
+    "prefix": "JPPKK",
+    "priority": 8,
+    "organization": "JPPKK",
+    "repository": "https://github.com/pustaka-terbuka/politeknik",
+    "localPath": "../politeknik",
+    "dataPath": "../politeknik/data",
+    "opacUrl": "https://library.polycc.edu.my/"
+  },
+  "ipg": {
+    "name": "Pusat Sumber Institut Pendidikan Guru Malaysia (KPM)",
+    "prefix": "IPG",
+    "priority": 8,
+    "organization": "IPG",
+    "repository": "https://github.com/pustaka-terbuka/ipg",
+    "localPath": "../ipg",
+    "dataPath": "../ipg/data",
+    "opacUrl": "https://ipgm.moe.edu.my/library"
+  },
+  "pssslims": {
+    "name": "Pusat Sumber Sekolah Malaysia (SLiMS Engine Gateway)",
+    "prefix": "PSSSLIMS",
+    "priority": 7,
+    "organization": "PSSSLIMS",
+    "repository": "https://github.com/pustaka-terbuka/pssslims",
+    "localPath": "../pssslims",
+    "dataPath": "../pssslims/data",
+    "opacUrl": "https://slims.web.id/"
+  },
+  "mrsm": {
+    "name": "Pusat Sumber Maktab Rendah Sains MARA",
+    "prefix": "MRSM",
+    "priority": 8,
+    "organization": "MRSM",
+    "repository": "https://github.com/pustaka-terbuka/mrsm",
+    "localPath": "../mrsm",
+    "dataPath": "../mrsm/data",
+    "opacUrl": "https://mrsm.mara.gov.my/library"
+  },
+  "myto": {
+    "name": "Malaysian Theses Online (PNM / PERPUN)",
+    "prefix": "MYTO",
+    "priority": 9,
+    "organization": "MYTO",
+    "repository": "https://github.com/pustaka-terbuka/myto",
+    "localPath": "../myto",
+    "dataPath": "../myto/data",
+    "opacUrl": "https://myto.pnm.gov.my/"
+  },
+  "myjurnal": {
+    "name": "MyJurnal (Pusat Sitasi Malaysia / KPT)",
+    "prefix": "MYJURNAL",
+    "priority": 9,
+    "organization": "MYJURNAL",
+    "repository": "https://github.com/pustaka-terbuka/myjurnal",
+    "localPath": "../myjurnal",
+    "dataPath": "../myjurnal/data",
+    "opacUrl": "https://myjurnal.my/"
   }
 }
