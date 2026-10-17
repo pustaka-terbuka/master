@@ -62,6 +62,10 @@ function execCommand(cmd, args, cwd) {
 async function commitAndPushRepo(repoDir, message) {
   const baseName = path.basename(repoDir);
   console.log(`[GIT] Staging and committing changes in ${baseName}...`);
+  const lockFile = path.join(repoDir, '.git', 'index.lock');
+  if (fs.existsSync(lockFile)) {
+    try { fs.unlinkSync(lockFile); } catch (_) {}
+  }
   await execCommand('git', ['add', '.'], repoDir);
   const commitRes = await execCommand('git', ['commit', '-m', message], repoDir);
   if (commitRes.code === 0) {
@@ -119,6 +123,28 @@ function runSingleHarvester({ code, name }, phase, options = {}) {
       return resolve({ code, name, success: false, error: 'Script missing' });
     }
 
+    // Check if Phase 2 already has a completed chunk with 10,000 records
+    if (phase === 2) {
+      const inboxDir = path.join(repoDir, 'harvest', 'inbox', code);
+      if (fs.existsSync(inboxDir)) {
+        const dirs = fs.readdirSync(inboxDir).filter(d => {
+          try { return fs.statSync(path.join(inboxDir, d)).isDirectory(); } catch (_) { return false; }
+        });
+        for (const dir of dirs) {
+          const manifestPath = path.join(inboxDir, dir, 'manifest.json');
+          if (fs.existsSync(manifestPath)) {
+            try {
+              const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+              if (manifest.status === 'complete' && manifest.record_count >= (options.phase2ChunkSize || 10000)) {
+                console.log(`[ALREADY COMPLETED] [Phase 2] ${name} chunk ${dir} has ${manifest.record_count} records. Skipping harvest.`);
+                return resolve({ code, name, success: true, duration: '0s', latestChunk: path.join(inboxDir, dir) });
+              }
+            } catch (_) {}
+          }
+        }
+      }
+    }
+
     const args = [harvesterScript];
     if (phase === 1) {
       args.push('--max-records', String(options.phase1MaxRecords || 500));
@@ -141,12 +167,10 @@ function runSingleHarvester({ code, name }, phase, options = {}) {
       stdio: ['ignore', 'pipe', 'pipe']
     });
 
-    let stdout = '';
     let stderr = '';
 
     proc.stdout.on('data', (d) => {
       const text = d.toString();
-      stdout += text;
       const lines = text.split('\n');
       for (const line of lines) {
         if (
@@ -166,37 +190,44 @@ function runSingleHarvester({ code, name }, phase, options = {}) {
     });
 
     proc.on('close', async (exitCode) => {
-      const duration = formatDuration(Date.now() - startTime);
-      if (exitCode === 0) {
-        console.log(`[COMPLETED] [Phase ${phase}] ${name} finished in ${duration} with exit code 0.`);
+      try {
+        const duration = formatDuration(Date.now() - startTime);
+        if (exitCode === 0) {
+          console.log(`[COMPLETED] [Phase ${phase}] ${name} finished in ${duration} with exit code 0.`);
 
-        // Find newly written chunk directory
-        const inboxDir = path.join(repoDir, 'harvest', 'inbox', code);
-        let latestChunk = null;
-        if (fs.existsSync(inboxDir)) {
-          const dirs = fs.readdirSync(inboxDir).filter(d => fs.statSync(path.join(inboxDir, d)).isDirectory());
-          dirs.sort();
-          if (dirs.length > 0) {
-            latestChunk = path.join(inboxDir, dirs[dirs.length - 1]);
+          // Find newly written chunk directory
+          const inboxDir = path.join(repoDir, 'harvest', 'inbox', code);
+          let latestChunk = null;
+          if (fs.existsSync(inboxDir)) {
+            const dirs = fs.readdirSync(inboxDir).filter(d => {
+              try { return fs.statSync(path.join(inboxDir, d)).isDirectory(); } catch (_) { return false; }
+            });
+            dirs.sort();
+            if (dirs.length > 0) {
+              latestChunk = path.join(inboxDir, dirs[dirs.length - 1]);
+            }
           }
+
+          // Commit and push repository
+          await commitAndPushRepo(
+            repoDir,
+            `chore(harvest): Phase ${phase} chunk completed for ${name} (${phase === 1 ? '500 records' : '10,000 records'})`
+          );
+
+          // Merge chunk into central OPAC
+          if (latestChunk) {
+            await mergeChunkIntoOpac(code, latestChunk);
+          }
+
+          resolve({ code, name, success: true, duration, latestChunk });
+        } else {
+          console.error(`[FAILED] [Phase ${phase}] ${name} exited with code ${exitCode} in ${duration}.`);
+          if (stderr.trim()) console.error(`[STDERR] ${stderr.trim()}`);
+          resolve({ code, name, success: false, exitCode, duration, error: stderr.trim() });
         }
-
-        // Commit and push repository
-        await commitAndPushRepo(
-          repoDir,
-          `chore(harvest): Phase ${phase} chunk completed for ${name} (${phase === 1 ? '500 records' : '10,000 records'})`
-        );
-
-        // Merge chunk into central OPAC
-        if (latestChunk) {
-          await mergeChunkIntoOpac(code, latestChunk);
-        }
-
-        resolve({ code, name, success: true, duration, latestChunk, stdout });
-      } else {
-        console.error(`[FAILED] [Phase ${phase}] ${name} exited with code ${exitCode} in ${duration}.`);
-        if (stderr.trim()) console.error(`[STDERR] ${stderr.trim()}`);
-        resolve({ code, name, success: false, exitCode, duration, error: stderr.trim() });
+      } catch (err) {
+        console.error(`[EXCEPTION] [Phase ${phase}] ${name} handler error: ${err.message}`);
+        resolve({ code, name, success: false, error: err.message });
       }
     });
 
@@ -291,6 +322,14 @@ async function main() {
 
   console.log('\nAll harvester tasks, GitHub repository pushes, and OPAC search indexing successfully completed!');
 }
+
+process.on('unhandledRejection', (err) => {
+  console.error('[UNHANDLED REJECTION]', err);
+});
+
+process.on('uncaughtException', (err) => {
+  console.error('[UNCAUGHT EXCEPTION]', err);
+});
 
 main().catch(err => {
   console.error('[FATAL]', err);
