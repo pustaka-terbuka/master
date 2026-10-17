@@ -44,9 +44,17 @@ export const HARVESTER_VERSION = '1.0.0';
 export const DEFAULT_MAX_BIB = 300000;
 
 export function parseArgs(args = []) {
-  return parseBaseArgs(args, {
+  const parsed = parseBaseArgs(args, {
     endBib: DEFAULT_MAX_BIB
   });
+  parsed.startBibSpecified = args.includes('--start-bib');
+  if (args.includes('--chunk-number')) {
+    const idx = args.indexOf('--chunk-number');
+    if (idx !== -1 && idx + 1 < args.length) {
+      parsed.chunkNumber = parseInt(args[idx + 1], 10);
+    }
+  }
+  return parsed;
 }
 
 export function printHelp() {
@@ -207,8 +215,60 @@ export async function runHarvest(rawArgs = []) {
 
   fs.mkdirSync(inboxBaseDir, { recursive: true });
 
+  // Auto-advance startBib past existing harvested records if not explicitly specified
+  if (!options.startBibSpecified && fs.existsSync(inboxBaseDir)) {
+    const existing = fs.readdirSync(inboxBaseDir).filter(f => {
+      try { return fs.statSync(path.join(inboxBaseDir, f)).isDirectory(); } catch { return false; }
+    });
+    let maxBib = 0;
+    for (const d of existing) {
+      const provPath = path.join(inboxBaseDir, d, 'provenance.jsonl');
+      if (fs.existsSync(provPath)) {
+        try {
+          const pContent = fs.readFileSync(provPath, 'utf8');
+          const lines = pContent.trim().split('\n');
+          for (let l = lines.length - 1; l >= Math.max(0, lines.length - 100); l--) {
+            if (!lines[l]) continue;
+            const parsed = JSON.parse(lines[l]);
+            const num = parseInt(parsed.source_001, 10);
+            if (!isNaN(num) && num > maxBib) {
+              maxBib = num;
+              break;
+            }
+          }
+        } catch {}
+      }
+    }
+    if (maxBib > 0) {
+      options.startBib = maxBib + 1;
+    }
+  }
+
+  if (options.startBib > options.endBib) {
+    console.log(`[${AGENCY_CODE}] Catalog already fully harvested (startBib ${options.startBib} > endBib ${options.endBib}).`);
+    return 0;
+  }
+
+  // Determine chunk numbering
+  let chunkNum = 1;
+  if (options.chunkNumber) {
+    chunkNum = options.chunkNumber;
+  } else if (fs.existsSync(inboxBaseDir)) {
+    const existing = fs.readdirSync(inboxBaseDir).filter(f => {
+      try { return fs.statSync(path.join(inboxBaseDir, f)).isDirectory(); } catch { return false; }
+    });
+    const completedChunks = existing.filter(f => {
+      const mp = path.join(inboxBaseDir, f, 'manifest.json');
+      try {
+        const m = JSON.parse(fs.readFileSync(mp, 'utf8'));
+        return m.status === 'complete' && m.record_count >= 10000;
+      } catch { return false; }
+    });
+    chunkNum = completedChunks.length + 1;
+  }
+
   const runId = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19) + 'Z';
-  const chunkSuffix = options.chunkSize > 0 ? '-chunk-001' : '';
+  const chunkSuffix = options.chunkSize > 0 ? `-chunk-${String(chunkNum).padStart(3, '0')}` : '';
   const chunkDir = path.join(inboxBaseDir, `${runId}${chunkSuffix}`);
   const recordsDir = path.join(chunkDir, 'records');
   fs.mkdirSync(recordsDir, { recursive: true });
