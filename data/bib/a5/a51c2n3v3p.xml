@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>000000000a0000000000</marc:leader>
+    <marc:controlfield tag="001">u480</marc:controlfield>
+    <marc:controlfield tag="003">SIRSI</marc:controlfield>
+    <marc:controlfield tag="005">20201220005337</marc:controlfield>
+    <marc:controlfield tag="008">308</marc:controlfield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">346378</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UTM)u480</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1=" " ind2=" ">
+      <marc:subfield code="a">eng</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1=" " ind2="0">
+      <marc:subfield code="a">PTA</marc:subfield>
+      <marc:subfield code="b">TC175.2 A4 1966</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Fluvial sediment in the Little Arkansas River basin, Kansas</marc:subfield>
+      <marc:subfield code="h">[peta]</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" ">
+      <marc:subfield code="a">Scales vary</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Washington, D.C. :</marc:subfield>
+      <marc:subfield code="b">United States Government Printing Office,</marc:subfield>
+      <marc:subfield code="c">1966</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">2 maps :</marc:subfield>
+      <marc:subfield code="b">b &amp; w ;</marc:subfield>
+      <marc:subfield code="c">17 x 13 cm or smaller +</marc:subfield>
+      <marc:subfield code="e">1 book</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Accompanies text of the same title</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="591" ind1=" " ind2=" ">
+      <marc:subfield code="a">7</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="596" ind1=" " ind2=" ">
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Sediment transport</marc:subfield>
+      <marc:subfield code="z">United States</marc:subfield>
+      <marc:subfield code="z">Kansas</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="c">MAPGEN</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">MAPC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">PTA TC175.2 A4 1966</marc:subfield>
+      <marc:subfield code="p">30000004289249</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">MAPGEN</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">MAPC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">PTA TC175.2 A4 1966</marc:subfield>
+      <marc:subfield code="p">30000004289256</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">2</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">MAPGEN</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">utm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">477</marc:subfield>
+      <marc:subfield code="d">477</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

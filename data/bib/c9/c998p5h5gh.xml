@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>000000000a0000000000</marc:leader>
+    <marc:controlfield tag="001">u473</marc:controlfield>
+    <marc:controlfield tag="003">SIRSI</marc:controlfield>
+    <marc:controlfield tag="005">20201220005337</marc:controlfield>
+    <marc:controlfield tag="008">221</marc:controlfield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">345783</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UTM)u473</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1=" " ind2=" ">
+      <marc:subfield code="a">eng</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1=" " ind2="0">
+      <marc:subfield code="a">PTA</marc:subfield>
+      <marc:subfield code="b">QE531 B85 j79 (2) 1989</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Map of 1987 surface faulting along the superstition hills fault zone and nearby faults, Imperial Valley, Southern California</marc:subfield>
+      <marc:subfield code="h">[peta]</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" ">
+      <marc:subfield code="a">1:24,000</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Berkeley :</marc:subfield>
+      <marc:subfield code="b">The Seismological Society of America,</marc:subfield>
+      <marc:subfield code="c">1989</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">1 map :</marc:subfield>
+      <marc:subfield code="b">b &amp; w ;</marc:subfield>
+      <marc:subfield code="c">35 x 44.5 cm +</marc:subfield>
+      <marc:subfield code="e">1 journal</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Supplement to the Buletin of the Seismological Society of America, April 1989, Vol. 79, No. 2</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="591" ind1=" " ind2=" ">
+      <marc:subfield code="a">8</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="591" ind1=" " ind2=" ">
+      <marc:subfield code="a">51</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="596" ind1=" " ind2=" ">
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Imperial Valley (California)</marc:subfield>
+      <marc:subfield code="x">Seismology)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="c">MAPGEN</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">MAPC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">PTA QE531 B85 j79 (2) 1989</marc:subfield>
+      <marc:subfield code="p">30000004290643</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">MAPGEN</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">utm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">470</marc:subfield>
+      <marc:subfield code="d">470</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

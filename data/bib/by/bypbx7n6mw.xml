@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>000000000a0000000000</marc:leader>
+    <marc:controlfield tag="001">u3</marc:controlfield>
+    <marc:controlfield tag="003">SIRSI</marc:controlfield>
+    <marc:controlfield tag="005">20201220005335</marc:controlfield>
+    <marc:controlfield tag="008">070129s2006    my                  may</marc:controlfield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UTM)u3</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1="1" ind2=" ">
+      <marc:subfield code="a">may</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="1" ind2="4">
+      <marc:subfield code="a">TH425</marc:subfield>
+      <marc:subfield code="b">R69 2006 raf</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="0" ind2=" ">
+      <marc:subfield code="a">Rozaimah Mamod</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Pelaksanaan e-perolehan (eP) dalam industri pembinaan Malaysia /</marc:subfield>
+      <marc:subfield code="c">Rozaimah Mamod</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Skudai :</marc:subfield>
+      <marc:subfield code="b">Universiti Teknologi Malaysia,</marc:subfield>
+      <marc:subfield code="c">2006</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="502" ind1=" " ind2=" ">
+      <marc:subfield code="a">Project Paper (Sarjana Muda Ukur Bahan) - Universiti Teknologi Malaysia, 2006</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="591" ind1=" " ind2=" ">
+      <marc:subfield code="a">3</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="596" ind1=" " ind2=" ">
+      <marc:subfield code="a">FABUL</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Construction contracts</marc:subfield>
+      <marc:subfield code="x">Management</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Construction industry</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="c">PROPARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">utm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">3</marc:subfield>
+      <marc:subfield code="d">3</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

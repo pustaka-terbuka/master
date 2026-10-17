@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>000000000a0000000000</marc:leader>
+    <marc:controlfield tag="001">u69</marc:controlfield>
+    <marc:controlfield tag="003">SIRSI</marc:controlfield>
+    <marc:controlfield tag="005">20201220005336</marc:controlfield>
+    <marc:controlfield tag="008">980116</marc:controlfield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">335910</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UTM)u69</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1="0" ind2=" ">
+      <marc:subfield code="a">eng</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1=" " ind2="0">
+      <marc:subfield code="a">PTA</marc:subfield>
+      <marc:subfield code="b">TK9152 I334 1991</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">The International Chernobyl Project :</marc:subfield>
+      <marc:subfield code="b">conclusions and recommendations : assessment of radiological consequences and evaluation of protective measures /</marc:subfield>
+      <marc:subfield code="h">[peta]</marc:subfield>
+      <marc:subfield code="c">report by an International Advisory Committee</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Vienna :</marc:subfield>
+      <marc:subfield code="b">IAEA,</marc:subfield>
+      <marc:subfield code="c">1991</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">3 map :</marc:subfield>
+      <marc:subfield code="b">col ;</marc:subfield>
+      <marc:subfield code="c">scale varies</marc:subfield>
+      <marc:subfield code="e">1 book</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Accompanies text of same title</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="591" ind1=" " ind2=" ">
+      <marc:subfield code="a">15</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="596" ind1=" " ind2=" ">
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1="0" ind2="0">
+      <marc:subfield code="a">Chernobyl nuclear accident, Chernobyl, Ukraine, 1986</marc:subfield>
+      <marc:subfield code="x">Environmental aspects</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1="0" ind2="0">
+      <marc:subfield code="a">Chernobyl nuclear accident, Chernobyl, Ukraine, 1986</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1="0" ind2="0">
+      <marc:subfield code="a">Radiation</marc:subfield>
+      <marc:subfield code="x">Safety measures</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1="2" ind2="0">
+      <marc:subfield code="a">International Advisory Committee</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1="2" ind2="0">
+      <marc:subfield code="a">International Association for Earthquake Engineering</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="c">MAPGEN</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">MAPC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">PTA TK9152 I334 1991</marc:subfield>
+      <marc:subfield code="p">30000003971896</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">3</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">MAPGEN</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">MAPC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">PTA TK9152 I334 1991</marc:subfield>
+      <marc:subfield code="p">30000003971813</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">MAPGEN</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">MAPC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">PTA TK9152 I334 1991</marc:subfield>
+      <marc:subfield code="p">30000003971854</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">2</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">MAPGEN</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">utm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">67</marc:subfield>
+      <marc:subfield code="d">67</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

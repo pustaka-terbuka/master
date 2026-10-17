@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>000000000a0000000000</marc:leader>
+    <marc:controlfield tag="001">u68</marc:controlfield>
+    <marc:controlfield tag="003">SIRSI</marc:controlfield>
+    <marc:controlfield tag="005">20201220005336</marc:controlfield>
+    <marc:datafield tag="010" ind1=" " ind2=" ">
+      <marc:subfield code="a">8624548</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">471913340</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">335888</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">86024548</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UTM)u68</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1=" " ind2=" ">
+      <marc:subfield code="a">eng</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="0" ind2=" ">
+      <marc:subfield code="a">CTA</marc:subfield>
+      <marc:subfield code="b">QD79.T38 D63 1987</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2="0">
+      <marc:subfield code="a">Dodd, James W.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="0">
+      <marc:subfield code="a">Thermal methods /</marc:subfield>
+      <marc:subfield code="h">[carta]</marc:subfield>
+      <marc:subfield code="c">James W Dodd, Kenneth H Tonge, editor Braian R Currell</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1="0" ind2=" ">
+      <marc:subfield code="a">Chichester :</marc:subfield>
+      <marc:subfield code="b">John Wiley &amp; Sons;</marc:subfield>
+      <marc:subfield code="c">1987</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">16 charts :</marc:subfield>
+      <marc:subfield code="b">b &amp; W;</marc:subfield>
+      <marc:subfield code="c">size varies</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="490" ind1="1" ind2=" ">
+      <marc:subfield code="a">Analytical chemistry by open learning</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Accompany text of title by same author</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="591" ind1=" " ind2=" ">
+      <marc:subfield code="a">42</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="596" ind1=" " ind2=" ">
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Chemistry, Analytic</marc:subfield>
+      <marc:subfield code="x">Programmed instruction</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="2">
+      <marc:subfield code="a">Chemistry, Analytic</marc:subfield>
+      <marc:subfield code="x">Programmed instruction</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="2">
+      <marc:subfield code="a">Thermodynamics</marc:subfield>
+      <marc:subfield code="x">Programmed instruction</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Thermal analysis</marc:subfield>
+      <marc:subfield code="x">Programmed instruction</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2="0">
+      <marc:subfield code="a">Tonge, Kenneth H.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2="0">
+      <marc:subfield code="a">Currell, Brian R.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="830" ind1=" " ind2="0">
+      <marc:subfield code="a">Analytical chemistry by open learning</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="c">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971243</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971573</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">2</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971615</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">3</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971656</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">4</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971698</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">5</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971730</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">6</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971771</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">7</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971201</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">8</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971284</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">9</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971326</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">10</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971367</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">11</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971409</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">12</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971441</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">13</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971482</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">14</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971490</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">15</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">CHARTC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CTA QD79.T38 D63 1987</marc:subfield>
+      <marc:subfield code="p">30000003971532</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">16</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">CHRTACARC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">utm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="998" ind1=" " ind2=" ">
+      <marc:subfield code="a">NM</marc:subfield>
+      <marc:subfield code="b">180399</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">66</marc:subfield>
+      <marc:subfield code="d">66</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

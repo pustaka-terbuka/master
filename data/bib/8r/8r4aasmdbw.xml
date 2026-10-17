@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>000000000a0000000000</marc:leader>
+    <marc:controlfield tag="001">u6</marc:controlfield>
+    <marc:controlfield tag="003">SIRSI</marc:controlfield>
+    <marc:controlfield tag="005">20201220005335</marc:controlfield>
+    <marc:controlfield tag="008">120221s1987    my         h        eng d</marc:controlfield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UTM)u6</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">UTM</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1="0" ind2=" ">
+      <marc:subfield code="a">eng</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="051" ind1=" " ind2=" ">
+      <marc:subfield code="a">CP</marc:subfield>
+      <marc:subfield code="b">13984</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="0" ind2="0">
+      <marc:subfield code="a">Jungle green</marc:subfield>
+      <marc:subfield code="h">[videorecording] :</marc:subfield>
+      <marc:subfield code="b">khaki brown : Malaya&apos;s fight against terrorism</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Kuala Lumpur :</marc:subfield>
+      <marc:subfield code="b">TV3,</marc:subfield>
+      <marc:subfield code="c">1987</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">1 videodiscs (21 min 57 sec)</marc:subfield>
+      <marc:subfield code="b">bsd., col. ;</marc:subfield>
+      <marc:subfield code="c">12 cm.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">This documentary series depicts how our nation faced an era of terror for 12 years from 1948 - 1960, and the strategies adopted which culminated in victory.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="596" ind1=" " ind2=" ">
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="a">PSZKLL</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Documentary films</marc:subfield>
+      <marc:subfield code="z">Malaya</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="651" ind1=" " ind2="0">
+      <marc:subfield code="a">Malaya</marc:subfield>
+      <marc:subfield code="x">History</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="c">DVD</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZKLL</marc:subfield>
+      <marc:subfield code="b">PSZKLL</marc:subfield>
+      <marc:subfield code="c">MULTC</marc:subfield>
+      <marc:subfield code="d">2022-04-04</marc:subfield>
+      <marc:subfield code="g">21.9</marc:subfield>
+      <marc:subfield code="l">1</marc:subfield>
+      <marc:subfield code="o">CP 013984</marc:subfield>
+      <marc:subfield code="p">30000010138475</marc:subfield>
+      <marc:subfield code="r">2022-05-17 00:00:00</marc:subfield>
+      <marc:subfield code="s">2022-05-17</marc:subfield>
+      <marc:subfield code="t">2</marc:subfield>
+      <marc:subfield code="v">21.9</marc:subfield>
+      <marc:subfield code="y">CDMED</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">MULTC</marc:subfield>
+      <marc:subfield code="g">21.9</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">CP 013984</marc:subfield>
+      <marc:subfield code="p">30000010138474</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">21.9</marc:subfield>
+      <marc:subfield code="y">DVD</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">utm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="998" ind1=" " ind2=" ">
+      <marc:subfield code="a">HH/bb</marc:subfield>
+      <marc:subfield code="b">210212</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">6</marc:subfield>
+      <marc:subfield code="d">6</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

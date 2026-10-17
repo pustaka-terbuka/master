@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>000000000a0000000000</marc:leader>
+    <marc:controlfield tag="001">u246</marc:controlfield>
+    <marc:controlfield tag="003">SIRSI</marc:controlfield>
+    <marc:controlfield tag="005">20201220005337</marc:controlfield>
+    <marc:controlfield tag="008">000222 1995                        may</marc:controlfield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">340269</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UTM)u246</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1=" " ind2="0">
+      <marc:subfield code="a">PTA</marc:subfield>
+      <marc:subfield code="b">SIRI DNMM 5101/89 1995</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="0" ind2="0">
+      <marc:subfield code="a">Kuala Lipis</marc:subfield>
+      <marc:subfield code="h">[cartographic material] /</marc:subfield>
+      <marc:subfield code="c">Pengarah Pemetaan Negara</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="246" ind1="0" ind2=" ">
+      <marc:subfield code="a">Kuala Lipis (Pahang)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="250" ind1=" " ind2=" ">
+      <marc:subfield code="a">Edisi 1-PPNM</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" ">
+      <marc:subfield code="a">1:50,000</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Kuala Lumpur ::</marc:subfield>
+      <marc:subfield code="b">Pengarah Pemetaan Negara, Malaysia,</marc:subfield>
+      <marc:subfield code="c">1995</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">1 map :</marc:subfield>
+      <marc:subfield code="c">col. ;63 x 63cm on sheet 70 x 90cm.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="490" ind1="1" ind2=" ">
+      <marc:subfield code="a">Siri DNMM 5101 (Jabatan Ukur dan Pemetaan Malaysia) ;</marc:subfield>
+      <marc:subfield code="v">Lembar 89</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="506" ind1=" " ind2=" ">
+      <marc:subfield code="a">Restricted map</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="591" ind1=" " ind2=" ">
+      <marc:subfield code="a">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="591" ind1=" " ind2=" ">
+      <marc:subfield code="a">25</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="596" ind1=" " ind2=" ">
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="651" ind1=" " ind2="0">
+      <marc:subfield code="a">Kuala Lipis (Pahang)</marc:subfield>
+      <marc:subfield code="v">Maps, Topographic</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1="0" ind2=" ">
+      <marc:subfield code="a">Malaysia.</marc:subfield>
+      <marc:subfield code="b">Direktorat Pemetaan Negara</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="830" ind1=" " ind2=" ">
+      <marc:subfield code="a">Siri DNMM 5101 (Jabatan Ukur dan Pemetaan Malaysia) ;</marc:subfield>
+      <marc:subfield code="v">Lembar 89</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="c">MAPGEN</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">MAPC</marc:subfield>
+      <marc:subfield code="g">10</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">PTA SIRI DNMM 5101/89 1995</marc:subfield>
+      <marc:subfield code="p">30000004295097</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">10</marc:subfield>
+      <marc:subfield code="y">MAPGEN</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="c">MAPC</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">PTA SIRI DNMM 5101/89 1995</marc:subfield>
+      <marc:subfield code="p">30000010274049</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">2</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">MAPGEN</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">utm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="998" ind1=" " ind2=" ">
+      <marc:subfield code="a">HH/bb</marc:subfield>
+      <marc:subfield code="b">81013</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">243</marc:subfield>
+      <marc:subfield code="d">243</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

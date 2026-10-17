@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim">
+  <marc:record>
+    <marc:leader>000000000a0000000000</marc:leader>
+    <marc:controlfield tag="001">u64</marc:controlfield>
+    <marc:controlfield tag="003">SIRSI</marc:controlfield>
+    <marc:controlfield tag="005">20201220005336</marc:controlfield>
+    <marc:datafield tag="035" ind1=" " ind2=" ">
+      <marc:subfield code="a">(UTM)u64</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="050" ind1="1" ind2="0">
+      <marc:subfield code="a">FTU</marc:subfield>
+      <marc:subfield code="b">L15N F1099</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="110" ind1="2" ind2=" ">
+      <marc:subfield code="9"/>
+      <marc:subfield code="a">Malaysia.</marc:subfield>
+      <marc:subfield code="b">Direktorat Pemetaan Negara</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="0" ind2="0">
+      <marc:subfield code="a">Wangsa Maju, Kuala Lumpur :</marc:subfield>
+      <marc:subfield code="b">Data berdigit Siri L 808 L15N F1099 (147-153)</marc:subfield>
+      <marc:subfield code="h">[aerial photograph]</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" ">
+      <marc:subfield code="a">1 : 20,000</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+      <marc:subfield code="a">Kuala Lumpur :</marc:subfield>
+      <marc:subfield code="b">Ibu Pejabat Ukur Dan Pemetaan Malaysia,</marc:subfield>
+      <marc:subfield code="c">1995</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">7 aerial photographs :</marc:subfield>
+      <marc:subfield code="b">b &amp; w ;</marc:subfield>
+      <marc:subfield code="c">23.5 x 25 cm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Closed access</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Photographs were taken on 08.09.1995</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">Also available in compact disc : CP 4851(v.1)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="591" ind1=" " ind2=" ">
+      <marc:subfield code="a">1</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="596" ind1=" " ind2=" ">
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="a">PSZKLL</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Malaysia</marc:subfield>
+      <marc:subfield code="z">Kuala Lumpur</marc:subfield>
+      <marc:subfield code="x">Aerial photographs</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="942" ind1=" " ind2=" ">
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="c">AERIALPHO</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">4</marc:subfield>
+      <marc:subfield code="a">PSZJBL</marc:subfield>
+      <marc:subfield code="b">PSZJBL</marc:subfield>
+      <marc:subfield code="g">0</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">FTU L15N F1099</marc:subfield>
+      <marc:subfield code="p">64-1001</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">0</marc:subfield>
+      <marc:subfield code="y">AERIALPHO</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZKLL</marc:subfield>
+      <marc:subfield code="b">PSZKLL</marc:subfield>
+      <marc:subfield code="c">AERIALC</marc:subfield>
+      <marc:subfield code="g">3810.64</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">FTU L15N F1099 no.147</marc:subfield>
+      <marc:subfield code="p">30000010119308</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">3810.64</marc:subfield>
+      <marc:subfield code="y">AERIALPHO</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZKLL</marc:subfield>
+      <marc:subfield code="b">PSZKLL</marc:subfield>
+      <marc:subfield code="c">AERIALC</marc:subfield>
+      <marc:subfield code="g">3810.64</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">FTU L15N F1099 no.148</marc:subfield>
+      <marc:subfield code="p">30000010119322</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">3810.64</marc:subfield>
+      <marc:subfield code="y">AERIALPHO</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZKLL</marc:subfield>
+      <marc:subfield code="b">PSZKLL</marc:subfield>
+      <marc:subfield code="c">AERIALC</marc:subfield>
+      <marc:subfield code="g">3810.64</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">FTU L15N F1099 no.149</marc:subfield>
+      <marc:subfield code="p">30000010119321</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">3810.64</marc:subfield>
+      <marc:subfield code="y">AERIALPHO</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZKLL</marc:subfield>
+      <marc:subfield code="b">PSZKLL</marc:subfield>
+      <marc:subfield code="c">AERIALC</marc:subfield>
+      <marc:subfield code="g">3810.64</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">FTU L15N F1099 no.150</marc:subfield>
+      <marc:subfield code="p">30000010119320</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">3810.64</marc:subfield>
+      <marc:subfield code="y">AERIALPHO</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZKLL</marc:subfield>
+      <marc:subfield code="b">PSZKLL</marc:subfield>
+      <marc:subfield code="c">AERIALC</marc:subfield>
+      <marc:subfield code="g">3810.64</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">FTU L15N F1099 no.151</marc:subfield>
+      <marc:subfield code="p">30000010119331</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">3810.64</marc:subfield>
+      <marc:subfield code="y">AERIALPHO</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZKLL</marc:subfield>
+      <marc:subfield code="b">PSZKLL</marc:subfield>
+      <marc:subfield code="c">AERIALC</marc:subfield>
+      <marc:subfield code="g">3810.64</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">FTU L15N F1099 no.152</marc:subfield>
+      <marc:subfield code="p">30000010119330</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">3810.64</marc:subfield>
+      <marc:subfield code="y">AERIALPHO</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="952" ind1=" " ind2=" ">
+      <marc:subfield code="0">0</marc:subfield>
+      <marc:subfield code="1">0</marc:subfield>
+      <marc:subfield code="2">lcc</marc:subfield>
+      <marc:subfield code="4">0</marc:subfield>
+      <marc:subfield code="7">0</marc:subfield>
+      <marc:subfield code="a">PSZKLL</marc:subfield>
+      <marc:subfield code="b">PSZKLL</marc:subfield>
+      <marc:subfield code="c">AERIALC</marc:subfield>
+      <marc:subfield code="g">3810.64</marc:subfield>
+      <marc:subfield code="l">0</marc:subfield>
+      <marc:subfield code="o">FTU L15N F1099 no.153</marc:subfield>
+      <marc:subfield code="p">30000010119329</marc:subfield>
+      <marc:subfield code="r">2020-12-18 00:00:00</marc:subfield>
+      <marc:subfield code="t">1</marc:subfield>
+      <marc:subfield code="v">3810.64</marc:subfield>
+      <marc:subfield code="y">AERIALPHO</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="996" ind1=" " ind2=" ">
+      <marc:subfield code="a">utm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="998" ind1=" " ind2=" ">
+      <marc:subfield code="a">NY/kml</marc:subfield>
+      <marc:subfield code="b">150607</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="999" ind1=" " ind2=" ">
+      <marc:subfield code="c">62</marc:subfield>
+      <marc:subfield code="d">62</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>
