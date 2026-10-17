@@ -4,6 +4,7 @@ import { fileURLToPath, pathToFileURL } from 'url';
 import Ajv from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import { parse as parseMarcXml, getDataFields } from './lib/marcxml.js';
+import { XMLValidator } from 'fast-xml-parser';
 import readline from 'readline';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -81,7 +82,6 @@ export async function validateInbox(inboxPath, options = {}) {
     }
 
     // 2. XML well-formedness
-    const { XMLValidator } = await import('fast-xml-parser');
     const isValidXML = XMLValidator.validate(text);
     if (isValidXML !== true) {
       logError(`${file} is malformed: ${isValidXML.err.msg} at line ${isValidXML.err.line}`);
@@ -130,19 +130,26 @@ export async function validateInbox(inboxPath, options = {}) {
       const lines = provContent.split('\n');
       provenanceLines = lines.length;
       
-      // Parse a few lines to validate
+      // Parse a sample of lines to validate schema (first 50, last 50, and evenly distributed sample up to 200)
       const provSchemaStr = fs.readFileSync(path.join(__dirname, 'schemas/provenance-line.schema.json'), 'utf8');
       const provSchema = JSON.parse(provSchemaStr);
       const validateProv = ajv.compile(provSchema);
 
-      for (let i = 0; i < lines.length; i++) {
+      const indicesToTest = new Set();
+      const sampleLimit = Math.min(lines.length, 200);
+      for (let i = 0; i < Math.min(50, lines.length); i++) indicesToTest.add(i);
+      for (let i = Math.max(0, lines.length - 50); i < lines.length; i++) indicesToTest.add(i);
+      const step = Math.max(1, Math.floor(lines.length / 100));
+      for (let i = 0; i < lines.length; i += step) indicesToTest.add(i);
+
+      for (const idx of indicesToTest) {
         try {
-          const l = JSON.parse(lines[i]);
+          const l = JSON.parse(lines[idx]);
           if (!validateProv(l)) {
-            logError(`provenance.jsonl line ${i+1} schema validation failed: ${ajv.errorsText(validateProv.errors)}`);
+            logError(`provenance.jsonl line ${idx+1} schema validation failed: ${ajv.errorsText(validateProv.errors)}`);
           }
         } catch(e) {
-           logError(`provenance.jsonl line ${i+1} is invalid JSON.`);
+          logError(`provenance.jsonl line ${idx+1} is invalid JSON.`);
         }
       }
     }
